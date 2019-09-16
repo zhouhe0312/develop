@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<!--字典功能日志导航数据-->
+        <!--添加字典信息-->
+        <entry key="dict.add">新增字典信息名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="dict.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="dict.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新字典信息-->
+        <entry key="dict.edit">修改字典信息名称：[{0}]</entry>
+        <entry key="dict.edit.message">[{1}]</entry>
+        <entry key="dict.edit.type">[{2}]</entry>
+        <!--删除字典信息-->
+        <entry key="dict.del">删除字典信息</entry>
+        <entry key="dict.del.message">[{1}]</entry>
+        <entry key="dict.del.type">[{2}]</entry>
+<!--部门日志导航数据-->
+        <!--添加部门信息-->
+        <entry key="dept.add">新增部门信息名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="dept.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="dept.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新部门信息-->
+        <entry key="dept.edit">修改部门信息名称：[{0}]</entry>
+        <entry key="dept.edit.message">[{1}]</entry>
+        <entry key="dept.edit.type">[{2}]</entry>
+        <!--删除部门信息-->
+        <entry key="dept.del">删除部门信息</entry>
+        <entry key="dept.del.message">[{1}]</entry>
+        <entry key="dept.dell.type">[{2}]</entry>
+<!--权限日志导航数据-->
+        <!--添加-->
+        <entry key="res.add">新增权限信息名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="res.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="res.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="res.edit">修改权限信息名称：[{0}]</entry>
+        <entry key="res.edit.message">[{1}]</entry>
+        <entry key="res.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="res.del">删除权限信息</entry>
+        <entry key="res.del.message">[{1}]</entry>
+        <entry key="res.del.type">[{2}]</entry>
+<!--角色日志导航数据-->
+        <!--添加-->
+        <entry key="role.add">新增角色信息名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="role.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="role.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="role.edit">修改角色信息名称：[{0}]</entry>
+        <entry key="role.edit.message">[{1}]</entry>
+        <entry key="role.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="role.del">删除角色信息</entry>
+        <entry key="role.del.message">[{1}]</entry>
+        <entry key="role.del.type">[{2}]</entry>
+<!--安全策略日志导航数据-->
+        <!--更新-->
+        <entry key="safe.edit">修改安全策略信息</entry>
+        <entry key="safe.edit.message">[{1}]</entry>
+        <entry key="safe.edit.type">[{2}]</entry>
+<!--系统用户日志导航数据-->
+        <!--添加-->
+        <entry key="sysUser.add">新增系统用户信息账号：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="sysUser.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="sysUser.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="sysUser.edit">修改系统用户信息账号：[{0}]</entry>
+        <entry key="sysUser.edit.message">[{1}]</entry>
+        <entry key="sysUser.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="sysUser.del">删除系统用户信息</entry>
+        <entry key="sysUser.del.message">[{1}]</entry>
+        <entry key="sysUser.del.type">[{2}]</entry>
+        <!--修改密码-->
+        <entry key="sysUserPwd.edit">修改系统用户密码：[{0}]</entry>
+        <entry key="sysUserPwd.edit.message">[{1}]</entry>
+        <entry key="sysUserPwd.edit.type">[{2}]</entry>
+<!--题库日志导航数据-->
+        <!--添加-->
+        <entry key="topicType.add">新增题库信息名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="topicType.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="topicType.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="topicType.edit">修改题库信息名称：[{0}]</entry>
+        <entry key="topicType.edit.message">[{1}]</entry>
+        <entry key="topicType.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="topicType.del">删除题库信息</entry>
+        <entry key="topicType.del.message">[{1}]</entry>
+        <entry key="topicType.del.type">[{2}]</entry>
+<!--试题日志导航数据-->
+    <!--添加-->
+        <entry key="topic.add">新增试题信息题干名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="topic.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="topic.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="topic.edit">修改试题信息题干名称：[{0}]</entry>
+        <entry key="topic.edit.message">[{1}]</entry>
+        <entry key="topic.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="topic.del">删除试题信息</entry>
+        <entry key="topic.del.message">[{1}]</entry>
+        <entry key="topic.del.type">[{2}]</entry>
+        <!--启用禁用-->
+        <entry key="topic.enableDisabled">启用禁用试题信息</entry>
+        <entry key="topic.enableDisabled.message">[{1}]</entry>
+        <entry key="topic.enableDisabled.type">[{2}]</entry>
+<!--用户考试结果日志导航数据-->
+    <!--删除-->
+        <entry key="result.del">删除用户考试结果信息</entry>
+        <entry key="result.del.message">[{1}]</entry>
+        <entry key="result.del.type">[{2}]</entry>
+<!--试卷日志导航数据-->
+    <!--添加-->
+        <entry key="test.add">新增试卷信息标题：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="test.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="test.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="test.edit">修改试卷信息标题：[{0}]</entry>
+        <entry key="test.edit.message">[{1}]</entry>
+        <entry key="test.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="test.del">删除试卷信息</entry>
+        <entry key="test.del.message">[{1}]</entry>
+        <entry key="test.del.type">[{2}]</entry>
+        <!--启用禁用-->
+        <entry key="test.enableDisabled">启用禁用试卷信息</entry>
+        <entry key="test.enableDisabled.message">[{1}]</entry>
+        <entry key="test.enableDisabled.type">[{2}]</entry>
+        <!--课程/实验日志-->
+        <!--添加-->
+        <entry key="course.add">新增课程/实验名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="course.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="course.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="course.edit">修改课程/实验名称：[{0}]</entry>
+        <entry key="course.edit.message">[{1}]</entry>
+        <entry key="course.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="course.del">删除课程/实验名称</entry>
+        <entry key="course.del.message">[{1}]</entry>
+        <entry key="course.del.type">[{2}]</entry>
+        <!--课程/实验分类管理日志-->
+        <!--添加-->
+        <entry key="classify.add">新增分类名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="classify.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="classify.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="classify.edit">修改分类名称：[{0}]</entry>
+        <entry key="classify.edit.message">[{1}]</entry>
+        <entry key="classify.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="classify.del">删除分类名称</entry>
+        <entry key="classify.del.message">[{1}]</entry>
+        <entry key="classify.del.type">[{2}]</entry>
+        <!--课程/实验章节日志-->
+        <!--添加-->
+        <entry key="chapter.add">新增章节名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="chapter.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="chapter.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="chapter.edit">修改章节名称：[{0}]</entry>
+        <entry key="chapter.edit.message">[{1}]</entry>
+        <entry key="chapter.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="chapter.del">删除章节名称</entry>
+        <entry key="chapter.del.message">[{1}]</entry>
+        <entry key="chapter.del.type">[{2}]</entry>
+        <!--知识库目录日志-->
+        <!--添加-->
+        <entry key="knowledgeInfo.add">新增知识库目录名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="knowledgeInfo.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="knowledgeInfo.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="knowledgeInfo.edit">修改知识库目录名称：[{0}]</entry>
+        <entry key="knowledgeInfo.edit.message">[{1}]</entry>
+        <entry key="knowledgeInfo.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="knowledgeInfo.del">删除知识库目录名称</entry>
+        <entry key="knowledgeInfo.del.message">[{1}]</entry>
+        <entry key="knowledgeInfo.del.type">[{2}]</entry>
+        <!--知识库内容日志-->
+        <!--添加-->
+        <entry key="knowledgeInfo.add">新增知识库内容名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="knowledgeInfo.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="knowledgeInfo.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="knowledgeInfo.edit">修改知识库内容名称：[{0}]</entry>
+        <entry key="knowledgeInfo.edit.message">[{1}]</entry>
+        <entry key="knowledgeInfo.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="knowledgeInfo.del">删除知识库内容名称</entry>
+        <entry key="knowledgeInfo.del.message">[{1}]</entry>
+        <entry key="knowledgeInfo.del.type">[{2}]</entry>
+        <!--知识库内容标准日志-->
+        <!--添加-->
+        <entry key="standard.add">新增知识库内容标准名称：[{0}]</entry> <!--对应 日志数据-->
+        <entry key="standard.add.message">[{1}]</entry><!--对应 操作详情-->
+        <entry key="standard.add.type">[{2}]</entry><!--对应 操作类型-->
+        <!--更新-->
+        <entry key="standard.edit">修改知识库内容标准名称：[{0}]</entry>
+        <entry key="standard.edit.message">[{1}]</entry>
+        <entry key="standard.edit.type">[{2}]</entry>
+        <!--删除-->
+        <entry key="standard.del">删除知识库内容标准名称</entry>
+        <entry key="standard.del.message">[{1}]</entry>
+        <entry key="standard.del.type">[{2}]</entry>
+</properties>

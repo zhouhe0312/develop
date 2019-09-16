@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Built-By: lintao
+Build-Jdk: 1.8.0_112
+Class-Path: spring-core-5.0.8.RELEASE.jar spring-jcl-5.0.8.RELEASE.jar
+  commons-io-1.4.jar juh-3.2.1.jar jurt-3.2.1.jar ridl-3.2.1.jar unoil
+ -3.2.1.jar commons-cli-1.1.jar sigar-1.6.5.132.jar json-20090211.jar
+Implementation-Title: jodconverter-core
+Implementation-Version: 1.0.0
+Implementation-Vendor-Id: cn.powertime
+Main-Class: org.artofsolving.jodconverter.cli.Convert
+Created-By: Maven Integration for Eclipse
+

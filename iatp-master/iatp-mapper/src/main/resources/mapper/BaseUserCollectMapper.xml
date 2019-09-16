@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseUserCollectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseUserCollect">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="course_id" property="courseId" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    <select id="selectPage" resultType="cn.powertime.iatp.vo.resp.admin.UserCollectRespListVo">
+        SELECT temp.*,score FROM (SELECT buc.id
+        , any_value(su.acount) AS acount
+        , any_value(su.username) AS username
+        , any_value(bct.title) AS title
+        , any_value(buc.type) AS test_type
+        , any_value(bc.course_name) AS course_name
+        , any_value(buc.create_time) AS create_time
+        , MAX(ber.id) ber_id
+        FROM base_user_collect buc
+        LEFT JOIN sys_user su ON buc.user_id = su.id
+        LEFT JOIN base_chapel_test bct ON buc.course_id = bct.id
+        LEFT JOIN base_course bc ON (bct.course_id = bc.id || bc.id = bct.course_one_id)
+        LEFT JOIN base_examination_result ber ON ber.user_id = su.id AND ber.test_paper_id = buc.course_id
+        WHERE buc.status = 1
+        <if test="vo.userName != null and vo.userName != ''">
+            AND su.acount = #{vo.userName}
+        </if>
+        <if test="vo.courseId != null and vo.courseId != 0">
+            AND bct.course_id = #{vo.courseId}
+        </if>
+        <if test="vo.testType != null and vo.testType != 0">
+            AND buc.type = #{vo.testType}
+        </if>
+        GROUP BY buc.id ORDER BY id DESC) temp LEFT JOIN base_examination_result ber ON temp.ber_id = ber.`id`
+    </select>
+
+</mapper>

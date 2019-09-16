@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseChapelTestMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseChapelTest">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="course_id" property="courseId" />
+        <result column="chapter_id" property="chapterId" />
+        <result column="subsection" property="subsection" />
+        <result column="paper_duration" property="paperDuration" />
+        <result column="score" property="score" />
+        <result column="course_one_id" property="courseOneId" />
+        <result column="course_two_id" property="courseTwoId" />
+        <result column="test_type" property="testType" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.vo.resp.admin.BaseChapelTestPageListVo">
+
+        SELECT * FROM(
+        (
+        select
+        test.id,
+        test.title,
+        test.course_id courseId,
+        test.chapter_id chapterId,
+        test.subsection,
+        test.paper_duration paperDuration,
+        test.score,
+        test.course_one_id courseOneId,
+        test.course_two_id courseTwoId,
+        test.test_type testType,
+        test.status,
+        test.create_time createTime,
+        test.update_time updateTime,
+        course.course_name courseName,
+        pchapter.chapter_name chapterPname,
+        chapter.chapter_name chapterName,
+        ISNULL(b.num) assessed
+        from
+        base_chapel_test test
+        LEFT JOIN base_course course
+        on
+        IF(test.course_id>0,   test.course_id = course.id and course.`status` = 1,1!=1)
+
+        LEFT JOIN base_chapter pchapter
+        on
+        IF(test.chapter_id>0,   test.chapter_id = pchapter.id and pchapter.`status` = 1,1!=1)
+
+        LEFT JOIN base_chapter chapter
+        on
+        IF(test.subsection>0,   test.subsection = chapter.id and chapter.`status` = 1,1!=1)
+
+        left join
+        (select test_paper_id , count(id) num from base_examination_result result  where status = 1 group by test_paper_id) b
+        on b.test_paper_id = test.id
+
+        WHERE
+        1=1
+        and
+        test.test_type in(1,2,3,4,5,6)
+
+        )
+        UNION ALL
+        (
+
+        select
+        test.id,
+        test.title,
+        test.course_id courseId,
+        test.chapter_id chapterId,
+        test.subsection,
+        test.paper_duration paperDuration,
+        test.score,
+        test.course_one_id courseOneId,
+        test.course_two_id courseTwoId,
+        test.test_type testType,
+        test.status,
+        test.create_time createTime,
+        test.update_time updateTime,
+        course.course_name courseName,
+        '' chapterPname,
+        '' chapterName,
+        ISNULL(b.num) assessed
+        from
+        base_chapel_test test
+        LEFT JOIN base_course course
+        on
+        test.course_one_id = course.id and course.`status` = 1
+
+        left join
+        (select test_paper_id , count(id) num from base_examination_result result  where status = 1 group by test_paper_id) b
+        on b.test_paper_id = test.id
+
+
+        WHERE
+        1=1
+        and
+        test.test_type = 7
+        )
+        ) result
+        where
+        result.status != -1
+        <if test="vo.title != null and vo.title != '' ">
+            AND result.title like '%${vo.title}%'
+        </if>
+        <if test="vo.testType != null and vo.testType != 0">
+            AND result.testType = #{vo.testType}
+        </if>
+        ORDER BY result.id desc
+
+    </select>
+
+    <update id="batchDel">
+        update base_chapel_test set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="webCourseExamList" resultType="cn.powertime.iatp.vo.resp.web.CourseExamPageListVo">
+
+        SELECT result.*
+        FROM (
+            SELECT test.id, test.title AS testTitle, test.test_type AS testType, course.course_name AS courseName
+                , IF(collect.id > 0, 1, 2) AS collected
+                , result.score
+                ,result.id resultId
+            FROM base_chapel_test test
+                LEFT JOIN base_course course
+                ON course.status = 1
+                    AND if(test.course_one_id != '', test.course_one_id = course.id, test.course_id = course.id)
+                LEFT JOIN base_user_collect collect
+                    ON test.id = collect.course_id
+                    AND collect.user_id = #{uid}
+                    <!--<if test="vo.testType != null and vo.testType != 0">
+                    AND collect.type = #{vo.testType}
+                    </if>-->
+                    AND collect.status = 1
+                LEFT JOIN
+                    (
+                    SELECT c.*,b.score FROM
+                    (SELECT MAX(a.id) id  , a.test_paper_id from base_examination_result a WHERE a.user_id = #{uid} GROUP BY a.test_paper_id) c
+                    LEFT JOIN base_examination_result b  on b.id =c.id
+                    ) as result
+                    on test.id = result.test_paper_id
+            WHERE test.`status` = 1
+        ) result
+        WHERE 1 = 1
+            <if test="vo.title != null and vo.title != '' ">
+                AND
+                (result.testTitle like '%${vo.title}%' OR result.courseName like '%${vo.title}%')
+            </if>
+            <if test="vo.type != null and vo.type != 0">
+                AND result.testType = #{vo.type}
+            </if>
+            <if test="vo.testType != null and vo.testType != 0 and vo.testType == 1">
+                AND result.testType in (1,2,3)
+                <!-- AND result.testType = 3-->
+             </if>
+             <if test="vo.testType != null and vo.testType != 0 and vo.testType == 2">
+                 AND result.testType in (4,5,6)
+                 <!-- AND result.testType = 6-->
+              </if>
+              <if test="vo.testType != null and vo.testType != 0 and vo.testType == 3">
+                  AND result.testType = 7
+              </if>
+              <if test="vo.searchType != null and vo.searchType != 0 and vo.searchType == 1">
+                  AND result.score >= 0
+              </if>
+              <if test="vo.searchType != null and vo.searchType != 0 and vo.searchType == 2">
+                  AND result.collected = 1
+              </if>
+              order by result.id desc
+      </select>
+
+      <select id="paperResult" resultType="cn.powertime.iatp.vo.resp.web.PaperDetailsVo">
+
+          select
+          paper.title,
+          paper.paper_duration paperDuration,
+          paper.score,
+          result.score userScore
+          from
+          base_chapel_test paper
+          left join
+              (select test_paper_id,score from base_examination_result where user_id = #{uid} and status = 1 ORDER BY id DESC limit 1) result
+         on paper.id = result.test_paper_id
+          where
+          paper.status = 1
+          and
+          paper.id = #{id}
+
+      </select>
+
+      <select id="getTopicListByChapelId" resultType="cn.powertime.iatp.vo.resp.admin.TopicListVo">
+          SELECT
+          topic.id,
+          paper.score_value scoreValue,
+          topic.topic_stem topicStem,
+          topic.option_a optionA,
+          topic.option_b optionB,
+          topic.option_c optionC,
+          topic.option_d optionD
+          FROM
+          base_examination_paper paper,
+          base_topic topic
+          WHERE
+          paper.topic_id = topic.id
+          and
+          paper.status = 1
+          AND
+          paper.test_paper_id = #{id}
+      </select>
+
+
+  </mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.SysDeptMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.SysDept">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="pid" property="pid" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.vo.resp.admin.SysDeptPageListVo">
+        SELECT a.id, a.name, a.code , a.status, a.pid,  a.create_time as createTime, a.update_time as updateTime, IFNULL(b.name,'无') AS pname
+        FROM
+        sys_dept a LEFT JOIN
+        sys_dept b
+        on a.pid = b.id
+        WHERE
+        a.status != -1
+        <if test="vo.name != null and vo.name != '' ">
+            AND a.name like '%${vo.name}%'
+        </if>
+        <if test="vo.code != null and vo.code != '' ">
+            AND a.code = #{vo.code}
+        </if>
+        <if test="vo.pid != null">
+            AND a.pid = #{vo.pid}
+        </if>
+
+        ORDER BY a.id desc
+
+    </select>
+
+    <update id="batchDel">
+        update sys_dept set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper>

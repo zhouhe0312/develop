@@ -1,0 +1,1754 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="init-data-base_knowledge_info-data" author="liqi" runOnChange="true">
+        <sql>
+            <![CDATA[
+
+                delete from `base_knowledge_info` where id ='1';
+                delete from `base_knowledge_info` where id ='2';
+                delete from `base_knowledge_info` where id ='3';
+                delete from `base_knowledge_info` where id ='4';
+                delete from `base_knowledge_info` where id ='5';
+                delete from `base_knowledge_info` where id ='6';
+                delete from `base_knowledge_info` where id ='7';
+                delete from `base_knowledge_info` where id ='8';
+                delete from `base_knowledge_info` where id ='9';
+                delete from `base_knowledge_info` where id ='10';
+                delete from `base_knowledge_info` where id ='11';
+
+                insert  into `base_knowledge_info`(`id`,`name`,`category`,`class`,`fields`,`keyword`,`summary`,`version`,`status`,`release_date`,`discard_date`,`issued`,`level`,`project_id`,`filename`) values
+                (1,'商业银行信息科技风险管理指引',1,31,2,'信息科技风险','通过建立有效的机制，实现对商业银行信息科技风险的识别、计量、监测和控制，促进商业银行安全、持续、稳健运行，推动业务创新，提高信息技术使用水平，增强核心竞争力和可持续发展能力。\n共11章76条，分为总则，信息科技治理，信息科技风险管理，信息安全，信息系统开发、测试和维护，信息科技运行，业务连续性管理，外包，内部审计，外部审计和附则等十一个部分。\n','银监发[2009]19号',1,'2009-06-01 00:00:00',NULL,'中国银行业监督管理委员会',NULL,NULL,NULL),
+                (2,'商业银行数据中心监管指引',3,31,11,'数据中心','为加强商业银行数据中心风险管理，保障数据中心安全、可靠、稳定运行，加强灾难恢复管理，提高业务连续性水平。\n共8章55条，分为总则，设立与变更，风险管理，运行环境管理，运营维护管理，灾难恢复管理，外包管理，监督管理。','银监办发[2010]114号',1,'2010-04-20 00:00:00',NULL,'中国银行业监督管理委员会办公厅',NULL,NULL,NULL),
+                (3,'商业银行业务连续性监管指引',3,31,6,'业务连续性','通过建设应急响应、恢复机制和管理能力框架，降低或消除因信息系统服务异常导致重要业务运营中断的影响，快速恢复被中断业务，维护公众信心和银行业正常运营秩序，提高商业银行业务连续性管理能力。\n共8章99条，分为总则，业务连续性组织架构，业务影响分析，业务连续性计划与资源建设，业务连续性演练与持续改进，运营中断事件应急处置，监管和处置，附则。','银监发[2011]104号',1,'2011-12-28 00:00:00',NULL,'中国银行业监督管理委员会',NULL,NULL,NULL),
+                (4,'银行业金融机构信息科技外包风险监管指引',3,31,19,'信息科技外包风险','为规范银行业金融机构的信息科技外包活动，降低信息科技外包风险，如科技能力丧失、业务中断、信息泄露、服务水平下降、机构集中度风险等。\n共8章91条，分为总则，外包管理组织架构，信息科技外包战略及风险管理，信息科技外包管理，机构集中度风险管理，跨境及非驻场外包管理，银行业重点外包服务机构风险管理要求，监督管理。','银监发[2013]5号',1,'2013-02-16 00:00:00',NULL,'中国银行业监督管理委员会',NULL,NULL,NULL),
+                (5,'信息科技安全技术信息安全管理体系要求',2,24,3,'信息安全管理体系要求；27001安全管理体系要求；27001','本标准规定了在组织环境下建立、实现、维护和持续改进信息安全管理体系的要求。本标准还包括了根据组织需求所剪裁的信息安全风险评估和处置的要求。本标准规定的要求是通用的，适用于各种类型、规模或性质的组织。当组织声称符合本标准时，不能排除第4章到第10章中所规定的任何要求。','GB/T 22080-2016',1,'2016-08-29 00:00:00',NULL,'中华人民共和国国家质量监督检验检疫总局/中国国家标准化管理委员会',NULL,NULL,NULL),
+                (6,'信息安全技术 网络安全等级保护基本要求（三级通用要求）',2,24,3,'安全管理体系要求；27001','本标准规定了第一级到第四级等级保护对象的安全通用要求和安全扩展要求，适用于指导分等级的非涉密对象的安全建设和监督管理。','安全管理体系要求；27001',1,'2018-12-06 00:00:00',NULL,'中华人民共和国国家质量监督检验检疫总局/中国国家标准化管理委员会',NULL,NULL,NULL),
+                (7,'非银行金融机构信息科技建设和管理',3,31,1,'非银机构信息科技管理','为促进非银行金融机构信息科技建设，提升信息化管理水平，有效防范信息科技风险，保障非银机构稳健经营和持续发展。\n全文包括指导原则；建立有效的信息科技治理架构；科学规划，升信息科技对业务的支撑能力；加强基础设施建设，提升开发测试和运维管理水平；健全信息科技风险管理体系，加强重点领域风险防控；加强监管指导等六大部分内容。','银监办发[2016]188号',1,'2016-12-26 00:00:00',NULL,'中国银行业监督管理委员会办公厅',NULL,NULL,NULL),
+                (8,'证券基金经营机构信息技术管理办法',3,32,1,'证券业信息技术管理','为加强证券基金经营机构信息技术管理，保障证券基金行业信息系统安全、合规运行，保护投资者合法权\n益。\n共7章64条，分为总则、信息技术治理、信息技术合规与风险管理、信息技术安全、信息技术服务机构、监督管理、附则。','证监会令[第152号]',1,'2018-12-19 00:00:00',NULL,'中国证券监督管理委员会',NULL,NULL,NULL),
+                (9,'证券期货业信息安全保障管理办法',3,32,1,'证券期货业信息安全保障','为了保障证券期货信息系统安全运行，加强证券期货业信息安全管理工作，促进证券期货市场稳定健康发展，保护投资者合法权益。\n共7章51条，分为总则、基本要求、持续保障要求、产品及服务采购要求、行业自律、监督管理、附则。','证监会令[第82号]',1,'2012-09-24 00:00:00',NULL,'中国证券监督管理委员会',NULL,NULL,NULL),
+                (10,'银行业金融机构重要信息系统投产及变更管理办法',3,31,17,'重要信息系统管理','为加强银行业金融机构重要信息系统投产及变更风险管理，保障银行业金融机构重要信息系统安全稳定运行。\n共7章39条，分为总则、组织管理、风险评估、投产及变更控制、投产及变更报告、监督管理、附则。','银监办发[2009]437号',1,'2009-12-29 00:00:00',NULL,'中国银行业监督管理委员会办公厅',NULL,NULL,NULL),
+                (11,'银行业金融机构数据治理指引',3,31,1,'数据治理','为指导银行业金融机构加强数据治理，提高数据质量，发挥数据价值，提升经营管理能力。\n共7章55条，分为总则、数据治理架构、数据管理、数据质量控制、数据价值实现、监督管理、附则。','银保监发[2018]22号',1,'2018-05-21 00:00:00',NULL,'中国银行保险监督管理委员会',NULL,NULL,NULL);
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-base_knowledge_content-data" author="liqi" runOnChange="true">
+        <sql>
+            <![CDATA[
+                delete from `base_knowledge_content` where id ='111';
+                delete from `base_knowledge_content` where id ='112';
+                delete from `base_knowledge_content` where id ='113';
+                delete from `base_knowledge_content` where id ='114';
+                delete from `base_knowledge_content` where id ='115';
+                delete from `base_knowledge_content` where id ='116';
+                delete from `base_knowledge_content` where id ='117';
+                delete from `base_knowledge_content` where id ='118';
+                delete from `base_knowledge_content` where id ='119';
+                delete from `base_knowledge_content` where id ='120';
+                delete from `base_knowledge_content` where id ='121';
+                delete from `base_knowledge_content` where id ='122';
+                delete from `base_knowledge_content` where id ='123';
+                delete from `base_knowledge_content` where id ='124';
+                delete from `base_knowledge_content` where id ='125';
+                delete from `base_knowledge_content` where id ='126';
+                delete from `base_knowledge_content` where id ='127';
+                delete from `base_knowledge_content` where id ='128';
+                delete from `base_knowledge_content` where id ='129';
+                delete from `base_knowledge_content` where id ='130';
+                delete from `base_knowledge_content` where id ='131';
+                delete from `base_knowledge_content` where id ='132';
+                delete from `base_knowledge_content` where id ='133';
+                delete from `base_knowledge_content` where id ='134';
+                delete from `base_knowledge_content` where id ='135';
+                delete from `base_knowledge_content` where id ='136';
+                delete from `base_knowledge_content` where id ='137';
+                delete from `base_knowledge_content` where id ='138';
+                delete from `base_knowledge_content` where id ='139';
+                delete from `base_knowledge_content` where id ='140';
+                delete from `base_knowledge_content` where id ='141';
+                delete from `base_knowledge_content` where id ='142';
+                delete from `base_knowledge_content` where id ='143';
+                delete from `base_knowledge_content` where id ='144';
+                delete from `base_knowledge_content` where id ='145';
+                delete from `base_knowledge_content` where id ='146';
+                delete from `base_knowledge_content` where id ='147';
+                delete from `base_knowledge_content` where id ='148';
+                delete from `base_knowledge_content` where id ='149';
+                delete from `base_knowledge_content` where id ='150';
+                delete from `base_knowledge_content` where id ='151';
+                delete from `base_knowledge_content` where id ='152';
+                delete from `base_knowledge_content` where id ='153';
+                delete from `base_knowledge_content` where id ='154';
+                delete from `base_knowledge_content` where id ='155';
+                delete from `base_knowledge_content` where id ='156';
+                delete from `base_knowledge_content` where id ='157';
+                delete from `base_knowledge_content` where id ='158';
+                delete from `base_knowledge_content` where id ='159';
+                delete from `base_knowledge_content` where id ='160';
+                delete from `base_knowledge_content` where id ='161';
+                delete from `base_knowledge_content` where id ='162';
+                delete from `base_knowledge_content` where id ='163';
+                delete from `base_knowledge_content` where id ='164';
+                delete from `base_knowledge_content` where id ='165';
+                delete from `base_knowledge_content` where id ='166';
+                delete from `base_knowledge_content` where id ='167';
+                delete from `base_knowledge_content` where id ='168';
+                delete from `base_knowledge_content` where id ='169';
+                delete from `base_knowledge_content` where id ='170';
+                delete from `base_knowledge_content` where id ='171';
+                delete from `base_knowledge_content` where id ='172';
+                delete from `base_knowledge_content` where id ='173';
+                delete from `base_knowledge_content` where id ='174';
+                delete from `base_knowledge_content` where id ='175';
+                delete from `base_knowledge_content` where id ='176';
+                delete from `base_knowledge_content` where id ='177';
+                delete from `base_knowledge_content` where id ='178';
+                delete from `base_knowledge_content` where id ='179';
+                delete from `base_knowledge_content` where id ='180';
+                delete from `base_knowledge_content` where id ='181';
+                delete from `base_knowledge_content` where id ='182';
+                delete from `base_knowledge_content` where id ='183';
+                delete from `base_knowledge_content` where id ='184';
+                delete from `base_knowledge_content` where id ='185';
+                delete from `base_knowledge_content` where id ='186';
+                delete from `base_knowledge_content` where id ='187';
+                delete from `base_knowledge_content` where id ='188';
+                delete from `base_knowledge_content` where id ='189';
+                delete from `base_knowledge_content` where id ='190';
+                delete from `base_knowledge_content` where id ='191';
+                delete from `base_knowledge_content` where id ='192';
+                delete from `base_knowledge_content` where id ='193';
+                delete from `base_knowledge_content` where id ='194';
+                delete from `base_knowledge_content` where id ='195';
+                delete from `base_knowledge_content` where id ='196';
+                delete from `base_knowledge_content` where id ='197';
+                delete from `base_knowledge_content` where id ='198';
+                delete from `base_knowledge_content` where id ='199';
+                delete from `base_knowledge_content` where id ='200';
+                delete from `base_knowledge_content` where id ='201';
+                delete from `base_knowledge_content` where id ='202';
+                delete from `base_knowledge_content` where id ='203';
+                delete from `base_knowledge_content` where id ='204';
+                delete from `base_knowledge_content` where id ='205';
+                delete from `base_knowledge_content` where id ='206';
+                delete from `base_knowledge_content` where id ='207';
+                delete from `base_knowledge_content` where id ='208';
+                delete from `base_knowledge_content` where id ='209';
+                delete from `base_knowledge_content` where id ='210';
+                delete from `base_knowledge_content` where id ='211';
+                delete from `base_knowledge_content` where id ='212';
+                delete from `base_knowledge_content` where id ='213';
+                delete from `base_knowledge_content` where id ='214';
+                delete from `base_knowledge_content` where id ='215';
+                delete from `base_knowledge_content` where id ='216';
+                delete from `base_knowledge_content` where id ='217';
+                delete from `base_knowledge_content` where id ='218';
+                delete from `base_knowledge_content` where id ='219';
+                delete from `base_knowledge_content` where id ='220';
+                delete from `base_knowledge_content` where id ='221';
+                delete from `base_knowledge_content` where id ='222';
+                delete from `base_knowledge_content` where id ='223';
+                delete from `base_knowledge_content` where id ='224';
+                delete from `base_knowledge_content` where id ='225';
+                delete from `base_knowledge_content` where id ='226';
+                delete from `base_knowledge_content` where id ='227';
+                delete from `base_knowledge_content` where id ='228';
+                delete from `base_knowledge_content` where id ='229';
+                delete from `base_knowledge_content` where id ='230';
+                delete from `base_knowledge_content` where id ='231';
+                delete from `base_knowledge_content` where id ='232';
+                delete from `base_knowledge_content` where id ='233';
+                delete from `base_knowledge_content` where id ='234';
+                delete from `base_knowledge_content` where id ='235';
+                delete from `base_knowledge_content` where id ='236';
+                delete from `base_knowledge_content` where id ='237';
+                delete from `base_knowledge_content` where id ='238';
+                delete from `base_knowledge_content` where id ='239';
+                delete from `base_knowledge_content` where id ='240';
+                delete from `base_knowledge_content` where id ='241';
+                delete from `base_knowledge_content` where id ='242';
+                delete from `base_knowledge_content` where id ='243';
+                delete from `base_knowledge_content` where id ='244';
+                delete from `base_knowledge_content` where id ='245';
+                delete from `base_knowledge_content` where id ='246';
+                delete from `base_knowledge_content` where id ='247';
+                delete from `base_knowledge_content` where id ='248';
+                delete from `base_knowledge_content` where id ='249';
+                delete from `base_knowledge_content` where id ='250';
+                delete from `base_knowledge_content` where id ='251';
+                delete from `base_knowledge_content` where id ='252';
+                delete from `base_knowledge_content` where id ='253';
+                delete from `base_knowledge_content` where id ='254';
+                delete from `base_knowledge_content` where id ='255';
+                delete from `base_knowledge_content` where id ='256';
+                delete from `base_knowledge_content` where id ='257';
+                delete from `base_knowledge_content` where id ='258';
+                delete from `base_knowledge_content` where id ='259';
+                delete from `base_knowledge_content` where id ='260';
+                delete from `base_knowledge_content` where id ='261';
+                delete from `base_knowledge_content` where id ='262';
+                delete from `base_knowledge_content` where id ='263';
+                delete from `base_knowledge_content` where id ='264';
+                delete from `base_knowledge_content` where id ='265';
+                delete from `base_knowledge_content` where id ='266';
+                delete from `base_knowledge_content` where id ='267';
+                delete from `base_knowledge_content` where id ='268';
+                delete from `base_knowledge_content` where id ='269';
+                delete from `base_knowledge_content` where id ='270';
+                delete from `base_knowledge_content` where id ='271';
+                delete from `base_knowledge_content` where id ='272';
+                delete from `base_knowledge_content` where id ='273';
+                delete from `base_knowledge_content` where id ='274';
+                delete from `base_knowledge_content` where id ='275';
+                delete from `base_knowledge_content` where id ='276';
+                delete from `base_knowledge_content` where id ='277';
+                delete from `base_knowledge_content` where id ='278';
+                delete from `base_knowledge_content` where id ='279';
+                delete from `base_knowledge_content` where id ='280';
+                delete from `base_knowledge_content` where id ='281';
+                delete from `base_knowledge_content` where id ='282';
+                delete from `base_knowledge_content` where id ='283';
+                delete from `base_knowledge_content` where id ='284';
+                delete from `base_knowledge_content` where id ='285';
+                delete from `base_knowledge_content` where id ='286';
+                delete from `base_knowledge_content` where id ='287';
+                delete from `base_knowledge_content` where id ='288';
+                delete from `base_knowledge_content` where id ='289';
+                delete from `base_knowledge_content` where id ='290';
+                delete from `base_knowledge_content` where id ='291';
+                delete from `base_knowledge_content` where id ='292';
+                delete from `base_knowledge_content` where id ='293';
+                delete from `base_knowledge_content` where id ='294';
+                delete from `base_knowledge_content` where id ='295';
+                delete from `base_knowledge_content` where id ='296';
+                delete from `base_knowledge_content` where id ='297';
+                delete from `base_knowledge_content` where id ='298';
+                delete from `base_knowledge_content` where id ='299';
+                delete from `base_knowledge_content` where id ='300';
+                delete from `base_knowledge_content` where id ='301';
+                delete from `base_knowledge_content` where id ='302';
+                delete from `base_knowledge_content` where id ='303';
+                delete from `base_knowledge_content` where id ='304';
+                delete from `base_knowledge_content` where id ='305';
+                delete from `base_knowledge_content` where id ='306';
+                delete from `base_knowledge_content` where id ='307';
+                delete from `base_knowledge_content` where id ='308';
+                delete from `base_knowledge_content` where id ='309';
+                delete from `base_knowledge_content` where id ='310';
+                delete from `base_knowledge_content` where id ='311';
+                delete from `base_knowledge_content` where id ='312';
+                delete from `base_knowledge_content` where id ='313';
+                delete from `base_knowledge_content` where id ='314';
+                delete from `base_knowledge_content` where id ='315';
+                delete from `base_knowledge_content` where id ='316';
+                delete from `base_knowledge_content` where id ='317';
+                delete from `base_knowledge_content` where id ='318';
+                delete from `base_knowledge_content` where id ='319';
+                delete from `base_knowledge_content` where id ='320';
+                delete from `base_knowledge_content` where id ='321';
+                delete from `base_knowledge_content` where id ='322';
+                delete from `base_knowledge_content` where id ='323';
+                delete from `base_knowledge_content` where id ='324';
+                delete from `base_knowledge_content` where id ='325';
+                delete from `base_knowledge_content` where id ='326';
+                delete from `base_knowledge_content` where id ='327';
+                delete from `base_knowledge_content` where id ='328';
+                delete from `base_knowledge_content` where id ='329';
+                delete from `base_knowledge_content` where id ='330';
+                delete from `base_knowledge_content` where id ='331';
+                delete from `base_knowledge_content` where id ='332';
+                delete from `base_knowledge_content` where id ='333';
+                delete from `base_knowledge_content` where id ='334';
+                delete from `base_knowledge_content` where id ='335';
+                delete from `base_knowledge_content` where id ='336';
+                delete from `base_knowledge_content` where id ='337';
+                delete from `base_knowledge_content` where id ='338';
+                delete from `base_knowledge_content` where id ='339';
+                delete from `base_knowledge_content` where id ='340';
+                delete from `base_knowledge_content` where id ='341';
+                delete from `base_knowledge_content` where id ='342';
+                delete from `base_knowledge_content` where id ='343';
+                delete from `base_knowledge_content` where id ='344';
+                delete from `base_knowledge_content` where id ='345';
+                delete from `base_knowledge_content` where id ='346';
+                delete from `base_knowledge_content` where id ='347';
+                delete from `base_knowledge_content` where id ='348';
+                delete from `base_knowledge_content` where id ='349';
+                delete from `base_knowledge_content` where id ='350';
+                delete from `base_knowledge_content` where id ='351';
+                delete from `base_knowledge_content` where id ='352';
+                delete from `base_knowledge_content` where id ='353';
+                delete from `base_knowledge_content` where id ='354';
+                delete from `base_knowledge_content` where id ='355';
+                delete from `base_knowledge_content` where id ='356';
+                delete from `base_knowledge_content` where id ='357';
+                delete from `base_knowledge_content` where id ='358';
+                delete from `base_knowledge_content` where id ='359';
+                delete from `base_knowledge_content` where id ='360';
+                delete from `base_knowledge_content` where id ='361';
+                delete from `base_knowledge_content` where id ='362';
+                delete from `base_knowledge_content` where id ='363';
+                delete from `base_knowledge_content` where id ='364';
+                delete from `base_knowledge_content` where id ='365';
+                delete from `base_knowledge_content` where id ='366';
+                delete from `base_knowledge_content` where id ='367';
+                delete from `base_knowledge_content` where id ='368';
+                delete from `base_knowledge_content` where id ='369';
+                delete from `base_knowledge_content` where id ='370';
+                delete from `base_knowledge_content` where id ='371';
+                delete from `base_knowledge_content` where id ='372';
+                delete from `base_knowledge_content` where id ='373';
+                delete from `base_knowledge_content` where id ='374';
+                delete from `base_knowledge_content` where id ='375';
+                delete from `base_knowledge_content` where id ='376';
+                delete from `base_knowledge_content` where id ='377';
+                delete from `base_knowledge_content` where id ='378';
+                delete from `base_knowledge_content` where id ='379';
+                delete from `base_knowledge_content` where id ='380';
+                delete from `base_knowledge_content` where id ='381';
+                delete from `base_knowledge_content` where id ='382';
+                delete from `base_knowledge_content` where id ='383';
+                delete from `base_knowledge_content` where id ='384';
+                delete from `base_knowledge_content` where id ='385';
+                delete from `base_knowledge_content` where id ='386';
+                delete from `base_knowledge_content` where id ='387';
+                delete from `base_knowledge_content` where id ='388';
+                delete from `base_knowledge_content` where id ='389';
+                delete from `base_knowledge_content` where id ='390';
+                delete from `base_knowledge_content` where id ='391';
+                delete from `base_knowledge_content` where id ='392';
+                delete from `base_knowledge_content` where id ='393';
+                delete from `base_knowledge_content` where id ='394';
+                delete from `base_knowledge_content` where id ='395';
+                delete from `base_knowledge_content` where id ='396';
+                delete from `base_knowledge_content` where id ='397';
+                delete from `base_knowledge_content` where id ='398';
+                delete from `base_knowledge_content` where id ='399';
+                delete from `base_knowledge_content` where id ='400';
+                delete from `base_knowledge_content` where id ='401';
+                delete from `base_knowledge_content` where id ='402';
+                delete from `base_knowledge_content` where id ='403';
+                delete from `base_knowledge_content` where id ='404';
+                delete from `base_knowledge_content` where id ='405';
+                delete from `base_knowledge_content` where id ='406';
+                delete from `base_knowledge_content` where id ='407';
+                delete from `base_knowledge_content` where id ='408';
+                delete from `base_knowledge_content` where id ='409';
+                delete from `base_knowledge_content` where id ='410';
+                delete from `base_knowledge_content` where id ='411';
+                delete from `base_knowledge_content` where id ='412';
+                delete from `base_knowledge_content` where id ='413';
+                delete from `base_knowledge_content` where id ='414';
+                delete from `base_knowledge_content` where id ='415';
+                delete from `base_knowledge_content` where id ='416';
+                delete from `base_knowledge_content` where id ='417';
+                delete from `base_knowledge_content` where id ='418';
+                delete from `base_knowledge_content` where id ='419';
+                delete from `base_knowledge_content` where id ='420';
+                delete from `base_knowledge_content` where id ='421';
+                delete from `base_knowledge_content` where id ='422';
+                delete from `base_knowledge_content` where id ='423';
+                delete from `base_knowledge_content` where id ='424';
+                delete from `base_knowledge_content` where id ='425';
+                delete from `base_knowledge_content` where id ='426';
+                delete from `base_knowledge_content` where id ='427';
+                delete from `base_knowledge_content` where id ='428';
+                delete from `base_knowledge_content` where id ='429';
+                delete from `base_knowledge_content` where id ='430';
+                delete from `base_knowledge_content` where id ='431';
+                delete from `base_knowledge_content` where id ='432';
+                delete from `base_knowledge_content` where id ='433';
+                delete from `base_knowledge_content` where id ='434';
+                delete from `base_knowledge_content` where id ='435';
+                delete from `base_knowledge_content` where id ='436';
+                delete from `base_knowledge_content` where id ='437';
+                delete from `base_knowledge_content` where id ='438';
+                delete from `base_knowledge_content` where id ='439';
+                delete from `base_knowledge_content` where id ='440';
+                delete from `base_knowledge_content` where id ='441';
+                delete from `base_knowledge_content` where id ='442';
+                delete from `base_knowledge_content` where id ='443';
+                delete from `base_knowledge_content` where id ='444';
+                delete from `base_knowledge_content` where id ='445';
+                delete from `base_knowledge_content` where id ='446';
+                delete from `base_knowledge_content` where id ='447';
+                delete from `base_knowledge_content` where id ='448';
+                delete from `base_knowledge_content` where id ='449';
+                delete from `base_knowledge_content` where id ='450';
+                delete from `base_knowledge_content` where id ='451';
+                delete from `base_knowledge_content` where id ='452';
+                delete from `base_knowledge_content` where id ='453';
+                delete from `base_knowledge_content` where id ='454';
+                delete from `base_knowledge_content` where id ='455';
+                delete from `base_knowledge_content` where id ='456';
+                delete from `base_knowledge_content` where id ='457';
+                delete from `base_knowledge_content` where id ='458';
+                delete from `base_knowledge_content` where id ='459';
+                delete from `base_knowledge_content` where id ='460';
+                delete from `base_knowledge_content` where id ='461';
+                delete from `base_knowledge_content` where id ='462';
+                delete from `base_knowledge_content` where id ='463';
+                delete from `base_knowledge_content` where id ='464';
+                delete from `base_knowledge_content` where id ='465';
+                delete from `base_knowledge_content` where id ='466';
+                delete from `base_knowledge_content` where id ='467';
+                delete from `base_knowledge_content` where id ='468';
+                delete from `base_knowledge_content` where id ='469';
+                delete from `base_knowledge_content` where id ='470';
+                delete from `base_knowledge_content` where id ='471';
+                delete from `base_knowledge_content` where id ='472';
+                delete from `base_knowledge_content` where id ='473';
+                delete from `base_knowledge_content` where id ='474';
+                delete from `base_knowledge_content` where id ='475';
+                delete from `base_knowledge_content` where id ='476';
+                delete from `base_knowledge_content` where id ='477';
+                delete from `base_knowledge_content` where id ='478';
+                delete from `base_knowledge_content` where id ='479';
+                delete from `base_knowledge_content` where id ='480';
+                delete from `base_knowledge_content` where id ='481';
+                delete from `base_knowledge_content` where id ='482';
+                delete from `base_knowledge_content` where id ='483';
+                delete from `base_knowledge_content` where id ='484';
+                delete from `base_knowledge_content` where id ='485';
+                delete from `base_knowledge_content` where id ='486';
+                delete from `base_knowledge_content` where id ='487';
+                delete from `base_knowledge_content` where id ='488';
+                delete from `base_knowledge_content` where id ='489';
+                delete from `base_knowledge_content` where id ='490';
+                delete from `base_knowledge_content` where id ='491';
+                delete from `base_knowledge_content` where id ='492';
+                delete from `base_knowledge_content` where id ='493';
+                delete from `base_knowledge_content` where id ='494';
+                delete from `base_knowledge_content` where id ='495';
+                delete from `base_knowledge_content` where id ='496';
+                delete from `base_knowledge_content` where id ='497';
+                delete from `base_knowledge_content` where id ='498';
+                delete from `base_knowledge_content` where id ='499';
+                delete from `base_knowledge_content` where id ='500';
+                delete from `base_knowledge_content` where id ='501';
+                delete from `base_knowledge_content` where id ='502';
+                delete from `base_knowledge_content` where id ='503';
+                delete from `base_knowledge_content` where id ='504';
+                delete from `base_knowledge_content` where id ='505';
+                delete from `base_knowledge_content` where id ='506';
+                delete from `base_knowledge_content` where id ='507';
+                delete from `base_knowledge_content` where id ='508';
+                delete from `base_knowledge_content` where id ='509';
+                delete from `base_knowledge_content` where id ='510';
+                delete from `base_knowledge_content` where id ='511';
+                delete from `base_knowledge_content` where id ='512';
+                delete from `base_knowledge_content` where id ='513';
+                delete from `base_knowledge_content` where id ='514';
+                delete from `base_knowledge_content` where id ='515';
+                delete from `base_knowledge_content` where id ='516';
+                delete from `base_knowledge_content` where id ='517';
+                delete from `base_knowledge_content` where id ='518';
+                delete from `base_knowledge_content` where id ='519';
+                delete from `base_knowledge_content` where id ='520';
+                delete from `base_knowledge_content` where id ='521';
+                delete from `base_knowledge_content` where id ='522';
+                delete from `base_knowledge_content` where id ='523';
+                delete from `base_knowledge_content` where id ='524';
+                delete from `base_knowledge_content` where id ='525';
+                delete from `base_knowledge_content` where id ='526';
+                delete from `base_knowledge_content` where id ='527';
+                delete from `base_knowledge_content` where id ='528';
+                delete from `base_knowledge_content` where id ='529';
+                delete from `base_knowledge_content` where id ='530';
+                delete from `base_knowledge_content` where id ='531';
+                delete from `base_knowledge_content` where id ='532';
+                delete from `base_knowledge_content` where id ='533';
+                delete from `base_knowledge_content` where id ='534';
+                delete from `base_knowledge_content` where id ='535';
+                delete from `base_knowledge_content` where id ='536';
+                delete from `base_knowledge_content` where id ='537';
+                delete from `base_knowledge_content` where id ='538';
+                delete from `base_knowledge_content` where id ='539';
+                delete from `base_knowledge_content` where id ='540';
+                delete from `base_knowledge_content` where id ='541';
+                delete from `base_knowledge_content` where id ='542';
+                delete from `base_knowledge_content` where id ='543';
+                delete from `base_knowledge_content` where id ='544';
+                delete from `base_knowledge_content` where id ='545';
+                delete from `base_knowledge_content` where id ='546';
+                delete from `base_knowledge_content` where id ='547';
+                delete from `base_knowledge_content` where id ='548';
+                delete from `base_knowledge_content` where id ='549';
+                delete from `base_knowledge_content` where id ='550';
+                delete from `base_knowledge_content` where id ='551';
+                delete from `base_knowledge_content` where id ='552';
+                delete from `base_knowledge_content` where id ='553';
+                delete from `base_knowledge_content` where id ='554';
+                delete from `base_knowledge_content` where id ='555';
+                delete from `base_knowledge_content` where id ='556';
+                delete from `base_knowledge_content` where id ='557';
+                delete from `base_knowledge_content` where id ='558';
+                delete from `base_knowledge_content` where id ='559';
+                delete from `base_knowledge_content` where id ='560';
+                delete from `base_knowledge_content` where id ='561';
+                delete from `base_knowledge_content` where id ='562';
+                delete from `base_knowledge_content` where id ='563';
+                delete from `base_knowledge_content` where id ='564';
+                delete from `base_knowledge_content` where id ='565';
+                delete from `base_knowledge_content` where id ='566';
+                delete from `base_knowledge_content` where id ='567';
+                delete from `base_knowledge_content` where id ='568';
+                delete from `base_knowledge_content` where id ='569';
+                delete from `base_knowledge_content` where id ='570';
+                delete from `base_knowledge_content` where id ='571';
+                delete from `base_knowledge_content` where id ='572';
+                delete from `base_knowledge_content` where id ='573';
+                delete from `base_knowledge_content` where id ='574';
+                delete from `base_knowledge_content` where id ='575';
+                delete from `base_knowledge_content` where id ='576';
+                delete from `base_knowledge_content` where id ='577';
+                delete from `base_knowledge_content` where id ='578';
+                delete from `base_knowledge_content` where id ='579';
+                delete from `base_knowledge_content` where id ='580';
+                delete from `base_knowledge_content` where id ='581';
+                delete from `base_knowledge_content` where id ='582';
+                delete from `base_knowledge_content` where id ='583';
+                delete from `base_knowledge_content` where id ='584';
+                delete from `base_knowledge_content` where id ='585';
+                delete from `base_knowledge_content` where id ='586';
+                delete from `base_knowledge_content` where id ='587';
+                delete from `base_knowledge_content` where id ='588';
+                delete from `base_knowledge_content` where id ='589';
+                delete from `base_knowledge_content` where id ='590';
+                delete from `base_knowledge_content` where id ='591';
+                delete from `base_knowledge_content` where id ='592';
+                delete from `base_knowledge_content` where id ='593';
+                delete from `base_knowledge_content` where id ='594';
+                delete from `base_knowledge_content` where id ='595';
+                delete from `base_knowledge_content` where id ='596';
+                delete from `base_knowledge_content` where id ='597';
+                delete from `base_knowledge_content` where id ='598';
+                delete from `base_knowledge_content` where id ='599';
+                delete from `base_knowledge_content` where id ='600';
+                delete from `base_knowledge_content` where id ='601';
+                delete from `base_knowledge_content` where id ='602';
+                delete from `base_knowledge_content` where id ='603';
+                delete from `base_knowledge_content` where id ='604';
+                delete from `base_knowledge_content` where id ='605';
+                delete from `base_knowledge_content` where id ='606';
+                delete from `base_knowledge_content` where id ='607';
+                delete from `base_knowledge_content` where id ='608';
+                delete from `base_knowledge_content` where id ='609';
+                delete from `base_knowledge_content` where id ='610';
+                delete from `base_knowledge_content` where id ='611';
+                delete from `base_knowledge_content` where id ='612';
+                delete from `base_knowledge_content` where id ='613';
+                delete from `base_knowledge_content` where id ='614';
+                delete from `base_knowledge_content` where id ='615';
+                delete from `base_knowledge_content` where id ='616';
+                delete from `base_knowledge_content` where id ='617';
+                delete from `base_knowledge_content` where id ='618';
+                delete from `base_knowledge_content` where id ='619';
+                delete from `base_knowledge_content` where id ='620';
+                delete from `base_knowledge_content` where id ='621';
+                delete from `base_knowledge_content` where id ='622';
+                delete from `base_knowledge_content` where id ='623';
+                delete from `base_knowledge_content` where id ='624';
+                delete from `base_knowledge_content` where id ='625';
+                delete from `base_knowledge_content` where id ='626';
+                delete from `base_knowledge_content` where id ='627';
+                delete from `base_knowledge_content` where id ='628';
+                delete from `base_knowledge_content` where id ='629';
+                delete from `base_knowledge_content` where id ='630';
+                delete from `base_knowledge_content` where id ='631';
+                delete from `base_knowledge_content` where id ='632';
+                delete from `base_knowledge_content` where id ='633';
+                delete from `base_knowledge_content` where id ='634';
+                delete from `base_knowledge_content` where id ='635';
+                delete from `base_knowledge_content` where id ='636';
+                delete from `base_knowledge_content` where id ='637';
+                delete from `base_knowledge_content` where id ='638';
+                delete from `base_knowledge_content` where id ='639';
+                delete from `base_knowledge_content` where id ='640';
+                delete from `base_knowledge_content` where id ='641';
+                delete from `base_knowledge_content` where id ='642';
+                delete from `base_knowledge_content` where id ='643';
+                delete from `base_knowledge_content` where id ='644';
+                delete from `base_knowledge_content` where id ='645';
+                delete from `base_knowledge_content` where id ='646';
+                delete from `base_knowledge_content` where id ='647';
+                delete from `base_knowledge_content` where id ='648';
+                delete from `base_knowledge_content` where id ='649';
+                delete from `base_knowledge_content` where id ='650';
+                delete from `base_knowledge_content` where id ='651';
+                delete from `base_knowledge_content` where id ='652';
+                delete from `base_knowledge_content` where id ='653';
+                delete from `base_knowledge_content` where id ='654';
+                delete from `base_knowledge_content` where id ='655';
+                delete from `base_knowledge_content` where id ='656';
+                delete from `base_knowledge_content` where id ='657';
+                delete from `base_knowledge_content` where id ='658';
+                delete from `base_knowledge_content` where id ='659';
+                delete from `base_knowledge_content` where id ='660';
+                delete from `base_knowledge_content` where id ='661';
+                delete from `base_knowledge_content` where id ='662';
+                delete from `base_knowledge_content` where id ='663';
+                delete from `base_knowledge_content` where id ='664';
+                delete from `base_knowledge_content` where id ='665';
+                delete from `base_knowledge_content` where id ='666';
+                delete from `base_knowledge_content` where id ='667';
+                delete from `base_knowledge_content` where id ='668';
+                delete from `base_knowledge_content` where id ='669';
+                delete from `base_knowledge_content` where id ='670';
+                delete from `base_knowledge_content` where id ='671';
+                delete from `base_knowledge_content` where id ='672';
+                delete from `base_knowledge_content` where id ='673';
+                delete from `base_knowledge_content` where id ='674';
+                delete from `base_knowledge_content` where id ='675';
+                delete from `base_knowledge_content` where id ='676';
+                delete from `base_knowledge_content` where id ='677';
+                delete from `base_knowledge_content` where id ='678';
+                delete from `base_knowledge_content` where id ='679';
+                delete from `base_knowledge_content` where id ='680';
+                delete from `base_knowledge_content` where id ='681';
+                delete from `base_knowledge_content` where id ='682';
+                delete from `base_knowledge_content` where id ='683';
+                delete from `base_knowledge_content` where id ='684';
+                delete from `base_knowledge_content` where id ='685';
+                delete from `base_knowledge_content` where id ='686';
+                delete from `base_knowledge_content` where id ='687';
+                delete from `base_knowledge_content` where id ='688';
+                delete from `base_knowledge_content` where id ='689';
+                delete from `base_knowledge_content` where id ='690';
+                delete from `base_knowledge_content` where id ='691';
+                delete from `base_knowledge_content` where id ='692';
+                delete from `base_knowledge_content` where id ='693';
+                delete from `base_knowledge_content` where id ='694';
+                delete from `base_knowledge_content` where id ='695';
+                delete from `base_knowledge_content` where id ='696';
+                delete from `base_knowledge_content` where id ='697';
+                delete from `base_knowledge_content` where id ='698';
+                delete from `base_knowledge_content` where id ='699';
+                delete from `base_knowledge_content` where id ='700';
+                delete from `base_knowledge_content` where id ='701';
+                delete from `base_knowledge_content` where id ='702';
+                delete from `base_knowledge_content` where id ='703';
+                delete from `base_knowledge_content` where id ='704';
+                delete from `base_knowledge_content` where id ='705';
+                delete from `base_knowledge_content` where id ='706';
+                delete from `base_knowledge_content` where id ='707';
+                delete from `base_knowledge_content` where id ='708';
+                delete from `base_knowledge_content` where id ='709';
+                delete from `base_knowledge_content` where id ='710';
+                delete from `base_knowledge_content` where id ='711';
+                delete from `base_knowledge_content` where id ='712';
+                delete from `base_knowledge_content` where id ='713';
+                delete from `base_knowledge_content` where id ='714';
+                delete from `base_knowledge_content` where id ='715';
+                delete from `base_knowledge_content` where id ='716';
+                delete from `base_knowledge_content` where id ='717';
+                delete from `base_knowledge_content` where id ='718';
+                delete from `base_knowledge_content` where id ='719';
+                delete from `base_knowledge_content` where id ='720';
+                delete from `base_knowledge_content` where id ='721';
+                delete from `base_knowledge_content` where id ='722';
+                delete from `base_knowledge_content` where id ='723';
+                delete from `base_knowledge_content` where id ='724';
+                delete from `base_knowledge_content` where id ='725';
+                delete from `base_knowledge_content` where id ='726';
+                delete from `base_knowledge_content` where id ='727';
+                delete from `base_knowledge_content` where id ='728';
+                delete from `base_knowledge_content` where id ='729';
+                delete from `base_knowledge_content` where id ='730';
+                delete from `base_knowledge_content` where id ='731';
+                delete from `base_knowledge_content` where id ='732';
+                delete from `base_knowledge_content` where id ='733';
+                delete from `base_knowledge_content` where id ='734';
+                delete from `base_knowledge_content` where id ='735';
+                delete from `base_knowledge_content` where id ='736';
+                delete from `base_knowledge_content` where id ='737';
+                delete from `base_knowledge_content` where id ='738';
+                delete from `base_knowledge_content` where id ='739';
+                delete from `base_knowledge_content` where id ='740';
+                delete from `base_knowledge_content` where id ='741';
+                delete from `base_knowledge_content` where id ='742';
+                delete from `base_knowledge_content` where id ='743';
+                delete from `base_knowledge_content` where id ='744';
+                delete from `base_knowledge_content` where id ='745';
+                delete from `base_knowledge_content` where id ='746';
+                delete from `base_knowledge_content` where id ='747';
+                delete from `base_knowledge_content` where id ='748';
+                delete from `base_knowledge_content` where id ='749';
+                delete from `base_knowledge_content` where id ='750';
+                delete from `base_knowledge_content` where id ='751';
+                delete from `base_knowledge_content` where id ='752';
+                delete from `base_knowledge_content` where id ='753';
+                delete from `base_knowledge_content` where id ='754';
+                delete from `base_knowledge_content` where id ='755';
+                delete from `base_knowledge_content` where id ='756';
+                delete from `base_knowledge_content` where id ='757';
+                delete from `base_knowledge_content` where id ='758';
+                delete from `base_knowledge_content` where id ='759';
+                delete from `base_knowledge_content` where id ='760';
+                delete from `base_knowledge_content` where id ='761';
+                delete from `base_knowledge_content` where id ='762';
+                delete from `base_knowledge_content` where id ='763';
+                delete from `base_knowledge_content` where id ='764';
+                delete from `base_knowledge_content` where id ='765';
+                delete from `base_knowledge_content` where id ='766';
+                delete from `base_knowledge_content` where id ='767';
+                delete from `base_knowledge_content` where id ='768';
+                delete from `base_knowledge_content` where id ='769';
+                delete from `base_knowledge_content` where id ='770';
+                delete from `base_knowledge_content` where id ='771';
+                delete from `base_knowledge_content` where id ='772';
+                delete from `base_knowledge_content` where id ='773';
+                delete from `base_knowledge_content` where id ='774';
+                delete from `base_knowledge_content` where id ='775';
+                delete from `base_knowledge_content` where id ='776';
+                delete from `base_knowledge_content` where id ='777';
+                delete from `base_knowledge_content` where id ='778';
+                delete from `base_knowledge_content` where id ='779';
+                delete from `base_knowledge_content` where id ='780';
+                delete from `base_knowledge_content` where id ='781';
+                delete from `base_knowledge_content` where id ='782';
+                delete from `base_knowledge_content` where id ='783';
+                delete from `base_knowledge_content` where id ='784';
+                delete from `base_knowledge_content` where id ='785';
+                delete from `base_knowledge_content` where id ='786';
+                delete from `base_knowledge_content` where id ='787';
+                delete from `base_knowledge_content` where id ='788';
+                delete from `base_knowledge_content` where id ='789';
+                delete from `base_knowledge_content` where id ='790';
+                delete from `base_knowledge_content` where id ='791';
+                delete from `base_knowledge_content` where id ='792';
+                delete from `base_knowledge_content` where id ='793';
+                delete from `base_knowledge_content` where id ='794';
+                delete from `base_knowledge_content` where id ='795';
+                delete from `base_knowledge_content` where id ='796';
+                delete from `base_knowledge_content` where id ='797';
+                delete from `base_knowledge_content` where id ='798';
+                delete from `base_knowledge_content` where id ='799';
+                delete from `base_knowledge_content` where id ='800';
+                delete from `base_knowledge_content` where id ='801';
+                delete from `base_knowledge_content` where id ='802';
+                delete from `base_knowledge_content` where id ='803';
+                delete from `base_knowledge_content` where id ='804';
+                delete from `base_knowledge_content` where id ='805';
+                delete from `base_knowledge_content` where id ='806';
+                delete from `base_knowledge_content` where id ='807';
+                delete from `base_knowledge_content` where id ='808';
+                delete from `base_knowledge_content` where id ='809';
+                delete from `base_knowledge_content` where id ='810';
+                delete from `base_knowledge_content` where id ='811';
+                delete from `base_knowledge_content` where id ='812';
+                delete from `base_knowledge_content` where id ='813';
+                delete from `base_knowledge_content` where id ='814';
+                delete from `base_knowledge_content` where id ='815';
+                delete from `base_knowledge_content` where id ='816';
+                delete from `base_knowledge_content` where id ='817';
+                delete from `base_knowledge_content` where id ='818';
+                delete from `base_knowledge_content` where id ='819';
+                delete from `base_knowledge_content` where id ='820';
+                delete from `base_knowledge_content` where id ='821';
+                delete from `base_knowledge_content` where id ='822';
+                delete from `base_knowledge_content` where id ='823';
+                delete from `base_knowledge_content` where id ='824';
+                delete from `base_knowledge_content` where id ='825';
+                delete from `base_knowledge_content` where id ='826';
+                delete from `base_knowledge_content` where id ='827';
+                delete from `base_knowledge_content` where id ='828';
+                delete from `base_knowledge_content` where id ='829';
+                delete from `base_knowledge_content` where id ='830';
+                delete from `base_knowledge_content` where id ='831';
+                delete from `base_knowledge_content` where id ='832';
+                delete from `base_knowledge_content` where id ='833';
+                delete from `base_knowledge_content` where id ='834';
+                delete from `base_knowledge_content` where id ='835';
+                delete from `base_knowledge_content` where id ='836';
+                delete from `base_knowledge_content` where id ='837';
+                delete from `base_knowledge_content` where id ='838';
+                delete from `base_knowledge_content` where id ='839';
+                delete from `base_knowledge_content` where id ='840';
+                delete from `base_knowledge_content` where id ='841';
+                delete from `base_knowledge_content` where id ='842';
+                delete from `base_knowledge_content` where id ='843';
+                delete from `base_knowledge_content` where id ='844';
+                delete from `base_knowledge_content` where id ='845';
+                delete from `base_knowledge_content` where id ='846';
+                delete from `base_knowledge_content` where id ='847';
+                delete from `base_knowledge_content` where id ='848';
+                delete from `base_knowledge_content` where id ='849';
+                delete from `base_knowledge_content` where id ='850';
+                delete from `base_knowledge_content` where id ='851';
+                delete from `base_knowledge_content` where id ='852';
+                delete from `base_knowledge_content` where id ='853';
+                delete from `base_knowledge_content` where id ='854';
+                delete from `base_knowledge_content` where id ='855';
+                delete from `base_knowledge_content` where id ='856';
+                delete from `base_knowledge_content` where id ='857';
+                delete from `base_knowledge_content` where id ='858';
+                delete from `base_knowledge_content` where id ='859';
+                delete from `base_knowledge_content` where id ='860';
+                delete from `base_knowledge_content` where id ='861';
+                delete from `base_knowledge_content` where id ='862';
+                delete from `base_knowledge_content` where id ='863';
+                delete from `base_knowledge_content` where id ='864';
+                delete from `base_knowledge_content` where id ='865';
+                delete from `base_knowledge_content` where id ='866';
+                delete from `base_knowledge_content` where id ='867';
+                delete from `base_knowledge_content` where id ='868';
+                delete from `base_knowledge_content` where id ='869';
+                delete from `base_knowledge_content` where id ='870';
+                delete from `base_knowledge_content` where id ='871';
+                delete from `base_knowledge_content` where id ='872';
+                delete from `base_knowledge_content` where id ='873';
+                delete from `base_knowledge_content` where id ='874';
+                delete from `base_knowledge_content` where id ='875';
+                delete from `base_knowledge_content` where id ='876';
+                delete from `base_knowledge_content` where id ='877';
+                delete from `base_knowledge_content` where id ='878';
+                delete from `base_knowledge_content` where id ='879';
+                delete from `base_knowledge_content` where id ='880';
+                delete from `base_knowledge_content` where id ='881';
+                delete from `base_knowledge_content` where id ='882';
+                delete from `base_knowledge_content` where id ='883';
+                delete from `base_knowledge_content` where id ='884';
+                delete from `base_knowledge_content` where id ='885';
+                delete from `base_knowledge_content` where id ='886';
+                delete from `base_knowledge_content` where id ='887';
+                delete from `base_knowledge_content` where id ='888';
+                delete from `base_knowledge_content` where id ='889';
+                delete from `base_knowledge_content` where id ='890';
+                delete from `base_knowledge_content` where id ='891';
+                delete from `base_knowledge_content` where id ='892';
+                delete from `base_knowledge_content` where id ='893';
+                delete from `base_knowledge_content` where id ='894';
+                delete from `base_knowledge_content` where id ='895';
+                delete from `base_knowledge_content` where id ='896';
+                delete from `base_knowledge_content` where id ='897';
+                delete from `base_knowledge_content` where id ='898';
+                delete from `base_knowledge_content` where id ='899';
+                delete from `base_knowledge_content` where id ='900';
+                delete from `base_knowledge_content` where id ='901';
+                delete from `base_knowledge_content` where id ='902';
+                delete from `base_knowledge_content` where id ='903';
+                delete from `base_knowledge_content` where id ='904';
+                delete from `base_knowledge_content` where id ='905';
+                delete from `base_knowledge_content` where id ='906';
+                delete from `base_knowledge_content` where id ='907';
+                delete from `base_knowledge_content` where id ='908';
+                delete from `base_knowledge_content` where id ='909';
+                delete from `base_knowledge_content` where id ='910';
+                delete from `base_knowledge_content` where id ='911';
+                delete from `base_knowledge_content` where id ='912';
+                delete from `base_knowledge_content` where id ='913';
+                delete from `base_knowledge_content` where id ='914';
+                delete from `base_knowledge_content` where id ='915';
+                delete from `base_knowledge_content` where id ='916';
+                delete from `base_knowledge_content` where id ='917';
+                delete from `base_knowledge_content` where id ='918';
+                delete from `base_knowledge_content` where id ='919';
+                delete from `base_knowledge_content` where id ='920';
+                delete from `base_knowledge_content` where id ='921';
+                delete from `base_knowledge_content` where id ='922';
+                delete from `base_knowledge_content` where id ='923';
+                delete from `base_knowledge_content` where id ='924';
+                delete from `base_knowledge_content` where id ='925';
+                delete from `base_knowledge_content` where id ='926';
+                delete from `base_knowledge_content` where id ='927';
+                delete from `base_knowledge_content` where id ='928';
+                delete from `base_knowledge_content` where id ='929';
+                delete from `base_knowledge_content` where id ='930';
+                delete from `base_knowledge_content` where id ='931';
+                delete from `base_knowledge_content` where id ='932';
+                delete from `base_knowledge_content` where id ='933';
+                delete from `base_knowledge_content` where id ='934';
+                delete from `base_knowledge_content` where id ='935';
+                delete from `base_knowledge_content` where id ='936';
+                delete from `base_knowledge_content` where id ='937';
+                delete from `base_knowledge_content` where id ='938';
+                delete from `base_knowledge_content` where id ='939';
+                delete from `base_knowledge_content` where id ='940';
+                delete from `base_knowledge_content` where id ='941';
+                delete from `base_knowledge_content` where id ='942';
+                delete from `base_knowledge_content` where id ='943';
+                delete from `base_knowledge_content` where id ='944';
+                delete from `base_knowledge_content` where id ='945';
+                delete from `base_knowledge_content` where id ='946';
+                delete from `base_knowledge_content` where id ='947';
+                delete from `base_knowledge_content` where id ='948';
+                delete from `base_knowledge_content` where id ='949';
+                delete from `base_knowledge_content` where id ='950';
+                delete from `base_knowledge_content` where id ='951';
+                delete from `base_knowledge_content` where id ='952';
+                delete from `base_knowledge_content` where id ='953';
+                delete from `base_knowledge_content` where id ='954';
+                delete from `base_knowledge_content` where id ='955';
+                delete from `base_knowledge_content` where id ='956';
+                delete from `base_knowledge_content` where id ='957';
+                delete from `base_knowledge_content` where id ='958';
+                delete from `base_knowledge_content` where id ='959';
+                delete from `base_knowledge_content` where id ='960';
+                delete from `base_knowledge_content` where id ='961';
+                delete from `base_knowledge_content` where id ='962';
+                delete from `base_knowledge_content` where id ='963';
+
+                insert  into `base_knowledge_content`(`id`,`name`,`father`,`content`,`root_id`,`idx`,`filename`) values
+                (111,'第一章 总则',1,NULL,1,1.000000,NULL),
+                (112,'第一条',111,'第一条  为加强商业银行信息科技风险管理，根据《中华人民共和国银行业监督管理法》、《中华人民共和国商业银行法》、《中华人民共和国外资银行管理条例》，以及国家信息安全相关要求和有关法律法规，制定本指引。',1,1.000000,NULL),
+                (113,'第二条',111,'第二条  本指引适用于在中华人民共和国境内依法设立的法人商业银行。\n政策性银行、农村合作银行、城市信用社、农村信用社、村镇银行、贷款公司、金融资产管理公司、信托公司、财务公司、金融租赁公司、汽车金融公司、货币经纪公司等其他银行业金融机构参照执行。',1,2.000000,NULL),
+                (114,'第三条',111,'第三条  本指引所称信息科技是指计算机、通信、微电子和软件工程等现代信息技术，在商业银行业务交易处理、经营管理和内部控制等方面的应用，并包括进行信息科技治理，建立完整的管理组织架构，制订完善的管理制度和流程。',1,3.000000,NULL),
+                (115,'第四条',111,'第四条  本指引所称信息科技风险，是指信息科技在商业银行运用过程中，由于自然因素、人为因素、技术漏洞和管理缺陷产生的操作、法律和声誉等风险。',1,4.000000,NULL),
+                (116,'第五条',111,'第五条  信息科技风险管理的目标是通过建立有效的机制，实现对商业银行信息科技风险的识别、计量、监测和控制，促进商业银行安全、持续、稳健运行，推动业务创新，提高信息技术使用水平，增强核心竞争力和可持续发展能力。',1,5.000000,NULL),
+                (117,'第二章  信息科技治理',1,NULL,1,2.000000,NULL),
+                (118,'第六条',117,'第六条  商业银行法定代表人是本机构信息科技风险管理的第一责任人，负责组织本指引的贯彻落实。',1,1.000000,NULL),
+                (119,'第七条',117,'第七条  商业银行的董事会应履行以下信息科技管理职责：\n（一） 遵守并贯彻执行国家有关信息科技管理的法律、法规和技术标准，落实中国银行业监督管理委员会（以下简称银监会）相关监管要求。\n（二） 审查批准信息科技战略，确保其与银行的总体业务战略和重大策略相一致。评估信息科技及其风险管理工作的总体效果和效率。\n（三） 掌握主要的信息科技风险，确定可接受的风险级别，确保相关风险能够被识别、计量、监测和控制。\n（四） 规范职业道德行为和廉洁标准，增强内部文化建设，提高全体人员对信息科技风险管理重要性的认识。\n（五） 设立一个由来自高级管理层、信息科技部门和主要业务部门的代表组成的专门信息科技管理委员会，负责监督各项职责的落实，定期向董事会和高级管理层汇报信息科技战略规划的执行、信息科技预算和实际支出、信息科技的整体状况。\n（六） 在建立良好的公司治理的基础上进行信息科技治理，形成分工合理、职责明确、相互制衡、报告关系清晰的信息科技治理组织结构。加强信息科技专业队伍的建设，建立人才激励机制。\n（七） 确保内部审计部门进行独立有效的信息科技风险管理审计，对审计报告进行确认并落实整改。\n（八） 每年审阅并向银监会及其派出机构报送信息科技风险管理的年度报告。\n（九） 确保信息科技风险管理工作所需资金。\n（十） 确保银行所有员工充分理解和遵守经其批准的信息科技风险管理制度和流程，并安排相关培训。\n（十一） 确保本法人机构涉及客户信息、账务信息以及产品信息等的核心系统在中国境内独立运行，并保持最高的管理权限，符合银监会监管和实施现场检查的要求，防范跨境风险。\n（十二） 及时向银监会及其派出机构报告本机构发生的重大信息科技事故或突发事件，按相关预案快速响应。\n（十三） 配合银监会及其派出机构做好信息科技风险监督检查工作，并按照监管意见进行整改。\n（十四） 履行信息科技风险管理其他相关工作。',1,2.000000,NULL),
+                (120,'第八条',117,'第八条  商业银行应设立首席信息官，直接向行长汇报，并参与决策。首席信息官的职责包括：\n（一） 直接参与本银行与信息科技运用有关的业务发展决策。\n（二） 确保信息科技战略，尤其是信息系统开发战略，符合本银行的总体业务战略和信息科技风险管理策略。\n（三） 负责建立一个切实有效的信息科技部门，承担本银行的信息科技职责。确保其履行：信息科技预算和支出、信息科技策略、标准和流程、信息科技内部控制、专业化研发、信息科技项目发起和管理、信息系统和信息科技基础设施的运行、维护和升级、信息安全管理、灾难恢复计划、信息科技外包和信息系统退出等职责。\n（四） 确保信息科技风险管理的有效性，并使有关管理措施落实到相关的每一个内设机构和分支机构。\n（五） 组织专业培训，提高人才队伍的专业技能。\n（六） 履行信息科技风险管理其他相关工作。',1,3.000000,NULL),
+                (121,'第九条',117,'第九条  商业银行应对信息科技部门内部管理职责进行明确的界定；各岗位的人员应具有相应的专业知识和技能，重要岗位应制定详细完整的工作手册并适时更新。对相关人员应采取下列风险防范措施：\n（一） 验证个人信息，包括核验有效身份证件、学历证明、工作经历和专业资格证书等信息。\n（二） 审核信息科技员工的道德品行，确保其具备相应的职业操守。\n（三） 确保员工了解、遵守信息科技策略、指导原则、信息保密、授权使用信息系统、信息科技管理制度和流程等要求，并同员工签订相关协议。\n（四） 评估关键岗位信息科技员工流失带来的风险，做好安排候补员工和岗位接替计划等防范措施；在员工岗位发生变化后及时变更相关信息。',1,4.000000,NULL),
+                (122,'第十条',117,'第十条  商业银行应设立或指派一个特定部门负责信息科技风险管理工作，并直接向首席信息官或首席风险官（风险管理委员会）报告工作。该部门应为信息科技突发事件应急响应小组的成员之一，负责协调制定有关信息科技风险管理策略，尤其是在涉及信息安全、业务连续性计划和合规性风险等方面，为业务部门和信息科技部门提供建议及相关合规性信息，实施持续信息科技风险评估，跟踪整改意见的落实，监控信息安全威胁和不合规事件的发生。',1,5.000000,NULL),
+                (123,'第十一条',117,'第十一条  商业银行应在内部审计部门设立专门的信息科技风险审计岗位，负责信息科技审计制度和流程的实施，制订和执行信息科技审计计划，对信息科技整个生命周期和重大事件等进行审计。',1,6.000000,NULL),
+                (124,'第十二条',117,'第十二条  商业银行应按照知识产权相关法律法规，制定本机构信息科技知识产权保护策略和制度，并使所有员工充分理解并遵照执行。确保购买和使用合法的软硬件产品，禁止侵权盗版；采取有效措施保护本机构自主知识产权。',1,7.000000,NULL),
+                (125,'第十三条',117,'第十三条  商业银行应依据有关法律法规的要求，规范和及时披露信息科技风险状况。',1,8.000000,NULL),
+                (126,'第三章  信息科技风险管理',1,NULL,1,3.000000,NULL),
+                (127,'第十四条',126,'第十四条  商业银行应制定符合银行总体业务规划的信息科技战略、信息科技运行计划和信息科技风险评估计划，确保配置足够人力、财力资源，维持稳定、安全的信息科技环境。',1,1.000000,NULL),
+                (128,'第十五条',126,'第十五条  商业银行应制定全面的信息科技风险管理策略，包括但不限于下述领域：\n（一） 信息分级与保护。\n（二） 信息系统开发、测试和维护。\n（三） 信息科技运行和维护。\n（四） 访问控制。\n（五） 物理安全。\n（六） 人员安全。\n（七） 业务连续性计划与应急处置。',1,2.000000,NULL),
+                (129,'第十六条',126,'第十六条  商业银行应制定持续的风险识别和评估流程，确定信息科技中存在隐患的区域，评价风险对其业务的潜在影响，对风险进行排序，并确定风险防范措施及所需资源的优先级别（包括外包供应商、产品供应商和服务商）。',1,3.000000,NULL),
+                (130,'第十七条',126,'第十七条  商业银行应依据信息科技风险管理策略和风险评估结果，实施全面的风险防范措施。防范措施应包括：\n（一） 制定明确的信息科技风险管理制度、技术标准和操作规程等，定期进行更新和公示。\n（二） 确定潜在风险区域，并对这些区域进行详细和独立的监控，实现风险最小化。建立适当的控制框架，以便于检查和平衡风险；定义每个业务级别的控制内容，包括：\n1. 最高权限用户的审查。\n2. 控制对数据和系统的物理和逻辑访问。\n3. 访问授权以“必需知道”和“最小授权”为原则。\n4. 审批和授权。\n5. 验证和调节。',1,4.000000,NULL),
+                (131,'第十八条',126,'第十八条  商业银行应建立持续的信息科技风险计量和监测机制，其中应包括：\n（一） 建立信息科技项目实施前及实施后的评价机制。\n（二） 建立定期检查系统性能的程序和标准。\n（三） 建立信息科技服务投诉和事故处理的报告机制。\n（四） 建立内部审计、外部审计和监管发现问题的整改处理机制。\n（五） 安排供应商和业务部门对服务水平协议的完成情况进行定期审查。\n（六） 定期评估新技术发展可能造成的影响和已使用软件面临的新威胁。\n（七） 定期进行运行环境下操作风险和管理控制的检查。\n（八） 定期进行信息科技外包项目的风险状况评价。',1,5.000000,NULL),
+                (132,'第十九条',126,'第十九条  中资商业银行在境外设立的机构及境内的外资商业银行，应当遵守境内外监管机构关于信息科技风险管理的要求，并防范因监管差异所造成的风险。',1,6.000000,NULL),
+                (133,'第四章  信息安全',1,NULL,1,4.000000,NULL),
+                (134,'第二十条',133,'第二十条   商业银行信息科技部门负责建立和实施信息分类和保护体系，商业银行应使所有员工都了解信息安全的重要性，并组织提供必要的培训，让员工充分了解其职责范围内的信息保护流程。',1,1.000000,NULL),
+                (135,'第二十一条',133,'第二十一条  商业银行信息科技部门应落实信息安全管理职能。该职能应包括建立信息安全计划和保持长效的管理机制，提高全体员工信息安全意识，就安全问题向其他部门提供建议，并定期向信息科技管理委员会提交本银行信息安全评估报告。信息安全管理机制应包括信息安全标准、策略、实施计划和持续维护计划。\n信息安全策略应涉及以下领域：\n（一） 安全制度管理。\n（二） 信息安全组织管理。\n（三） 资产管理。\n（四） 人员安全管理。\n（五） 物理与环境安全管理。\n（六） 通信与运营管理。\n（七） 访问控制管理。\n（八） 系统开发与维护管理。\n（九） 信息安全事故管理。\n（十） 业务连续性管理。\n（十一） 合规性管理。',1,2.000000,NULL),
+                (136,'第二十二条',133,'第二十二条  商业银行应建立有效管理用户认证和访问控制的流程。用户对数据和系统的访问必须选择与信息访问级别相匹配的认证机制，并且确保其在信息系统内的活动只限于相关业务能合法开展所要求的最低限度。用户调动到新的工作岗位或离开商业银行时，应在系统中及时检查、更新或注销用户身份。',1,3.000000,NULL),
+                (137,'第二十三条',133,'第二十三条  商业银行应确保设立物理安全保护区域，包括计算机中心或数据中心、存储机密信息或放置网络设备等重要信息科技设备的区域，明确相应的职责，采取必要的预防、检测和恢复控制措施。',1,4.000000,NULL),
+                (138,'第二十四条',133,'第二十四条  商业银行应根据信息安全级别，将网络划分为不同的逻辑安全域（以下简称为域）。应该对下列安全因素进行评估，并根据安全级别定义和评估结果实施有效的安全控制，如对每个域和整个网络进行物理或逻辑分区、实现网络内容过滤、逻辑访问控制、传输加密、网络监控、记录活动日志等。\n（一） 域内应用程序和用户组的重要程度。\n（二） 各种通讯渠道进入域的访问点。\n（三） 域内配置的网络设备和应用程序使用的网络协议和端口。\n（四） 性能要求或标准。\n（五） 域的性质，如生产域或测试域、内部域或外部域。\n（六） 不同域之间的连通性。\n（七） 域的可信程度。',1,5.000000,NULL),
+                (139,'第二十五条',133,'第二十五条  商业银行应通过以下措施，确保所有计算机操作系统和系统软件的安全：\n（一） 制定每种类型操作系统的基本安全要求，确保所有系统满足基本安全要求。\n（二） 明确定义包括终端用户、系统开发人员、系统测试人员、计算机操作人员、系统管理员和用户管理员等不同用户组的访问权限。\n（三） 制定最高权限系统账户的审批、验证和监控流程，并确保最高权限用户的操作日志被记录和监察。\n（四） 要求技术人员定期检查可用的安全补丁，并报告补丁管理状态。\n（五） 在系统日志中记录不成功的登录、重要系统文件的访问、对用户账户的修改等有关重要事项，手动或自动监控系统出现的任何异常事件，定期汇报监控情况。\n',1,6.000000,NULL),
+                (140,'第二十六条',133,'第二十六条  商业银行应通过以下措施，确保所有信息系统的安全：\n（一）  明确定义终端用户和信息科技技术人员在信息系统安全中的角色和职责。\n（二） 针对信息系统的重要性和敏感程度，采取有效的身份验证方法。\n（三） 加强职责划分，对关键或敏感岗位进行双重控制。\n（四） 在关键的接合点进行输入验证或输出核对。\n（五） 采取安全的方式处理保密信息的输入和输出，防止信息泄露或被盗取、篡改。\n（六） 确保系统按预先定义的方式处理例外情况，当系统被迫终止时向用户提供必要信息。\n（七） 以书面或电子格式保存审计痕迹。\n（八） 要求用户管理员监控和审查未成功的登录和用户账户的修改。',1,7.000000,NULL),
+                (141,'第二十七条',133,'第二十七条  商业银行应制定相关策略和流程，管理所有生产系统的活动日志，以支持有效的审核、安全取证分析和预防欺诈。日志可以在软件的不同层次、不同的计算机和网络设备上完成，日志划分为两大类：\n（一） 交易日志。交易日志由应用软件和数据库管理系统产生，内容包括用户登录尝试、数据修改、错误信息等。交易日志应按照国家会计准则要求予以保存。\n（二） 系统日志。系统日志由操作系统、数据库管理系统、防火墙、入侵检测系统和路由器等生成，内容包括管理登录尝试、系统事件、网络事件、错误信息等。系统日志保存期限按系统的风险等级确定，但不能少于一年。\n商业银行应保证交易日志和系统日志中包含足够的内容，以便完成有效的内部控制、解决系统故障和满足审计需要；应采取适当措施保证所有日志同步计时，并确保其完整性。在例外情况发生后应及时复查系统日志。交易日志或系统日志的复查频率和保存周期应由信息科技部门和有关业务部门共同决定，并报信息科技管理委员会批准。\n',1,8.000000,NULL),
+                (142,'第二十八条',133,'第二十八条  商业银行应采取加密技术，防范涉密信息在传输、处理、存储过程中出现泄露或被篡改的风险，并建立密码设备管理制度，以确保：\n（一） 使用符合国家要求的加密技术和加密设备。\n（二） 管理、使用密码设备的员工经过专业培训和严格审查。\n（三） 加密强度满足信息机密性的要求。\n（四） 制定并落实有效的管理流程，尤其是密钥和证书生命周期管理。',1,9.000000,NULL),
+                (143,'第二十九条',133,'第二十九条  商业银行应配备切实有效的系统，确保所有终端用户设备的安全，并定期对所有设备进行安全检查，包括台式个人计算机（PC）、便携式计算机、柜员终端、自动柜员机（ATM）、存折打印机、读卡器、销售终端（POS）和个人数字助理（PDA）等。',1,10.000000,NULL),
+                (144,'第三十条',133,'第三十条  商业银行应制定相关制度和流程，严格管理客户信息的采集、处理、存贮、传输、分发、备份、恢复、清理和销毁。',1,11.000000,NULL),
+                (145,'第三十一条',133,'第三十一条  商业银行应对所有员工进行必要的培训，使其充分掌握信息科技风险管理制度和流程，了解违反规定的后果，并对违反安全规定的行为采取零容忍政策。',1,12.000000,NULL),
+                (146,'第五章  信息系统开发、测试和维护',1,NULL,1,5.000000,NULL),
+                (147,'第三十二条',146,'第三十二条  商业银行应有能力对信息系统进行需求分析、规划、采购、开发、测试、部署、维护、升级和报废，制定制度和流程，管理信息科技项目的优先排序、立项、审批和控制。项目实施部门应定期向信息科技管理委员会提交重大信息科技项目的进度报告，由其进行审核，进度报告应当包括计划的重大变更、关键人员或供应商的变更以及主要费用支出情况。应在信息系统投产后一定时期内，组织对系统的后评价，并根据评价结果及时对系统功能进行调整和优化。',1,1.000000,NULL),
+                (148,'第三十三条',146,'第三十三条  商业银行应认识到信息科技项目相关的风险，包括潜在的各种操作风险、财务损失风险和因无效项目规划或不适当的项目管理控制产生的机会成本，并采取适当的项目管理方法，控制信息科技项目相关的风险。',1,2.000000,NULL),
+                (149,'第三十四条',146,'第三十四条  商业银行应采取适当的系统开发方法，控制信息系统的生命周期。典型的系统生命周期包括系统分析、设计、开发或外购、测试、试运行、部署、维护和退出。所采用的系统开发方法应符合信息科技项目的规模、性质和复杂度。',1,3.000000,NULL),
+                (150,'第三十五条',146,'第三十五条  商业银行应制定相关控制信息系统变更的制度和流程，确保系统的可靠性、完整性和可维护性，其中应包括以下要求：\n（一） 生产系统与开发系统、测试系统有效隔离。\n（二） 生产系统与开发系统、测试系统的管理职能相分离。\n（三） 除得到管理层批准执行紧急修复任务外，禁止应用程序开发和维护人员进入生产系统，且所有的紧急修复活动都应立即进行记录和审核。\n（四） 将完成开发和测试环境的程序或系统配置变更应用到生产系统时，应得到信息科技部门和业务部门的联合批准，并对变更进行及时记录和定期复查。\n',1,4.000000,NULL),
+                (151,'第三十六条',146,'第三十六条  商业银行应制定并落实相关制度、标准和流程，确保信息系统开发、测试、维护过程中数据的完整性、保密性和可用性。',1,5.000000,NULL),
+                (152,'第三十七条',146,'第三十七条  商业银行应建立并完善有效的问题管理流程，以确保全面地追踪、分析和解决信息系统问题，并对问题进行记录、分类和索引；如需供应商提供支持服务或技术援助，应向相关人员提供所需的合同和相关信息，并将过程记录在案；对完成紧急恢复起至关重要作用的任务和指令集，应有清晰的描述和说明，并通知相关人员。',1,6.000000,NULL),
+                (153,'第三十八条',146,'第三十八条  商业银行应制定相关制度和流程，控制系统升级过程。当设备达到预期使用寿命或性能不能满足业务需求，基础软件（操作系统、数据库管理系统、中间件）或应用软件必须升级时，应及时进行系统升级，并将该类升级活动纳入信息科技项目，接受相关的管理和控制，包括用户验收测试。',1,7.000000,NULL),
+                (154,'第六章  信息科技运行',1,NULL,1,6.000000,NULL),
+                (155,'第三十九条',154,'第三十九条  商业银行在选择数据中心的地理位置时，应充分考虑环境威胁（如是否接近自然灾害多发区、危险或有害设施、繁忙或主要公路），采取物理控制措施，监控对信息处理设备运行构成威胁的环境状况，并防止因意外断电或供电干扰影响数据中心的正常运行。',1,1.000000,NULL),
+                (156,'第四十条',154,'第四十条  商业银行应严格控制第三方人员（如服务供应商）进入安全区域，如确需进入应得到适当的批准，其活动也应受到监控；针对长期或临时聘用的技术人员和承包商，尤其是从事敏感性技术相关工作的人员，应制定严格的审查程序，包括身份验证和背景调查。',1,2.000000,NULL),
+                (157,'第四十一条',154,'第四十一条  商业银行应将信息科技运行与系统开发和维护分离，确保信息科技部门内部的岗位制约；对数据中心的岗位和职责做出明确规定。',1,3.000000,NULL),
+                (158,'第四十二条',154,'第四十二条  商业银行应按照有关法律法规要求保存交易记录，采取必要的程序和技术，确保存档数据的完整性，满足安全保存和可恢复要求。',1,4.000000,NULL),
+                (159,'第四十三条',154,'第四十三条  商业银行应制定详尽的信息科技运行操作说明。如在信息科技运行手册中说明计算机操作人员的任务、工作日程、执行步骤，以及生产与开发环境中数据、软件的现场及非现场备份流程和要求（即备份的频率、范围和保留周期）。',1,5.000000,NULL),
+                (160,'第四十四条',154,'第四十四条  商业银行应建立事故管理及处置机制，及时响应信息系统运行事故，逐级向相关的信息科技管理人员报告事故的发生，并进行记录、分析和跟踪，直到完成彻底的处置和根本原因分析。商业银行应建立服务台，为用户提供相关技术问题的在线支持，并将问题提交给相关信息科技部门进行调查和解决。',1,6.000000,NULL),
+                (161,'第四十五条',154,'第四十五条  商业银行应建立服务水平管理相关的制度和流程，对信息科技运行服务水平进行考核。',1,7.000000,NULL),
+                (162,'第四十六条',154,'第四十六条  商业银行应建立连续监控信息系统性能的相关程序，及时、完整地报告例外情况；该程序应提供预警功能，在例外情况对系统性能造成影响前对其进行识别和修正。',1,8.000000,NULL),
+                (163,'第四十七条',154,'第四十七条  商业银行应制定容量规划，以适应由于外部环境变化产生的业务发展和交易量增长。容量规划应涵盖生产系统、备份系统及相关设备。',1,9.000000,NULL),
+                (164,'第四十八条',154,'第四十八条  商业银行应及时进行维护和适当的系统升级，以确保与技术相关服务的连续可用性，并完整保存记录（包括疑似和实际的故障、预防性和补救性维护记录），以确保有效维护设备和设施。',1,10.000000,NULL),
+                (165,'第四十九条',154,'第四十九条  商业银行应制定有效的变更管理流程，以确保生产环境的完整性和可靠性。包括紧急变更在内的所有变更都应记入日志，由信息科技部门和业务部门共同审核签字，并事先进行备份,以便必要时可以恢复原来的系统版本和数据文件。紧急变更成功后，应通过正常的验收测试和变更管理流程,采用恰当的修正以取代紧急变更。',1,11.000000,NULL),
+                (166,'第七章  业务连续性管理',1,NULL,1,7.000000,NULL),
+                (167,'第五十条',166,'第五十条  商业银行应根据自身业务的性质、规模和复杂程度制定适当的业务连续性规划，以确保在出现无法预见的中断时，系统仍能持续运行并提供服务；定期对规划进行更新和演练，以保证其有效性。',1,1.000000,NULL),
+                (168,'第五十一条',166,'第五十一条  商业银行应评估因意外事件导致其业务运行中断的可能性及其影响，包括评估可能由下述原因导致的破坏：\n（一） 内外部资源的故障或缺失（如人员、系统或其他资产）。\n（二） 信息丢失或受损。\n（三） 外部事件（如战争、地震或台风等）。',1,2.000000,NULL),
+                (169,'第五十二条',166,'第五十二条  商业银行应采取系统恢复和双机热备处理等措施降低业务中断的可能性，并通过应急安排和保险等方式降低影响。',1,3.000000,NULL),
+                (170,'第五十三条',166,'第五十三条    商业银行应建立维持其运营连续性策略的文档，并制定对策略的充分性和有效性进行检查和沟通的计划。其中包括：\n（一）规范的业务连续性计划,明确降低短期、中期和长期中断所造成影响的措施，包括但不限于:\n1．资源需求（如人员、系统和其他资产）以及获取资源的方式。\n2．运行恢复的优先顺序。\n3．与内部各部门及外部相关各方（尤其是监管机构、客户和媒体等）的沟通安排。\n（二）更新实施业务连续性计划的流程及相关联系信息。\n（三）验证受中断影响的信息完整性的步骤。\n（四）当商业银行的业务或风险状况发生变化时，对本条（一）到（三）进行审核并升级。\n',1,4.000000,NULL),
+                (171,'第五十四条',166,'第五十四条  商业银行的业务连续性计划和年度应急演练结果应由信息科技风险管理部门或信息科技管理委员会确认。',1,5.000000,NULL),
+                (172,'第八章  外    包',1,NULL,1,8.000000,NULL),
+                (173,'第五十五条',172,'第五十五条  商业银行不得将其信息科技管理责任外包，应合理谨慎监督外包职能的履行。',1,1.000000,NULL),
+                (174,'第五十六条',172,'第五十六条  商业银行实施重要外包（如数据中心和信息科技基础设施等)应格外谨慎，在准备实施重要外包时应以书面材料正式报告银监会或其派出机构。',1,2.000000,NULL),
+                (175,'第五十七条',172,'第五十七条  商业银行在签署外包协议或对外包协议进行重大变更前，应做好相关准备，其中包括：\n（一） 分析外包是否适合商业银行的组织结构和报告路线、业务战略、总体风险控制，是否满足商业银行履行对外包服务商的监督义务。\n（二） 考虑外包协议是否允许商业银行监测和控制与外包相关的操作风险。\n（三） 充分审查、评估外包服务商的财务稳定性和专业经验，对外包服务商进行风险评估，考查其设施和能力是否足以承担相应的责任。\n（四） 考虑外包协议变更前后实施的平稳过渡（包括终止合同可能发生的情况）。\n（五） 关注可能存在的集中风险，如多家商业银行共用同一外包服务商带来的潜在业务连续性风险。',1,3.000000,NULL),
+                (176,'第五十八条',172,'第五十八条  商业银行在与外包服务商合同谈判过程中，应考虑的因素包括但不限于：\n（一） 对外包服务商的报告要求和谈判必要条件。\n（二） 银行业监管机构和内部审计、外部审计能执行足够的监督。\n（三） 通过界定信息所有权、签署保密协议和采取技术防护措施保护客户信息和其他信息。\n（四） 担保和损失赔偿是否充足。\n（五） 外包服务商遵守商业银行有关信息科技风险制度和流程的意愿及相关措施。\n（六） 外包服务商提供的业务连续性保障水平，以及提供相关专属资源的承诺。\n（七） 第三方供应商出现问题时，保证软件持续可用的相关措施。\n（八） 变更外包协议的流程，以及商业银行或外包服务商选择变更或终止外包协议的条件，例如：\n1. 商业银行或外包服务商的所有权或控制权发生变化。\n2. 商业银行或外包服务商的业务经营发生重大变化。\n3. 外包服务商提供的服务不充分，造成商业银行不能履行监督义务。\n',1,4.000000,NULL),
+                (177,'第五十九条',172,'第五十九条  商业银行在实施双方关系管理，以及起草服务水平协议时，应考虑的因素包括但不限于：\n（一） 提出定性和定量的绩效指标，评估外包服务商为商业银行及其相关客户提供服务的充分性。\n（二） 通过服务水平报告、定期自我评估、内部或外部独立审计进行绩效考核。\n（三） 针对绩效不达标的情况调整流程，采取整改措施。',1,5.000000,NULL),
+                (178,'第六十条',172,'第六十条  商业银行应加强信息科技相关外包管理工作，确保商业银行的客户资料等敏感信息的安全，包括但不限于采取以下措施：\n（一） 实现本银行客户资料与外包服务商其他客户资料的有效隔离。\n（二） 按照“必需知道”和“最小授权”原则对外包服务商相关人员授权。\n（三） 要求外包服务商保证其相关人员遵守保密规定。\n（四） 应将涉及本银行客户资料的外包作为重要外包，并告知相关客户。\n（五） 严格控制外包服务商再次对外转包，采取足够措施确保商业银行相关信息的安全。\n（六） 确保在中止外包协议时收回或销毁外包服务商保存的所有客户资料。',1,6.000000,NULL),
+                (179,'第六十一条',172,'第六十一条  商业银行应建立恰当的应急措施，应对外包服务商在服务中可能出现的重大缺失。尤其需要考虑外包服务商的重大资源损失，重大财务损失和重要人员的变动，以及外包协议的意外终止。',1,7.000000,NULL),
+                (180,'第六十二条',172,'第六十二条  商业银行所有信息科技外包合同应由信息科技风险管理部门、法律部门和信息科技管理委员会审核通过。商业银行应设立流程定期审阅和修订服务水平协议。',1,8.000000,NULL),
+                (181,'第九章  内部审计',1,NULL,1,9.000000,NULL),
+                (182,'第六十三条',181,'第六十三条  商业银行内部审计部门应根据业务的性质、规模和复杂程度，对相关系统及其控制的适当性和有效性进行监测。内部审计部门应配备足够的资源和具有专业能力的信息科技审计人员，独立于本银行的日常活动，具有适当的授权访问本银行的记录。',1,1.000000,NULL),
+                (183,'第六十四条',181,'第六十四条  商业银行内部信息科技审计的责任包括：\n（一） 制定、实施和调整审计计划，检查和评估商业银行信息科技系统和内控机制的充分性和有效性。\n（二） 按照第（一）款规定完成审计工作，在此基础上提出整改意见。\n（三） 检查整改意见是否得到落实。\n（四） 执行信息科技专项审计。信息科技专项审计，是指对信息科技安全事故进行的调查、分析和评估，或审计部门根据风险评估结果对认为必要的特殊事项进行的审计。',1,2.000000,NULL),
+                (184,'第六十五条',181,'第六十五条  商业银行应根据业务性质、规模和复杂程度，信息科技应用情况，以及信息科技风险评估结果，决定信息科技内部审计范围和频率。但至少应每三年进行一次全面审计。',1,3.000000,NULL),
+                (185,'第六十六条',181,'第六十六条  商业银行在进行大规模系统开发时，应要求信息科技风险管理部门和内部审计部门参与，保证系统开发符合本银行信息科技风险管理标准。',1,4.000000,NULL),
+                (186,'第十章  外部审计',1,NULL,1,10.000000,NULL),
+                (187,'第六十七条',186,'第六十七条  商业银行可以在符合法律、法规和监管要求的情况下，委托具备相应资质的外部审计机构进行信息科技外部审计。',1,1.000000,NULL),
+                (188,'第六十八条',186,'第六十八条  在委托审计过程中，商业银行应确保外部审计机构能够对本银行的硬件、软件、文档和数据进行检查，以发现信息科技存在的风险，国家法律、法规及监管部门规章、规范性文件规定的重要商业、技术保密信息除外。',1,2.000000,NULL),
+                (189,'第六十九条',186,'第六十九条  商业银行在实施外部审计前应与外部审计机构进行充分沟通，详细确定审计范围，不应故意隐瞒事实或阻挠审计检查。',1,3.000000,NULL),
+                (190,'第七十条',186,'第七十条  银监会及其派出机构必要时可指定具备相应资质的外部审计机构对商业银行执行信息科技审计或相关检查。外部审计机构根据银监会或其派出机构的委托或授权对商业银行进行审计时，应出示委托授权书，并依照委托授权书上规定的范围进行审计。',1,4.000000,NULL),
+                (191,'第七十一条',186,'第七十一条  外部审计机构根据授权出具的审计报告，经银监会及其派出机构审阅批准后具有与银监会及其派出机构出具的检查报告同等的效力，被审计的商业银行应根据该审计报告提出整改计划，并在规定的时间内实施整改。',1,5.000000,NULL),
+                (192,'第七十二条',186,'第七十二条  商业银行在委托外部审计机构进行外部审计时，应与其签订保密协议，并督促其严格遵守法律法规，保守本银行的商业秘密和信息科技风险信息，防止其擅自对本银行提供的任何文件进行修改、复制或带离现场。',1,6.000000,NULL),
+                (193,'第十一章  附    则',1,NULL,1,11.000000,NULL),
+                (194,'第七十三条',193,'第七十三条  未设董事会的商业银行，应当由其经营决策机构履行本指引中董事会的有关信息科技风险管理职责。',1,1.000000,NULL),
+                (195,'第七十四条',193,'第七十四条  银监会依法对商业银行的信息科技风险管理实施监督检查。',1,2.000000,NULL),
+                (196,'第七十五条',193,'第七十五条  本指引由银监会负责解释、修订。',1,3.000000,NULL),
+                (197,'第七十六条',193,'第七十六条  本指引自颁布之日起施行，《银行业金融机构信息系统风险管理指引》（银监发〔2006〕63号）同时废止。',1,4.000000,NULL),
+                (198,'第一章 总则',2,NULL,2,1.000000,NULL),
+                (199,'第一条',198,'第一条　为加强商业银行数据中心风险管理，保障数据中心安全、可靠、稳定运行，提高商业银行业务连续性水平，根据《中华人民共和国银行业监督管理法》及《中华人民共和国商业银行法》制定本指引。',2,1.000000,NULL),
+                (200,'第二条',198,'第二条　在中华人民共和国境内设立的国有商业银行、股份制商业银行、邮政储蓄银行、城市商业银行、省级农村信用联合社、外商独资银行、中外合资银行适用本指引。中国银行业监督管理委员会（以下简称中国银监会）监管的其他金融机构参照本指引执行。',2,2.000000,NULL),
+                (201,'第三条',198,'第三条　以下术语适用于本指引：\n　　（一）本指引所称数据中心包括生产中心和灾难备份中心（以下简称灾备中心）。\n　　（二）本指引所称生产中心是指商业银行对全行业务、客户和管理等重要信息进行集中存储、处理和维护，具备专用场所，为业务运营及管理提供信息科技支撑服务的组织。\n　　（三）本指引所称灾备中心是指商业银行为保障其业务连续性，在生产中心故障、停顿或瘫疾后，能够接替生产中心运行，具备专用场所，进行数据处理和支持重要业务持续运行的组织。\n　　（四）本指引所称灾备中心同城模式是指灾备中心与生产中心位于同一地理区域，一般距离数十公里，可防范火灾、建筑物破坏、电力或通信系统中断等事件。灾备中心异地模式是指灾备中心与生产中心处于不同地理区域，一般距离在数百公里以上，不会同时面临同类区域性灾难风险，如地震、台风和洪水等。\n　　（五）本指引所称重要信息系统是指支撑重要业务，其信息安全和服务质量关系公民、法人和组织的权益，或关系社会秩序、公共利益乃至国家安全的信息系统。包括面向客户、涉及账务处理且时效性要求较高的业务处理类、渠道类和涉及客户风险管理等业务的管理类信息系统，以及支撑系统运行的机房和网络等基础设施。\n',2,3.000000,NULL),
+                (202,'第四条',198,'第四条　《 信息安全技术信息系统灾难恢复规范》（GB/T20988－2007）中的条款通过本指引的引用而成为本指引的条款。',2,4.000000,NULL),
+                (203,'第二章 设立与变更',2,NULL,2,2.000000,NULL),
+                (204,'第五条',203,'第五条 商业银行应于取得金融许可证后两年内，设立生产中心；生产中心设立后两年内，设立灾备中心。',2,1.000000,NULL),
+                (205,'第六条',203,'第六条 商业银行数据中心应配置满足业务运营与管理要求的场地、基础设施、网络、信息系统和人员，并具备支持业务不间断服务的能力。',2,2.000000,NULL),
+                (206,'第七条',203,'第七条 总资产规模一千亿元人民币以上且跨省设立分支机构的法人商业银行，及省级农村信用联合社应设立异地模式灾备中心，重要信息系统灾难恢复能力应达到《信息安全技术信息系统灾难恢复规范》中定义的灾难恢复等级第5级（含）以上；其他法人商业银行应设立同城模式灾备中心并实现数据异地备份，重要信息系统灾难恢复能力应达到《信息安全技术信息系统灾难恢复规范》中定义的灾难恢复等级第4级（含）以上。',2,3.000000,NULL),
+                (207,'第八条',203,'第八条 商业银行应就数据中心设立，数据中心服务范围、服务职能和场所变更，以及其他对数据中心持续运行具有较大影响的重大变更事项向中国银监会或其派出机构报告。',2,4.000000,NULL),
+                (208,'第九条 ',203,'第九条 商业银行应在数据中心规划筹建阶段，以及在数据中心正式运营前至少20个工作日，向中国银监会或其派出机构报告。',2,5.000000,NULL),
+                (209,'第十条',203,'第十条 商业银行变更数据中心场所时应至少提前2个月，其他重大变更应至少提前10个工作日向中国银监会或其派出机构报告。',2,6.000000,NULL),
+                (210,'第三章 风险管理',2,NULL,2,3.000000,NULL),
+                (211,'第十一条',210,'第十一条 商业银行信息科技风险管理部门应制定数据中心风险管理策略、风险识别和评估流程，定期开展风险评估工作，对风险进行分级管理，持续监督风险管理状况，及时预警，将风险控制在可接受水平。',2,1.000000,NULL),
+                (212,'第十二条',210,'第十二条 商业银行信息科技部门应指导、监督和协调数据中心明确信息系统运营维护管理策略，建立运营维护管理制度、标准和流程，落实信息科技风险管理措施。',2,2.000000,NULL),
+                (213,'第十三条',210,'第十三条 商业银行数据中心应建立健全各项管理与内控制度，从技术和管理等方面实施风险控制措施。',2,3.000000,NULL),
+                (214,'第十四条',210,'第十四条 商业银行数据中心应设立专门管理岗位，监督、检查数据中心各项规范、制度、标准和流程的执行情况以及风险管理状况。',2,4.000000,NULL),
+                (215,'第十五条',210,'第十五条 商业银行应根据业务影响分析所识别出风险的可能性和损失程度，决定是否购买商业保险以应对不同类型的灾难，并定期检查其保险策略及范围。投保资产清单应保存于安全场所，以便索赔时使用。',2,5.000000,NULL),
+                (216,'第十六条',210,'第十六条 商业银行内部审计部门应至少每三年进行一次数据中心内部审计。',2,6.000000,NULL),
+                (217,'第十七条',210,'第十七条 商业银行在采取有效信息安全控制措施的前提下，可聘请合格的外部审计机构定期对数据中心进行审计。',2,7.000000,NULL),
+                (218,'第十八条',210,'第十八条 商业银行数据中心应根据内、外部审计意见，及时制定整改计划并实施整改。',2,8.000000,NULL),
+                (219,'第四章 运行环境管理',2,NULL,2,4.000000,NULL),
+                (220,'第十九条',219,'第十九条 商业银行进行数据中心选址时，应进行全面的风险评估，综合考虑地理位置、环境、设施等各种因素对数据中心安全运营的潜在影响，规避选址不当风险，避免数据中心选址过度集中。',2,1.000000,NULL),
+                (221,'第二十条',219,'第二十条 数据中心选址应满足但不限于以下要求：\n（一）生产中心与灾备中心的场所应保持合理距离，避免同时遭受同类风险。\n（二）应选址于电力供给可靠，交通、通信便捷地区；远离水灾和火灾隐患区域；远离易燃、易爆场所等危险区域；远离强振源和强噪声源，避开强电磁场干扰；应避免选址于地震、地质灾害高发区域。',2,2.000000,NULL),
+                (222,'第二十一条',219,'第二十一条 数据中心基础设施建设应以满足重要信息系统运行高可用性和高可靠性要求、保障业务连续性为目标，应满足但不限于以下要求：\n（一）建筑物结构，如层高、承重、抗震等，应满足专用机房建设要求。\n（二）应根据使用要求划分功能区域，各功能区域原则上相对独立。\n（三）应配备不间断电源、应急发电设施等以满足信息技术设备连续运行的要求。\n（四）通信线路、供电、机房专用空调等基础设施应具备冗余能力，进行冗余配置，消除单点隐患。\n（五）机房区域应采用气体消防和自动消防预警系统，内部通道设置、装饰材料等应满足消防要求，并通过消防验收。\n（六）应采取防雷接地、防磁、防水、防盗、防鼠虫害等保护措施。\n（七）应采用环保节能技术，降低能耗，提高效率。',2,3.000000,NULL),
+                (223,'第二十二条',219,'第二十二条 数据中心安防与基础设施保障应满足但不限于以下要求：\n（一）各功能区域应根据使用功能划分安全控制级别，不同级别区域采用独立的出入控制设备，并集中监控，各区域出入口及重要位置应采用视频监控，监控记录保存时间应满足事件分析、监督审计的需要。\n（二）应具备机房环境监控系统，对基础设施设备、机房环境状况、安防系统状况进行7x24小时实时监测，监测记录保存时间应满足故障诊断、事后审计的需要。\n（三）每年至少开展一次针对基础设施的安全评估，对基础设施的可用性和可靠性、运维管理流程以及人员的安全意识等方面进行检查，及时发现安全隐患并落实整改。',2,4.000000,NULL),
+                (224,'第二十三条',219,'第二十三条 数据中心应采用两家或多家通信运营商线路互为备份。互为备份的通信线路不得经过同一路由节点。',2,5.000000,NULL),
+                (225,'第五章 运营维护管理',2,NULL,2,5.000000,NULL),
+                (226,'第二十四条',225,'第二十四条 商业银行应建立满足业务发展要求的数据中心运营维护管理体系，根据业务需求定义运营维护服务内容，制定服务标准和评价方法，建立运营维护管理持续改进机制。',2,1.000000,NULL),
+                (227,'第二十五条',225,'第二十五条 数据中心应建立满足信息科技服务要求的运营管理组织架构。设立生产调度、信息安全、操作运行维护、质量合规管理等职能相关的部门或岗位，明确岗位和职责，配备专职人员，提供岗位专业技能培训，确保关键岗位职责分离，通过职责分工和岗位制约降低数据中心操作风险。',2,2.000000,NULL),
+                (228,'第二十六条',225,'第二十六条 数据中心应建立信息科技运行维护服务管理流程，提高整体运行效率和服务水平，包括：\n（一）应建立事件和问题管理机制。明确事件管理流程，定义事件类别、事件分级响应要求和事件升级、上报规则，及时受理、响应、审批和交付服务请求，保障生产服务质量，尽可能降低对业务影响；建立服务台负责受理、跟踪、解答各类运营问题；建立问题根源分析及跟踪解决机制，查明运营事件产生的根本原因，避免事件再次发生。\n（二）应建立变更管理流程，减少或防止变更对信息科技服务的影响。根据变更对业务影响大小进行变更分级，对变更影响、变更风险、资源需求和变更批准进行控制和管理；变更方案应包括应急及回退措施，并经过充分测试和验证；建立变更管理联动机制，当生产中心发生变更时，应同步分析灾备系统变更需求并进行相应的变更，评估灾备恢复的有效性；应尽量减少紧急变更。\n（三）应建立配置管理流程，统一管理、及时更新数据中心基础设施和重要信息系统配置信息，支持变更风险评估、变更实施、故障事件排查、问题根源分析等服务管理流程。\n（四）应对重要信息系统和通信网络的容量和性能需求进行前瞻性规划，分析、调整和优化容量和性能，满足业务发展要求。\n（五）应统一调度各项运维任务，协调和解决各项运维任务冲突，妥善记录和保存运维任务调度过程。\n（六）应制定验收交接标准及流程，规范重要信息系统投产验收管理。加强版本控制，防范因软件版本、操作文档等不一致产生的风险。\n（七）应根据商业银行总体风险控制策略及应急管理要求，从基础设施、网络、信息系统等不同方面分别制定应急预案，并及时修订应急预案，定期进行演练，保证其有效性。\n（八）应集中监控重要信息系统和通信网络运行状态。采用监控管理工具，实时监控重要信息系统和通信网络的运行状况，通过监测、采集、分析和调优，提升生产系统运行的可靠性、稳定性和可用性。监控记录应满足故障定位、诊断及事后审计等要求。',2,3.000000,NULL),
+                (229,'第二十七条',225,'第二十七条 数据中心应建立信息安全管理规范，保证重要信息的机密性、完整性和可用性，包括：\n（一）应设立专门的信息安全管理部门或岗位，制定安全管理制度和实施计划，定期对信息安全策略、制度和流程的执行情况进行检查和报告。\n（二）应建立和落实人员安全管理制度，明确信息安全管理职责；通过安全教育与培训，提高人员的安全意识和技能；建立重要岗位人员备份制度和监督制约机制。\n（三）应加强信息资产管理，识别信息资产并建立责任制，根据信息资产重要性实施分类控制和分级保护，防范信息资产生成、使用和处置过程中的风险。\n（四）应建立和落实物理环境安全管理制度，明确安全区域、规范区域访问管理，减少未授权访问所造成的风险。\n（五）应建立操作安全管理制度，制定操作规程文档，规范信息系统监控、日常维护和批处理操作等过程。\n（六）应建立数据安全管理制度，规范数据的产生、获取、存储、传输、分发、备份、恢复和清理的管理，以及存储介质的台帐、转储、抽检、报废和销毁的管理，保证数据的保密、真实、完整和可用。\n（七）应建立网络通信与访问安全策略，隔离不同网络功能区域，采取与其安全级别对应的预防、监测等控制措施，防范对网络的未授权访问，保证网络通信安全。\n（八）应建立基础设施和重要信息的授权访问机制，制定访问控制流程，保留访问记录，防止未授权访问。',2,4.000000,NULL),
+                (230,'第六章 灾难恢复管理',2,NULL,2,6.000000,NULL),
+                (231,'第二十八条',230,'第二十八条 商业银行应将灾难恢复管理纳入业务连续性管理框架，建立灾难恢复管理组织架构，明确灾难恢复管理机制和流程。',2,1.000000,NULL),
+                (232,'第二十九条',230,'第二十九条 商业银行应统筹规划灾难恢复工作，定期进行风险评估和业务影响分析，确定灾难恢复目标和恢复等级，明确灾难恢复策略、预案并及时更新。',2,2.000000,NULL),
+                (233,'第三十条',230,'第三十条 商业银行灾难恢复预案应包括但不限于以下内容：灾难恢复指挥小组和工作小组人员组成及联系方式、汇报路线和沟通协调机制、灾难恢复资源分配、基础设施与信息系统的恢复优先次序、灾难恢复与回切流程及时效性要求、对外沟通机制、最终用户操作指导及第三方技术支持和应急响应服务等内容。',2,3.000000,NULL),
+                (234,'第三十一条',230,'第三十一条 商业银行应为灾难恢复提供充分的资源保障，包括基础设施、网络通信、运维及技术支持人力资源、技术培训等。',2,4.000000,NULL),
+                (235,'第三十二条',230,'第三十二条 商业银行应建立与服务提供商、电力部门、公安部门、当地政府和新闻媒体等单位的外部协作机制，保证灾难恢复时能及时获取外部支持。',2,5.000000,NULL),
+                (236,'第三十三条',230,'第三十三条 商业银行应建立灾难恢复有效性测试验证机制，测试验证应定期或在重大变更后进行，内容应包含业务功能的恢复验证。',2,6.000000,NULL),
+                (237,'第三十四条',230,'第三十四条 商业银行应每年至少进行一次重要信息系统专项灾备切换演练，每三年至少进行一次重要信息系统全面灾备切换演练，以真实业务接管为目标，验证灾备系统有效接管生产系统及安全回切的能力。',2,7.000000,NULL),
+                (238,'第三十五条',230,'第三十五条 商业银行进行全面灾备切换和真实业务接管演练前应向中国银监会或其派出机构报告，并在演练结束后报送演练总结。',2,8.000000,NULL),
+                (239,'第三十六条',230,'第三十六条 商业银行因灾难事件启动灾难恢复或将灾备中心回切至生产中心后，应及时向中国银监会或其派出机构报告，报告内容包括但不限于：灾难事件发生时间、影响范围和程度，事件起因、应急处置措施、灾难恢复实施情况和结果、回切方案。',2,9.000000,NULL),
+                (240,'第七章 外包管理',2,NULL,2,7.000000,NULL),
+                (241,'第三十七条',240,'第三十七条 商业银行董事会对外包负最终管理责任，应推动和完善外包风险管理体系建设，确保商业银行有效应对外包风险。',2,1.000000,NULL),
+                (242,'第三十八条',240,'第三十八条 商业银行应根据信息科技战略规划制定数据中心外包策略；应制定数据中心服务外包管理制度、流程，建立全面的风险控制机制。',2,2.000000,NULL),
+                (243,'第三十九条',240,'第三十九条 商业银行应确定外包服务所涉及的信息资产的关键性和敏感程度，审慎确定数据中心外包服务范围。',2,3.000000,NULL),
+                (244,'第四十条',240,'第四十条 商业银行应充分识别、分析、评估数据中心外包风险，包括信息安全风险、服务中断风险、系统失控风险以及声誉风险、战略风险等，形成风险评估报告并报董事会和高管层审核。',2,4.000000,NULL),
+                (245,'第四十一条',240,'第四十一条 实施数据中心服务外包时，商业银行的管理责任不得外包。',2,5.000000,NULL),
+                (246,'第四十二条',240,'第四十二条　数据中心服务外包一般包括：\n　　（一）基础设施类：外包服务商向商业银行提供数据中心机房、配套设施或运行设备的服务。\n　　（二）运营维护类：外包服务商向商业银行提供数据中心信息系统或墓础设施的日常运行、维护等服务。\n',2,6.000000,NULL),
+                (247,'第四十三条',240,'第四十三条 商业银行在选择数据中心外包服务商时，应充分审查、评估外包服务商的资质、专业能力和服务方案，对外包服务商进行风险评估，考查其服务能力是否足以承担相应的贵任。评估包括：外包服务商的企业信誉及财务德定性，外包服务商的信息安全和信息科技服务管理体系，银行业服务经验等。提供数据中心基础设施外包服务的服务商，其运行环境应符合商业银行要求，并具有完备的安全管理规范。',2,7.000000,NULL),
+                (248,'第四十四条',240,'第四十四条 商业银行应与数据中心外包服务商签订书面合同，在合同中明确重要事项，包括但不限于双方的权利和义务、外包服务水平、服务的可靠性、服务的可用性、信息安全控制、服务持续性计划、审计、合规性要求、违约赔偿等。',2,8.000000,NULL),
+                (249,'第四十五条',240,'第四十五条 商业银行应要求外包服务商购买商业保险以保证其有足够的赔偿能力，并告知保险覆盖范围。',2,9.000000,NULL),
+                (250,'第四十六条',240,'第四十六条 商业银行应加强对数据中心外包服务活动的安全管理，包括但不限于：\n（一）商业银行应将数据中心外包服务安全管理纳入数据中心的整体安全策略，保障业务、管理和客户敏感数据信息安全。\n（二）商业银行应按照“必需知道”和“最小授权”原则，严格控制外包服务商信息访问的权限，要求外包服务商不得对外泄露所接触的商业银行信息。\n（三）商业银行应要求外包服务商保留操作痕迹、记录完整的日志，相关内容和保存期限应满足事件分析、安全取证、独立审计和监督检查需要。\n（四）商业银行应要求外包服务商遵守商业银行有关信息科技风险管理制度和流程。\n（五）商业银行应要求外包服务商每年至少开展一次信息安全风险评估并提交评估报告。\n（六）商业银行应要求外包服务商聘请外部机构定期对其进行安全审计并提交审计报告，督促其及时整改发现的问题。',2,10.000000,NULL),
+                (251,'第四十七条',240,'第四十七条 商业银行应禁止外包服务商转包并严格控制分包，保证外包服务水平。',2,11.000000,NULL),
+                (252,'第四十八条',240,'第四十八条 商业银行应制定数据中心外包服务应急计划，制订供应商替换方案，以应对外包服务商破产、不可抗力或其它潜在问题导致服务中断或服务水平下降的情形，支持数据中心连续、可靠运行。',2,12.000000,NULL),
+                (253,'第四十九条',240,'第四十九条 商业银行应建立外包服务考核、评价机制，定期对外包服务活动和外包服务商的服务能力进行审核和评估，确保获得持续、稳定的外包服务。',2,13.000000,NULL),
+                (254,'第五十条',240,'第五十条 商业银行在实施数据中心整体服务外包以及涉及影响业务、管理和客户敏感数据信息安全的外包前，应向中国银监会或其派出机构报告。',2,14.000000,NULL),
+                (255,'第五十一条',240,'第五十一条 商业银行应在外包服务协议条款中明确商业银行和监管机构有权对协议范围内的服务活动进行监督检查，包括外包商的服务职能、责任、系统和设施等内容。',2,15.000000,NULL),
+                (256,'第五十二条',240,'第五十二条　中国银监会及其派出机构可依法对商业银行的数据中心实施非现场监管及现场检查。现场检查原则上每三年一次。',2,16.000000,NULL),
+                (257,'第五十三条',240,'第五十三条 针对商业银行数据中心设立、变更、运营过程存在的风险，中国银监会或其派出机构可向商业银行提示风险并提出整改意见。商业银行应及时整改并反馈结果。',2,17.000000,NULL),
+                (258,'第五十四条',240,'第五十四条　本指引由中国银监会负责解释、修订。',2,18.000000,NULL),
+                (259,'第五十五条',240,'第五十五条　本指引自公布之日起执行。   附件：\n　　《 商业银行数据中心监管指引》 报告材料目录和格式要求\n\n　　一、数据中心规划报告材料目录\n　　（一）数据中心建设规划报告，包括：\n　　1 ．立项报告和可行性分析报告，包括建设背景、建设目标、风险评估、效益分析、成本投入等。\n　　2 ．基础设施规划方案，包括选址、建筑物结构、功能区域划分、监控、防雷接地及消防等配套设施、机房等级等。\n　　3 ．信息系统建设规划方案，包括功能与技术方案规划、人员配置计划、系统服务的区域和业务范围等。灾备中心还需提供灾难恢复目标、灾难恢复等级、灾备技术方案规划及风险评佑报告等。\n　　（二）区域环境及基础设施风险评估说明，包括风险识别，风险分析和风险控制策略等。\n　　（三）建设及运营模式说明，包括技术支持及运行维护体系等。如采用外包，需提供外包的服务内容和外包风险评估报告；\n　　（四）组织架构规划。包括拟设立的部门与岗位职责、计划采用的人员数量等。\n　　（五）建设及投入运营的时间进度计划和财务预算（基础设施建设和运维管理费用等）。\n　　（六）中国银监会或其派出机构要求提供的其它文件和资料。\n　　二、数据中心设立报告材料目录\n　　（一）由商业银行法定代表人签署的数据中心投产审批文件，包括数据中心上线申请，数据中心上线审批报告等。\n　　（二）基础设施情况，包括地址、建筑物结构、功能区域划分、监控、防雷接地及消防等配套设施验收报告、机房及附属设施验收报告等。\n　　（三）信息系统情况，包括系统架构、系统名称、系统服务的区域和业务范围、数据备份方案、灾备技术方案等。\n　　（四）运营模式说明，包括技术支持及运行维护体系等。如采用外包需说明主要外包管理情况，包括主要外包项目名称、外包内容（业务类型及范围等）、外包商基本情况、外包合同（包括安全保密条款、知识产权保护条款）、外包服务水平协议和外包风险评估报告等。\n　　（五）组织架构，包括部门设置与岗位职责、人员配备、主要负责人名单等。\n　　（六）管理制度和规范清单及相关说明，包括运行管理流程、安全管理制度、应急管理制度和规范（含应急恢复策略、信息系统备份和恢复方案、应急管理流程及预案、应急演练及培训计划等）、灾难恢复预案。\n　　（七）中国银监会或其派出机构要求提供的其它文件和资料。\n　　三、数据中心重大变更报告材料目录\n　　（一）变更说明，包括变更原因、目的、内容、时间和影响范围等。\n　　（二）变更方案，包括变更准备、变更计划和步骤、变更应急和回退措施。\n　　（三）风险评估报告，包括风险分析，控制措施、变更有效性评估。\n　　（四）中国银监会或其派出机构要求提供的其它文件和资料。\n　　四、报告材料格式要求\n　　数据中心规划、设立及重大变更报告材料应向中国银监会或其派出机构报送纸质材料和电子文档。\n',2,19.000000,NULL),
+                (260,'第一章 总则',3,NULL,3,1.000000,NULL),
+                (261,'第一条',260,'信息系统与信息科技是保障商业银行业务持续运营的重要基础。为降低或消除因信息系统服务异常导致重要业务运营中断的影响，快速恢复被中断业务，维护公众信心和银行业正常运营秩序，提高商业银行业务连续性管理能力，根据《中华人民共和国银行业监督管理法》、《中华人民共和国商业银行法》以及相关法律法规，制定本指引。',3,1.000000,NULL),
+                (262,'第二条 ',260,'本指引所称业务连续性管理是指商业银行为有效应对重要业务运营中断事件，建设应急响应、恢复机制和管理能力框架，保障重要业务持续运营的一整套管理过程，包括策略、组织架构、方法、标准和程序。',3,2.000000,NULL),
+                (263,'第三条 ',260,'本指引所称重要业务是指面向客户、涉及账务处理、时效性要求较高的银行业务，其运营服务中断会对商业银行产生较大经济损失或声誉影响，或对公民、法人和其他组织的权益、社会秩序和公共利益、国家安全造成严重影响的业务。',3,3.000000,NULL),
+                (264,'第四条 ',260,'本指引所称重要业务运营中断事件（以下简称运营中断事件）是指因下述原因导致信息系统服务异常、重要业务停止运营的事件。主要包括：\n    （一）信息技术故障：信息系统技术故障、配套设施故障；\n（二）外部服务中断：第三方无法合作或提供服务等；\n（三）人为破坏：黑客攻击、恐怖袭击等；\n（四）自然灾害：火灾、雷击、海啸、地震、重大疫情等。',3,4.000000,NULL),
+                (265,'第五条 ',260,'商业银行应当将业务连续性管理纳入全面风险管理体系，建立与本机构战略目标相适应的业务连续性管理体系，确保重要业务在运营中断事件发生后快速恢复，降低或消除因重要业务运营中断造成的影响和损失，保障业务持续运营。',3,5.000000,NULL),
+                (266,'第六条 ',260,'商业银行应当根据本行业务发展的总体目标、经营规模以及风险控制的基本策略和风险偏好，确定适当的业务连续性管理战略。',3,6.000000,NULL),
+                (267,'第七条 ',260,'商业银行应当建立业务连续性管理的组织架构，确定重要业务及其恢复目标，制定业务连续性计划，配置必要的资源，有效处置运营中断事件，并积极开展演练和业务连续性管理的评估改进。',3,7.000000,NULL),
+                (268,'第八条 ',260,'业务连续性管理的基本原则是：\n　　(一)切实履行社会责任，保护客户合法权益、维护金融秩序；\n　　(二)坚持预防为主，建立预防、预警机制，将日常管理与应急处置有效结合；\n　　(三)坚持以人为本，重点保障人员安全；实施差异化管理，保障重要业务有序恢复；兼顾业务连续性管理成本与效益；\n　　(四)坚持联动协作，加强沟通协调，形成应对运营中断事件的整体有效机制。',3,8.000000,NULL),
+                (269,'第九条 ',260,'商业银行应当将业务连续性管理融入到企业文化中，使其成为银行机构日常运营管理的有机组成部分。',3,9.000000,NULL),
+                (270,'第二章 业务连续性组织架构',3,NULL,3,2.000000,NULL),
+                (271,'第一节 日常管理组织架构',270,NULL,3,1.000000,NULL),
+                (272,'第十条 ',271,'董(理)事会是商业银行业务连续性管理的决策机构，对业务连续性管理承担最终责任。主要职责包括：\n　　(一)审核和批准业务连续性管理战略、政策和程序；\n　　(二)审批高级管理层业务连续性管理职责，定期听取高级管理层关于业务连续性管理的报告，监督、评价其履职情况；\n　　(三)审批业务连续性管理年度审计报告。',3,1.000000,NULL),
+                (273,'第十一条 ',271,'高级管理层负责执行经董(理)事会批准的业务连续性管理政策。主要职责包括：\n　　(一)制定并定期审查和监督执行业务连续性管理政策、程序；\n　　(二)明确各部门业务连续性管理职责，明确报告路线，审批重要业务恢复目标和恢复策略，督促各部门履行管理职责，确保业务连续性管理体系正常运行；\n　　(三)确保配置足够的资源保障业务连续性管理的实施。',3,2.000000,NULL),
+                (274,'第十二条 ',271,'商业银行应当设立由高级管理层和业务连续性管理相关部门负责人组成的业务连续性管理委员会，统筹协调、落实各项管理职责。',3,3.000000,NULL),
+                (275,'第十三条 ',271,'商业银行应当指定风险管理部门或其他综合管理部门为业务连续性管理主管部门， 组织开展全行业务连续性管理工作，指导、评估、监督各部门的业务连续性管理工作；组织制定业务连续性计划，协调业务条线部门，汇总、确定重要业务的恢复目 标和恢复策略；组织开展业务连续性计划的演练、评估与改进；开展业务连续性管理培训等。',3,4.000000,NULL),
+                (276,'第十四条',271,' 商业银行应当明确业务连续性管理执行部门，包括业务条线部门与信息科技部门。业务条线部门负责风险评估、业务影响分析，确定重要业务恢复目标和恢复策略，负责业务条线重要业务应急响应与恢复；信息科技部门负责信息技术应急响应与恢复。',3,5.000000,NULL),
+                (277,'第十五条 ',271,'商业银行应当明确业务连续性管理保障部门，包括办公室、人力资源部门、公共关系部门、财务部门、法律合规部门、后勤部门、保卫部门等，为业务连续性日常管理提供人力、物力、财力以及安全保障和法律咨询。其中，公共关系部门应当制定对外媒体公关策略，制定和执行对外媒体公关的应急预案。',3,6.000000,NULL),
+                (278,'第十六条 ',271,'商业银行各部门应当负责本部门业务连续性管理工作，制定相关规章制度，制定和执行本部门业务连续性计划，开展本部门业务连续性计划的演练、评估与改进工作。',3,7.000000,NULL),
+                (279,'第十七条 ',271,'商业银行内部审计部门应当负责并定期开展全行业务连续性管理审计工作。',3,8.000000,NULL),
+                (280,'第二节 应急处置组织架构',270,NULL,3,2.000000,NULL),
+                (281,'第十八条 ',280,'商业银行应当建立运营中断事件应急处置的组织架构，包括应急决策层、应急指挥层、应急执行层和应急保障层。',3,1.000000,NULL),
+                (282,'第十九条',280,'应急决策层由商业银行高级管理人员组成，负责决定应急处置重大事宜，包括：决定运营中断事件通报、对外报告和公告；批准启动总体应急预案等。',3,2.000000,NULL),
+                (283,'第二十条 ',280,'应急指挥层由商业银行的业务连续性管理主管部门、执行部门和保障部门负责人组成，负责运营中断事件处置应急指挥和组织协调，督导应急处置实施。',3,3.000000,NULL),
+                (284,'第二十一条 ',280,'应急执行层由商业银行业务连续性管理执行部门组成，负责业务条线与信息技术应急处置工作。',3,4.000000,NULL),
+                (285,'第二十二条 ',280,'应急保障层由商业银行业务连续性管理保障部门组成，负责应急处置所需人力、物力和财力等资源的保障，应急处置对外报告、宣告、通报和沟通与协调，以及对外媒体公关、秩序维护、安全保障、法律咨询和人员安抚等相关工作。',3,5.000000,NULL),
+                (286,'第三章 业务影响分析',3,NULL,3,3.000000,NULL),
+                (287,'第二十三条 ',286,'商业银行应当通过业务影响分析识别和评估业务运营中断所造成的影响和损失，明确业务连续性管理重点，根据业务重要程度实现差异化管理，确定各业务恢复优先顺序和恢复指标。商业银行应当至少每三年开展一次全面业务影响分析，并形成业务影响分析报告。',3,1.000000,NULL),
+                (288,'第二十四条 ',286,'商业银行应当识别重要业务，明确重要业务归口管理部门、所需关键资源及对应的信息系统，识别重要业务的相互依赖关系，分析、评估各项重要业务在运营中断事件发生时可能造成的经济损失和非经济损失。',3,2.000000,NULL),
+                (289,'第二十五条 ',286,'商业银行应当综合分析重要业务运营中断可能产生的损失与业务恢复成本，结合业务服务时效性、服务周期等运行特点，确定重要业务恢复时间目标(业务RTO)、业务恢复点目标(业务RPO)，原则上，重要业务恢复时间目标不得大于4小时，重要业务恢复点目标不得大于半小时。',3,3.000000,NULL),
+                (290,'第二十六条 ',286,'商业银行应当明确业务重要程度和恢复优先级别，并识别重要业务恢复所需的必要资源。',3,4.000000,NULL),
+                (291,'第二十七条 ',286,'商业银行应当通过分析业务与信息系统的对应关系、信息系统之间的依赖关系，根据业务恢复时间目标、业务恢复点目标、业务应急响应时间、业务恢复的验证时间，确定信息系统恢复时间目标(信息系统RTO)、信息系统恢复点目标(信息系统RPO)，明确信息系统重要程度和恢复优先级别，并识别信息系统恢复所需的必要资源。',3,5.000000,NULL),
+                (292,'第二十八条',286,'商业银行应当开展业务连续性风险评估，识别业务连续运营所需的关键资源，分析资源所面临的各类威胁以及资源自身的脆弱性，确定资源的风险敞口。关键资源应当包括关键信息系统及其运行环境，关键的人员、业务场地、业务办公设备、业务单据以及供应商等。',3,6.000000,NULL),
+                (293,'第二十九条 ',286,'商业银行应当根据风险敞口制定降低、缓释、转移等应对策略。依据防范或控制风险的可行性和残余风险的可接受程度，确定风险防范和控制的原则与措施。',3,7.000000,NULL),
+                (294,'第三十条 ',286,'商业银行应当根据业务影响分析结果，依据业务恢复指标，制定差别化的业务恢复策略，主要包括关键资源恢复、业务替代手段、数据追补和恢复优先级别等。',3,8.000000,NULL),
+                (295,'第三十一条 ',286,'商业银行应当依据业务恢复策略，确定灾难恢复资源获取方式和灾难恢复等级。',3,9.000000,NULL),
+                (296,'第四章 业务连续性计划与资源建设',3,NULL,3,4.000000,NULL),
+                (297,'第一节 业务连续性计划',296,NULL,3,1.000000,NULL),
+                (298,'第三十二条 ',297,'商业银行应当依据业务恢复目标，制定覆盖所有重要业务的业务连续性计划。',3,1.000000,NULL),
+                (299,'第三十三条 ',297,'业务连续性计划的主要内容应当包括：\n　　(一)重要业务及关联关系、业务恢复优先次序；\n　　(二)重要业务运营所需关键资源；\n　　(三)应急指挥和危机通讯程序；\n　　(四)各类预案以及预案维护、管理要求；\n　　(五)残余风险。',3,2.000000,NULL),
+                (300,'第三十四条 ',297,'商业银行应当制定总体应急预案。总体应急预案是商业银行应对运营中断事件的总体方案，包括总体组织架构、各层级预案的定位和衔接关系及对运营中断事件的预警、报告、分析、决策、处理、恢复等处置程序。总体预案通常用于处置导致大范围业务运营中断的事件。',3,3.000000,NULL),
+                (301,'第三十五条 ',297,'商业银行应当制定重要业务专项应急预案，专项应急预案应当注重灾难场景的设计，明确在不同场景下的应急流程和措施。业务条线的专项应急预案，应当注重调动内部资源、采取业务应急手段尽快恢复业务，并和信息科技部门、保障部门的应急预案有效衔接。',3,4.000000,NULL),
+                (302,'第三十六条 ',297,'专项应急预案的主要内容应当包括：\n　　(一)应急组织架构及各部门、人员在预案中的角色、权限、职责分工；　(二)信息传递路径和方式；　　(三)运营中断事件处置程序，包括预警、报告、决策、指挥、响应、回退等；　　(四)运营中断事件处置过程中的风险控制措施；　　(五)运营中断事件的危机处理机制；　　(六)运营中断事件的内部沟通机制和联系方式；　　(七)运营中断事件的外部沟通机制和联系方式；',3,5.000000,NULL),
+                (303,'第三十七条 ',297,'商业银行应当要求重要业务及信息系统的外部供应商建立业务连续性计划，证明其业务连续性计划的有效性，其业务恢复目标应当满足商业银行要求。',3,6.000000,NULL),
+                (304,'第三十八条 ',297,'商业银行应当注重与金融同业单位、外部金融市场、金融服务平台和公共事业部门等业务连续性计划的有效衔接；同时，应当积极采取风险缓释及转移措施，有效控制由于外部机构业务连续性管理不充分可能产生的风险。',3,7.000000,NULL),
+                (305,'第二节 业务连续性资源建设',296,NULL,3,2.000000,NULL),
+                (306,'第三十九条 ',305,'商业银行应当开展业务连续性计划所需的资源建设，满足业务恢复目标和重要业务持续运营的要求。',3,1.000000,NULL),
+                (307,'第四十条 ',305,'商业银行应当重点加强信息系统关键资源的建设，实现信息系统的高可用性，保障信息系统的持续运行并减少信息系统中断后的恢复时间。',3,2.000000,NULL),
+                (308,'第四十一条 ',305,'商业银行应当设立统一的运营中断事件指挥中心场所，用于应急决策、指挥与联络，指挥场所应当配置办公与通讯设备以及指挥执行文档、联系资料等。',3,3.000000,NULL),
+                (309,'第四十二条 ',305,'商业银行应当建立符合业务连续性管理要求的备用资源，如备用业务和办公场所资源、备用信息系统运行场所资源、备用信息技术资源、备用人力资源等，以及电力、通讯、消防、安保等资源。',3,4.000000,NULL),
+                (310,'第四十三条 ',305,'商业银行选择备用场地时，应当确保不会同时遭受同类型风险；应当综合分析备用场地所在地的自然环境、地区配套设施、区域经济环境、交通条件、政策环境和成本等各方面因素，以及灾难恢复所需的金融服务、通讯、设备、技术等外部服务供应商资源情况。',3,5.000000,NULL),
+                (311,'第四十四条 ',305,'商业银行在建立备用业务和办公场所时，应当配备业务操作和办公所需资源，并确保其能够迅速启用。',3,6.000000,NULL),
+                (312,'第四十五条 ',305,'商业银行应当建立灾备中心等备用信息技术资源和备用信息系统运行场所资源，并满足银监会关于数据中心相关监管要求。',3,7.000000,NULL),
+                (313,'第四十六条 ',305,'商业银行应当明确关键岗位的备份人员及其备份方式，并确保备份人员可用，降低关键岗位人员无法及时履职风险。',3,8.000000,NULL),
+                (314,'第五章 业务连续性演练与持续改进',3,NULL,3,5.000000,NULL),
+                (315,'第一节 业务连续性计划演练',314,NULL,3,1.000000,NULL),
+                (316,'第四十七条 ',315,'商业银行应当开展业务连续性计划演练，检验应急预案的完整性、可操作性和有效性，验证业务连续性资源的可用性，提高运营中断事件的综合处置能力。',3,1.000000,NULL),
+                (317,'第四十八条 ',315,'制定业务连续性演练计划时，商业银行应当考虑业务的重要性和影响程度，包括客户范围、业务性质、业务时效性、经济与非经济影响等，演练频率、方式应当与业务的重要性和影响程度相匹配。',3,2.000000,NULL),
+                (318,'第四十九条',315,'商业银行应当至少每三年对全部重要业务开展一次业务连续性计划演练。在重大业务活动、重大社会活动等关键时点，或在关键资源发生重大变化之前，也应当开展业务连续性计划的专项演练。',3,3.000000,NULL),
+                (319,'第五十条 ',315,'商业银行应当加强业务应急预案的演练，重点加强业务和信息科技部门的协调、配合；应当注重以真实业务接管为目标，确保灾备系统能够有效接管生产系统并具备安全回切能力。',3,4.000000,NULL),
+                (320,'第五十一条 ',315,'商业银行应当将外部供应商纳入演练范围并定期开展演练；同时，应当积极参加金融同业单位、外部金融市场、金融服务平台和公共事业部门等组织的业务连续性计划演练，确保应急和协调措施的有效性。',3,5.000000,NULL),
+                (321,'第五十二条 ',315,'商业银行应当对业务连续性计划的演练过程进行完整记录，及时总结、评估和改进。',3,6.000000,NULL),
+                (322,'第二节 业务连续性管理评估与改进',314,NULL,3,2.000000,NULL),
+                (323,'第五十三条 ',322,'商业银行应当建立业务连续性管理体系持续改进机制。',3,1.000000,NULL),
+                (324,'第五十四条 ',322,'商业银行应当至少每年对业务连续性管理体系的完整性、合理性、有效性组织一次自评估，或者委托第三方机构进行评估，并向高级管理层提交评估报告。',3,2.000000,NULL),
+                (325,'第五十五条 ',322,'商业银行应当每年对业务连续性管理文档进行修订，内容应当包含重要业务调整、制度调整、岗位职责与人员调整等，确保文档的真实性、有效性。',3,3.000000,NULL),
+                (326,'第五十六条 ',322,'商业银行在开发新业务产品时，应当同步考虑是否将其纳入业务连续性管理范畴。对纳入业务连续性管理的，应当在上线前制定业务连续性计划并实施演练。',3,4.000000,NULL),
+                (327,'第五十七条 ',322,'在业务功能或关键资源发生重大变更时，商业银行应当及时对业务连续性计划进行修订。',3,5.000000,NULL),
+                (328,'第五十八条 ',322,'商业银行应当每年对本行业务连续性管理进行审计，每三年至少开展一次全面审计，发生大范围业务运营中断事件后应当及时开展专项审计。',3,6.000000,NULL),
+                (329,'第五十九条 ',322,'商业银行业务连续性管理审计的内容应当包括：业务影响分析、风险评估、恢复策略及恢复目标的合理性和完整性；业务连续性计划的完整性和可操作性；业务连续性计划演练过程及报告的真实性和有效性；业务连续性管理相关部门及人员的履职情况等。',3,7.000000,NULL),
+                (330,'第六章 运营中断事件应急处置',3,NULL,3,6.000000,NULL),
+                (331,'第一节监测、预警与报告',330,NULL,3,1.000000,NULL),
+                (332,'第六十条 ',331,'商业银行应当建立运营中断事件的风险预警体系，设定风险预警指标，并纳入全行风险预警体系中。',3,1.000000,NULL),
+                (333,'第六十一条 ',331,'商业银行应当建立业务运营的监测体系及监控机制，对信息系统运行环境进行日常监测，采取自动化措施重点加强对业务运行情况的监控。',3,2.000000,NULL),
+                (334,'第六十二条 ',331,'商业银行应当建立关键时点的监测与预警机制，在重大业务和社会活动等关键时点，或在业务功能、关键资源发生重大变更时，加强风险监控和预警。业务条线部门与信息科技部门等相关部门之间应当相互通报信息、提示风险，协同做好应急准备。',3,3.000000,NULL),
+                (335,'第六十三条 ',331,'发生运营中断事件后，商业银行应当及时进行沟通和报告，包括：按照报告路线在内部各部门及人员之间的报告，与业务运营的外包方、业务合作方之间的沟通、以及按照银监会有关报告要求，向银监会或其派出机构的报告等。',3,4.000000,NULL),
+                (336,'第二节 运营中断事件处置',330,NULL,3,2.000000,NULL),
+                (337,'第六十四条 ',336,'商业银行应当制定运营中断事件等级划分标准，根据事件影响范围、持续时间和损失程度定义事件等级，开展应急响应处置工作。',3,1.000000,NULL),
+                (338,'第六十五条 ',336,'运营中断事件应急处置应当遵循“统一指挥、分类管理、分级处置、快速响应”的原则，在全行统一指挥下高效、有序应对；应当根据事件等级实施差别化处置，必要时可以越级汇报、紧急授权，保障信息传递和决策的及时性，将影响或损失最小化。',3,2.000000,NULL),
+                (339,'第六十六条 ',336,'商业银行应当及时、有效地响应运营中断事件，对事件影响进行评估，确定事件等级，及时启动应急预案，确保业务快速恢复，防止事态升级或恶化。',3,3.000000,NULL),
+                (340,'第六十七条 ',336,'商业银行在实施应急处置时，应当采取以下措施：\n　　(一)加强运营中断事件处置中的对外沟通，开展告知、解释与安抚工作，最大程度降低负面影响；\n　　(二)对重要业务可以通过减少服务功能、缩小服务范围、利用替代系统、手工记账、利用他行支付渠道等多种手段进行业务应急处置；\n　　(三)采用程序化和标准化的手段，提高信息技术应急处置的效率和质量。',3,4.000000,NULL),
+                (341,'第六十八条 ',336,'商业银行应当为应急处置做好场地、交通、通讯、资金等后勤保障工作。',3,5.000000,NULL),
+                (342,'第六十九条 ',336,'商业银行应当对运营中断事件应急处置过程进行完整记录。',3,6.000000,NULL),
+                (343,'第三节 灾难恢复',330,NULL,3,2.000000,NULL),
+                (344,'第七十条 ',343,'对于导致或可能导致大范围业务运营中断的事件，商业银行应当迅速决策，确定是否实施灾难备份切换。',3,1.000000,NULL),
+                (345,'第七十一条 ',343,'商业银行应当事先对备份资源进行技术验证，确保其可用性；在实施灾难备份切换时，信息科技部门应当向业务条线部门告知可能出现的数据损失情况，并对备份系统的运行情况实施监控，预警并防止出现二次中断风险。',3,2.000000,NULL),
+                (346,'第七十二条 ',343,'商业银行在灾难备份切换、回切时，业务条线部门应当对中断时的重要业务数据进行核对，并在信息科技部门配合下，对丢失的数据进行追补；同时，应当进行测试和验证，确保交易的可靠性。',3,3.000000,NULL),
+                (347,'第四节 危机处理',330,NULL,3,2.000000,NULL),
+                (348,'第七十三条 ',347,'商业银行应当建立危机处理机制，从维护客户关系、履行告知义务、维护客户合法权益出发，运用公共关系策略、方法，加强与客户、媒体的沟通，适时向公众发布信息，消除或降低危机所造成的负面影响。',3,1.000000,NULL),
+                (349,'第七十四条 ',347,'商业银行应当指定专门部门负责危机处理工作，加强舆情监测、信息沟通和发布。',3,2.000000,NULL),
+                (350,'第七十五条 ',347,'商业银行应当制定针对社会公众、媒体、股东、客户等相关各方的预案，在运营中断事件发生时及时、准确披露信息，防止因信息不对称可能产生的负面影响。',3,3.000000,NULL),
+                (351,'第七十六条 ',347,'商业银行应当实时关注舆情信息，及时澄清虚假信息或不完整信息，消除社会疑虑，化解纠纷。',3,4.000000,NULL),
+                (352,'第七章监管和处置',3,NULL,3,7.000000,NULL),
+                (353,'第一节监管处置',352,NULL,3,1.000000,NULL),
+                (354,'第七十七条 ',353,'银监会及其派出机构建立运营中断事件处置领导小组和工作小组。\n（一）领导小组主要职责为：\n1 ．领导和指挥银行业运营中断事件处置工作；\n2 ．审批银行业运营中断事件处置预案；\n3 ．最终认定银行业运营中断事件等级，决定是否启动处置预案；\n4 ．对银行业运营中断事件重大处置措施进行决策；\n5 ．协调跨行业、跨部门共同开展的处置工作重大事项；\n6 ．对银行业运营中断事件处置的对外信息发布进行决策。\n（二）工作小组主要职责为：\nl ．制定银行业运营中断事件处置预案；\n2 ．对银行业金融机构运营中断事件进行监管处置；\n3 ．向处置领导小组报告运营中断事件、重大处置事项及事件进展情况；\n4 ．依授权对外发布信息；\n5 ．协调跨行业、跨部门资源。',3,1.000000,NULL),
+                (355,'第七十八条 ',353,'银监会建立银行业信息科技风险预警体系，对可能导致银行业发生较大运营中断事件的风险进行分析和评估，进行风险提示和预警。',3,2.000000,NULL),
+                (356,'第七十九条',353,'银监会及其派出机构对银行业运营中断事件进行分级。当运营中断事件同时满足多个级别的定级条件时，按最高级别确定事件等级。\n（一）特别重大运营中断事件（I 级）\n1 ．银行业金融机构重要信息系统服务中断，或重要数据损毁、丢失、泄露，造成经济秩序混乱或重大经济损失、影响金融稳定，或对公众利益、社会秩序、国家安全造成特别严重损害的事件；\n2 ．在业务服务时段导致一个（含）以上省（自治区、直辖市）的多家金融机构业务无法正常开展达3 个小时（含）以上的事件；\n3 ．在业务服务时段导致单家金融机构两个（含）以上省（自治区、直辖市）业务无法正常开展达3 个小时（含）以上，或一个省（自治区、直辖市）业务无法正常开展达6 个小时（含）以上的事件；\n4 ．业务服务时段以外，故障或事件救治未果、可能产生上述1 至3 类事件的事件。\n（二）重大运营中断事件（Ⅱ级）\n1 ．银行业金融机构重要信息系统服务中断，或重要数据损毁、丢失、泄露，对银行或客户利益造成严重损害的事件；\n2 ．在业务服务时段导致一个（含）以上省（自治区、直辖市）的多家金融机构业务无法正常开展达半个小时（含）以上的事件；\n3 ．在业务服务时段导致单家金融机构两个（含）以上省（自治区、直辖市）业务无法正常开展达半个小时（含）以上，或一个省（自治区、直辖市）业务无法正常开展达3 个小时（含）以上的事件；\n4 ．业务服务时段以外，故障或事件救治未果、可能产生上述1 至3 类事件的事件。\n（三）较大运营中断事件（Ⅲ 级）\n1 ．银行业金融机构重要信息系统服务中断，或重要数据损毁、丢失、泄露，对银行或客户利益造成较大损害的事件；\n2 ．在业务服务时段导致一个省（自治区、直辖市）业务无法正常开展达半个小时（含）以上的事件；\n3 ．业务服务时段以外，故障或事件救治未果、可能产生上述1 至2 类事件的事件。',3,3.000000,NULL),
+                (357,'第八十条 ',353,'按照属地监管原则，银监会派出机构在商业银行运营中断事件发生后2 小时内，将事件及处置情况上报银监会处置工作小组。事件报告至少包括：事发银行及事件发生时间、地点、现象、影响范围和程度、已采取的措施等。\n银监会处置工作小组应当将重大以上运营中断事件上报银监会运营中断事件处置领导小组。',3,4.000000,NULL),
+                (358,'第八十一条 ',353,'银监会根据国家有关网络与信息安全事件应急预案要求向相关部门通报运营中断事件；对其他行业有较大影响的运营中断事件，可以向该行业主管或监管部门通报事件情况；对于特别重大（I 级）的运营中断事件，将事件及处置情况及时上报国务院。',3,5.000000,NULL),
+                (359,'第八十二条 ',353,'银监会及其派出机构对商业银行报送的事件内容和事件等级进行分析、评估，认定运营中断事件的最终等级，及时启动处置预案，实施运营中断事件监管处置工作。',3,6.000000,NULL),
+                (360,'第八十三条 ',353,'对于较大（Ⅲ 级）运营中断事件，按照属地监管原则，由银监会或其派出机构组织开展处置工作，处置结束后银监会派出机构向银监会上报运营中断事件总结报告。',3,7.000000,NULL),
+                (361,'第八十四条 ',353,'对于特别重大（I 级）和重大（Ⅱ 级）运营中断事件，银监会处置工作小组及时核实情况，指导协调银监会派出机构开展处置；根据事件影响范围、紧急程度和事件处置进展情况，银监会处置工作小组可以赴事发银行现场进行督导。',3,8.000000,NULL),
+                (362,'第八十五条 ',353,'银监会及其派出机构督导商业银行采取措施尽快恢复系统和业务，最大程度减少事件产生的负面影响。必要时，可以协调国家专业技术队伍或外部专家提供技术支援。',3,9.000000,NULL),
+                (363,'第八十六条 ',353,'银监会及其派出机构督导商业银行积极采取风险隔离措施，防止事件恶化或向其他银行业金融机构扩散。对可能影响其他银行业金融机构业务开展或对银行业产生区域性、整体性影响的事件，银监会及其派出机构及时发布风险提示，加强风险防范。',3,10.000000,NULL),
+                (364,'第八十七条 ',353,'银监会及其派出机构督促商业银行开展危机处理，做好舆情监测和媒体沟通，做好合理宣传解释工作，防止不实信息导致银行业金融机构声誉风险。涉及行业性运营中断事件处置情况通报时，由银监会按照信息披露程序统一对外发布信息。',3,11.000000,NULL),
+                (365,'第八十八条 ',353,'银监会及其派出机构加强与相关部门和监管机构的协作，协调各方力量开展处置工作。',3,12.000000,NULL),
+                (366,'第八十九条 ',353,'商业银行业务恢复正常运行后，应当将运营中断事件及其处置工作的评估、总结和改进报告报送银监会或其派出机构。银监会或其派出机构对事件进行评估和现场调查，查明事件原因，进行责任认定。',3,13.000000,NULL),
+                (367,'第二节 持续监管',352,NULL,3,2.000000,NULL),
+                (368,'第九十条 ',367,'银监会及其派出机构将商业银行业务连续性管理纳入其风险管理综合评估范围。',3,1.000000,NULL),
+                (369,'第九十一条 ',367,'银监会及其派出机构对商业银行业务连续性管理工作进行监督和检查，对业务连续性工作进行综合评价，提出监管要求。',3,2.000000,NULL),
+                (370,'第九十二条',367,' 商业银行应当于每年一季度向银监会或其派出机构提交业务连续性管理报告，包括上一年度业务连续性管理的评估报告与审计报告。',3,3.000000,NULL),
+                (371,'第九十三条 ',367,'银监会及其派出机构对商业银行业务连续性管理报告进行审查，督导商业银行建立与其风险管控目标、机构规模、公众影响和所承担的社会责任相匹配的业务连续性管理体系。',3,4.000000,NULL),
+                (372,'第九十四条',367,'银监会及其派出机构对商业银行业务连续性管理报告进行审查时，要综合考虑商业银行机构规模、业务范围以及风险状况。重点关注以下方面：\n（一）业务连续性管理体系的完整性和合理性；\n（二）业务连续性管理的实施情况；\n（三）业务连续性计划的演练情况；\n（四）业务连续性管理年度评估的完整性和准确性，审计覆盖领域和深度；\n（五）业务连续性管理在执行过程中存在的问题及其整改情况。',3,5.000000,NULL),
+                (373,'第九十五条 ',367,'商业银行在完成业务连续性计划的全行性演练后，应当在45个工作日内向监管机构提交演练总结报告。',3,6.000000,NULL),
+                (374,'第九十六条 ',367,'商业银行业务连续性管理机制存在重大缺陷、日常管理工作存在严重违规的，因违反审慎经营规则导致业务运营中断的，或在运营中断事件中应急处置不力导致事件恶化、蔓延的，银监会或其派出机构依法采取监管措施并追究有关责任人的责任。',3,7.000000,NULL),
+                (375,'第八章 附则',3,NULL,3,8.000000,NULL),
+                (376,'第九十七条 ',375,'本指引适用于在中华人民共和国境内依法设立的法人商业银行和农村合作银行、城市信用社、农村信用社。政策性银行、村镇银行、金融资产管理公司、信托公司、企业集团财务公司、金融租赁公司、汽车金融公司、货币经纪公司、消费金融公司等其他银行业金融机构参照执行。',3,1.000000,NULL),
+                (377,'第九十八条 ',375,'本指引由中国银监会负责解释、修订。',3,2.000000,NULL),
+                (378,'第九十九条',375,'本指引自公布之日起执行。',3,3.000000,NULL),
+                (379,'第一章 总则',4,NULL,4,1.000000,NULL),
+                (380,'第一条',379,'第一条 为规范银行业金融机构的信息科技外包活动，降低信息科技外包风险，根据《中华人民共和国银行业监督管理法》、《中华人民共和国商业银行法》等法律法规，制定本指引。',4,1.000000,NULL),
+                (381,'第二条',379,'第二条 在中华人民共和国境内设立的政策性银行、商业银行、农村合作银行、省（自治区）农村信用社联合社适用本指引。银监会监管的其他金融机构参照本指引执行。',4,2.000000,NULL),
+                (382,'第三条',379,'第三条 本指引所称信息科技外包是指银行业金融机构将原本由自身负责处理的信息科技活动委托给服务提供商进行处理的行为，包含项目外包、人力资源外包等形式。原则上包括以下类型：\n（一）研发咨询类外包：科技管理及科技治理等咨询设计外包，规划、需求、系统开发、测试外包；\n（二）系统运行维护类外包：包括数据中心（灾备中心）、机房配套设施、网络、系统的运维外包，自助设备、POS机等远程终端及办公设备的运维外包；\n（三）业务外包中的信息科技活动：市场拓展、业务操作、企业管理、资产处置等外包中的系统开发、运行维护和数据处理活动。\n',4,3.000000,NULL),
+                (383,'第四条',379,'第四条 本指引所称关联外包是指服务提供商为银行业金融机构的母公司或其所属集团子公司、关联公司或附属机构提供信息科技外包。',4,4.000000,NULL),
+                (384,'第五条',379,'第五条 信息科技外包可能产生如下风险，并导致银行业金融机构的战略、声誉、合规风险：\n（一）科技能力丧失：银行业金融机构过度依赖外部资源导致失去科技控制及创新能力，影响业务创新与发展；\n（二）业务中断：支持业务运营的外包服务无法持续提供导致业务中断；\n（三）信息泄露：包含客户信息在内的银行业金融机构非公开数据被服务提供商非法获得或泄露；\n（四）服务水平下降：由于外包服务质量问题或内外部协作效率低下，使得银行业金融机构信息科技服务水平下降。',4,5.000000,NULL),
+                (385,'第六条',379,'第六条 本指引所称机构集中度风险是指银行业金融机构将信息科技外包服务集中交由少量服务提供商承接而产生的风险，该风险可能造成集中性的服务中断、质量下降、安全事件等。',4,6.000000,NULL),
+                (386,'第七条',379,'第七条 本指引所称同业托管机构是指作为外包服务提供商为其他同行业金融机构提供信息科技外包服务的银行业金融机构。',4,7.000000,NULL),
+                (387,'第八条',379,'第八条 银行业金融机构应当将信息科技外包管理纳入全面风险管理体系，建立与本机构信息科技战略目标相适应的外包管理体系，控制或降低由于外包而引发的风险。',4,8.000000,NULL),
+                (388,'第九条',379,'第九条 银行业金融机构应当建立信息科技外包管理组织架构，制定外包管理战略，定期进行外包风险评估，通过服务提供商准入、评价、退出等手段建立及维护符合自身战略目标的供应商关系管理策略。',4,9.000000,NULL),
+                (389,'第十条',379,'第十条 银行业金融机构在实施信息科技外包时应当坚持以下原则：\n（一）以不妨碍核心能力建设、积极掌握关键技术为导向；\n（二）保持外包风险、成本和效益的平衡；\n（三）强调外包风险的事前控制，保持管控力度；\n（四）根据外包管理及技术发展趋势，持续改进外包策略和措施。',4,10.000000,NULL),
+                (390,'第十一条',379,'第十一条 银行业金融机构在实施信息科技外包时，不得将信息科技管理责任外包。',4,11.000000,NULL),
+                (391,'第十二条',379,'第十二条  对于不涉及银行客户及内部信息转移的信息科技产品采购、维保，及通讯线路租用、支付或清算系统接入等信息科技公共基础设施服务，银行业金融机构应当充分评估其信息科技风险，按照本指引第五章要求进行管理。',4,12.000000,NULL),
+                (392,'第二章 外包管理组织架构',4,NULL,4,2.000000,NULL),
+                (393,'第十三条',392,'第十三条 银行业金融机构董事会及高级管理层应当严格落实信息科技外包风险管理的相关职责, 明确信息科技外包风险管理的主管部门，制定并审批信息科技外包战略，审议信息科技外包管理流程及制度，督促并监控信息科技外包风险管理效果。',4,1.000000,NULL),
+                (394,'第十四条',392,'第十四条 信息科技外包风险主管部门的主要职责包括：\n（一）对外包风险进行识别、评估与风险提示；\n（二）监督、评价外包管理工作，并督促外包风险管理的持续改善；\n（三）向高级管理层定期汇报信息科技外包活动相关风险管理情况；\n（四）董事会或高级管理层确定的其他信息科技外包风险管理职责。',4,2.000000,NULL),
+                (395,'第十五条',392,'第十五条 银行业金融机构应当在信息科技管理部门或信息科技外包活动执行部门内建立信息科技外包管理执行团队，并配备足够人员履行以下职责：\n（一）实施信息科技外包战略；\n（二）制定并执行信息科技外包管理制度与流程；\n（三）执行供应商准入、评价、退出管理，建立并维护供应商关系管理策略；\n（四）制定保障外包服务持续性的应急管理方案，并组织实施定期演练；\n（五）对外包过程中的各项管理活动进行监控及分析，定期向信息科技及外包风险管理主管部门报告外包活动情况。',4,3.000000,NULL),
+                (396,'第三章 信息科技外包战略及风险管理',4,NULL,4,3.000000,NULL),
+                (397,'第一节 信息科技外包战略',396,NULL,4,1.000000,NULL),
+                (398,'第十六条',397,'第十六条 银行业金融机构应当以提升信息科技队伍能力，提高科技管理及创新水平，掌握信息科技核心技能为目标，基于信息科技战略、外包市场环境、自身风险控制能力和风险偏好制定信息科技外包战略，包括：不能外包的职能、资源能力建设方案、供应商关系管理策略和外包分级管理策略。',4,1.000000,NULL),
+                (399,'第十七条',397,'第十七条 银行业金融机构应当根据自身信息科技战略明确不能外包的职能。涉及战略管理、风险管理、内部审计及其他有关信息科技核心竞争力的职能不得外包。',4,2.000000,NULL),
+                (400,'第十八条 ',397,'第十八条 银行业金融机构应当根据外包战略制定资源、能力建设方案，通过补充人员、提升技能、知识转移等方式，有针对性地获取或提升管理及技术能力，降低对服务提供商的依赖。',4,3.000000,NULL),
+                (401,'第十九条',397,'第十九条 银行业金融机构应当建立与自身规模、市场地位相适应的供应商关系管理策略。通过准入和退出机制合理管控各类高风险服务提供商的数量，实现以下目标：防范行业垄断和机构集中度风险，通过引入适当的竞争在降低采购成本的同时提高服务质量，合理管控服务提供商的数量从而降低风险及管理成本等。',4,4.000000,NULL),
+                (402,'第二十条',397,'第二十条 银行业金融机构可以按照外包服务性质和重要性程度对服务提供商进行分级管理，对不同级别的服务提供商采取差异化的管控措施，在有效管理重要风险的前提下降低管理成本。',4,5.000000,NULL),
+                (403,'第二十一条',397,'第二十一条 银行业金融机构要同母公司或集团公司协同做好外包服务及服务提供商的管理工作，但应当保持关联外包有关决策的独立性，避免因关联关系而降低外包活动的风险控制水平。',4,6.000000,NULL),
+                (404,'第二节 信息科技外包风险管理',396,NULL,4,2.000000,NULL),
+                (405,'第二十二条',404,'第二十二条 银行业金融机构信息科技外包风险管理部门应当至少每年开展一次全面的外包风险管理评估，保持评估的独立性，并向高级管理层提交评估报告。评估内容包括：信息科技外包战略执行情况、外包信息安全、机构集中度、服务连续性、服务质量、政策及市场变化对外包服务的影响分析等。',4,1.000000,NULL),
+                (406,'第二十三条',404,'第二十三条 银行业金融机构应当对重要的外包服务提供商进行定期的风险评估，保持评估的独立性。至少在三年内覆盖所有重要的服务提供商。评估内容包括：服务提供商合规情况、服务的执行效果等，评估结果应当作为服务提供商准入及退出的重要依据。',4,2.000000,NULL),
+                (407,'第二十四条',404,'第二十四条 银行业金融机构内部审计部门应当定期开展信息科技外包风险管理审计工作，至少每三年对重要的外包服务活动进行一次全面审计。发生外包风险事件后应当及时开展专项审计。',4,3.000000,NULL),
+                (408,'第四章 信息科技外包管理',4,NULL,4,4.000000,NULL),
+                (409,'第一节 外包风险评估及准入',408,NULL,4,1.000000,NULL),
+                (410,'第二十五条',409,'第二十五条 外包项目立项前，银行业金融机构应当审慎检查项目与信息科技外包战略的一致性，根据项目内容、范围、性质对其进行风险识别和评估，制定相应的风险处置措施，不因外包活动的引入而增加整体剩余风险。重大外包项目应向董事会、高管层报告。',4,1.000000,NULL),
+                (411,'第二十六条',409,'第二十六条 银行业金融机构应当根据供应商关系管理策略，结合风险评估结果及服务提供商的准入标准，对备选服务提供商进行初步筛选，防范引入高机构集中度风险特点的服务提供商、或引入增加整体风险的服务提供商。',4,2.000000,NULL),
+                (412,'第二十七条',409,'第二十七条  对于外包服务提供商为同业托管机构的情况，银行业金融机构可参照本节内容对其进行管理。',4,3.000000,NULL),
+                (413,'第二节 服务提供商尽职调查',408,NULL,4,2.000000,NULL),
+                (414,'第二十八条',413,'第二十八条 对重要的服务提供商，银行业金融机构在与其签订合同前应当深入开展尽职调查，必要时可聘请第三方机构协助调查。',4,1.000000,NULL),
+                (415,'第二十九条',413,'第二十九条 银行业金融机构在尽职调查时应当关注服务提供商的技术和行业经验，包括但不限于：服务能力和支持技术、服务经验、服务人员技能、市场评价、监管评价等。',4,2.000000,NULL),
+                (416,'第三十条',413,'第三十条 银行业金融机构在尽职调查时应当关注服务提供商的内部控制和管理能力，包括但不限于：内部控制机制和管理流程的完善程度、内部控制技术和工具等。',4,3.000000,NULL),
+                (417,'第三十一条',413,'第三十一条 银行业金融机构在尽职调查时应当关注服务提供商的持续经营状况，包括但不限于：从业时间、市场地位及发展趋势、资金的安全性、近期盈利情况等。',4,4.000000,NULL),
+                (418,'第三十二条 ',413,'第三十二条 对于关联外包，银行业金融机构不得因关联关系而降低对服务提供商的要求，应当在尽职调查阶段详细分析服务提供商技术、内控和管理水平，确认其有足够能力实施外包服务、处理突发事件等。',4,5.000000,NULL),
+                (419,'第三十三条',413,'第三十三条 对于外包服务提供商为同业托管机构的情况，银行业金融机构可参照本节内容对其进行管理。',4,6.000000,NULL),
+                (420,'第三节 外包服务合同及要求',408,NULL,4,2.000000,NULL),
+                (421,'第三十四条',420,'第三十四条 银行业金融机构在实施外包服务项目前，应当与服务提供商签订服务合同。合同应当根据外包服务需求、风险评估及尽职调查结果确定详细程度和重点。',4,1.000000,NULL),
+                (422,'第三十五条',420,'第三十五条 银行业金融机构在合同或协议中应当明确以下内容，包括但不限于：\n（一）服务范围、服务内容、工作时限及安排、责任分配、交付物要求以及后续合作中的相关限定条件；\n（二）合规与内控要求，对法律法规及银行业金融机构内部管理制度的遵从要求、监管政策的通报贯彻机制、服务提供商的内控措施；\n（三）服务连续性要求，服务提供商的服务连续性管理目标应当满足银行业金融机构业务连续性目标要求；\n（四）银行业金融机构监控和检查的权利、频率，服务提供商配合其内、外部审计机构检查，及配合银行业监管机构检查的责任；\n（五）政策或环境变化因素等在内的合同变更或终止的触发条件，外包服务提供商在过渡期间应该履行的主要职责及合同变更或终止的过渡安排，包括信息、资料和设施的交接处置等过渡期间相关服务的安排；\n（六）外包服务过程中产生、加工、交互的信息和知识产权的归属权以及允许服务提供商使用的内容及范围，对服务提供商使用合法软、硬件产品的要求；\n（七）服务要求或服务水平条款，至少应当包括如下内容：外包服务的关键要素、服务时效和可用性、数据的机密性和完整性要求、变更的控制、安全标准的遵守情况、技术支持水平等；\n（八）争端解决机制、违约及赔偿条款，至少包括如下内容：服务质量违约、安全违约、知识产权违约等，及在各种违约情况下的赔偿以及外包争端的解决机制；\n（九）报告条款，至少包括常规报告内容和报告频度、突发事件时的报告路线、报告方式及时限要求。',4,2.000000,NULL),
+                (423,'第三十六条',420,'第三十六条 银行业金融机构应当在合同或协议中明确服务提供商在安全和保密方面的责任，以及针对安全及保密要求需采取的具体措施。包括但不限于：\n（一）禁止服务提供商在合同允许范围外使用或者披露银行业金融机构的信息，以防止信息被非授权使用；\n（二）在合同或协议中约定服务提供商对银行客户信息安全和银行客户权利的保护条款、事故处理方式及违约赔偿条款；\n（三）在合同或协议中约定服务提供商不得以所服务的银行业金融机构名义开展活动；\n（四）服务提供商接触银行业金融机构信息时，需满足安全和保密相关条款的要求；\n（五）在发生银监会规定的信息科技突发事件，或发生可能引发系统性、区域性银行业信息科技风险类突发事件时，服务提供商应及时向银行业金融机构报告，包括事件的影响以及处置和纠正措施。',4,3.000000,NULL),
+                (424,'第三十七条',420,'第三十七条 银行业金融机构应当在合同或协议中明确要求服务提供商不得将外包服务转包和变相转包。在涉及外包服务分包时应当要求：\n（一）不得将外包服务的主要业务分包；\n（二）主服务提供商对服务水平负总责，确保分包服务提供商能够严格遵守外包合同或协议；\n（三）主服务提供商对分包商进行监控，并对分包商的变更履行通知或报告审批义务。',4,4.000000,NULL),
+                (425,'第四节 外包服务安全管理',408,NULL,4,2.000000,NULL),
+                (426,'第三十八条',408,'第三十八条 银行业金融机构应当制定和落实信息安全管控措施，防范因外包活动引起的信息泄露、信息篡改、信息不可用、非法入侵、物理环境或设施遭受破坏等风险。具体措施包括：\n（一）对外包人员进行信息安全培训，提高风险管理意识，确保信息安全管控措施在外包服务过程中有效落实；\n（二）明确外包活动需要访问或使用的信息资产，包括场地、办公设施、计算机、服务器、软件、数据、信息、物理访问控制设备、账号、网络宽带、网络端口等，按“必需知道”和“最小授权”原则进行访问授权；\n（三）对重要或核心的信息系统开发交付物进行源代码检查和安全扫描；\n（四）定期对服务提供商进行安全检查，获取服务提供商自评估或第三方评估报告。',4,3.000000,NULL),
+                (427,'第三十九条',408,'第三十九条 银行业金融机构对关联外包服务提供商定期进行的安全检查，不得以服务提供商的自评估替代，不得因关联关系而影响检查的独立性、客观性及公正性。',4,4.000000,NULL),
+                (428,'第四十条 ',408,'第四十条 银行业金融机构应当关注外包服务引入的新技术或新应用对现有治理模式及安全架构的冲击，及时完善信息安全管控体系，避免因新技术或应用的引入而增加额外的信息安全风险。',4,5.000000,NULL),
+                (429,'第五节 外包服务监控与评价',4,NULL,4,4.000000,NULL),
+                (430,'第四十一条',429,'第四十一条 银行业金融机构应当对外包服务过程进行持续监控，要求服务提供商建立阶段性服务目标及任务，并跟踪任务的执行情况，及时发现和纠正服务过程中存在的各类异常情况。',4,1.000000,NULL),
+                (431,'第四十二条',429,'第四十二条 银行业金融机构应当根据信息科技外包需求、合同、服务水平协议等建立明确的服务质量监控指标，并进行相应监控。常见指标包括：\n（一）信息系统和设备及基础设施的可用率、设备的开机率；\n（二）故障次数、故障解决率、故障的响应时间；\n（三）服务的次数、客户满意度；\n（四）各阶段业务需求的及时完成率、程序的缺陷数、需求变更率；\n（五）外包人员工作饱和率、外包人员的考核合格率。',4,2.000000,NULL),
+                (432,'第四十三条',429,'第四十三条 银行业金融机构应当建立明确的服务目录、服务水平协议以及服务水平监控评价机制,并确保外包服务监控基础数据和评价结果的真实性和完整性，且数据至少需保存到服务结束后一年。',4,3.000000,NULL),
+                (433,'第四十四条',429,'第四十四条 银行业金融机构应当对服务提供商的财务、内控及安全管理进行持续监控，关注其因破产、兼并、关键人员流失、投入不足和管理不善等因素引发的财务状况恶化及内部管理混乱等情况，防范外包服务意外终止或服务质量的急剧下降。',4,4.000000,NULL),
+                (434,'第四十五条',429,'第四十五条 银行业金融机构监控到异常情况时，应当及时督促服务提供商采取纠正措施，情节严重的或未及时纠正的，应当约谈服务提供商高管人员并限期整改。',4,5.000000,NULL),
+                (435,'第四十六条',429,'第四十六条 外包服务结束时，银行业金融机构应当对服务提供商进行评价，评价结果应当作为服务提供商准入的重要参考依据。',4,6.000000,NULL),
+                (436,'第四十七条',429,'第四十七条 对于关联外包，银行业金融机构董事会及高级管理层应当推动母公司或所属集团将外包服务质量纳入对服务提供商的业绩评价范围，建立外包服务重大事件问责机制。同时，应当要求服务提供商在其内部建立与外包服务水平相关的绩效考核机制。',4,7.000000,NULL),
+                (437,'第六节 外包服务中断与终止',4,NULL,4,4.000000,NULL),
+                (438,'第四十八条',437,'第四十八条 银行业金融机构应当考虑信息科技外包的引入对业务连续性管理的影响，有针对性地完善业务连续性管理计划，包括但不限于：\n（一）识别出重要业务所涉及的服务提供商和资源；\n（二）通过合同、协议等形式明确要求服务提供商提前准备并维护好相关资源；\n（三）对服务提供商业务连续性管理进行监控，并评价其管理水平；\n（四）在进行业务连续性计划演练时将相关的服务提供商纳入演练范围。',4,1.000000,NULL),
+                (439,'第四十九条',437,'第四十九条 为降低外包突发事件的可能性及影响，银行业金融机构应当事先对业务连续性管理造成重大影响的外包服务建立风险控制、缓释或转移措施，包括但不限于以下内容：\n（一）在外包服务实施过程中持续收集服务提供商相关信息，尽早发现可能导致服务中断的情况；\n（二）与服务提供商事先约定在其服务质量不能满足合同要求的情况下获取其外包服务资源的优先权；\n（三）要求服务提供商制定服务中断相关的应急处理预案，如提供备份人员；\n（四）对于涉及重要业务的外包服务，银行业金融机构需考虑预先在其内部配置相应的人力资源，掌握必要的技能，以在外包服务中断期间自行维持最低限度的服务能力。',4,2.000000,NULL),
+                (440,'第五十条 ',437,'第五十条 银行业金融机构应当针对重要外包服务中断的场景，拟定相应的应急计划，并定期进行演练，考虑因素包括但不限于以下内容：\n（一）事件场景，如重要人员流失导致服务无法持续，服务提供商主动退出，因资质变更、被收购、兼并或破产等原因导致的服务提供商被动退出等；\n（二）事件持续时间和恢复可能性；\n（三）事件影响范围和可能的应急措施；\n（四）服务提供商自行恢复服务的可能性和时间；\n（五）备选的服务提供商以及外包服务迁移方案；\n（六）外包服务过渡给银行业金融机构自行运作的可能性、时效及资源需求。',4,3.000000,NULL),
+                (441,'第五十一条',437,'第五十一条 对于无法满足外包服务要求或发生重大事件的情况，银行业金融机构应当在充分评估其影响及制定退出计划的前提下，考虑主动要求服务提供商终止服务，情节特别严重的，可考虑取消准入资质，并报监管机构申请对其备案。对于关联外包，银行业金融机构不得因为关联关系而影响服务提供商退出机制的落实。',4,4.000000,NULL),
+                (442,'第五章 机构集中度风险管理',4,NULL,4,5.000000,NULL),
+                (443,'第五十二条',442,'第五十二条 银行业金融机构应当依据服务提供商所承接外包服务的数量、金额在本行重要信息科技服务中的占比，服务提供商所承接外包服务在银行业服务市场占比情况，识别具有机构集中度特点的外包服务提供商。同时，还应识别服务提供商之间为集团子公司、关联公司或附属机构所产生的机构集中度风险。',4,1.000000,NULL),
+                (444,'第五十三条',442,'第五十三条 银行业金融机构应当积极采用分散信息科技外包活动、提高自主研发运行能力等形式，降低机构集中度，减少对外包服务提供商的依赖。',4,2.000000,NULL),
+                (445,'第五十四条',442,'第五十四条 银行业金融机构应当要求具有机构集中度特点的外包服务提供商提供充分的证据，证明其内部控制和管理能力、持续运营能力等。',4,3.000000,NULL),
+                (446,'第五十五条',442,'第五十五条 银行业金融机构应当要求具有机构集中度特点的外包服务提供商为银行业金融机构配备相对独立的资源，包括服务团队、场地、系统、设备等；并对资源进行定期检查，确保资源及时到位。',4,4.000000,NULL),
+                (447,'第五十六条',442,'第五十六条 银行业金融机构应当要求具有机构集中度特点的外包服务提供商在外包服务中断应急预案中，明确外包服务的优先级，并进行服务中断应急演练，服务提供商应当至少参与服务交接、敏感信息处置等演练过程。',4,5.000000,NULL),
+                (448,'第五十七条',442,'第五十七条 银行业金融机构应当特别加强对具有机构集中度特点的外包服务提供商的财务、内控、安全管理情况的持续监控，建立信息收集机制，及时掌握风险事件情况，防范外包服务意外终止或服务质量急剧下降对本机构产生大面积影响。',4,6.000000,NULL),
+                (449,'第五十八条',442,'第五十八条 银行业金融机构应当对具有机构集中度特点的外包服务提供商增强监督频率与力度，必要时可指派专人进行现场监督。',4,7.000000,NULL),
+                (450,'第五十九条',442,'第五十九条 对于具有机构集中度特点的外包服务提供商为同业托管机构的情况，银行业金融机构可参照本节内容对其进行外包管理。',4,8.000000,NULL),
+                (451,'第六章 跨境及非驻场外包管理',4,NULL,4,6.000000,NULL),
+                (452,'第一节 跨境外包风险管理',451,NULL,4,1.000000,NULL),
+                (453,'第六十条',452,'第六十条 跨境外包是指在境外其他国家或地区实施的信息科技外包服务活动。',4,1.000000,NULL),
+                (454,'第六十一条',452,'第六十一条 跨境外包除具有本指引前述风险外，还包括由于某一国家或地区经济、政治、社会变化及事件而产生的国别风险，及由于外包实施场地远离银行业金融机构而产生的非驻场风险。',4,2.000000,NULL),
+                (455,'第六十二条',452,'第六十二条 银行业金融机构应当充分了解并持续监控服务提供商所在国家或地区状况，通过建立业务连续性计划防范跨境外包所带来的国别风险。',4,3.000000,NULL),
+                (456,'第六十三条',452,'第六十三条 银行业金融机构应当关注国外法律法规、监管要求对其获取服务提供商外包管理信息可能造成的影响。实施跨境外包应当以不妨碍银行业金融机构有效履行外包服务监控管理职能及监管机构延伸检查为前提。',4,4.000000,NULL),
+                (457,'第六十四条',452,'第六十四条 银行业金融机构在选择跨境外包时，应当明确其所在国家或地区监管当局已与银监会签订谅解备忘录或双方认可的其他约定。',4,5.000000,NULL),
+                (458,'第六十五条',452,'第六十五条 银行业金融机构在选择跨境外包时，还应当充分审查评估服务提供商保护客户信息的能力，并将其作为选择服务提供商的重要指标。涉及客户信息的跨境外包，应当在符合监管法规政策并获得客户授权的前提下开展。',4,6.000000,NULL),
+                (459,'第六十六条',452,'第六十六条 银行业金融机构在实施跨境外包时，其合同应当包括法律选择和司法管辖权的约定，明确争议解决时所适用的法律及司法管辖权，原则上应当要求服务提供商依照中国的法律解决纠纷。',4,7.000000,NULL),
+                (460,'第二节 非驻场外包风险管理',451,NULL,4,2.000000,NULL),
+                (461,'第六十七条',460,'第六十七条 非驻场外包是指服务提供商不在银行业金融机构现场提供服务的外包形式。由于银行业金融机构不能对其内部控制及风险管理措施进行直接管控，应当在信息安全、知识产权保护、质量监控、法律合规等方面加强对服务提供商的风险管理。',4,1.000000,NULL),
+                (462,'第六十八条',460,'第六十八条 银行业金融机构应当建立针对非驻场外包服务的内部控制及风险管理要求的最低标准，该标准应当作为选择服务提供商的最低要求。',4,2.000000,NULL),
+                (463,'第六十九条',460,'第六十九条 银行业金融机构应当对重要的非驻场外包服务进行实地检查。实地检查原则上一年不少于一次，检查结果作为外包服务提供商项目考核及准入的重要指标。',4,3.000000,NULL),
+                (464,'第七十条',460,'第七十条 银行业金融机构应当加强对外包服务提供商非驻场外包服务内部控制、质量管理、信息安全的有效性评估，评估结果作为供应商准入的重要依据。对于高风险的服务提供商，银行业金融机构应当责令其进行限期整改，对于逾期未改的服务提供商应当暂停或取消其服务资格。',4,4.000000,NULL),
+                (465,'第七十一条',460,'第七十一条 对于非驻场外包服务提供商为同业托管机构的情况，银行业金融机构可以参照本节内容对其进行外包管理，但同业托管机构须将为其他同行业金融机构提供的信息科技外包服务视同自身信息科技服务的重要组成部分，不得区别对待，降低对自身提供外包服务的风险管控水平。',4,5.000000,NULL),
+                (466,'第七章 银行业重点外包服务机构风险管理要求',4,NULL,4,7.000000,NULL),
+                (467,'第七十二条',466,'第七十二条 银行业重点外包服务机构是指集中为银行业金融机构提供外包服务，同时满足下述条件，如其外包服务失败可能导致银行业大面积数据损毁、丢失、泄露或信息系统服务中断，造成经济损失的机构，具体条件如下：\n(一)承担集中存贮客户数据的业务交易系统外包服务；或承担银行业金融机构客户资料、交易数据等敏感信息的批量分析或处理服务；或承担银行业金融机构数据中心、灾备中心机房及基础设施外包服务；且上述服务均为非驻场外包服务。\n(二)服务的法人银行业金融机构数量、服务合同金额占有本服务领域市场份额的三分之一以上；或服务的跨区域经营法人银行业金融机构数量达到3家或以上；或服务的其他类型法人银行业金融机构数量达到10家或以上。\n',4,1.000000,NULL),
+                (468,'第七十三条',466,'第七十三条 银行业金融机构应当根据监管机构发布的银行业重点外包服务机构风险提示，按照如下要求进行管理：\n(一) 银行业重点外包服务机构应当是中华人民共和国境内注册的独立法人实体，注册资本和实收资本不少于1000万，注册成立时间不少于3年。\n(二) 银行业重点外包服务机构应当拥有健全的组织架构，并针对所提供的外包服务建立有效的风险治理架构，至少应当建立由公司高级管理层直接领导、针对银行业金融机构外包服务的、专职信息科技风险管理团队，为持续的外包服务提供保证。\n(三) 银行业重点外包服务机构应当建立与所承担的服务范围和规模相适应的服务管理体系，建立完善的信息安全、服务质量、服务持续性等管理制度体系，拥有有效的检查、监控和考核机制，确保管理规范有效执行。\n(四) 银行业重点外包服务机构应当具有足够的技术能力、人力资源和设施、环境，满足外包服务的质量和安全管理要求。银行业重点外包服务机构承担的银行业金融机构外包服务场地应当设置在中国境内。',4,2.000000,NULL),
+                (469,'第七十四条',466,'第七十四条 银行业金融机构应当要求银行业重点外包服务机构具有如下相关领域资质认证:\n(一) 具有完善的信息安全管理体系、业务连续性管理体系，并通过业界公认较为权威的信息安全管理和业务连续性管理资质认证。\n(二) 具有完善的质量管理体系，并通过业界公认较为权威的质量管理资质认证。\n(三) 承担银行业金融机构数据中心、灾备中心机房及基础设施外包服务的银行业重点外包服务机构，其机房及基础设施应当达到国家电子计算机机房最高标准。\n(四) 承担集中存贮客户数据的业务交易系统外包服务，或承担银行业金融机构客户资料、交易数据等敏感信息的批量分析或处理服务的银行业重点外包服务机构，应当具有完善的运行服务管理体系，并通过业界公认较为权威的运行服务管理资质认证。',4,3.000000,NULL),
+                (470,'第七十五条',466,'第七十五条 银行业金融机构应当在风险管理、审计方面对银行业重点外包服务机构提出如下要求：\n(一) 银行业重点外包服务机构应当具有信息科技风险的管理体系，有效识别、监测、评估和控制风险。银行业重点外包服务机构应当至少每季度向所服务的银行业金融机构报送外包风险监控报告，针对监控发现的潜在风险或风险事件，及时采取控制或缓释措施。\n(二) 银行业重点外包服务机构应当每年聘请独立的审计机构,对自身外包服务进行风险评估,年度风险评估报告需报送所服务的银行业金融机构，并抄送银监会或其派出机构。\n(三) 银行业重点外包服务机构应当对其外包服务团队成员进行背景调查，确保其过往无不良记录，且应当与项目成员签订保密协议，并保留至少10年的法律追诉期。',4,4.000000,NULL),
+                (471,'第八章 监督管理',4,NULL,4,8.000000,NULL),
+                (472,'第七十六条',471,'第七十六条 银行业金融机构开展以下信息科技外包服务时,应当在外包合同签订前二十个工作日向银监会或其派出机构报告，针对银行业金融机构信息科技外包风险，银监会及其派出机构可以采取风险提示、约见谈话、监管质询等措施。\n（一）信息科技工作整体外包；\n（二）数据中心或灾备中心整体外包；\n（三）涉及将银行业金融机构客户资料、交易数据等敏感信息交由服务提供商进行分析或处理的信息科技外包；\n（四）以非驻场形式实施的、集中存贮客户数据的业务交易系统外包；\n（五）关联外包；\n（六）涉及跨境的信息科技外包；\n（七）其他银监会认为重要的信息科技外包。',4,1.000000,NULL),
+                (473,'第七十七条 ',471,'第七十七条 银行业金融机构信息科技外包活动中发生如下重大事件时，应当在两个工作日内向银监会或其派出机构报告。\n（一）银行业金融机构客户信息等敏感数据泄露；\n（二）数据损毁或者重要业务运营中断；\n（三）由于不可抗力或服务提供商重大经营、财务问题，导致或可能导致多家银行业金融机构外包服务中断;\n（四）其他重大的服务提供商违法违规事件；\n（五）银监会规定需要报告的其他重大事件。',4,2.000000,NULL),
+                (474,'第七十八条',471,'第七十八条 银行业金融机构在开展年度外包风险管理评估工作后，应当将年度风险评估报告报送银监会或其派出机构。',4,3.000000,NULL),
+                (475,'第七十九条',471,'第七十九条 银监会及其派出机构对银行业金融机构信息科技外包工作进行监督和检查，监督检查结果纳入对银行业金融机构的监管评级。',4,4.000000,NULL),
+                (476,'第八十条',471,'第八十条 对于风险较高的信息科技外包服务，银监会或其派出机构可以要求银行业金融机构暂缓、中止该类外包服务，直至银行业金融机构、外包服务提供商有效改正。',4,5.000000,NULL),
+                (477,'第八十一条',471,'第八十一条 银行业金融机构违反本指引规定的，银监会或其派出机构可要求其纠正或采取替代方案，并视情况予以问责。因管理过失导致外包活动严重危及银行业金融机构稳健运行、损害存款人和其他客户合法权益的，依法追究银行业金融机构管理责任。',4,6.000000,NULL),
+                (478,'第八十二条',471,'第八十二条 银监会实行银行业信息科技外包服务活动风险监测机制，定期对银行业金融机构发布银行业重点外包服务机构名单和风险提示，防范因高机构集中度外包服务导致的系统性、区域性信息科技风险。',4,7.000000,NULL),
+                (479,'第八十三条',471,'第八十三条 银监会应当对具有机构集中度特点的银行业金融机构信息科技外包服务进行重点风险监测、评估，根据需要，可以要求银行业金融机构与重点外包服务机构会谈，就其外包服务活动和风险的重大事项作出说明。',4,8.000000,NULL),
+                (480,'第八十四条',471,'第八十四条 银监会应当组织银行业金融机构实地核查银行业重点外包服务机构承担的银行业金融机构信息科技服务活动，原则上每两年进行一次，也可以委托其他第三方机构审计的形式实施。',4,9.000000,NULL),
+                (481,'第八十五条',471,'第八十五条 银监会可以根据银行业金融机构信息科技服务活动风险评估和实地核查结果，对银行业金融机构发出监管提示，要求其督促银行业重点外包服务机构对风险问题实施整改。',4,10.000000,NULL),
+                (482,'第八十六条',471,'第八十六条 银行业重点外包服务机构应当配合银行业金融机构及银监会的风险监测和实地核查。',4,11.000000,NULL),
+                (483,'第八十七条',471,'第八十七条 银监会组织相关银行业金融机构对银行业信息科技外包服务提供商建立服务管理记录，并对其进行风险评估和评级。',4,12.000000,NULL),
+                (484,'第八十八条',471,'第八十八条 服务提供商在外包服务中存在以下情形的，银监会定期向银行业发布服务提供商风险预警，公布机构名单、服务信息等，要求银行业金融机构禁止相关服务提供商承担银行业信息科技外包服务，禁止期至少为两年。外包服务提供商两年内仍未整改的，延长其禁止期。\n（一） 违反国家法律、法规和监管政策，情节严重的；\n（二） 窃取、泄露银行业金融机构敏感信息，情节严重的；\n（三） 因管理过失，多次发生重要信息系统服务中断或数据损毁、丢失、泄露事件的；\n（四） 服务质量低下并给多家银行业金融机构造成损失，多次提示仍未整改的；\n（五） 对风险监测和实地检查发现的问题，逾期仍未整改的；\n（六） 存在其他违法违规行为，或发生其他重大信息科技风险事件的。',4,13.000000,NULL),
+                (485,'第八十九条',471,'第八十九条  银监会负责监督银行业金融机构对信息科技外包服务提供商实施准入管理。对于存在重大风险的外包活动，银行业金融机构应当立即评估外包的适当性，对信息科技外包服务提供商进行风险预警提示，要求其进行整改并设定期限；逾期未整改的，禁止其承担信息科技外包服务。',4,14.000000,NULL),
+                (486,'第九章 附则',4,NULL,4,9.000000,NULL),
+                (487,'第九十条',486,'第九十条 本指引由银监会负责解释、修订。',4,1.000000,NULL),
+                (488,'第九十一条',486,'第九十一条 本指引自公布之日起施行。',4,2.000000,NULL),
+                (489,'A.5信息安全策略',5,NULL,5,1.000000,NULL),
+                (490,'\nA.5.1信息安全管理指导',489,'目标：依据业务要求和相关法律法规，为信息安全提供管理指导和支持。',5,1.000000,NULL),
+                (491,'A.5.1.1信息安全策略',490,'信息安全策略集应被定义，由管理者批准，并发布、传达给所有员工和外部相关方。',5,1.000000,NULL),
+                (492,'A.5.1.2信息安全策略的评审',490,'应按计划的时间间隔或当重大变化发生时进行信息安全策略评审，以确保其持续的适宜性、充分性和有效性。',5,2.000000,NULL),
+                (493,'A.6信息安全组织',5,NULL,5,2.000000,NULL),
+                (494,'A.6.1内部组织',493,'目标：建立一个管理框架，以启动和控制组织内信息安全的实现和运行。',5,1.000000,NULL),
+                (495,'A.6.1.1信息安全的角色和责任',494,'所有的信息安全责任应予以定义和分配。',5,1.000000,NULL),
+                (496,'A.6.1.2职责分离',494,'应分离冲突的职责及其责任范围，以减少未授权或无意的修改或者不当使用组织资产的机会。',5,2.000000,NULL),
+                (497,'A.6.1.3与职能机构的联系',494,'应维护与相关职能机构的适当联系。',5,3.000000,NULL),
+                (498,'A.6.1.4与特定相关方的联系',494,'应维护与特定相关方、其他专业安全论坛和专业协会的适当联系。',5,4.000000,NULL),
+                (499,'A.6.1.5项目管理中的信息安全',494,'应关注项目管理中的信息安全问题，无论何种类型的项目。',5,5.000000,NULL),
+                (500,'A.6.2移动设备和远程工作',493,'目标：确保移动设备远程工作及其使用的安全。',5,2.000000,NULL),
+                (501,'A.6.2.1移动设备策略',500,'应采用相应的策略及其支持性的安全措施以管理由于使用移动设备所带来的风险。',5,1.000000,NULL),
+                (502,'A.6.2.2远程工作',500,'应实现相应的策略及其支持性的安全措施，以保护在远程工作地点上所访问的、处理的或存储的信息。',5,2.000000,NULL),
+                (503,'A.7人力资源安全',5,NULL,5,3.000000,NULL),
+                (504,'A.7.1任用前',503,'目标：确保员工和合同方理解其责任，并适合其角色。',5,1.000000,NULL),
+                (505,'A.7.1.1\n审查',504,'应按照相关法律法规和道德规范，对所有任用候选者的背景进行验证核查，并与业务要求、访问信息的等级和察觉的风险相适宜',5,1.000000,NULL),
+                (506,'A.7.1.2任用条款及条件',504,'应在员工和合同方的合同协议中声明他们和组织对信息安全的责任。',5,2.000000,NULL),
+                (507,'A.7.2任用中',503,'目标：确保员工和合同方意识到并履行其信息安全责任。',5,2.000000,NULL),
+                (508,'A.7.2.1管理责任',507,'管理者应宜要求所有员工和合同方按照组织已建立的策略和规程应用信息安全。',5,1.000000,NULL),
+                (509,'A.7.2.2信息安全意识、教育和培训',507,'组织所有员工和相关的合同方，应按其工作职能，接受适当的意识教育和培训，及组织策略及规程的定期更新的信息。',5,2.000000,NULL),
+                (510,'A.7.2.3违规处理过程',507,'应有正式的、且已被传达的违规处理过程以对信息安全违规的员工采取措施。',5,3.000000,NULL),
+                (511,'A.7.3任用的终止和变更',503,'目标；在任用变更或终止过程中保护组织的利益',5,2.000000,NULL),
+                (512,'A.7.3.1任用终止或变更的责任',511,'应确定任用终止或变更后仍有效的信息安全责任及其职责，传达至员工或合同方并执行。',5,1.000000,NULL),
+                (513,'A.8资产管理',5,NULL,5,4.000000,NULL),
+                (514,'A.8.1有关资产的责任',513,'目标：识别组织资产并定义适当的保护责任。',5,1.000000,NULL),
+                (515,'A.8.1.1资产清单',514,'应识别信息，以及与信息和信息处理设施相关的其他资产，并编制和维护这些资产的清单。',5,1.000000,NULL),
+                (516,'A.8.1.2资产的所属关系',514,'应维护资产清单中资产的所属关系。',5,2.000000,NULL),
+                (517,'A.8.1.3资产的可接受使用',514,'应识别可接受的信息使用规则，以及与信息和信息处理设施有关的资产的可接受的使用规则，形成文件并加以实现。',5,3.000000,NULL),
+                (518,'A.8.1.4资产归还',514,'所有员工和外部用户在任用、合同或协议终止时，应归还其占用的所有组织资产。',5,4.000000,NULL),
+                (519,'A.8.2信息分级',513,'目标：确保信息按照其对组织的重要程度受到适当水平的保护。',5,2.000000,NULL),
+                (520,'A.8.2.1信息的分级',519,'信息应按照法律要求、价值、重要性及其对未授权泄露或修改的敏感性进行分级。',5,1.000000,NULL),
+                (521,'A.8.2.2信息的标记',519,'应按照组织采用的信息分级方案，制定并实现一组适当的信息标记规程。',5,2.000000,NULL),
+                (522,'A.8.2.3资产的处理',519,'应按照组织采用的信息分级方案，制定并实现资产处理规程。',5,3.000000,NULL),
+                (523,'A.8.3介质处理',513,'目标：防止存储在介质中的信息遭受未授权的泄露、修改、移除或破坏。',5,2.000000,NULL),
+                (524,'A.8.3.1移动介质的管理',523,'应按照组织采用的分级方案，实现移动介质管理规程。',5,1.000000,NULL),
+                (525,'A.8.3.2 介质的处置',523,'应使用正式的规程安全地处置不再需要的介质。',5,2.000000,NULL),
+                (526,'A.8.3.3物理介质的转移',523,'包含信息的介质在运送中应受到保护，以防止未授权访问、不当使用或毁坏。',5,3.000000,NULL),
+                (527,'A.9访问控制',5,NULL,5,5.000000,NULL),
+                (528,'A.9.1访问控制的业务要求',527,'目标：限制对信息和信息处理设施的访问。',5,1.000000,NULL),
+                (529,'A.9.1.1访问控制策略',528,'应基于业务和信息安全要求，建立访问控制策略，形成文件并进行评审。',5,1.000000,NULL),
+                (530,'A.9.1.2网络和网络服务的访问',528,'应仅向用户提供他们已获专门授权使用的网络和网络服务的访问。',5,2.000000,NULL),
+                (531,'A.9.2用户访问管理',527,'目标：确保授权用户对系统和服务的访问，并防止未授权的访问。',5,2.000000,NULL),
+                (532,'A.9.2.1用户注册和注销',531,'应实现正式的用户注册及注销过程，以便可分配访问权。',5,1.000000,NULL),
+                (533,'A.9.2.2用户访问供给',531,'应对所有系统和服务的所有类型用户，实现一个正式的用户访问供给过程以分配或撤销访问权。',5,2.000000,NULL),
+                (534,'A.9.2.3特许访问权管理',531,'应限制并控制特许访问权的分配和使用。',5,3.000000,NULL),
+                (535,'A.9.2.4用户的秘密鉴别信息管理',531,'应通过正式的管理过程控制秘密鉴别信息的分配。',5,4.000000,NULL),
+                (536,'A.9.2.5用户访问权的评审',531,'资产拥有者应定期对用户的访问权进行评审。',5,5.000000,NULL),
+                (537,'A.9.2.6访问权的移除或调整',531,'所有员工和外部用户对信息和信息处理设施的访问权在任用、合同或协议终止时，应予以移除，或在变更时予以调整。',5,6.000000,NULL),
+                (538,'A.9.3用户责任',527,'目标：让用户承担保护其鉴别信息的责任。',5,2.000000,NULL),
+                (539,'A.9.3.1秘密鉴别信息的使用',538,'应要求用户遵循组织在使用秘密鉴别信息时的惯例。',5,1.000000,NULL),
+                (540,'A.9.4系统和应用访问控制',527,'目标：防止对系统和应用的未授权访问。',5,2.000000,NULL),
+                (541,'A.9.4.1信息访问限制',540,'应按照访问控制策略限制对信息和应用系统功能的访问。',5,1.000000,NULL),
+                (542,'A.9.4.2安全登录规程',540,'当访问控制策略要求时，应通过安全登录规程控制对系统和应用的访问。',5,2.000000,NULL),
+                (543,'A.9.4.3口令管理系统',540,'口令管理系统应是交互式的，并应确保优质的口令。',5,3.000000,NULL),
+                (544,'A.9.4.4 特权实用程序的使用',540,'对于可能超越系统和应用控制的实用程序的使用应予以限制并严格控制。',5,4.000000,NULL),
+                (545,'A.9.4.5程序源代码的访问控制',540,'应限制对程序源代码的访问。',5,5.000000,NULL),
+                (546,'A.10密码',5,NULL,5,6.000000,NULL),
+                (547,'A.10.1密码控制',546,'目标：确保适当和有效地使用密码技术以保护信息的保密性、真实性和（或）完整性。',5,1.000000,NULL),
+                (548,'A.10.1.1密码控制的使用策略',547,'应开发和实现用于保护信息的密码控制使用策略。',5,1.000000,NULL),
+                (549,'A.10.1.2密钥管理',547,'应制定和实现贯穿其全生命周期的密钥使用、保护和生存期策略。',5,2.000000,NULL),
+                (550,'A.11物理和环境安全',5,NULL,5,7.000000,NULL),
+                (551,'\nA.11.1安全区域',550,'目标：防止对组织信息和信息处理设施的未授权物理访问、损坏和干扰。',5,1.000000,NULL),
+                (552,'A.11.1.1物理安全边界',551,'应定义和使用安全边界来保护包含敏感或关键信息和信息处理设施的区域。',5,1.000000,NULL),
+                (553,'A.11.1.2物理入口控制',551,'安全区域应由适合的入口控制所保护，以确保只有授权的人员才允许访问。',5,2.000000,NULL),
+                (554,'A.11.1.3办公室、房间和设施的安全保护',551,'应为办公室、房间和设施设计并采取物理安全措施。',5,3.000000,NULL),
+                (555,'A.11.1.4外部和环境威胁的安全防护',551,'应设计和应用物理保护以防自然灾害、恶意攻击和意外。',5,4.000000,NULL),
+                (556,'A.11.1.5在安全区域工作',551,'应设计和应用安全区域工作规程。',5,5.000000,NULL),
+                (557,'A.11.1.6 交接区',551,'访问点（例如交接区）和未授权人员可进入的其他点应加以控制，如果可能，应与信息处理设施隔离，以避免未授权访问。',5,6.000000,NULL),
+                (558,'A.11.2设备',550,'目标：防止资产的丢失、损坏、失窃或危及资产安全以及组织活动的中断。',5,2.000000,NULL),
+                (559,'A.11.2.1设备安置和保护',558,'应安置或保护设备，以减少由环境威胁和危险所造成的各种风险以及未授权访问的机会。',5,1.000000,NULL),
+                (560,'A.11.2.2支持性设施',558,'应保护设备使其免于由支持性设施的失效而引起的电源故障和其他中断。',5,2.000000,NULL),
+                (561,'A.11.2.3布缆安全',558,'应保证传输数据或支持信息服务的电源布缆和通信布缆免受窃听、干扰或损坏。',5,3.000000,NULL),
+                (562,'A.11.2.4设备维护',558,'设备应予以正确地维护，以确保其持续的可用性和完整性。',5,4.000000,NULL),
+                (563,'A.11.2.5资产的移动',558,'设备、信息或软件在授权之前不应带出组织场所。',5,5.000000,NULL),
+                (564,'A.11.2.6组织场所外的设备与资产安全',558,'应对组织场所外的资产采取安全措施，要考虑工作在组织场所外的不同风险',5,6.000000,NULL),
+                (565,'A.11.2.7设备的安全处置或再利用',558,'包含储存介质的设备的所有部分应进行核查，以确保在处置或再利用之前，任何敏感信息和注册软件已被删除或安全的重写。',5,7.000000,NULL),
+                (566,'A.11.2.8无人值守的用户设备',558,'用户应确保无人值守的用户设备有适当的保护。',5,8.000000,NULL),
+                (567,'A.11.2.9清理桌面和屏幕策略',558,'应针对纸质和可移动存储介质，采取清理桌面策略；应针对信息处理设施，采用清理屏幕策略。',5,9.000000,NULL),
+                (568,'A.12运行安全',5,NULL,5,8.000000,NULL),
+                (569,'A.12.1运行规程和责任',568,'目标：确保正确、安全的运行信息处理设施。',5,1.000000,NULL),
+                (570,'A.12.1.1文件化的操作规程',569,'操作规程应形成文件，并对所需用户可用。',5,1.000000,NULL),
+                (571,'A.12.1.2变更管理',569,'应控制影响信息安全的变更，包括组织、业务过程、信息处理设施和系统变更。',5,2.000000,NULL),
+                (572,'A.12.1.3容量管理',569,'应对资源的使用进行监视，调整和预测未来的容量需求，以确保所需的系统性能。',5,3.000000,NULL),
+                (573,'A.12.1.4开发、测试和运行环境的分离',569,'应分离开发、测试和运行环境，以降低对运行环境未授权访问或变更的风险。',5,4.000000,NULL),
+                (574,'A.12.2恶意软件防范',568,'目标：确保信息和信息处理设施防范恶意软件。',5,2.000000,NULL),
+                (575,'A.12.2.1恶意软件的控制',574,'应实现检测、预防和恢复控制以防范恶意软件，并结合适当的用户意识教育。',5,1.000000,NULL),
+                (576,'A.12.3备份',568,'目标：防止数据丢失',5,2.000000,NULL),
+                (577,'A.12.3.1信息备份',576,'应按照既定的备份策略，对信息、软件和系统镜像进行备份，并定期测试。',5,1.000000,NULL),
+                (578,'A.12.4日志和监视',568,'目标：记录事态并生成证据。',5,2.000000,NULL),
+                (579,'A.12.4.1事态日志',578,'应产生、保持并定期评审记录用户活动、异常、错误和信息安全事态的事态日志。',5,1.000000,NULL),
+                (580,'A.12.4.2日志信息的保护',578,'记录日志的设施和日志信息应加以保护，以防止篡改和未授权的访问。',5,2.000000,NULL),
+                (581,'A.12.4.3管理员和操作员日志',578,'系统管理员和系统操作员活动应记入日志，并对日志进行保护和定期评审。',5,3.000000,NULL),
+                (582,'A.12.4.4时钟同步',578,'一个组织或安全域内的所有相关信息处理设施的时钟，应与单一一个基准的时间源同步。',5,4.000000,NULL),
+                (583,'A.12.5运行软件控制',568,'目标：确保运行系统的完整性。',5,2.000000,NULL),
+                (584,'A.12.5.1运行系统的软件安装',583,'应实现运行系统软件安装控制规程。',5,1.000000,NULL),
+                (585,'A.12.6技术方面的脆弱性管理',568,'目标：防止对技术脆弱性的利用。',5,2.000000,NULL),
+                (586,'A.12.6.1技术方面脆弱性的管理',585,'应及时获取在用的信息系统的技术方面的脆弱性信息，评价组织对这些脆弱性的暴露状况并采取适当的措施来应对相关风险。',5,1.000000,NULL),
+                (587,'A.12.6.2软件安装限制',585,'应建立并实现控制用户安装软件的规则。',5,2.000000,NULL),
+                (588,'A.12.7信息系统审计的考虑',568,'目标：使审计活动对运行系统的影响最小化。',5,2.000000,NULL),
+                (589,'A.12.7.1信息系统审计的控制',588,'涉及运行系统验证的审计要求和活动，应谨慎地加以规划并取得批准，以便最小化业务过程的中断。',5,1.000000,NULL),
+                (590,'A.13通信安全',5,NULL,5,9.000000,NULL),
+                (591,'A.13.1网络安全管理',590,'目标：确保网络中的信息及其支持性的信息处理设施得到保护。',5,1.000000,NULL),
+                (592,'A.13.1.1 网络控制',591,'应管理和控制网络以保护系统和应用中的信息。',5,1.000000,NULL),
+                (593,'A.13.1.2网络服务的安全',591,'所有网络服务的安全机制、服务级别和管理要求应予以确定并包括在网络服务协议中，无论这些服务是由内部提供的还是外包的。',5,2.000000,NULL),
+                (594,'A.13.1.3网络中的隔离',591,'应在网络中隔离信息服务、用户及信息系统。',5,3.000000,NULL),
+                (595,'A.13.2信息传输',590,'目标：维护在组织内及与外部实体间传输信息的安全。',5,2.000000,NULL),
+                (596,'A.13.2.1信息传输策略和规程',595,'应有正式的传输策略、规程和控制，以保护通过使用各种类型通信设施进行的信息传输。',5,1.000000,NULL),
+                (597,'A.13.2.2信息传输协议',595,'协议应解决组织与外部方之间业务信息的安全传输。',5,2.000000,NULL),
+                (598,'A.13.2.3电子消息发送',595,'应适当保护包含在电子消息发送中的信息。',5,3.000000,NULL),
+                (599,'A.13.2.4保密或不泄露协议',595,'应识别、定期评审和文件化反映组织信息保护需要的保密性或不泄露协议的要求。',5,4.000000,NULL),
+                (600,'A.14系统获取、开发和维护',5,NULL,5,10.000000,NULL),
+                (601,'A.14.1信息系统的安全要求',600,'目标：确保信息安全是信息系统整个证明周期中的一个有机组成部分。这也包括提供公共网络服务的信息系统的要求。',5,1.000000,NULL),
+                (602,'A.14.1.1信息安全要求分析和说明',601,'新建信息系统或增强现有信息系统的要求中应包括信息安全相关要求。',5,1.000000,NULL),
+                (603,'A.14.1.2 公共网络上应用服务的安全保护',601,'应保护在公共网络上的应用服务中的信息以防止欺诈行为、合同纠纷以及未经授权的泄露和修改。',5,2.000000,NULL),
+                (604,'A.14.1.3应用服务事务的保护',601,'应保护应用服务事务中的信息，以防止不完整的传输、错误路由、未授权的消息变更、未授权的泄露、未授权的消息复制或重放。',5,3.000000,NULL),
+                (605,'A.14.2开发和支持过程中的安全',600,'目标：确保信息安全在信息系统开发生命周期中得到设计和实现。',5,2.000000,NULL),
+                (606,'A.14.2.1 应用服务事务的保护',605,' 安全的开发策略 针对组织内的开发，应建立软件和系统开发规则并应用。',5,1.000000,NULL),
+                (607,'A.14.2.2系统变更控制规程',605,'应使用正式的变更控制规程来控制开发生命周期内的系统变更。',5,2.000000,NULL),
+                (608,'A.14.2.3运行平台变更后对应用的技术评审',605,'当运行平台发生变更时，应对业务的关键应用进行评审和测试，以确保对组织的运行和安全没有负面影响。',5,3.000000,NULL),
+                (609,'A.14.2.4软件包变更的限制',605,'应不鼓励对软件包进行修改，仅限于必要的变更，且对所有变更加以严格控制。',5,4.000000,NULL),
+                (610,'A.14.2.5系统安全工程原则',605,'应建立、文件化和维护系统安全工程原则，并应用到任何信息系统实现工作中。',5,5.000000,NULL),
+                (611,'A.14.2.6安全的开发环境',605,'组织应针对覆盖系统开发生命周期的系统开发和集成活动，建立安全开发环境，并予以适当保护。',5,6.000000,NULL),
+                (612,'A.14.2.7外包开发',605,'组织应督导和监视外包系统开发活动。',5,7.000000,NULL),
+                (613,'A.14.2.8系统安全测试',605,'应在开发过程中进行安全功能测试。',5,8.000000,NULL),
+                (614,'A.14.2.9系统验收测试',605,'应建立对新的信息系统、升级及新版本的验收测试方案和相关准则。',5,9.000000,NULL),
+                (615,'A.14.3测试数据',600,'目标：确保用于测试的数据得到保护。',5,2.000000,NULL),
+                (616,'A.14.3.1测试数据的保护',615,'测试数据应认真地加以选择、保护和控制。',5,1.000000,NULL),
+                (617,'A.15供应商关系',5,NULL,5,11.000000,NULL),
+                (618,'A.15.1供应商关系中的信息安全',617,'目标：确保供应商可访问的组织资产得到保护。',5,1.000000,NULL),
+                (619,'A.15.1.1\n供应商关系的信息安全策略',618,'为降低供应商访问组织资产的相关风险，应与供应商就信息安全要求达成一致，并形成文件。',5,1.000000,NULL),
+                (620,'A.15.1.2在供应商协议中强调安全',618,'应与每个可能访问、处理、存储、传递组织信息或为组织信息提供IT基础设施组件的供应商建立所有相关的信息安全要求，并达成一致。',5,2.000000,NULL),
+                (621,'A.15.1.3信息与通信技术供应链',618,'供应商协议应包括信息与通信技术服务以及产品供应链相关的信息安全风险处理要求。',5,3.000000,NULL),
+                (622,'A.15.2供应商服务交付管理',617,'目标：维护与供应商协议一致的信息安全和服务交付的商定级别。',5,2.000000,NULL),
+                (623,'A.15.2.1供应商服务的监视和评审',622,'组织应定期监视、评审和审核供应商服务交付。',5,1.000000,NULL),
+                (624,'A.15.2.2供应商服务的变更管理',622,'应管理供应商所提供服务的变更，包括维护和改进现有的信息安全策略、规程和控制，管理应考虑变更涉及到的业务信息、系统和过程的关键程度及风险的再评估。',5,2.000000,NULL),
+                (625,'A.16信息安全事件管理',5,NULL,5,12.000000,NULL),
+                (626,'A.16.1信息安全事件的管理和改进',625,'目标：确保采用一致和有效的方法对信息安全事件进行管理，包括对安全事态和弱点的沟通。',5,1.000000,NULL),
+                (627,'A.16.1.1责任和规程',626,'应建立管理责任和规程，以确保快速、有效和有序地响应信息安全事件。',5,1.000000,NULL),
+                (628,'A.16.1.2报告信息安全事态',626,'应通过适当的管理渠道尽快地报告信息安全事态。',5,2.000000,NULL),
+                (629,'A.16.1.3报告信息安全弱点',626,'应要求使用组织信息系统和服务的员工和合同方注意并报告任何观察到的或可疑的系统或服务中的信息安全弱点。',5,3.000000,NULL),
+                (630,'A.16.1.4信息安全事态的评估和决策',626,'应评估信息安全事态并决定其是否属于信息安全事件。',5,4.000000,NULL),
+                (631,'A.16.1.5信息安全事件的响应',626,'应按照文件化的规程响应信息安全事件。',5,5.000000,NULL),
+                (632,'A.16.1.6从信息安全事件中学习',626,'应利用在分析和解决信息安全事件中得到的知识来减少未来事件发生的可能性和影响。',5,6.000000,NULL),
+                (633,'A.16.1.7证据的收集',626,'组织应确定和应用规程来识别、收集、获取和保存可用作证据的信息。',5,7.000000,NULL),
+                (634,'A.17业务连续性管理的信息安全方面',5,NULL,5,13.000000,NULL),
+                (635,'A.17.1信息安全的连续性',634,'目标：应将信息安全连续性纳入组织业务连续性管理之中。',5,1.000000,NULL),
+                (636,'A.17.1.1规划信息安全连续性',635,'组织应确定在不利情况（如危机或灾难）下，对信息安全及信息安全管理连续性的要求。',5,1.000000,NULL),
+                (637,'A.17.1.2实现信息安全连续性',635,'组织应建立、文件化、实现并维护过程、规程和控制，以确保在不利情况下信息安全连续性达到要求的级别。',5,2.000000,NULL),
+                (638,'A.17.1.3验证、评审和评价信息安全连续性',635,'组织应定期验证已建立和实现的信息安全连续性控制，以确保这些控制在不利情况下是正当和有效的。',5,3.000000,NULL),
+                (639,'A.17.2冗余',634,'目标：确保信息处理设施的可用性。',5,2.000000,NULL),
+                (640,'A.17.2.1信息处理设施的可用性',639,'信息处理设施应当实现冗余，以满足可用性要求。 ',5,1.000000,NULL),
+                (641,'A.18符合性',5,NULL,5,14.000000,NULL),
+                (642,'A.18.1符合法律和合同要求',641,'目标：避免违反与信息安全有关的法律、法规、规章或合同义务以及任何安全要求。',5,1.000000,NULL),
+                (643,'A.18.1.1\n适用的法律和合同要求的识别',642,'对每一个信息系统和组织而言，所有相关的法律、法规、规章和合同要求，以及为满足这些要求组织所采用的方法，应加以明确地定义、形成文件并保持更新。',5,1.000000,NULL),
+                (644,'A.18.1.2知识产权',642,'应实现适当的规程，以确保在使用具有知识产权的材料和具有所有权的软件产品时，符合法律、法规和合同的要求。',5,2.000000,NULL),
+                (645,'A.18.1.3记录的保护',642,'应根据法律、法规、规章、合同和业务要求，对记录进行保护以防其丢失、毁坏、伪造、未授权访问和未授权发布。',5,3.000000,NULL),
+                (646,'A.18.1.4 隐私和个人可识别信息保护',642,'应依照相关的法律、法规和合同条款的要求，以确保隐私和个人可识别信息得到保护。',5,4.000000,NULL),
+                (647,'A.18.1.5密码控制规则',642,'密码控制的使用应遵从所有相关的协议、法律和法规。',5,5.000000,NULL),
+                (648,'A.18.2信息安全评审',641,'目标：确保依据组织策略和规程来实现和运行信息安全。',5,2.000000,NULL),
+                (649,'A.18.2.1信息安全的独立评审',648,'应按计划的时间间隔或在重大变化发生时，对组织的信息安全管理方法及其实现（如信息安全的控制目标、控制、策略、过程和规程）进行独立评审。',5,1.000000,NULL),
+                (650,'A.18.2.2符合安全策略和标准',648,'管理者应定期评审其责任范围内的信息处理和规程与适当的安全策略、标准和任何其他安全要求的符合性。',5,2.000000,NULL),
+                (651,'A.18.2.3技术符合性评审',648,'应定期评审信息系统与组织的信息安全策略和标准的符合性。',5,3.000000,NULL),
+                (652,'前言',6,'本标准按照GB/T 1.1—2009《标准化工作导则 第1部分：标准的结构和编写》给出的规则起草。\n本标准代替GB/T 22239—2008《信息安全技术 信息系统安全等级保护基本要求》，与GB/T 22239—2008相比，主要变化如下：\n——标准的名称由“信息安全技术 信息系统安全等级保护基本要求”变更为“信息安全技术 网络安全等级保护基本要求”。\n——调整分类为物理和环境安全、网络和通信安全、设备和计算安全、应用和数据安全、安全策略和管理制度、安全管理机构和人员、安全建设管理、安全运维管理。\n——调整各个级别的安全要求为安全通用要求、云计算安全扩展要求、移动互联安全扩展要求、物联网安全扩展要求和工业控制系统安全扩展要求。\n——取消了原来安全控制点的S、A、G标注，增加一个附录A描述等级保护对象的定级结果和安全要求之间的关系，说明如何根据定级的S、A结果选择安全要求。\n本标准由全国信息安全标准化技术委员会（SAC/TC260）提出。\n本标准由全国信息安全标准化技术委员会（SAC/TC260）归口。\n本标准起草单位：公安部信息安全等级保护评估中心、国家能源局信息中心、阿里云计算有限公司、中国科学院信息工程研究所、新华三技术有限公司、华为技术有限公司、启明星辰信息技术集团有限公司、北京鼎普科技股份有限公司、中国电子信息产业集团有限公司第六研究所、公安部第一研究所、国家信息中心、山东微分电子科技有限公司、中国电子科技集团公司第十五研究所、工业和信息化部电信研究院、浙江大学、中国软件测评中心、浙江国利信安科技有限公司、机械工业仪器仪表综合技术经济研究所、杭州科技职业技术学院、北京奇虎科技有限公司。\n本标准主要起草人：马力、陈广勇、张振峰、郭启全、葛波蔚、曲洁、于东升、李秋香、任卫红、胡红升、陈雪鸿、冯冬芹、王江波、蒋勇、张宗喜、李明、黎水林、于晴、李超、刘之涛、袁静、陆磊、霍珊珊、黄顺京、尹湘培、申永波、陶源、陈雪秀、丁朝晖、毛溯、杜静、周颖、吴薇、刘志宇、宫月、章恒、高亚楠、段伟恒、马闽、贾驰千、陆耿虹、高梦州、赵泰、孙晓军、许凤凯、王绍杰、周峰、郭永振。',6,1.000000,NULL),
+                (653,'引言',6,'为了配合《中华人民共和国网络安全法》的实施，同时适应移动互联、云计算、大数据、物联网和工业控制等新技术、新应用情况下网络安全等级保护工作的开展，需对GB/T 22239—2008进行修订，修订的思路和方法是调整原国家标准GB/T 22239—2008的内容，针对共性安全保护需求提出安全通用要求，针对移动互联、云计算、大数据、物联网和工业控制等新技术、新应用领域的个性安全保护需求提出安全扩展要求，形成新的网络安全等级保护基本要求标准。\n本标准是网络安全等级保护相关系列标准之一。\n与本标准相关的标准包括：\n——GB/T 25058 信息安全技术 网络安全等级保护实施指南；\n——GB/T 22240 信息安全技术 网络安全等级保护定级指南；\n——GB/T 25070 信息安全技术 网络安全等级保护安全设计技术要求；\n——GB/T 28448 信息安全技术 网络安全等级保护测评要求；\n——GB/T 28449 信息安全技术 网络安全等级保护测评过程指南。\n在本标准中，黑体字表示较低等级中没有出现或增强的要求。',6,2.000000,NULL),
+                (654,'1 范围',6,'本标准规定了第一级到第四级等级保护对象的安全通用要求和安全扩展要求，适用于指导分等级的 非涉密对象的安全建设和监督管理。对第五级等级保护对象的安全要求不在本标准中描述。 ',6,3.000000,NULL),
+                (655,'2 规范性引用文件',6,'下列文件对于本文件的应用是必不可少的。凡是注日期的引用文件，仅注日期的版本适用于本文件。 凡是不注日期的引用文件，其最新版本（包括所有的修改单）适用于本文件。 GB 17859 计算机信息系统安全保护等级划分准则 GB/T 25069 信息安全技术 术语 GB/T 31167-2014 信息安全技术 云计算服务安全指南 GB/T 31168-2014 信息安全技术 云计算服务安全能力要求 GB/T 32919-2016 信息安全技术 工业控制系统安全控制应用指南 ',6,4.000000,NULL),
+                (656,'3 术语与定义',6,'GB 17859、GB/T 25069、GB/T 31167-2014、GB/T 31168-2014和GB/T 32919-2016界定的以及下列 术语和定义适用于本文件。为了便于使用，以下重复列出了GB/T 31167-2014中的某些术语和定义。 ',6,5.000000,NULL),
+                (657,'3.1 安全保护能力',656,'安全保护能力 security protection ability \n能够抵御威胁、发现安全事件以及在遭到损害后能够恢复先前状态等的程度。 ',6,1.000000,NULL),
+                (658,'3.2 云服务商',656,'云服务商 cloud service provider\n云计算服务的供应方。\n注：云服务商管理、运营、支撑云计算的计算基础设施及软件，通过网络交付云计算的资源。\n[GB/T 31167-2014，定义3.3]',6,2.000000,NULL),
+                (659,'3.3 云服务客户',656,'云服务客户 cloud service customer\n为使用云计算服务同云服务商建立业务关系的参与方。\n[GB/T 31168-2014，定义3.4]',6,3.000000,NULL),
+                (660,'3.4 虚拟机监视器',656,'虚拟机监视器 hypervisor\n一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件。',6,4.000000,NULL),
+                (661,'3.5 宿主机',656,'宿主机 host machine\n运行虚拟机监视器的物理服务器。',6,5.000000,NULL),
+                (662,'3.6 网络策略控制器',656,'网络策略控制器 network policy controller\n把网络配置信息转化为网络设备上的转发规则集，并对这些转发规则集进行管理的核心控制系统。',6,6.000000,NULL),
+                (663,'3.7 移动终端',656,'移动终端 mobile device\n在移动业务中使用的终端设备，包括智能手机、平板电脑、个人电脑等通用终端和专用终端设备。',6,7.000000,NULL),
+                (664,'3.8 无线接入设备',656,'无线接入设备 wireless access device\n采用无线通信技术将移动终端接入有线网络的通信设备。',6,8.000000,NULL),
+                (665,'3.9 无线接入网关',656,'无线接入网关 wireless access\n部署在无线网络与有线网络之间，对有线网络进行安全防护的设备。',6,9.000000,NULL),
+                (666,'3.10 移动应用软件',656,'移动应用软件 mobile application\n针对移动终端开发的应用软件。',6,10.000000,NULL),
+                (667,'3.11 移动终端管理系统',656,'移动终端管理系统 mobile device management system\n用于进行移动终端设备管理、应用管理和内容管理的专用软件，包括客户端软件和服务端软件。',6,11.000000,NULL),
+                (668,'3.12 物联网',656,'物联网 internet of things(IoT)\n将感知节点设备通过互联网等网络连接起来构成的系统。',6,12.000000,NULL),
+                (669,'3.13 感知节点设备',656,'感知节点设备 sensor node\n对物或环境进行信息采集和/或执行操作，并能联网进行通信的装置。',6,13.000000,NULL),
+                (670,'3.14 感知网关节点设',656,'感知网关节点设备 sensor layer gateway\n将感知节点所采集的数据进行汇总、适当处理或数据融合，并进行转发的装置。',6,14.000000,NULL),
+                (671,'3.15 数据新鲜性',656,'数据新鲜性 data freshness\n对所接收的历史数据或超出时限的数据进行识别的特性。',6,15.000000,NULL),
+                (672,'4 缩略词',6,'下列缩略语适用于本标准。\nAP 无线访问接入点（Wireless Access Point）\nDCS 集散控制系统（Distributed Control System）\nDDoS 拒绝服务 （Distributed Denial of Service）\nDMZ 隔离区（Demilitarized Zone）\nERP 企业资源计划（Enterprise Resource Planning）\nHMI 人机界面（Human Machine Interface）\nICS 工业控制系统（Industrial Control System）\nIoT 物联网（internet of things）\nMDMS 移动终端管理系统（Mobile Device Management System）\nMES 制造执行系统（Manufactoring Execution System）\nPLC 可编程逻辑控制器（Programmable Logic Controller）\nRFID 射频识别（radio frequency identification）\nRTU 远程终端单元（RemoteTerminal Unit）\nSCADA 数据采集与监视控制系统（Supervisory Control And Data Acquisition system）\nSSID 服务集标识（Service Set Identifier）\nTCB 可信计算基（Trusted Computing Base）\nVPN 虚拟专用网（Virtual Private Network）\nWEP 有线等效加密（Wired Equivalent Privacy）\nWiFi 无线保真（Wireless Fidelity）\nWPS WiFi 保护设置（Wi-Fi Protected Setup）',6,6.000000,NULL),
+                (673,'5 网络安全等级保护概述',6,NULL,6,7.000000,NULL),
+                (674,'5.1 等级保护对象',673,'等级保护对象是指网络安全等级保护工作中的对象，通常是指由计算机或者其他信息终端及相关设备组成的按照一定的规则和程序对信息进行收集、存储、传输、交换、处理的系统，主要包括基础信息网络、信息系统、云计算平台、大数据平台、物联网系统、工业控制系统等；等级保护对象根据其在国家安全、经济建设、社会生活中的重要程度，遭到破坏后对国家安全、社会秩序、公共利益以及公民、法人和其他组织的合法权益的危害程度等，由低到高被划分为五个安全保护等级。\n等级保护对象的等级确定方法见GB/T 22240。',6,1.000000,NULL),
+                (675,'5.2 不同级别的安全保护能力',673,'不同级别的等级保护对象应具备的基本安全保护能力如下：\n第一级安全保护能力：应能够防护免受来自个人的、拥有很少资源的威胁源发起的恶意攻击、一般的自然灾难、以及其他相当危害程度的威胁所造成的关键资源损害，在自身遭到损害后，能够恢复部分功能。\n第二级安全保护能力：应能够防护免受来自外部小型组织的、拥有少量资源的威胁源发起的恶意攻击、一般的自然灾难、以及其他相当危害程度的威胁所造成的重要资源损害，能够发现重要的安全漏洞和处置安全事件，在自身遭到损害后，能够在一段时间内恢复部分功能。\n第三级安全保护能力：应能够在统一安全策略下防护免受来自外部有组织的团体、拥有较为丰富资源的威胁源发起的恶意攻击、较为严重的自然灾难、以及其他相当危害程度的威胁所造成的主要资源损害，能够及时发现、监测攻击行为和处置安全事件，在自身遭到损害后，能够较快恢复绝大部分功能。\n第四级安全保护能力：应能够在统一安全策略下防护免受来自国家级别的、敌对组织的、拥有丰富资源的威胁源发起的恶意攻击、严重的自然灾难、以及其他相当危害程度的威胁所造成的资源损害，能够及时发现、监测发现攻击行为和安全事件，在自身遭到损害后，能够迅速恢复所有功能。\n第五级安全保护能力：（略）。',6,2.000000,NULL),
+                (676,'5.3 安全通用要求和安全扩展要求',673,'由于业务目标的不同、使用技术的不同、应用场景的不同等因素，不同的等级保护对象会以不同的形态出现，表现形式可能称之为基础信息网络、信息系统、云计算平台、大数据平台、物联网系统、工业控制系统等。形态不同的等级保护对象面临的威胁有所不同，安全保护需求也会有所差异。为了便于实现对不同级别的和不同形态的等级保护对象的共性化和个性化保护，等级保护要求分为安全通用要求和安全扩展要求。\n安全通用要求针对共性化保护需求提出，等级保护对象无论以何种形式出现，必须根据安全保护等级实现相应级别的安全通用要求；安全扩展要求针对个性化保护需求提出，需要根据安全保护等级和使用的特定技术或特定的应用场景选择性实现安全扩展要求。安全通用要求和安全扩展要求共同构成了对等级保护对象的安全要求。安全要求的选择见附录A，整体安全保护能力的要求见附录B和附录C。\n本标准针对云计算、移动互联、物联网、工业控制系统提出了安全扩展要求。云计算应用场景见附录D，移动互联应用场景见附录E，物联网应用场景见附录F，工业控制系统应用场景见附录G，大数据应用场景参见附录H。对于采用其他特殊技术或处于特殊应用场景的等级保护对象，应在安全风险评估的基础上，针对安全风险采取特殊的安全措施作为补充。',6,3.000000,NULL),
+                (677,'8 第三级要求',6,NULL,6,8.000000,NULL),
+                (678,'8.1 安全通用要求',677,NULL,6,1.000000,NULL),
+                (679,'8.1.1 物理和环境安全',678,NULL,6,1.000000,NULL),
+                (680,'8.1.1.1 物理位置选择',679,'a) 机房场地应选择在具有防震、防风和防雨等能力的建筑内。b）机房场地应避免设在建筑物的顶层或地下室，否则应加强防水和防潮措施。',6,1.000000,NULL),
+                (681,'8.1.1.2 物理访问控制',679,'机房出入口应配置电子门禁系统，控制、鉴别和记录进入的人员。',6,2.000000,NULL),
+                (682,'8.1.1.3 防盗窃和防破坏',679,'a）应将设备或主要部件进行固定，并设置明显的不易除去的标记。b) 应将通信线缆铺设在隐蔽处，可铺设在地下或管道中。c) 应设置机房防盗报警系统或设置有专人值守的视频监控系统。',6,3.000000,NULL),
+                (683,'8.1.1.4 防雷击',679,'a) 应将各类机柜、设施和设备等通过接地系统安全接地；b) 应采取措施防止感应雷，例如设置防雷保安器或过压保护装置等。',6,4.000000,NULL),
+                (684,'8.1.1.5 防火',679,'\na) 机房应设置火灾自动消防系统，能够自动检测火情、自动报警，并自动灭火。b) 机房及相关的工作房间和辅助房应采用具有耐火等级的建筑材料。c) 应对机房划分区域进行管理，区域和区域之间设置隔离防火措施。',6,5.000000,NULL),
+                (685,'8.1.1.6 防水和防潮',679,'a) 应采取措施防止雨水通过机房窗户、屋顶和墙壁渗透。b) 应采取措施防止机房内水蒸气结露和地下积水的转移与渗透。c) 应安装对水敏感的检测仪表或元件，对机房进行防水检测和报警。',6,6.000000,NULL),
+                (686,'8.1.1.7 防静电',679,'a) 应安装防静电地板并采用必要的接地防静电措施。b) 应采取措施防止静电的产生，例如采用静电消除器、佩戴防静电手环等。',6,7.000000,NULL),
+                (687,'8.1.1.8 温湿度控制',679,'应设置温、湿度自动调节设施，使机房温、湿度的变化在设备运行所允许的范围之内。',6,8.000000,NULL),
+                (688,'8.1.1.9 电力供应',679,'a) 应在机房供电线路上配置稳压器和过电压防护设备。b) 应提供短期的备用电力供应，至少满足设备在断电情况下的正常运行要求。c) 应设置冗余或并行的电力电缆线路为计算机系统供电。',6,9.000000,NULL),
+                (689,'8.1.1.10 电磁防护',679,'a) 电源线和通信线缆应隔离铺设，避免互相干扰。b) 应对关键设备实施电磁屏蔽。',6,10.000000,NULL),
+                (690,'8.1.2 网络和通信安全',678,NULL,6,3.000000,NULL),
+                (691,'8.1.2.1 网络架构',690,'a) 应保证网络设备的业务处理能力满足业务高峰期需要。b) 应保证网络各个部分的带宽满足业务高峰期需要。c) 应划分不同的网络区域，并按照方便管理和控制的原则为各网络区域分配地址。d) 应避免将重要网络区域部署在网络边界处且没有边界防护措施。e) 应提供通信线路、关键网络设备的硬件冗余，保证系统的可用性。',6,1.000000,NULL),
+                (692,'8.1.2.2 通信传输',690,'a) 应采用校验码技术或密码技术保证通信过程中数据的完整性。b) 应采用密码技术保证通信过程中敏感信息字段或整个报文的保密性。',6,2.000000,NULL),
+                (693,'8.1.2.3 边界防护',690,'a) 应保证跨越边界的访问和数据流通过边界防护设备提供的受控接口进行通信。b) 应能够对非授权设备私自联到内部网络的行为进行限制或检查。c) 应能够对内部用户非授权联到外部网络的行为进行限制或检查。d) 应限制无线网络的使用，确保无线网络通过受控的边界防护设备接入内部网络。',6,3.000000,NULL),
+                (694,'8.1.2.4 访问控制',690,'a) 应在网络边界或区域之间根据访问控制策略设置访问控制规则，默认情况下除允许通信外受控接口拒绝所有通信。b) 应删除多余或无效的访问控制规则，优化访问控制列表，并保证访问控制规则数量最小化。c) 应对源地址、目的地址、源端口、目的端口和协议等进行检查，以允许/拒绝数据包进出。d) 应能根据会话状态信息为进出数据流提供明确的允许/拒绝访问的能力，控制粒度为端口级。e) 应在关键网络节点处对进出网络的信息内容进行过滤，实现对内容的访问控制。',6,4.000000,NULL),
+                (695,'8.1.2.5 入侵防范',690,'a) 应在关键网络节点处检测、防止或限制从外部发起的网络攻击行为。b) 应在关键网络节点处检测、防止或限制从内部发起的网络攻击行为。c) 应采取技术措施对网络行为进行分析，实现对网络攻击特别是新型网络攻击行为的分析。\nd) 当检测到攻击行为时，记录攻击源IP、攻击类型、攻击目的、攻击时间，在发生严重入侵事件时应提供报警。',6,5.000000,NULL),
+                (696,'8.1.2.6 恶意代码防护',690,'\na) 应在关键网络节点处对恶意代码进行检测和清除，并维护恶意代码防护机制的升级和更新。b) 应在关键网络节点处对垃圾邮件进行检测和防护，并维护垃圾邮件防护机制的升级和更新。',6,6.000000,NULL),
+                (697,'8.1.2.7 安全审计',690,'a) 应在网络边界、重要网络节点进行安全审计，审计覆盖到每个用户，对重要的用户行为和重要安全事件进行审计。b) 审计记录应包括事件的日期和时间、用户、事件类型、事件是否成功及其他与审计相关的信息。c) 应对审计记录进行保护，定期备份，避免受到未预期的删除、修改或覆盖等。d）应确保审计记录的留存时间符合法律法规要求。e) 应能对远程访问的用户行为、访问互联网的用户行为等单独进行行为审计和数据分析。',6,7.000000,NULL),
+                (698,'8.1.2.8 集中管控',690,'a) 应划分出特定的管理区域，对分布在网络中的安全设备或安全组件进行管控。b) 应能够建立一条安全的信息传输路径，对网络中的安全设备或安全组件进行管理。c) 应对网络链路、安全设备、网络设备和服务器等的运行状况进行集中监测。d) 应对分散在各个设备上的审计数据进行收集汇总和集中分析。e) 应对安全策略、恶意代码、补丁升级等安全相关事项进行集中管理。f) 应能对网络中发生的各类安全事件进行识别、报警和分析。',6,8.000000,NULL),
+                (699,'8.1.3 设备和计算安全',678,NULL,6,3.000000,NULL),
+                (700,'8.1.3.1 身份鉴别',699,'\na) 应对登录的用户进行身份标识和鉴别，身份标识具有唯一性，身份鉴别信息具有复杂度要求并定期更换。b) 应具有登录失败处理功能，应配置并启用结束会话、限制非法登录次数和当登录连接超时自动退出等相关措施。c) 当进行远程管理时，应采取必要措施，防止鉴别信息在网络传输过程中被窃听。d) 应采用两种或两种以上组合的鉴别技术对用户进行身份鉴别，且其中一种鉴别技术至少应使用动态口令、密码技术或生物技术来实现。',6,1.000000,NULL),
+                (701,'8.1.3.2 访问控制',699,'a) 应对登录的用户分配账户和权限。b) 应重命名或删除默认账户，修改默认账户的默认口令。c) 应及时删除或停用多余的、过期的账户，避免共享账户的存在。d) 应进行角色划分，并授予管理用户所需的最小权限，实现管理用户的权限分离。e) 应由授权主体配置访问控制策略，访问控制策略规定主体对客体的访问规则。f) 访问控制的粒度应达到主体为用户级或进程级，客体为文件、数据库表级。g) 应对敏感信息资源设置安全标记，并控制主体对有安全标记信息资源的访问。',6,2.000000,NULL),
+                (702,'8.1.3.3 安全审计',699,'a) 应启用安全审计功能，审计覆盖到每个用户，对重要的用户行为和重要安全事件进行审计。b) 审计记录应包括事件的日期和时间、用户、事件类型、事件是否成功及其他与审计相关的信息。c) 应对审计记录进行保护，定期备份，避免受到未预期的删除、修改或覆盖等。d) 应确保审计记录的留存时间符合法律法规要求。e) 应对审计进程进行保护，防止未经授权的中断。',6,3.000000,NULL),
+                (703,'8.1.3.4入侵防范',699,'a) 应遵循最小安装的原则，仅安装需要的组件和应用程序。b) 应关闭不需要的系统服务、默认共享和高危端口。c) 应通过设定终端接入方式或网络地址范围对通过网络进行管理的管理终端进行限制。d) 应能发现可能存在的漏洞，并在经过充分测试评估后，及时修补漏洞。e) 应能够检测到对重要节点进行入侵的行为，并在发生严重入侵事件时提供报警。',6,4.000000,NULL),
+                (704,'8.1.3.5恶意代码防范',699,'应采用免受恶意代码攻击的技术措施或可信验证机制对系统程序、应用程序和重要配置文件/参数进行可信执行验证，并在检测到其完整性受到破坏时采取恢复措施。',6,5.000000,NULL),
+                (705,'8.1.3.6资源控制',699,'a) 应限制单个用户或进程对系统资源的最大使用限度。b) 应提供重要节点设备的硬件冗余，保证系统的可用性。c) 应对重要节点进行监视，包括监视CPU、硬盘、内存等资源的使用情况。d) 应能够对重要节点的服务水平降低到预先规定的最小值进行检测和报警。',6,6.000000,NULL),
+                (706,'应用和数据安全',678,NULL,6,3.000000,NULL),
+                (707,'8.1.4.1身份鉴别',706,'a) 应对登录的用户进行身份标识和鉴别，身份标识具有唯一性，鉴别信息具有复杂度要求并定期更换。b) 应提供并启用登录失败处理功能，多次登录失败后应采取必要的保护措施。c) 应强制用户首次登录时修改初始口令。d) 用户身份鉴别信息丢失或失效时，应采用技术措施确保鉴别信息重置过程的安全。e) 应采用两种或两种以上组合的鉴别技术对用户进行身份鉴别，且其中一种鉴别技术至少应使用动态口令、密码技术或生物技术来实现。',6,1.000000,NULL),
+                (708,'8.1.4.2访问控制',706,'a) 应提供访问控制功能，对登录的用户分配账户和权限。b) 应重命名或删除默认账户，修改默认账户的默认口令。c) 应及时删除或停用多余的、过期的账户，避免共享账户的存在。d) 应授予不同账户为完成各自承担任务所需的最小权限，并在它们之间形成相互制约的关系。e) 应由授权主体配置访问控制策略，访问控制策略规定主体对客体的访问规则。8.1.4.2 访问控制\n本项要求包括：\nf) 访问控制的粒度应达到主体为用户级，客体为文件、数据库表级、记录或字段级。8.1.4.2 访问控制\n本项要求包括：\ng) 应对敏感信息资源设置安全标记，并控制主体对有安全标记信息资源的访问。',6,2.000000,NULL),
+                (709,'8.1.4.3安全审计',706,'a) 应提供安全审计功能，审计覆盖到每个用户，对重要的用户行为和重要安全事件进行审计。b) 审计记录应包括事件的日期和时间、用户、事件类型、事件是否成功及其他与审计相关的信息。c) 应对审计记录进行保护，定期备份，避免受到未预期的删除、修改或覆盖等。d) 应确保审计记录的留存时间符合法律法规要求。e) 应对审计进程进行保护，防止未经授权的中断。',6,3.000000,NULL),
+                (710,'8.1.4.4软件容错',706,'a) 应提供数据有效性检验功能，保证通过人机接口输入或通过通信接口输入的内容符合系统设定要求。b) 在故障发生时，应能够继续提供一部分功能，确保能够实施必要的措施。c) 在故障发生时，应自动保存易失性数据和所有状态，保证系统能够进行恢复。',6,4.000000,NULL),
+                (711,'8.1.4.5资源控制',706,'a) 当通信双方中的一方在一段时间内未作任何响应，另一方应能够自动结束会话。b) 应能够对系统的最大并发会话连接数进行限制。c) 应能够对单个账户的多重并发会话进行限制。',6,5.000000,NULL),
+                (712,'数据完整性',706,'a) 应采用校验码技术或密码技术保证重要数据在传输过程中的完整性，包括但不限于鉴别数据、重要业务数据、重要审计数据、重要配置数据、重要视频数据和重要个人信息等。b) 应采用校验码技术或密码技术保证重要数据在存储过程中的完整性，包括但不限于鉴别数据、重要业务数据、重要审计数据、重要配置数据、重要视频数据和重要个人信息等。',6,6.000000,NULL),
+                (713,'8.1.4.7数据保密性',706,'a) 应采用密码技术保证重要数据在传输过程中的保密性，包括但不限于鉴别数据、重要业务数据和重要个人信息等。b) 应采用密码技术保证重要数据在存储过程中的保密性，包括但不限于鉴别数据、重要业务数据和重要个人信息等。',6,7.000000,NULL),
+                (714,'8.1.4.8数据备份恢复',706,'a) 应提供重要数据的本地数据备份与恢复功能。b) 应提供异地实时备份功能，利用通信网络将重要数据实时备份至备份场地。c) 应提供重要数据处理系统的热冗余，保证系统的高可用性。',6,8.000000,NULL),
+                (715,'8.1.4.9剩余信息保护',706,'a) 应保证鉴别信息所在的存储空间被释放或重新分配前得到完全清除。b) 应保证存有敏感数据的存储空间被释放或重新分配前得到完全清除。',6,9.000000,NULL),
+                (716,'8.1.4.10个人信息保护',706,'a) 应仅采集和保存业务必需的用户个人信息。b) 应禁止未授权访问和非法使用用户个人信息。',6,10.000000,NULL),
+                (717,'安全策略和管理制度',678,NULL,6,3.000000,NULL),
+                (718,'8.1.5.1安全策略',717,'应制定信息安全工作的总体方针和安全策略，说明机构安全工作的总体目标、范围、原则和安全框架等。',6,1.000000,NULL),
+                (719,'8.1.5.2管理制度',717,'a) 应对安全管理活动中的各类管理内容建立安全管理制度。b) 应对要求管理人员或操作人员执行的日常管理操作建立操作规程。c) 应形成由安全策略、管理制度、操作规程、记录表单等构成的全面的信息安全管理制度体系。',6,2.000000,NULL),
+                (720,'8.1.5.3制定和发布',717,'a) 应指定或授权专门的部门或人员负责安全管理制度的制定。b) 安全管理制度应通过正式、有效的方式发布，并进行版本控制。',6,3.000000,NULL),
+                (721,'8.1.5.4评审和修订',717,'应定期对安全管理制度的合理性和适用性进行论证和审定，对存在不足或需要改进的安全管理制度进行修订。',6,4.000000,NULL),
+                (722,'安全管理机构和人员',678,NULL,6,3.000000,NULL),
+                (723,'8.1.6.1岗位设置',722,'a) 应成立指导和管理信息安全工作的委员会或领导小组，其最高领导由单位主管领导委任或授权。b) 应设立信息安全管理工作的职能部门，设立安全主管、安全管理各个方面的负责人岗位，并定义各负责人的职责。c) 应设立系统管理员、网络管理员、安全管理员等岗位，并定义部门及各个工作岗位的职责。',6,1.000000,NULL),
+                (724,'8.1.6.2人员配备',722,'a) 应配备一定数量的系统管理员、网络管理员、安全管理员等。b) 应配备专职安全管理员，不可兼任。',6,2.000000,NULL),
+                (725,'8.1.6.3授权和审批',722,'a) 应根据各个部门和岗位的职责明确授权审批事项、审批部门和批准人等。b) 应针对系统变更、重要操作、物理访问和系统接入等事项建立审批程序，按照审批程序执行审批过程，对重要活动建立逐级审批制度。c) 应定期审查审批事项，及时更新需授权和审批的项目、审批部门和审批人等信息。',6,3.000000,NULL),
+                (726,'8.1.6.4沟通和合作',722,'a) 应加强各类管理人员之间、组织内部机构之间以及信息安全职能部门内部的合作与沟通，定期召开协调会议，共同协作处理信息安全问题。b) 应加强与公安机关、各类供应商、业界专家及安全组织的合作与沟通。c) 应建立外联单位联系列表，包括外联单位名称、合作内容、联系人和联系方式等信息。',6,4.000000,NULL),
+                (727,'8.1.6.5审核和检查',722,'a) 应定期进行常规安全检查，检查内容包括系统日常运行、系统漏洞和数据备份等情况。b) 应定期进行全面安全检查，检查内容包括现有安全技术措施的有效性、安全配置与安全策略的一致性、安全管理制度的执行情况等。c) 应制定安全检查表格实施安全检查，汇总安全检查数据，形成安全检查报告，并对安全检查结果进行通报。',6,5.000000,NULL),
+                (728,'8.1.6.6人员录用',722,'a) 应指定或授权专门的部门或人员负责人员录用。b) 对被录用人员的身份、背景、专业资格和资质等进行审查，对其所具有的技术技能进行考核。c) 应与被录用人员签署保密协议，与关键岗位人员签署岗位责任协议。',6,6.000000,NULL),
+                (729,'人员录用',722,'c) 应与被录用人员签署保密协议，与关键岗位人员签署岗位责任协议。',6,7.000000,NULL),
+                (730,'8.1.6.6人员离岗',722,'a) 应及时终止离岗员工的所有访问权限，取回各种身份证件、钥匙、徽章等以及机构提供的软硬件设备。b) 应办理严格的调离手续，并承诺调离后的保密义务后方可离开。',6,8.000000,NULL),
+                (731,'8.1.6.8安全意识教育和培训',722,'a) 应对各类人员进行安全意识教育和岗位技能培训，并告知相关的安全责任和惩戒措施。b) 应针对不同岗位制定不同的培训计划，对信息安全基础知识、岗位操作规程等进行培训。c) 应定期对不同岗位的人员进行技能考核。',6,9.000000,NULL),
+                (732,'8.1.6.9外部人员访问管理',722,'a) 应确保在外部人员物理访问受控区域前先提出书面申请，批准后由专人全程陪同，并登记备案。b) 应确保在外部人员接入受控网络访问系统前先提出书面申请，批准后由专人开设账户、分配权限，并登记备案。c) 外部人员离场后应及时清除其所有的访问权限。d) 获得系统访问授权的外部人员应签署保密协议，不得进行非授权操作，不得复制和泄露任何敏感信息。',6,10.000000,NULL),
+                (733,'安全建设管理',678,NULL,6,3.000000,NULL),
+                (734,'8.1.7.1定级和备案',733,'a) 应以书面的形式说明保护对象的安全保护等级及确定等级的方法和理由。b) 应组织相关部门和有关安全技术专家对定级结果的合理性和正确性进行论证和审定。c) 应确保定级结果经过相关部门的批准。d) 应将备案材料报主管部门和相应公安机关备案。',6,1.000000,NULL),
+                (735,'8.1.7.2安全方案设计',733,'a) 应根据安全保护等级选择基本安全措施，依据风险分析的结果补充和调整安全措施。b) 应根据保护对象的安全保护等级及与其他级别保护对象的关系进行安全整体规划和安全方案设计，设计内容应包含密码相关内容，并形成配套文件。c) 应组织相关部门和有关安全专家对安全整体规划及其配套文件的合理性和正确性进行论证和审定，经过批准后才能正式实施。',6,2.000000,NULL),
+                (736,'8.1.7.3产品采购和使用',733,'a) 应确保信息安全产品采购和使用符合国家的有关规定。b) 应确保密码产品与服务的采购和使用符合国家密码管理主管部门的要求。c) 应预先对产品进行选型测试，确定产品的候选范围，并定期审定和更新候选产品名单。',6,3.000000,NULL),
+                (737,'8.1.7.4自行软件开发',733,'a) 应确保开发环境与实际运行环境物理分开，测试数据和测试结果受到控制。b) 应制定软件开发管理制度，明确说明开发过程的控制方法和人员行为准则。c) 应制定代码编写安全规范，要求开发人员参照规范编写代码。d) 应确保具备软件设计的相关文档和使用指南，并对文档使用进行控制。e) 应确保在软件开发过程中对安全性进行测试，在软件安装前对可能存在的恶意代码进行检测。f) 应确保对程序资源库的修改、更新、发布进行授权和批准，并严格进行版本控制。g) 应确保开发人员为专职人员，开发人员的开发活动受到控制、监视和审查。',6,4.000000,NULL),
+                (738,'8.1.7.5外包软件开发',733,'a) 应在软件交付前检测其中可能存在的恶意代码。b) 应要求开发单位提供软件设计文档和使用指南。c) 应要求开发单位提供软件源代码，并审查软件中可能存在的后门和隐蔽信道。',6,5.000000,NULL),
+                (739,'8.1.7.6工程实施',733,'a) 应指定或授权专门的部门或人员负责工程实施过程的管理。b) 应制定工程实施方案控制安全工程实施过程。c) 应通过第三方工程监理控制项目的实施过程。',6,6.000000,NULL),
+                (740,'8.1.7.7测试验收',733,'a) 应制订测试验收方案，并依据测试验收方案实施测试验收，形成测试验收报告。b) 应进行上线前的安全性测试，并出具安全测试报告，安全测试报告应包含密码应用安全性测试相关内容。',6,7.000000,NULL),
+                (741,'8.1.7.8系统交付',733,'a) 应制定交付清单，并根据交付清单对所交接的设备、软件和文档等进行清点。b) 应对负责运行维护的技术人员进行相应的技能培训。c) 应确保提供建设过程中的文档和指导用户进行运行维护的文档。',6,8.000000,NULL),
+                (742,'8.1.7.9等级测评',733,'a) 应定期进行等级测评，发现不符合相应等级保护标准要求的及时整改。b) 应在发生重大变更或级别发生变化时进行等级测评。c) 应确保测评机构的选择符合国家有关规定。',6,9.000000,NULL),
+                (743,'8.1.7.10服务供应商选择',733,'a) 应确保服务供应商的选择符合国家的有关规定。b) 应与选定的服务供应商签订相关协议，明确整个服务供应链各方需履行的信息安全相关义务。c) 应定期监视、评审和审核服务供应商提供的服务，并对其变更服务内容加以控制。',6,10.000000,NULL),
+                (744,'安全运维管理',678,NULL,6,3.000000,NULL),
+                (745,'8.1.8.1环境管理',744,'a) 应指定专门的部门或人员负责机房安全，对机房出入进行管理，定期对机房供配电、空调、温湿度控制、消防等设施进行维护管理。b) 应建立机房安全管理制度，对有关机房物理访问，物品带进、带出机房和机房环境安全等方面的管理作出规定。c) 应不在重要区域接待来访人员和桌面上没有包含敏感信息的纸档文件、移动介质等。',6,1.000000,NULL),
+                (746,'8.1.8.2资产管理',744,'a) 应编制并保存与保护对象相关的资产清单，包括资产责任部门、重要程度和所处位置等内容。b) 应根据资产的重要程度对资产进行标识管理，根据资产的价值选择相应的管理措施。c) 应对信息分类与标识方法作出规定，并对信息的使用、传输和存储等进行规范化管理。',6,2.000000,NULL),
+                (747,'8.1.8.3介质管理',744,'a) 应确保介质存放在安全的环境中，对各类介质进行控制和保护，实行存储环境专人管理，并根据存档介质的目录清单定期盘点。b) 应对介质在物理传输过程中的人员选择、打包、交付等情况进行控制，并对介质的归档和查询等进行登记记录。',6,3.000000,NULL),
+                (748,'8.1.8.4设备维护管理',744,'a) 应对各种设备（包括备份和冗余设备）、线路等指定专门的部门或人员定期进行维护管理。b) 应建立配套设施、软硬件维护方面的管理制度，对其维护进行有效的管理，包括明确维护人员的责任、维修和服务的审批、维修过程的监督控制等。c) 应确保信息处理设备必须经过审批才能带离机房或办公地点，含有存储介质的设备带出工作环境时其中重要数据必须加密。',6,4.000000,NULL),
+                (749,'8.1.8.5漏洞和风险管理',744,'应采取必要的措施识别安全漏洞和隐患，对发现的安全漏洞和隐患及时进行修补或评估可能的影响后进行修补。',6,5.000000,NULL),
+                (750,'8.1.8.6网络和系统安全管理',744,'a) 应划分不同的管理员角色进行网络和系统的运维管理，明确各个角色的责任和权限。b) 应指定专门的部门或人员进行账户管理，对申请账户、建立账户、删除账户等进行控制。c) 应建立网络和系统安全管理制度，对安全策略、账户管理、配置管理、日志管理、日常操作、升级与打补丁、口令更新周期等方面作出规定。d) 应制定重要设备的配置和操作手册，依据手册对设备进行安全配置和优化配置等。e) 应详细记录运维操作日志，包括日常巡检工作、运行维护记录、参数的设置和修改等内容。f) 应指定专门的部门或人员对日志、监测和报警数据等进行分析、统计，及时发现可疑行为。g) 应严格控制变更性运维，经过审批后才可改变连接、安装系统组件或调整配置参数，操作过程中应保留不可更改的审计日志，操作结束后应同步更新配置信息库。h) 应严格控制运维工具的使用，经过审批后才可接入进行操作，操作过程中应保留不可更改的审计日志，操作结束后应删除工具中的敏感数据。i) 应严格控制远程运维的开通，经过审批后才可开通远程运维接口或通道，操作过程中应保留不可更改的审计日志，操作结束后立即关闭接口或通道。j) 应保证所有与外部的连接均得到授权和批准， 应定期检查违反规定无线上网及其他违反网络安全策略的行为。',6,6.000000,NULL),
+                (751,'8.1.8.7恶意代码防范管理',744,'a) 应提高所有用户的防恶意代码意识，告知对外来计算机或存储设备接入系统前进行恶意代码检查等。b) 应对恶意代码防范要求做出规定，包括防恶意代码软件的授权使用、恶意代码库升级、恶意代码的定期查杀等。c) 应定期验证防范恶意代码攻击的技术措施的有效性。',6,7.000000,NULL),
+                (752,'8.1.8.8配置管理',744,'a) 应记录和保存基本配置信息，包括网络拓扑结构、各个设备安装的软件组件、软件组件的版本和补丁信息、各个设备或软件组件的配置参数等。b) 应将基本配置信息改变纳入变更范畴，实施对配置信息改变的控制，并及时更新基本配置信息库。',6,8.000000,NULL),
+                (753,'8.1.8.9密码管理',744,'应使用国家密码管理主管部门认证核准的密码技术和产品。',6,9.000000,NULL),
+                (754,'8.1.8.10变更管理',744,'a) 应明确变更需求，变更前根据变更需求制定变更方案，变更方案经过评审、审批后方可实施。b) 应建立变更的申报和审批控制程序，依据程序控制所有的变更，记录变更实施过程。c) 应建立中止变更并从失败变更中恢复的程序，明确过程控制方法和人员职责，必要时对恢复过程进行演练。',6,10.000000,NULL),
+                (755,'8.1.8.11备份与恢复管理',744,'a) 应识别需要定期备份的重要业务信息、系统数据及软件系统等。b) 应规定备份信息的备份方式、备份频度、存储介质、保存期等。c) 应根据数据的重要性和数据对系统运行的影响，制定数据的备份策略和恢复策略、备份程序和恢复程序等。',6,11.000000,NULL),
+                (756,'8.1.8.12安全事件处置',744,'a) 应及时向安全管理部门报告所发现的安全弱点和可疑事件。b) 应制定安全事件报告和处置管理制度，明确不同安全事件的报告、处置和响应流程，规定安全事件的现场处理、事件报告和后期恢复的管理职责等。c) 应在安全事件报告和响应处理过程中，分析和鉴定事件产生的原因，收集证据，记录处理过程，总结经验教训。d) 对造成系统中断和造成信息泄漏的重大安全事件应采用不同的处理程序和报告程序。',6,12.000000,NULL),
+                (757,'8.1.8.13应急预案管理',744,'a) 应规定统一的应急预案框架，具体包括启动预案的条件、应急组织构成、应急资源保障、事后教育和培训等内容。b) 应制定重要事件的应急预案，包括应急处理流程、系统恢复流程等内容。c) 应定期对系统相关的人员进行应急预案培训，并进行应急预案的演练。d) 应定期对原有的应急预案重新评估，修订完善。',6,13.000000,NULL),
+                (758,'8.1.8.14外包运维管理',744,'a) 应确保外包运维服务商的选择符合国家的有关规定。b) 应与选定的外包运维服务商签订相关的协议，明确约定外包运维的范围、工作内容。c) 应确保选择的外包运维服务商在技术和管理方面均具有按照等级保护要求开展安全运维工作的能力，并将能力要求在签订的协议中明确。d) 应在与外包运维服务商签订的协议中明确所有相关的安全要求。如可能涉及对敏感信息的访问、处理、存储要求，对IT基础设施中断服务的应急保障要求等。',6,14.000000,NULL),
+                (759,'一、指导原则',7,NULL,7,2.000000,NULL),
+                (760,'（一）明确主体责任。',759,'非银机构作为金融机构独立法人应承担相应的信息科技管理职责，建立符合业务特点的信息科技战略和风险管理策略，根据业务发展和经营管理需要，确定信息科技发展目标和功能定位，合理利用外部资源，自主开展信息科技管理工作。',7,1.000000,NULL),
+                (761,'（二）科技支撑发展。',759,'科学配备信息科技资源，充分发挥信息科技对业务发展和转型的支撑和引领作用，顺应“互联网+”发展趋势，积极稳妥地探索和应用新兴技术，为改善系统、渠道、产品的灵活性和可扩展性提供支持。',7,2.000000,NULL),
+                (762,'（三）倡导合作共享。',759,'积极与其他银行业金融机构协同合作，加强资源开放共享，交流先进技术与成功管理经验，取长补短，提高非银机构信息科技建设和管理水平。',7,3.000000,NULL),
+                (763,'（四）严守风险底线。',759,'建立健全信息科技风险管理架构，加强基础设施建设、开发测试、运行维护、信息安全、业务连续性、外包等重点领域的信息科技风险防控，避免和减少重大信息科技事件发生。',7,4.000000,NULL),
+                (764,'二、建立有效的信息科技治理架构',7,NULL,7,3.000000,NULL),
+                (765,'（一）夯实信息科技治理基础。',764,'非银机构应明确董事会、高级管理层应履行的信息科技管理职责，保证资金、人力和技术等资源投入，满足信息科技建设和管理需要。董事会应承担信息科技风险管理的最终责任，未设立董事会的，由本机构经营决策层履行相关管理职责。规模较大且主要业务对信息科技依赖度较高的非银机构应设立信息总监（首席信息官），将其纳入高级管理人员，专职负责信息科技战略规划和管理，参与同信息科技运用有关的业务决策等工作。应建立跨部门工作协调机制，成立由高级管理层、信息科技部门和主要业务部门负责人组成的信息科技管理委员会，承担信息科技战略规划审议、推进重大项目决策等职责，提高管理决策的科学性和有效性。应厘清与本机构出资人的信息科技管理工作职责，加强工作规划、预算投入、项目建设等重大事项的自主决策，推动信息科技健康有序发展。',7,1.000000,NULL),
+                (766,'（二）加强信息科技专业队伍建设。',764,'非银机构应设立相对独立的信息科技管理职能部门，合理配备专业人员，明确岗位职责和分工安排，建立内部岗位制约机制，确保关键岗位人员数量充足。应重视人才培养，为信息科技人员提供履职所需的技能培训，建立健全晋升及激励考核机制，提供专业人才发展空间，确保信息科技队伍稳定发展。',7,2.000000,NULL),
+                (767,'（三）建立信息科技风险管控机制。',764,'商业银行应当将业务连续性管理融入到企业文化中，使其成为银行机构日常运营管理的有机组成部分。',7,3.000000,NULL),
+                (768,'三、科学规划，提升信息科技对业务的支撑能力',7,NULL,7,4.000000,NULL),
+                (769,'（一）科学制定信息科技战略规划。',768,'非银机构应结合自身业务特色和发展趋势，制定与业务战略规划相匹配并适度超前的信息科技战略规划，科学构建信息技术架构，包括企业级应用架构、技术架构和数据架构，建立与规划相配套的组织和资源保障机制，定期跟踪规划执行进度，评估执行效果，确保有效落地实施。',7,1.000000,NULL),
+                (770,'（二）提高信息科技建设质效。',768,'非银机构应加强经营分析和风险控制系统建设，逐步构建覆盖全部业务流程的管理信息系统，满足业务发展需要和全面风险管理要求，提高业务运营效率，支撑管理和决策。信息系统建设应具有一定前瞻性，既要考虑业务的复杂性和实时性，又要考虑灵活性和可扩展性，有效应对市场需求变化，引领业务发展和机构转型升级。积极应用云计算、大数据、移动互联等新兴技术，通过创新服务方式，提高金融服务的安全性、便捷性，提升自身核心竞争力，创造业务价值。有条件的机构，可积极探索开展同业之间在技术合作、信息服务、资源共享等领域的协作实践。',7,2.000000,NULL),
+                (771,'（三）完善数据治理体系。',768,'非银机构应探索建立有效的数据治理组织架构，制定统一规范的数据标准和数据管理机制，理顺各系统之间的数据交互关系，不断提高数据质量，满足监管机构在监管数据采集、报送等方面的要求。深化数据应用，发挥数据治理在实现差异化服务和风险管理等方面的积极作用，提升数据治理效能。',7,3.000000,NULL),
+                (772,'四、加强基础设施建设，提升开发测试和运维管理水平',7,NULL,7,5.000000,NULL),
+                (773,'（一）加强数据中心基础设施建设。',772,'商业银行应当指定风险管理部门或其他综合管理部门为业务连续性管理主管部门， 组织开展全行业务连续性管理工作，指导、评估、监督各部门的业务连续性管理工作；组织制定业务连续性计划，协调业务条线部门，汇总、确定重要业务的恢复目 标和恢复策略；组织开展业务连续性计划的演练、评估与改进；开展业务连续性管理培训等。',7,1.000000,NULL),
+                (774,'（二）规范开发测试管理。',772,'非银机构应制定开发测试相关制度、标准、流程，规范管理自主开发或外包开发过程。安排专人负责项目管理，合理控制项目进度。重视需求分析，规范设计，兼顾业务功能与非业务功能需求。选取适当的开发测试方法，确保系统开发测试的完整性和有效性。明确安全开发规范，加强信息系统的安全设计、研发和测试。',7,2.000000,NULL),
+                (775,'（三）提升运行维护能力。 ',772,'非银机构应根据工作需要建立专业化的运行维护管理队伍，不断提高自主运维管理能力；科学划分运维岗位职责，杜绝关键岗位兼职兼岗。建立健全运维管理制度，明确事件管理、问题管理、配置管理、变更管理、发布管理等要求，编制运维操作手册，规范重要信息系统投产上线及重大变更操作。加强重要设备和设施定期巡检和维护，及时更新老化陈旧设备，全面做好软件正版化工作，健全软件产品和硬件设备缺陷管理机制，采取适当升级措施，确保系统服务的连续可用性。加强容量规划，以适应业务发展和交易量增长的需要。建设自动化运维手段，建立全面覆盖基础设施、网络、系统、应用等多领域、多层次的监控体系，妥善存储日志，有效防范和处置各类故障事件。',7,3.000000,NULL),
+                (776,'五、健全信息科技风险管理体系，加强重点领域风险防控',7,NULL,7,6.000000,NULL),
+                (777,'（一）加强信息安全管理。',776,'非银机构应配备专职信息安全管理人员，制定完善的安全管理制度，严格落实国家网络安全政策法规的有关要求，定期开展安全教育，提高员工信息安全意识。加强安全技术保障体系建设，采取有效的防病毒、防攻击、防篡改、防泄密、防抵赖等措施，提高系统抵御内外部攻击破坏的能力。严格配置网络访问控制策略，实现开发、测试、生产、办公等不同网络安全域之间以及与出资人等外联单位、国际互联网之间的风险隔离。加强系统安全漏洞和补丁信息的监测、收集和评估，确保及时发现和处置重大安全隐患。开展应用系统安全检测，对官方网站等通过互联网提供服务的系统，在上线及重大投产变更前进行渗透测试，杜绝系统“带病”上线。对敏感数据实施分类分级管理，强化数据生命周期各阶段安全管理要求，严格控制生产系统访问权限，禁止未经授权查看、下载生产数据；采取符合要求的加密、脱敏等技术，提高数据存储、传输、测试的安全性。落实终端、移动存储介质安全控制措施，加强对非法外联等各类违规行为的监控、阻断和审计。',7,1.000000,NULL),
+                (778,'（二）重视业务连续性能力建设。',776,'非银机构应建立业务连续性管理组织架构，有效开展业务影响分析，识别各项重要业务，合理确定业务恢复时间目标（RTO）和业务恢复点目标（RPO）。加强业务连续性资源与能力建设，依据业务恢复目标，对重要信息系统采取高可用技术，制定并实施重要数据备份策略；规模较大、业务服务实时性要求高的非银机构，应建立或与其他机构共享灾备中心（含灾备机房），对重要信息系统和数据进行同城或异地备份，确保生产系统不可用时及时恢复重要业务。制定信息科技突发事件应急预案，对重要系统每年至少开展一次应急演练，加强业务与技术应急有效衔接，不断提高事件应急处置能力。',7,2.000000,NULL),
+                (779,'（三）严格控制外包风险。',776,'非银机构应识别和分析信息科技外包风险，制定外包策略，明确外包范围和责任边界，严守“安全管理责任不能外包、安全标准不能降低”的风险底线，建立与信息科技战略目标相适应的外包管理体系。加强对外包服务商的风险管理，对关键外包服务商的技术实力、内控体系和管理能力定期开展风险评估，制定外包服务中断应急预案；重视关联外包管理，将与出资人之间的外包活动纳入关联外包管理，不得因关联关系而降低外包服务管理要求；识别具有机构集中度风险的外包服务商，加强持续监控和管理，积极采取风险分散措施，对外包合作项目进行必要的知识产权转移，有条件的机构应逐步提高自主研发能力，降低对外包服务商的依赖。严格外包合同管理，规范合同条款，明确外包服务商安全保密等各类责任与义务。',7,3.000000,NULL),
+                (780,'六、加强监管指导',7,NULL,7,7.000000,NULL),
+                (781,'（一）提高监管关注。 ',780,'各级监管机构应加强对非银机构的信息科技监管，按照属地原则，有序开展监管和指导工作。合理分配监管资源，加强内部监管联动，提高监管工作质效。积极跟踪非银机构信息科技发展动态，分析和研判风险态势，加强风险识别、评估和预警，及时开展风险提示，将风险管控关口前移。',7,1.000000,NULL),
+                (782,'（二）突出监管重点。',780,'各级监管机构应积极引导非银机构提高对信息化工作的重视程度，加强资源保障，不断提升专业化管理能力，有效支撑业务发展和创新。督促非银机构在信息化建设过程中，合法、规范地应用信息技术和信息产品，在开展同业、跨业交流与合作时严格遵守相关规定。积极运用非现场监管、现场检查等监管手段，及时发现非银机构存在的突出问题，开展专项整治，特别要加大重点风险领域的监管力度，严防重大风险隐患。',7,2.000000,NULL),
+                (783,'（三）强化责任追究。',780,'各级监管机构应强化对非银机构信息科技建设和管理的监管问责，对违反监管政策或监管要求落实不力的机构，要追究相关责任，必要时依法采取行政处罚措施。督促指导非银机构严格落实事件报告制度，按照《商业银行业务连续性监管指引》有关要求，及时报送重要信息系统服务中断或重要数据损毁、丢失、篡改、泄露情况，妥善处置对本机构或客户利益造成较大损害的重大突发信息科技事件。',7,3.000000,NULL),
+                (784,'第一章 总则',8,NULL,8,1.000000,NULL),
+                (785,'第一条',784,'为加强证券基金经营机构信息技术管理，保障\n证券基金行业信息系统安全、合规运行，保护投资者合法权益，根据《证券法》、《证券投资基金法》、《证券公司监督管理条例》等法律法规，制定本办法。',8,1.000000,NULL),
+                (786,'第二条 ',784,'证券基金经营机构借助信息技术手段从事证\n券基金业务活动，信息技术服务机构为证券基金业务活动提供信息技术服务，适用本办法。',8,2.000000,NULL),
+                (787,'第三条 ',784,'本办法所称证券基金经营机构，是指经中国证\n监会批准在境内设立的证券公司和管理公开募集基金的基金管理公司（以下简称基金管理公司）。\n本办法所称信息技术服务机构，是指为证券基金业务活动提供信息技术服务的机构。信息技术服务的范围如下：\n（一）重要信息系统的开发、测试、集成及测评；\n（二）重要信息系统的运维及日常安全管理；\n（三）中国证监会规定的其他情形。\n以上机构统称证券基金经营与服务机构。',8,3.000000,NULL),
+                (788,'第四条 ',784,'证券基金经营机构是从事证券基金业务活动\n的责任主体，应当保障充足的信息技术投入，在依法合规、有效防范风险的前提下，充分利用现代信息技术手段完善客户服务体系、改进业务运营模式、提升内部管理水平、增强合规风控能力，持续强化现代信息技术对证券基金业务活动的支撑作用。',8,4.000000,NULL),
+                (789,'第五条 ',784,'中国证监会及其派出机构依法对证券基金经营与服务机构借助信息技术手段从事证券基金业务活动或提供相关服务实施监督管理。\n中国证券业协会及中国证券投资基金业协会依照本办\n法制定和完善相关自律规则，对证券基金经营机构借助信息技术手段从事证券基金业务活动或提供相关服务实施自律管理。\n中证信息技术服务有限责任公司（以下简称中证信息）在中国证监会指导下制定相关配套业务规则，协助开展信息技术相关备案、监测、检测和检查等工作。',8,5.000000,NULL),
+                (790,'第二章 信息技术治理',8,NULL,8,2.000000,NULL),
+                (791,'第六条 ',790,'经营机构应当按照中国证监会有关信息安全保障管理的规定完善信息技术治理，保障与业务活动规模、水平相适应的资金、人员等信息技术投入，持续满足信息技术资源的可用性、安全性与合规性要求。经营机构应当结合自身发展战略、经营方针、资本实力和风险管理策略定期评估更新信息技术规划，根据本办法制定并持续完善信息技术管理制度和操作流程。',8,1.000000,NULL),
+                (792,'第七条 ',790,'经营机构经营管理层对信息技术管理工作承担最终责任。经营机构应当明确经营管理层、各部门及分支机构的信息技术管理职责和工作程序，并建立相应的绩效考核和责任追究机制。',8,2.000000,NULL),
+                (793,'第八条 ',790,'经营机构应当指定或者任命一名熟悉信息技术的高级管理人员（以下称信息技术分管高管）负责信息技术管理工作。',8,3.000000,NULL),
+                (794,'第九条 ',790,'经营机构应当设立信息技术管理部门或指定有关部门，统一管理经营机构的信息技术规划、信息技术架构与基础设施建设、系统建设与运维、数据保护、信息安全保障等工作。经营机构应当建立合规管理部门、风险管理部门、内部审计部门、信息技术管理部门、各业务部门及分支机构间的分工协作机制，保障信息技术管理职责的有效落实。',8,4.000000,NULL),
+                (795,'第三章经营机构信息技术合规与风险管理',8,NULL,8,3.000000,NULL),
+                (796,'第十条 ',795,'经营机构应当将合规与风险管理贯穿信息技术管理的各个环节，建立相应的审查、监测和检查机制。',8,1.000000,NULL),
+                (797,'第十一条 ',795,'经营机构借助信息技术手段从事证券基金相关业务活动，应当在有关信息系统上线时，同步上线与业务活动的复杂程度和风险状况相适应的风险管理功能或者信息系统（以下统称风险管理系统），对风险进行计量、监控、预警和干预，并及时更新监测指标及预警阀值。',8,2.000000,NULL),
+                (798,'第十二条 ',795,'经营机构借助信息技术手段从事证券基金相关业务活动前，应当进行内部审查，验证下列事项并建立存档记录：\n（一）信息系统的功能设计与技术实现应当遵循业务合规的原则，各项功能符合法律法规及中国证监会的规定；\n（二）风险管理系统功能完备、权限清晰，能够正常运行；\n（三）信息系统的安全防护措施能够保障经营机构的经营数据和客户信息的安全、完整；\n（四）经营机构的运行管理能力和信息系统备份能力能够保障信息系统的安全运行。经营机构分管合规管理、风险管理、信息技术管理及相关业务部门的高级管理人员应当按照职责分工，在重要信息系统立项、上线或者发生重大变更前，对借助信息技术手段从事证券基金相关业务活动的合规风险、信息系统安全风险、数据安全风险出具书面意见。',8,3.000000,NULL),
+                (799,'第十三条 ',795,'经营机构应当识别借助信息技术手段从事证券基金相关业务活动的合规风险、信息系统安全风险、数据安全风险。经营机构应当根据风险识别结果，组织对风险进行持续监测，建立明确的风险警示及化解工作流程，对发现的风险问题进行处置，并每年至少开展一次对风险监测的有效性评估。',8,4.000000,NULL),
+                (800,'第十四条 ',795,'经营机构应当每年至少开展一次对信息技术管理工作的全面内部审计，包括但不限于信息技术治理、信息技术合规与风险管理、信息系统安全管理、风险管理系统等方面内容。经营机构因未能有效实施信息技术管理被采取行政处罚、行政监管措施或者自律管理措施的，经营机构应当在三个月内完成对有关信息系统管理工作的专项内部审计。经营机构应当对内部审计发现的问题进行评估并在此基础上组织整改。经营机构应当妥善保存保管审计报告，保存期限不得少于二十年。',8,5.000000,NULL),
+                (801,'第十五条 ',795,'经营机构将其运营管理的承载证券基金相关业务活动的信息系统与外部信息系统对接的，应当遵守中国证监会的有关规定。',8,6.000000,NULL),
+                (802,'第十六条 ',795,'经营机构应当按照中国证监会有关规定采集、记录、验证、存储客户交易终端信息，并采取有效的技术措施，保障相关信息真实、准确、完整。客户交易终端信息发生变更的，应履行相应变更程序。',8,7.000000,NULL),
+                (803,'第十七条 ',795,'除法律法规及中国证监会认可的情形外，经营机构应当通过自身运营管理的信息系统直接接收客户交易指令，并根据信息系统记录的客户交易指令接收时间，公平对待客户。',8,8.000000,NULL),
+                (804,'第十八条 ',795,'经营机构从事证券基金业务活动并依法使用电子合同的，应当将电子合同存储在经营机构指定的信息系统，并可供投资者或者合同对手方查询、下载。',8,9.000000,NULL),
+                (805,'第十九条 ',795,'经营机构从事证券交易相关业务活动的信息系统，应当按照有关规定及自律规则具备审查账户资金及证券是否充足、监控异常交易及异常资金划转等情形的功能。',8,10.000000,NULL),
+                (806,'第四章经营机构信息系统安全管理',8,NULL,8,4.000000,NULL),
+                (807,'第一节信息系统安全管理',806,NULL,8,1.000000,NULL),
+                (808,'第二十条 ',807,'经营机构应当建立独立于生产环境的专用开发测试环境，避免风险传导。除中国证监会及行业核心机构认可的情形外，经营机构不得在生产环境开展技术或者业务测试，不得在开发测试环境使用未经数据脱敏的客户信息。',8,1.000000,NULL),
+                (809,'第二十一条 ',807,'重要信息系统上线或者发生重大变更的，经营机构应当制定专项实施方案、应急预案和回退方案，并组织合规管理、风险管理、信息技术管理部门和有关业务部门，对信息系统的上线或者变更操作行为进行审查、确认和跟踪。重要信息系统计划停止使用的，经营机构应当开展业务和技术影响评估，制定完整的停用和数据迁移保管方案，并组织必要的评审及停用后的安全检查。',8,2.000000,NULL),
+                (810,'第二十二条 ',807,'经营机构应当定期开展压力测试，确保重要信息系统的容量满足业务开展的需要。前款所称容量，包括重要信息系统的处理能力、网络带宽、存储空间等可能影响信息系统稳定运行的因',8,3.000000,NULL),
+                (811,'第二十三条 ',807,'经营机构应当建立监测机制，设定监测指标，持续监测数据中心物理环境、网络设备、主机设备、重要信息系统和监测系统的运行状况，及时发现异常情况。经营机构应当指定专人及时跟踪和解决监测发现的异常情况，并定期进行评估分析。',8,4.000000,NULL),
+                (812,'第二十四条 ',807,'经营机构应当根据业务开展情况，以及信息系统、网络设备、安全设备的重要程度，建立与开展监测工作相适应的日志留痕机制。经营机构应当妥善保存信息系统在开发、测试、上线、变更及运行维护过程中产生的文档，满足应急处置和审计需要。',8,5.000000,NULL),
+                (813,'第二十五条 ',807,'经营机构应当将重要信息系统在境内独立部署，并将证券基金经营活动中收集和产生的重要数据和客户信息存放在境内，下列情形除外：\n（一）经营机构依法在境外交易场所进行证券交易、衍生品交易或与境外交易对手方开展场外证券交易、场外衍生品交易的相关信息系统及相关重要数据、客户信息；\n（二）经营机构依法进行外汇交易的相关信息系统及相关重要数据、客户信息；\n（三）法律法规及中国证监会认可的其他情形。',8,6.000000,NULL),
+                (814,'第二十六条 ',807,'经营机构可以依法为其子公司提供机房、通信网络等基础设施，并协助开展有关运行维护工作。经营机构为子公司提供信息技术服务，应当充分评估信息技术基础设施的支撑能力与冗余程度，并与子公司签订服务协议，明确双方的权利义务，以及日常协作、业务隔离和应急管理机制，避免因信息技术基础设施共用带来的新增风险。',8,7.000000,NULL),
+                (815,'第二十七条 ',807,'经营机构应当确保重要信息系统具备可审计功能，并能够根据监管部门的要求转换、提供数据。',8,8.000000,NULL),
+                (816,'第二节数据安全管理',806,NULL,8,2.000000,NULL),
+                (817,'第二十八条 ',816,'经营机构应当加强数据安全管理，采取网络控制、用户认证、访问控制、数据加密、数据备份、日志记录、非法入侵检测和病毒入侵检测等措施，保护经营机构的经营数据和客户信息安全，防范信息泄露。',8,1.000000,NULL),
+                (818,'第二十九条 ',816,'经营机构应当对信息系统实施用户认证和访问控制管理。信息系统的管理、操作和访问权限管理应当遵循最小功能原则和最小权限策略，并经合规部门审批同意。经营机构应当建立定期检查与核对机制，确保用户访问权限与其工作职责相匹配，防止授权不当或者出现非授权账户。经营机构应当将重要信息系统的立项审批与开发、运行与维护、开发测试与日常运转之间实施必要分离，保证信息技术管理部门内部岗位的相互制衡。',8,2.000000,NULL),
+                (819,'第三十条 ',816,'经营机构应当记录有关经营机构经营数据和客户信息的访问和使用情况，并持续监督信息技术服务机构、业务合作方等落实保密协议的情况。经营机构发现其他机构、个人违规传输、转发、存储或者使用经营机构的经营数据和客户信息的，应当及时向监管部门报告，并评估影响范围、排查泄露途径。如涉及业务合作机构的，经营机构应当立即终止与其合作。',8,3.000000,NULL),
+                (820,'第三十一条 ',816,'经营机构应当建立健全数据安全管理制度，不得收集与所提供服务无关的客户信息。对于收集使用的客户信息，应当公开收集、使用的规则和目的，并征得客户同意。经营机构不得允许或者配合其他机构、个人违规截取、留存客户信息，不得以任何方式向其他机构、个人违规提供客户信息。',8,4.000000,NULL),
+                (821,'第三节业务连续性管理',806,NULL,8,2.000000,NULL),
+                (822,'第三十二条 ',821,'经营机构应当根据自身的业务类型、规模和复杂程度等情况，制定业务连续性计划，确保发生可能影响重要信息系统正常运行的突发事件时迅速反应，妥善应对，尽可能降低突发事件对业务的影响。',8,1.000000,NULL),
+                (823,'第三十三条 ',821,'经营机构应当设立或指定专门机构负责统筹协调各部门或单位落实下列业务连续性管理职责：\n（一）风险管理部门或其他综合管理部门为业务连续性管理主管部门，组织开展业务连续性计划的演练、评估与改进；\n（二）各业务部门负责本业务条线的风险评估、业务影响分析，确定重要业务恢复目标和恢复策略；\n（三）信息技术管理部门负责信息技术应急响应与恢复；\n（四）内部审计部门负责并定期开展公司业务连续性管理审计工作；\n（五）其他相关部门负责为业务连续性日常管理提供人力、物力、财力等资源保障。',8,2.000000,NULL),
+                (824,'第三十四条 ',821,'业务连续性计划应当包括业务连续性建设目标、业务应急措施、业务恢复或替代机制、应急联系方式、与客户的沟通方式、与有关单位的通报机制、向监管部门的报告机制、业务连续性计划的披露与更新机制、备份信息系统建设和恢复机制、备份数据恢复机制等内容。业务连续性计划应当充分考虑下列突发事件：\n（一）重要信息系统服务中断、遭到破坏或者出现严重缓慢、严重拥堵、通信中断、数据损毁等信息技术故障；\n（二）信息技术服务机构无法继续提供服务、第三方机构无法继续开展合作、电力中断等外部服务中断事件；\n（三）重大疫情、火灾、洪水等自然灾害；\n（四）公司经营管理层或者主要业务、技术团队发生重大人事变动；\n（五）其他可能影响重要信息系统正常运行的事件。',8,3.000000,NULL),
+                (825,'第三十五条 ',821,'经营机构应当根据业务变化、系统升级或者变更等情况，持续更新业务连续性计划。经营机构应当定期组织有关关键岗位人员对业务连续性计划进行演练并形成演练报告。涉及重要信息系统的演练每年不得少于两次。演练报告的保存期限不得少于五年。',8,4.000000,NULL),
+                (826,'第三十六条 ',821,'经营机构应当在公司网站、客户交易终端等平台公示有关重大突发事件发生时客户可采取的替代交易方式等信息，提示客户防范和应对可能出现的风险。',8,5.000000,NULL),
+                (827,'第三十七条 ',821,'经营机构重要信息系统应当具备与开展业务相匹配的信息系统备份能力，确保重要信息系统在发生信息技术故障、灾难灾害时能够在规定时间内恢复正常运行。经营机构备份的数据应当与原始数据保持一致，备份系统应当具备与生产系统同等的处理能力。经营机构信息系统的备份能力指标应当达到证券基金行业标准规定的信息系统备份能力等级。具体如下：\n（一）实时信息系统、非实时信息系统的数据备份能力应当达到第一级；\n（二）非实时信息系统的故障应对能力应当达到第二级；\n（三）实时信息系统的故障应对能力应当达到第四级；\n（四）实时信息系统、非实时信息系统应当具备灾难及重大灾难应对能力，相关技术指标应当分别达到灾难应对能力第五级、重大灾难应对能力第六级；\n（五）灾难应对能力可以通过重大灾难应对能力体现，但重大灾难应对能力相关技术指标应当达到灾难应对能力第五级。',8,6.000000,NULL),
+                (828,'第五章专项业务服务机构',8,NULL,8,5.000000,NULL),
+                (829,'第三十八条 ',828,'专项业务服务机构应当参照本办法第十条至第十三条、第十四条第一款、第十五条至第二十五条、第二十七条至第三十七条的要求，建立健全信息技术合规与风险管理机制，加强对承载证券基金相关业务活动的信息系统（以下称专项业务信息系统）的管理。',8,1.000000,NULL),
+                (830,'第三十九条 ',828,'专项业务服务机构应当建立专项业务信息系统与其他业务信息系统之间的风险隔离机制，妥善部署、存放专项业务信息系统及其数据。',8,2.000000,NULL),
+                (831,'第四十条 ',828,'专项业务服务机构应当为证券基金相关业务活动配备充足的专职信息技术人员和资源，满足业务开展及风险监测的需要。',8,3.000000,NULL),
+                (832,'第四十一条 ',828,'专项业务服务机构应当参照中国证监会关于经营机构信息安全事件报告与调查处理的规定，建立信息安全事件的分级响应、向中国证监会及其派出机构报告和调查处理机制。',8,4.000000,NULL),
+                (833,'第六章信息技术服务机构',8,NULL,8,6.000000,NULL),
+                (834,'第四十二条 ',833,'经营机构、专项业务服务机构借助信息技术手段从事证券基金相关业务活动，可以委托信息技术服务机构提供信息技术服务，但经营机构、专项业务服务机构依法应当承担的责任不因委托而免除或减轻。',8,1.000000,NULL),
+                (835,'第四十三条 ',833,'除中国证监会认可的情形外，经营机构、专项业务服务机构借助信息技术手段从事证券基金相关业务活动，不得将重要信息系统的运行、维护或日常安全管理交由信息技术服务机构独立实施。',8,2.000000,NULL),
+                (836,'第四十四条 ',833,'经营机构、专项业务服务机构应当审慎选择信息技术服务机构，重点关注下列事项：\n（一）住所地在中华人民共和国境内；\n（二）信息技术服务机构及其控股股东、实际控制人或者其控制的关联人最近一年内不存在与证券期货业务活动相关的重大违法违规记录；\n（三）具有较强的合规与风险管理水平、信息安全保障能力；\n（四）具有专门负责合规与风险管理、信息安全管理的部门或者团队；\n（五）具有与所提供信息技术服务相适应的场所、设备和技术能力；\n（六）具有完善的信息技术管理制度、操作流程和应急响应机制；\n（七）与本机构不存在直接或者潜在的利益冲突；\n（八）中国证监会根据审慎监管原则规定的其他事项。\n信息技术服务机构为经营机构及专项业务服务机构提供信息技术服务期间，出现不符合前款第（二）项的情形，经营机构、专项业务服务机构应当按照业务连续性计划，对信息技术服务机构保障相关产品或服务安全、合规运行的能力进行内部评估与审查，如无法保障相关产品或服务安全、合规运行的，应当更换信息技术服务机构。',8,3.000000,NULL),
+                (837,'第四十五条 ',833,'为基金管理公司及公开募集基金相关专项业务服务机构提供服务的信息技术服务机构（以下统称基金信息技术服务机构）应当向中国证监会备案，报送备案报告、工商注册登记资料、人员资质证明、商业计划书、信息技术服务方案、内部控制及合规管理制度、信息技术服务协议样本、法律意见书等材料。基金信息技术服务机构应当参照本办法第三条及有关规定，备案所提供的信息技术服务类型。',8,4.000000,NULL),
+                (838,'第四十六条 ',833,'为证券公司或证券相关专项业务服务机构提供服务的信息技术服务机构（以下统称证券信息技术服务机构）可以自愿申请加入中国证券业协会，主动接受行业协会的业务指导。中国证券业协会应当参照本办法有关规定制定证券信息技术服务机构提供信息技术服务的自律管理规则。',8,5.000000,NULL),
+                (839,'第四十七条 ',833,'经营机构应当与信息技术服务机构签订服务协议和保密协议，明确各方权利、义务和责任，约定质量考核指标、持续监控机制、异常处理机制、服务变更或者终止的处置流程以及现场服务人员保密要求等内容。经营机构应当参照本办法第三条及有关规定在服务协议中列明委托信息技术服务机构提供服务的类型、服务方式、涉及信息系统及相关证券基金业务活动类型。经营机构应当对信息技术服务机构及其现场服务人员落实服务协议和保密协议的情况进行持续监督。',8,6.000000,NULL),
+                (840,'第四十八条 ',833,'经营机构委托信息技术服务机构提供服务前，应当按照本办法第十二条的规定对信息技术服务机构及相关信息系统进行内部审查并出具审查意见。证券公司选择未加入中国证券业协会的证券信息技术服务机构提供服务的，应当将审查意见报送至住所地中国证监会派出机构。发现审查意见存在瑕疵的，中国证监会派出机构应当组织开展现场检查。基金信息技术服务机构服务质量出现明显瑕疵的，应当立即核实有关情况，采取必要的处理措施，并协助使用同类信息技术服务的经营机构、专项业务服务机构修复相关缺陷。',8,7.000000,NULL),
+                (841,'第四十九条 ',833,'经营机构应当建立应急预案，针对可能出现的影响信息技术服务机构继续提供服务的重大异常情况，明确应急处置机制。前款所称重大异常情况，包括信息技术服务机构倒闭、出现重大财务损失或者重要人员变动，以及服务协议意外终止等情况。',8,8.000000,NULL),
+                (842,'第五十条 ',833,'除法律法规另有规定和中国证监会认可的情形外，基金信息技术服务机构为经营机构、专项业务服务机构提供信息技术服务，不得有下列行为：\n（一）从事证券基金业务活动相关的业务操作；\n（二）截取、转发、存储经营机构的经营数据或者客户信息；\n（三）在经营机构不知情的情况下，转委托他人提供信息技术服务；\n（四）提供存在恶意代码或者未授权的系统功能、角色权限及网络连接的产品；\n（五）提供涉嫌违法违规的产品或信息技术服务；\n（六）违法违规向社会公众发布信息安全漏洞等网络安全信息；\n（七）提供信息技术服务过程中向社会公众进行误导性宣传；\n（八）法律、行政法规及中国证监会禁止的其他行为。',8,9.000000,NULL),
+                (843,'第七章监督管理',8,NULL,8,7.000000,NULL),
+                (844,'第五十一条 ',843,'经营机构、专项业务服务机构新建关键信息基础设施，使用外部购入、委托建设的证券基金交易相关信息系统，或者提供外部信息系统接入的，应当在开展相关业务活动的5 个工作日内向中国证监会备案，报送内部审查意见、关键信息基础设施及相关信息系统架构设计、业务流程、风控制度、信息安全管理、合规管理等材料。',8,1.000000,NULL),
+                (845,'第五十二条 ',843,'经营机构、专项业务服务机构应当于每年4 月30 日前向住所地中国证监会派出机构报送信息技术管理年度报告，说明报告期内信息技术治理建设、信息技术合规与风险管理有效性评估、信息系统安全管理、信息技术管理工作审计等执行本办法规定的情况。基金信息技术服务机构为经营机构、专项业务服务机构提供信息技术服务的，应当按照中国证监会要求定期报送相关资料。证券基金经营与服务机构提交报告反映的内容应当真实、准确、完整。',8,2.000000,NULL),
+                (846,'第五十三条 ',843,'专项业务服务机构发现专项业务信息系统出现下列情形的，应当立即报告，并在系统恢复正常后5个工作日内，将事件总结报告报送至住所地中国证监会派出机构，说明事件发生的过程、原因、责任和调查处理结论：\n（一）中断、部分中断或者运行缓慢；\n（二）存在可能影响业务持续运行、经营数据安全或者客户信息安全的信息安全漏洞；\n（三）因系统功能原因导致业务差错，并产生较大影\n响；\n（四）投资者数据损毁或者错误等异常情况，影响当日或者后续交易日正常交易的；\n（五）投资者数据发生泄露的；\n（六）被他人利用从事违法违规行为。\n经营机构应当按中国证监会有关规定履行信息安全事件的报告和调查处理职责。',8,3.000000,NULL),
+                (847,'第五十四条 ',843,'基金信息技术服务机构出现下列情形的，应当立即报告住所地中国证监会派出机构：\n（一）公司人员、财务、技术管理等方面发生重大变化，可能无法持续为经营机构、专项业务服务机构提供信息技术服务；\n（二）提供的信息技术服务存在明显缺陷，导致所服务的3家以上经营机构、专项业务服务机构发生信息系统运营异常、数据泄露、遭受网络攻击等情形；\n（三）存在其他可能影响3 家以上经营机构、专项业务服务机构业务运行的信息安全隐患。',8,4.000000,NULL),
+                (848,'第五十五条',843,'中国证监会及其派出机构在对证券基金\n经营与服务机构信息技术管理及服务活动的监管过程中，可\n以采用渗透测试、漏洞扫描、组织应急演练等现场检查及非\n现场检查方式。\n中国证监会及其派出机构可以视情况委托行业专业信\n息安全机构协助开展相关工作。经营机构、专项业务服务机\n构及基金信息技术服务机构应当予以配合，如实提供有关文件、资料，不得拒绝、阻碍和隐瞒。',8,5.000000,NULL),
+                (849,'第五十六条',843,'中国证监会及其派出机构可以将经营机\n构信息技术治理、信息技术合规与风险管理、信息系统安全\n管理的有效性作为分类监管、行政许可的重要依据。',8,6.000000,NULL),
+                (850,'第五十七条',843,'经营机构、专项业务服务机构违反本办法\n规定的，中国证监会及其派出机构可以依法对其采取出具警\n示函、责令增加合规检查次数、责令改正、责令定期报告、\n公开谴责等行政监管措施；对直接负责的主管人员和其他责\n任人员采取出具警示函、责令改正、监管谈话、公开谴责等\n行政监管措施。',8,7.000000,NULL),
+                (851,'第五十八条',843,'经营机构违反本办法第六条、第十一条至\n第十九条、第二十五条、第二十六条、第三十条、第三十一\n条、第三十七条、第四十三条、第四十四条、第四十七条、\n第五十一条、第五十二条的规定，构成公司治理混乱、内控\n失效等情形的，中国证监会及其派出机构可以按照《证券投\n资基金法》第二十四条、《证券公司监督管理条例》第七十\n条的规定，采取公开谴责、责令暂停部分或全部业务、对直\n接负责的主管人员和其他责任人员采取责令更换、认定为不\n适当人选等行政监管措施。',8,8.000000,NULL),
+                (852,'第五十九条',843,'专项业务服务机构违反本办法第三十八\n条、第四十一条、第四十四条、第五十一至第五十三条的规定，情节严重的，中国证监会及其派出机构可对专项业务服务机构及其直接负责的主管人员和其他直接责任人员单处或者并处警告、三万元以下罚款。',8,9.000000,NULL),
+                (853,'第五十九条',843,'第六十条基金信息技术服务机构违反本办法规定的，中国证监会及其派出机构可以要求其提交说明材料，并采取出具警示函、责令改正、监管谈话等措施，情节严重的，可以按照《证券投资基金法》第一百四十四条、《网络安全法》\n第六十四条的规定，责令其暂停或停止基金信息技术服务业务。违反本规定，擅自从事基金信息技术服务的信息技术服务机构，中国证监会及其派出机构可以责令其改正，并对直接负责的主管人员和其他直接责任人员单处或者并处警告、三万元以下罚款。',8,10.000000,NULL),
+                (854,'第八章附则',8,NULL,8,8.000000,NULL),
+                (855,'第八章附则',854,'第六十一条本办法中下列用语的含义：\n（一）信息系统安全风险，是指因系统中断或者运行缓\n慢、信息被篡改等原因导致信息系统的可用性、完整性丧失\n的风险。\n（二）数据安全风险，是指因信息泄露、数据丢失、权\n限管理不当、服务器被外部攻击等原因导致信息系统机密性\n丧失的风险。\n（三）重要信息系统，是指支持经营机构关键业务功能、\n如出现异常将对证券市场和投资者产生重大影响的信息系\n统。包括集中交易系统、投资交易系统、网上基金销售系统、\n估值核算系统、投资监督系统、信息披露系统、份额登记系\n统、第三方存管系统、融资融券业务系统、网上交易系统、\n电话委托系统、移动终端交易系统、法人清算系统、具备开\n户、交易或者客户资料修改功能的门户网站、存放承销保荐\n业务工作底稿相关数据的系统以及与上述信息系统具备类\n似功能的信息系统。\n（四）机房租赁，是指委托方接受租用受托方提供的机\n房空间运行自身信息系统，由受托方负责基础设施及公共通\n信网络设施的运维工作，由委托方负责自身系统的运维工\n作。\n（五）日志，包括系统日志、应用日志和安全日志，记\n录信息系统中硬件、系统软件、应用软件发生问题的有关信\n息，同时还可以监测信息系统发生的各类事件。\n（六）信息安全事件，相关定义参见《证券期货业信息\n安全报告与调查处理办法》（证监会公告〔2012〕46 号）。\n（七）行业核心机构，包括承担证券期货市场公共职能\n的机构、承担证券期货行业信息技术公共基础设施运营的机\n构等证券期货市场核心机构及其下属机构。\n（八）客户信息，包括客户的姓名、身份证号、银行账号、联系方式、交易密码、交易记录、委托及查询记录、交\n易终端信息、与交易相关的客户操作行为信息等。\n（九）数据脱敏，是指某些敏感信息通过脱敏规则进行\n数据变形，实现敏感隐私数据的可靠保护。\n（十）经营机构信息系统备份能力、数据备份能力、故\n障应对能力、重大灾难应对能力、实时信息系统、非实时信\n息系统以及备份能力等级相关定义参见《证券期货经营机构\n信息系统备份能力标准》（JR/T 0059—2010）。\n',8,1.000000,NULL),
+                (856,'第六十二条',854,'经营机构在境内依法设立的子公司借助\n信息技术手段从事证券基金相关业务活动的，参照适用本办\n法。',8,2.000000,NULL),
+                (857,'第六十三条',854,'本办法实施之前，证券基金经营与服务机构已经借助信息技术手段从事证券基金相关业务活动、基金信息技术服务机构提供相关信息技术服务的，应当按照本办法第四十五条、第五十一条规定，及时向中国证监会备案，期间不得新增有关业务活动或者信息技术服务。未向中国证监会备案的，应当在本办法实施后三个月内进行规范。到期仍未规范的，中国证监会将按照本办法第五十七至第六十条有关规定采取措施。',8,3.000000,NULL),
+                (858,'第六十四条',854,'本办法自2017 年月日起实施。',8,4.000000,NULL),
+                (859,'第一章 总则',9,NULL,9,1.000000,NULL),
+                (860,'第一条',859,' 为了保障证券期货信息系统安全运行，加强证券期货业信息安全管理工作，促进证券期货市场稳定健康发展，保护投资者合法权益，根据《证券法》、《证券投资基金法》、《期货交易管理条例》及信息安全保障相关的法律、行政法规，制定本办法。',9,1.000000,NULL),
+                (861,'第二条 ',859,'证券期货业信息安全保障、管理、监督等工作适用本办法。',9,2.000000,NULL),
+                (862,'第三条 ',859,'证券期货业信息安全保障工作实行“谁运行、谁负责，谁使用、谁负责”、安全优先、保障发展的原则。',9,3.000000,NULL),
+                (863,'第四条 ',859,'证券期货业信息安全保障的责任主体应当执行国家信息安全相关法律、行政法规和行业相关技术管理规定、技术规则、技术指引和技术标准，开展信息安全工作，保护投资者交易安全和数据安全，并对本机构信息系统安全运行承担责任。\n前款所称责任主体，包括承担证券期货市场公共职能的机构、承担证券期货行业信息技术公共基础设施运营的机构等证券期货市场核心机构及其下属机构（以下简称核心机构），证券公司、期货公司、基金管理公司、证券期货服务机构等证券期货经营机构（以下简称经营机构）。',9,4.000000,NULL),
+                (864,'第五条 ',859,'开展证券客户交易结算资金第三方存管业务，银证、银期、银基转账和结算业务，基金托管和销售业务的机构应当按照有关规定保障相关业务系统的安全运行。',9,5.000000,NULL),
+                (865,'第六条 ',859,'为证券期货业提供软硬件产品或者技术服务的供应商（以下简称供应商），应当保证所提供的软硬件产品或者技术服务符合国家及证券期货业信息安全相关的技术管理规定、技术规则、技术指引和技术标准。',9,6.000000,NULL),
+                (866,'第七条 ',859,'中国证监会支持、协助国家信息安全管理部门组织实施信息安全相关法律、行政法规，依法对证券期货业信息安全保障工作实施监督管理。\n中国证监会派出机构按照授权履行监督管理职责。',9,7.000000,NULL),
+                (867,'第八条 ',859,'中国证监会及其派出机构与国家信息安全管理部门、相关行业管理部门建立信息安全协调机制，与国家有关专业安全机构和标准化组织建立信息安全合作机制。',9,8.000000,NULL),
+                (868,'第九条 ',859,'证券、期货、证券投资基金等行业协会（以下简称证券期货行业协会）依照本办法的规定，对会员的信息安全工作实行自律管理。',9,9.000000,NULL),
+                (869,'第十条',859,' 核心机构依照本办法的规定，对市场相关主体关联信息系统的安全保障工作进行督促、指导。',9,10.000000,NULL),
+                (870,'第二章 基本要求',9,NULL,9,2.000000,NULL),
+                (871,'第十一条 ',870,'核心机构和经营机构应当具有合格的基础设施。机房、电力、空调、消防、通信等基础设施的建设符合行业信息安全管理的有关规定。',9,1.000000,NULL),
+                (872,'第十二条 ',870,'核心机构和经营机构应当设置合理的网络结构，划分安全区域，各安全区域之间应当进行有效隔离，并具有防范、监控和阻断来自内外部网络攻击破坏的能力。',9,2.000000,NULL),
+                (873,'第十三条 ',870,'核心机构和经营机构应当建立符合业务要求的信息系统。信息系统应当具有合理的架构，足够的性能、容量、可靠性、扩展性和安全性，能够支持业务的运行和发展。',9,3.000000,NULL),
+                (874,'第十四条 ',870,'核心机构应当对交易、行情、开户、结算、风控、通信等重要信息系统具有自主开发能力，拥有执行程序和源代码并安全可靠存放，在重要信息系统上线前对执行程序和源代码进行严格的审查和测试。',9,4.000000,NULL),
+                (875,'第十五条',870,' 核心机构和经营机构应当具有防范木马、病毒等恶意代码的能力，防止恶意代码对信息系统造成破坏，防止信息泄露或者被篡改。',9,5.000000,NULL),
+                (876,'第十六条 ',870,'核心机构和经营机构应当建立完善的信息技术治理架构，明确信息技术决策、管理、执行和内部监督的权责机制。',9,6.000000,NULL),
+                (877,'第十七条 ',870,'核心机构和经营机构应当建立完善的信息技术管理制度和操作规程，并严格执行。',9,7.000000,NULL),
+                (878,'第十八条 ',870,'核心机构应当制定本机构与市场相关主体信息系统安全互联的技术规则，并报中国证监会备案。\n核心机构依法督促市场相关主体执行技术规则。',9,8.000000,NULL),
+                (879,'第十九条',870,' 核心机构应当提供多种互为备份的远程接入方式，保证市场相关主体安全接入，并对市场相关主体的远程接入进行监控与管理。',9,9.000000,NULL),
+                (880,'第三章 持续保障要求',9,NULL,9,3.000000,NULL),
+                (881,'第二十条 ',880,'核心机构和经营机构应当保障充足、稳定的信息技术经费投入，配备足够的信息技术人员。',9,1.000000,NULL),
+                (882,'第二十一条 ',880,'核心机构和经营机构应当根据行业规划和本机构发展战略，制定信息化与信息安全发展规划，满足业务发展和信息安全管理的需要。',9,2.000000,NULL),
+                (883,'第二十二条 ',880,'核心机构和经营机构开展信息系统新建、升级、变更、换代等建设项目，应当进行充分论证和测试。',9,3.000000,NULL),
+                (884,'第二十三条',880,' 核心机构交易、行情、开户、结算、通信等重要信息系统上线或者进行重大升级变更时，应当组织市场相关主体进行联网测试，并按规定进行报告。',9,4.000000,NULL),
+                (885,'第二十四条 ',880,'核心机构和经营机构应当规范开展信息技术基础设施和重要信息系统的运行维护，保障系统安全稳定运行。',9,5.000000,NULL),
+                (886,'第二十五条 ',880,'核心机构应当指导市场相关主体正确运行维护与本机构互联的系统和通信设施。',9,6.000000,NULL),
+                (887,'第二十六条 ',880,'核心机构和经营机构应当建立数据备份设施，并按照规定在同城和异地保存备份数据。',9,7.000000,NULL),
+                (888,'第二十七条 ',880,'核心机构和经营机构应当建立重要信息系统的故障备份设施和灾难备份设施，保证业务活动连续。',9,8.000000,NULL),
+                (889,'第二十八条 ',880,'核心机构和经营机构应当按照规定向中国证监会指定的证券期货业数据中心报送数据。报送的数据必须真实、完整、准确、及时。\n证券期货业数据中心应当按照中国证监会的有关规定开展行业数据的集中保存工作，确保数据的安全、完整、可靠。',9,9.000000,NULL),
+                (890,'第二十九条 ',880,'核心机构负责建设和运营行业信息技术公共基础设施。',9,10.000000,NULL),
+                (891,'第三十条',880,' 核心机构和经营机构应当加强信息安全保密管理，保障投资者信息安全。',9,11.000000,NULL),
+                (892,'第三十一条 ',880,'核心机构和经营机构应当建立网络与信息安全风险检测、监测、评估和预警机制，发现风险隐患应当及时处置，并按照规定进行报告。',9,12.000000,NULL),
+                (893,'第三十二条',880,' 核心机构和经营机构应当建立信息安全应急处置机制，及时处置突发信息安全事件，尽快恢复信息系统的正常运行，并按照规定进行报告，不得迟报、漏报、瞒报。\n核心机构和经营机构应当对信息安全事件进行内部调查、责任追究和采取整改措施，并配合中国证监会及其派出机构对事件进行调查处理。\n与核心机构和经营机构发生信息安全事件相关的软硬件产品或者技术服务供应商，应当配合相关调查工作。',9,13.000000,NULL),
+                (894,'第三十三条 ',880,'核心机构应当每年组织市场相关主体进行一次信息安全应急演练，并于实施前15个工作日向中国证监会报告。',9,14.000000,NULL),
+                (895,'第三十四条 ',880,'核心机构和经营机构应当对信息技术人员进行培训，确保其具有履行岗位职责的能力。',9,15.000000,NULL),
+                (896,'第三十五条',880,' 核心机构和经营机构应当建立信息安全内部审计制度，定期开展内部审计，对发现的问题进行整改。',9,16.000000,NULL),
+                (897,'第四章 产品及服务采购要求',9,NULL,9,4.000000,NULL),
+                (898,'第三十六条',897,' 核心机构和经营机构应当建立供应商管理制度，定期对供应商的资质、专业经验、产品和服务的质量进行了解和评估。',9,1.000000,NULL),
+                (899,'第三十七条',897,' 核心机构和经营机构在采购软硬件产品或者技术服务时，应当与供应商签订合同和保密协议，并在合同和保密协议中明确约定信息安全和保密的权利和义务。\n涉及证券期货交易、行情、开户、结算等软件产品或者技术服务的采购合同，应当约定供应商须接受中国证监会及其派出机构的信息安全延伸检查。',9,2.000000,NULL),
+                (900,'第三十八条 ',897,'核心机构和经营机构采购的软硬件产品或者技术服务应当满足审慎经营和风险管理的要求。软硬件产品或者技术服务不符合要求，影响核心机构和经营机构持续经营的，中国证监会有权要求核心机构和经营机构予以改进或者更换。',9,3.000000,NULL),
+                (901,'第五章 行业自律',9,NULL,9,5.000000,NULL),
+                (902,'第三十九条 ',901,'证券期货行业协会应当制定信息技术指引，督促、引导会员执行国家和行业信息安全相关规定和技术标准。',9,1.000000,NULL),
+                (903,'第四十条 ',901,'证券期货行业协会应当引导行业加强信息技术人才队伍建设，定期组织信息技术培训和交流，提高信息技术人员执业素质。',9,2.000000,NULL),
+                (904,'第四十一条 ',901,'证券期货行业协会应当引导鼓励行业信息技术研究与创新，增强自主可控能力，组织开展科技奖励，促进行业科技进步。',9,3.000000,NULL),
+                (905,'第四十二条',901,' 证券期货行业协会应当引导供应商规范参与行业信息化与信息安全工作，促进市场公平竞争，促进供应商与市场相关主体共同发展。',9,4.000000,NULL),
+                (906,'第六章 监督管理',9,NULL,9,6.000000,NULL),
+                (907,'第四十三条 ',906,'中国证监会建立统一组织、分级负责的信息安全监督管理体制。\n中国证监会信息安全管理部门负责证券期货业信息安全工作的组织、协调和指导；相关业务监管部门依照职责范围对核心机构和经营机构的信息安全进行监督、检查；派出机构根据授权对辖区内经营机构的信息安全进行监督、检查。',9,1.000000,NULL),
+                (908,'第四十四条 ',906,'中国证监会依法组织制定证券期货业信息安全管理规定和技术标准。',9,2.000000,NULL),
+                (909,'第四十五条 ',906,'中国证监会及其派出机构依照职责范围，对核心机构和经营机构进行信息安全检查或者委托国家、行业有关专业安全机构进行安全检查。核心机构和经营机构应当配合检查。\n核心机构和经营机构的信息安全管理不能达到规定要求的，中国证监会及其派出机构责令其限期改正，改正前可以暂停或者限制其部分或者全部证券期货经营业务活动。',9,3.000000,NULL),
+                (910,'第四十六条 ',906,'中国证监会及其派出机构可以要求核心机构和经营机构提供信息安全相关资料。\n核心机构和经营机构应当及时、准确、完整地提供相关资料。',9,4.000000,NULL),
+                (911,'第四十七条 ',906,'中国证监会组织制定证券期货业信息安全应急预案，督促、指导行业开展信息安全应急工作。',9,5.000000,NULL),
+                (912,'第四十八条 ',906,'中国证监会有权对核心机构、经营机构的信息安全事件进行调查处理。\n对于损害投资者合法权益或者影响证券期货市场安全稳定运行的信息安全事件，中国证监会依法对相关单位采取监督管理措施或者行政处罚。',9,6.000000,NULL),
+                (913,'第四十九条 ',906,'中国证监会对发现的系统漏洞、安全隐患、产品缺陷进行全行业通报。',9,7.000000,NULL),
+                (914,'第五十条 ',906,'核心机构和经营机构违反本办法规定，中国证监会可以视情节，依法对其采取责令改正、监管谈话、出具警示函、公开谴责、责令定期报告、责令处分有关人员、撤销任职资格、暂停或者限制证券期货经营业务活动等措施；情节严重的，给予警告、罚款。',9,8.000000,NULL),
+                (915,'第七章 附则',9,NULL,9,7.000000,NULL),
+                (916,'第五十一',915,'条本办法自2012年11月1日起施行。《证券期货业信息安全保障管理暂行办法》（证监信息字〔2005〕5号）同时废止。',9,1.000000,NULL),
+                (917,'第一章　总则',10,NULL,10,1.000000,NULL),
+                (918,'第一条',917,'第一条　为加强银行业金融机构重要信息系统投产及变更风险管理，根据《中华人民共和国银行业监督管理法》、《中华人民共和国商业银行法》制定本办法。',10,1.000000,NULL),
+                (919,'第二条',917,'第二条　在中华人民共和国境内设立的政策性银行、国有商业银行、股份制商业银行、邮政储蓄银行、城市商业银行、农村商业银行、农村合作银行、农村信用社、城市信用社、外商独资银行、中外合资银行适用本办法。中国银行业监督管理委员会（以下简称中国银监会）监管的其他金融机构参照本办法执行。',10,2.000000,NULL),
+                (920,'第三条',917,'第三条　本办法所称的重要信息系统是指支撑重要业务，其信息安全和服务质量关系公民、法人和其他组织的权益，或关系社会秩序、公共利益乃至国家安全的信息系统。包括面向客户、涉及账务处理且实时性要求较高的业务处理类、渠道类和涉及客户风险管理等业务的管理类信息系统，以及支撑系统运行的机房和网络等基础设施。',10,3.000000,NULL),
+                (921,'第四条',917,'第四条　本办法所称的重要信息系统投产及变更主要指：\n　　（一）重要信息系统投产。\n　　（二）支撑重要信息系统运行的机房和网络基础设施投产。\n　　（三）影响全辖或一个（含）以上分行系统服务、重要业务中断时间3小时（含）以上的重要信息系统以及支持其运行的基础设施变更，包括机房场地迁移、网络及核心业务系统应用架构变更、核心业务系统版本变更等。\n　　（四）其他对银行重要业务运营及重要信息系统的可用性、完整性、安全性具有较大潜在影响的投产及变更。\n',10,4.000000,NULL),
+                (922,'第二章　组织管理',10,NULL,10,2.000000,NULL),
+                (923,'第五条',922,'第五条　银行业金融机构应健全IT治理结构，落实重要信息系统投产及变更管理责任。',10,1.000000,NULL),
+                (924,'第六条',922,'第六条　银行业金融机构高级管理层应统筹管理重要信息系统建设，听取重大项目投产或变更的风险评估汇报，对风险控制过程进行监督。',10,2.000000,NULL),
+                (925,'第七条',922,'第七条　银行业金融机构信息科技部门应建立重要信息系统投产及变更管理机制、制度与流程，承担技术管理工作，协调业务、管理部门开展重要信息系统投产及变更工作，保障信息科技资源投入。',10,3.000000,NULL),
+                (926,'第八条',922,'第八条　银行业金融机构业务、管理部门应配合信息科技部门开展投产及变更工作，开展业务影响分析，制定业务管理办法，组织用户测试，保证业务资源投入。',10,4.000000,NULL),
+                (927,'第九条',922,'第九条　银行业金融机构内部审计部门应开展重要信息系统投产及变更审计工作，针对问题发现提出整改意见。',10,5.000000,NULL),
+                (928,'第三章　风险评估',10,NULL,10,3.000000,NULL),
+                (929,'第十条',928,'第十条　银行业金融机构应充分识别、分析、评估重要信息系统投产及变更风险，包括系统功能缺陷、客户信息泄露、业务中断、交易缓慢或其他因素可能造成的操作风险、法律风险和声誉风险，并形成风险评估报告。',10,1.000000,NULL),
+                (930,'第十一条',928,'第十一条　银行业金融机构在采取有效信息安全控制措施的前提下，可委托外部专家或具备相应资质的外部专业机构进行重要信息系统投产及变更的风险评估工作。',10,2.000000,NULL),
+                (931,'第十二条',928,'第十二条　银行业金融机构董事会及高级管理层应审核重大项目的风险评估报告。',10,3.000000,NULL),
+                (932,'第十三条',928,'第十三条　银行业金融机构应针对风险评估中发现的薄弱环节制定整改方案，明确整改时间。不具备整改条件的应采取风险缓释措施。',10,4.000000,NULL),
+                (933,'第四章　投产及变更控制',10,NULL,10,4.000000,NULL),
+                (934,'第十四条',933,'第十四条　银行业金融机构应统一组织协调重要信息系统投产及变更工作，制定年度投产及变更规则，编制实施计划和方案，确定实施策略和步骤，明确岗位职责，确保关键岗位职责分离。',10,1.000000,NULL),
+                (935,'第十五条',933,'第十五条　银行业金融机构应对重要信息系统投产及变更过程进行安全审查，采取风险控制措施，有效控制重要信息系统投产及变更风险。',10,2.000000,NULL),
+                (936,'第十六条',933,'第十六条　银行金融机构应建立重要信息系统投产及变更内容评审和审批、授权机制。',10,3.000000,NULL),
+                (937,'第十七条',933,'第十七条　银行业金融机构应按照对业务影响最小原则，采取与风险程度相适应的重要信息系统投产及变更策略。',10,4.000000,NULL),
+                (938,'第十八条',933,'第十八条　银行业金融机构应合理避开业务高峰期和敏感时段安排重要信息系统上线，应提前将重要信息系统投产及变更可能对服务的影响告知客户。',10,5.000000,NULL),
+                (939,'第十九条',933,'第十九条　银行业金融机构应建立充分、完整的测试体系，测试结果应经过信息科技部门和相关业务部门确认，并形成测试和验收报告，确保系统上线后的正常稳定运行以及系统功能与业务目标的一致性。',10,6.000000,NULL),
+                (940,'第二十条',933,'第二十条　银行业金融机构应建立与生产环境相隔离的测试环境，测试环境应模拟生产环境的真实情况。',10,7.000000,NULL),
+                (941,'第二十一条',933,'银行业金融机构应建立完善的版本管理制度，制定严格的审批、控制和操作流程，保存完整的日志记录。拟投产及变更的重要信息系统应保证版本完整、准确、有效，遵从系统开发和运行管理制度规范。',10,8.000000,NULL),
+                (942,'第二十二条',933,'银行业金融机构应加强重要信息系统投产及变更过程中的数据管理与质量控制；测试环境中使用的敏感生产数据应进行脱敏、变形处理；需要历史数据迁移的，应制定详细的数据迁移计划，并提前进行数据迁移测试和数据有效性、兼容性验证，确保迁移后数据的完整性、安全性和可用性。',10,9.000000,NULL),
+                (943,'第二十三条',933,'银行业金融机构应制定重要信息系统投产及变更应急预案，制定系统回退和应急处置计划和流程，必要时应实施演练。',10,10.000000,NULL),
+                (944,'第二十四条',933,'重要信息系统投产及变更过程中，银行业金融机构应严格执行上线实施方案，加强监督与复核，避免操作失误和非法操作。',10,11.000000,NULL),
+                (945,'第二十五条',933,'银行业金融机构应加强重要信息系统投产及变更过程的风险监控和预警，各相关部门协同做好应急准备。',10,12.000000,NULL),
+                (946,'第二十六条',933,'银行业金融机构应制定并落实系统运行管理规程、制度，制定、完善相关业务管理办法、操作规程，明确业务及运行管理职责，组织必要的培训，确保投产及变更实施后业务顺利开展。',10,13.000000,NULL),
+                (947,'第二十七条',933,'银行业金融机构应在重要信息系统投产及变更实施后，组织业务部门、管理部门和信息科技部门对投产及变更的有效性进行验证。',10,14.000000,NULL),
+                (948,'第二十八条',933,'银行业金融机构应在重要信息系统投产及变更实施后及时更新各项相关应急预案，并适时实施演练。',10,15.000000,NULL),
+                (949,'第二十九条',933,'银行业金融机构应对重要信息系统投产及变更过程产生的各类文档资料进行管理，确保文档资料的完整性、及时性和有效性，并满足独立审计要求。',10,16.000000,NULL),
+                (950,'第五章',10,'投产及变更报告',10,5.000000,NULL),
+                (951,'第三十条',950,'银行业金融机构应就重要信息系统投产及变更事项向中国银监会或其派出机构报告。',10,1.000000,NULL),
+                (952,'第三十一条',950,'银行业金融机构应在重要信息系统投产前至少20个工作日、变更前至少10个工作日向中国银监会或其派出机构报告，包括但不限于：\n　　（一）总体说明：投产及变更目的、内容、计划起止时间、业务影响范围、联系人及联系方式等。\n　　（二）重要信息系统基本信息，包括：系统名称、业务功能，操作系统、数据库、中间件情况，应用架构、技术架构、数据架构，生产主机备份方案、数据备份方案，运行管理等相关职能部门，是否纳入灾难恢复计划等。\n　　（三）重要信息系统安全策略和措施，包括对账户、交易和客户敏感信息的安全控制措施等。\n　　（四）涉及基础设施的，需提供基础设施基本信息，包括机房和网络方案。机房方案包括等级标准、地址、供配电系统、消防、空调、弱电系统、机房加固、机房空间规划，以及机房验收报告等；网络方案包括网络架构分区、核心网络备份情况，以及区域间、外联网、互联网边界安全措施与网络监控措施等。\n　　（五）采取外包方式的，需提交外包服务机构情况、外包服务内容、外包风险评估报告等。\n　　（六）投产及变更方案，包括投产及变更的组织结构与实施计划、操作步骤等。\n　　（七）风险评估报告，应包括业务影响分析，技术风险分析与评估，控制措施的有效性，以及剩余风险等。\n　　（八）应急预案，包括应急处置组织结构，应急场景，应急处置流程、步骤，应急联系方式与报告路线等，实施演练的应提交演练总结报告。',10,2.000000,NULL),
+                (953,'第三十二条',950,'银行业金融机构应在重要信系统投产及变更实施后1个月内向中国银监会或其派出机构提交总结报告材料，内容包括但不限于：投产及变更方案执行情况、效果，问题发现和处理情况，后续改进措施等。如投产及变更失败，应详细说明失败原因。',10,3.000000,NULL),
+                (954,'第三十三条',950,'银行业金融机构应按照属地监管原则提交报告材料，报送路线如下：\n　　（一）银行业金融机构法人组织实施投产及变更的，由该法人机构统一向中国银监会或其派出机构提交报告材料。\n　　（二）银行业金融机构分行组织实施投产及变更的，由分行向所在地中国银监会派出机构提交报告材料。',10,4.000000,NULL),
+                (955,'第三十四条',950,'重要信息系统投产及变更如失败需要重新安排的，银行业金融机构应再次向中国银监会或其派出机构报告。',10,5.000000,NULL),
+                (956,'第三十五条',950,'银行业金融机构数据中心机房设立、场所变更，应按照中国银监会有关数据中心管理规范报告。',10,6.000000,NULL),
+                (957,'第六章',10,'监督管理',10,6.000000,NULL),
+                (958,'第三十六条',957,'针对银行业金融机构重要信息系统投产及变更风险，中国银监会及其派出机构可以采取风险提示、约见谈话、监管质询等措施。',10,1.000000,NULL),
+                (959,'第三十七条',957,'中国银监会及其派出机构可依法对银行业金融机构的重要信息系统投产及变更实施现场检查。',10,2.000000,NULL),
+                (960,'第三十八条',957,'银行业金融机构违反本办法有关规定的，中国银监会及其派出机构将依法追究相关责任。',10,3.000000,NULL),
+                (961,'第七章',10,'附则',10,7.000000,NULL),
+                (962,'第三十九条',961,'本办法由中国银监会负责解释和修订。',10,1.000000,NULL),
+                (963,'第四十条',961,'本办法自公布之日起执行。',10,2.000000,NULL);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

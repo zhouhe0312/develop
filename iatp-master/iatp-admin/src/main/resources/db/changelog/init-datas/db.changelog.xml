@@ -1,0 +1,644 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet id="init-sys_role-sys_user-data" author="liqi" runOnChange="true">
+        <sql>
+            <![CDATA[
+                /*初始化超级管理密码iatpadmin123#*/
+                delete from `sys_user` where id ='200058115285323777';
+                INSERT INTO `sys_user` (`id`, `username`, `acount`, `nickname`, `email`, `phone`, `sex`, `avatar`, `password`, `mod_passwd_date`, `multipoint`, `level`, `unit_id`, `del`, `status`, `create_time`, `update_time`) VALUES (200058115285323777, '管理员', 'iatpadmin', '管理员', 'powertime@powertime.cn', '13988888888', DEFAULT, DEFAULT, '$e0801$RFJx6nI8TB9gOPIvKy0uI33Y8y9ipZtamlZoFpk7RekFmtVrE/3X8Aegm1XCX9XE7Km5frVqTfsEhbJOD8m8WQ==$ztZl0Q+k6wUYf4seDBy7VWecZIxuGGKzVhTvc+HfGlg=', NOW(), 1, 1, null, 1, 1, NOW(), NOW())
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys_client_details-data" author="zyw" runOnChange="true">
+        <sql>
+            <![CDATA[
+                /*初始化超级管理mobile:app_mobile verification:verification webclient:webclient*/
+                delete from `sys_client_details` where id ='1';
+                delete from `sys_client_details` where id ='2';
+                delete from `sys_client_details` where id ='3';
+                delete from `sys_client_details` where id ='4';
+                delete from `sys_client_details` where id ='5';
+                delete from `sys_client_details` where id ='6';
+
+                INSERT INTO `sys_client_details` (`id`, `client_id`, `client_secret`, `resource_ids`, `scope`, `authorized_grant_types`, `web_server_redirect_uri`, `authorities`, `access_token_validity`, `refresh_token_validity`, `additional_information`, `autoapprove`, `create_time`, `update_time`, `status`)
+                VALUES
+	            (1, 'frontend', '$e0801$56BGq0mSkmD4JOFQaSZq7XRqTb4ihZrOyidjbt0zExeEUxXaw3/I2eoA6tQ2rNT6erpUvJc7a3ptR+C9LkPlAw==$eJ0JRtB7PBln2qJMv7GfPgaIXDi044ldLvGWNAEozh4=', NULL, 'gasmeter', 'password,authorization_code,refresh_token', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18 14:01:56', '2018-11-18 14:12:09', 1),
+	            (2, 'webapp', '$e0801$NuIHpanIMRbgEl4o33h3eW600gm/PwrwMhnjuCk9/BDjsYTJtimIqnuippbPSzrlENVMbZNBtVCKD0JqwuUqqQ==$LOSBXtuog3TROs9CTHGx31O39yWVtgAoRyDOfOwFQBU=', NULL, 'gasmeter', 'password,authorization_code,refresh_token', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18 14:01:56', '2018-11-18 14:12:09', 1),
+	            (3, 'gateway', '$e0801$LsG9EKbhv1cCQ04LdTdFrhoJg754WJJoxM2rxU0J9U8zalEe+y2/re9jgwlmMwmn414JerOHcIUzMsAa60E6mw==$UjhN9H45qyFve8kGrPI4LlmmjXl2Vd2mFe9DI3ZrKzg=', NULL, 'gateway', 'password,authorization_code,refresh_token', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18 14:01:56', '2018-11-18 14:12:09', 1),
+	            (4, 'mobile', '$e0801$z1n23V/4EwNkZZZFZRVqb+H83XLCGGZGh998vQ21F6cf/bO0Fs3HQIcDuhClFT1E5lxRO82ARelrE4PI7y+vmw==$IDIyEHV4lNnsznR/pl0pazXt7lBYeP4XCH5/1Qh0+WY=', NULL, 'mobile', 'password,authorization_code,refresh_token', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18 14:01:56', '2018-11-18 14:12:09', 1),
+	            (5, 'verification', '$e0801$weaISK/yIcgegtiAHrCyxYyrGy3sJDdVixPYCYi740dZJqWRiWaP4OWqdvbKeMrrVf0G5YvS0Ldlc/mmwOulzw==$7DifJvRn1PqWvfwtvZT3ysQ2tvuc+yHbrmu9ZWq1DKs=', NULL, 'verification', 'password,authorization_code,refresh_token', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18 14:01:56', '2018-11-18 14:12:09', 1),
+	            (6, 'webclient', '$e0801$wdK07gXTpRLtGe5OvPOH8bpJ7kwWvbIwbab6jd0VAgGHnUMPhNQ0voMsYqtE1y3BLw49wWu5EeggSEyi1fQpnw==$qAZVv/DTb/54r6qDI41flJ2jHF5kYIsS3T7YG7NQF5E=', NULL, 'webclient', 'password,authorization_code,refresh_token', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-18 14:01:56', '2018-11-18 14:12:09', 1);
+
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys_safe_strategy-data" author="liqi" runOnChange="true">
+        <sql>
+            <![CDATA[
+                /*初始化安全策略*/
+                delete from `sys_safe_strategy` where id ='1130311014408097794';
+                INSERT INTO `sys_safe_strategy` VALUES ('1130311014408097794', '90', '3', '90', '86400', '180', '5', '8', '1', '2019-05-20 11:19:12', '2019-05-20 11:19:12');
+
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys_dict_type" author="liqi" runOnChange="true">
+        <sql>
+            <![CDATA[
+                delete from `sys_dict_type` where id ='1130721577013395457';
+                delete from `sys_dict_type` where id ='1131454456106356737';
+                delete from `sys_dict_type` where id ='1138269729385787394';
+                delete from `sys_dict_type` where id ='1138270521060667393';
+                delete from `sys_dict_type` where id ='1138270787961008130';
+                delete from `sys_dict_type` where id ='1138271564444119041';
+                delete from `sys_dict_type` where id ='1138271975825649665';
+                delete from `sys_dict_type` where id ='1138272391086911489';
+                INSERT INTO sys_dict_type VALUES ('1130721577013395457','知识库类别','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1131454456106356737','试卷类型','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1138269729385787394','内容类型','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1138270521060667393','分类类型','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1138270787961008130','日志类型','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1138271564444119041','密码强度','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1138271975825649665','知识库状态','1',NOW(),NOW());
+                INSERT INTO sys_dict_type VALUES ('1138272391086911489','知识库小类','1',NOW(),NOW());
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys_dict" author="liqi" runOnChange="true">
+        <sql>
+            <![CDATA[
+                delete from `sys_dict` where id ='1130721577013395458';
+                delete from `sys_dict` where id ='1130721577013395459';
+                delete from `sys_dict` where id ='1130721577013395460';
+                delete from `sys_dict` where id ='1130721577013395461';
+
+                INSERT INTO sys_dict VALUES ('1130721577013395458','1130721577013395457','1','法律法规','1','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1130721577013395459','1130721577013395457','1','标准','2','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1130721577013395460','1130721577013395457','1','中国行业监管政策','3','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1130721577013395461','1130721577013395457','1','组织规章制度','4','','1',NOW(),NOW());
+
+
+                delete from `sys_dict` where id ='1131454456106356738';
+                delete from `sys_dict` where id ='1131454456106356739';
+                delete from `sys_dict` where id ='1131454456106356740';
+                delete from `sys_dict` where id ='1131454456106356741';
+                delete from `sys_dict` where id ='1138269122667130881';
+                delete from `sys_dict` where id ='1138269229038874626';
+
+                INSERT INTO sys_dict VALUES ('1131454456106356738','1131454456106356737','1','课程-随堂测','1','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1131454456106356739','1131454456106356737','1','课程-单元测','2','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1131454456106356740','1131454456106356737','1','课程考试','3','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1131454456106356741','1131454456106356737','1','实验-随堂测','4','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138269122667130881','1131454456106356737','1','实验考试','5','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138269229038874626','1131454456106356737','1','综合考试','6','','1',NOW(),NOW());
+
+                delete from `sys_dict` where id ='1138269941307191298';
+                delete from `sys_dict` where id ='1138270061331394561';
+                delete from `sys_dict` where id ='1138270141874614274';
+
+                INSERT INTO sys_dict VALUES ('1138269941307191298','1138269729385787394','1','PPT','1','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138270061331394561','1138269729385787394','1','PDF','2','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138270141874614274','1138269729385787394','1','视频','3','','1',NOW(),NOW());
+
+                delete from `sys_dict` where id ='1138270633476403202';
+                delete from `sys_dict` where id ='1138270730557763585';
+
+                INSERT INTO sys_dict VALUES ('1138270633476403202','1138270521060667393','1','课程','1','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138270730557763585','1138270521060667393','1','实验','2','','1',NOW(),NOW());
+
+                delete from `sys_dict` where id ='1138271301603864577';
+                delete from `sys_dict` where id ='1138271398207074306';
+                delete from `sys_dict` where id ='1138271432768139265';
+                delete from `sys_dict` where id ='1138271481002635265';
+
+                INSERT INTO sys_dict VALUES ('1138271301603864577','1138270787961008130','1','新增','1','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271398207074306','1138270787961008130','1','删除','2','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271432768139265','1138270787961008130','1','修改','3','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271481002635265','1138270787961008130','1','登录','4','','1',NOW(),NOW());
+
+                delete from `sys_dict` where id ='1138271679963639810';
+                delete from `sys_dict` where id ='1138271719440429058';
+                delete from `sys_dict` where id ='1138271764856352770';
+                delete from `sys_dict` where id ='1138271793214042114';
+                delete from `sys_dict` where id ='1138271828941123586';
+                delete from `sys_dict` where id ='1138271864689176578';
+                delete from `sys_dict` where id ='1138271897715126273';
+
+                INSERT INTO sys_dict VALUES ('1138271679963639810','1138271564444119041','1','非常安全','90','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271719440429058','1138271564444119041','1','安全','80','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271764856352770','1138271564444119041','1','非常强','70','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271793214042114','1138271564444119041','1','强','60','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271828941123586','1138271564444119041','1','一般','50','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271864689176578','1138271564444119041','1','弱','25','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138271897715126273','1138271564444119041','1','非常弱','0','','1',NOW(),NOW());
+
+                delete from `sys_dict` where id ='1138272061402034177';
+                delete from `sys_dict` where id ='1138272100463587330';
+                delete from `sys_dict` where id ='1138272178293092354';
+                delete from `sys_dict` where id ='1138272322581344257';
+
+                INSERT INTO sys_dict VALUES ('1138272061402034177','1138271975825649665','1','现行','1','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138272100463587330','1138271975825649665','1','废止','2','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138272178293092354','1138271975825649665','1','试行','3','','1',NOW(),NOW());
+                INSERT INTO sys_dict VALUES ('1138272322581344257','1138271975825649665','1','禁用','4','','1',NOW(),NOW());
+
+                delete from `sys_dict` where id ='1138272493872525313';
+                delete from `sys_dict` where id ='1138273241108754434';
+                delete from `sys_dict` where id ='1138273280476491778';
+                delete from `sys_dict` where id ='1138273310826475521';
+                delete from `sys_dict` where id ='1138273344208941057';
+                delete from `sys_dict` where id ='1138273380313509889';
+                delete from `sys_dict` where id ='1138273415696658434';
+                delete from `sys_dict` where id ='1138273448030547970';
+                delete from `sys_dict` where id ='1138273483334004738';
+                delete from `sys_dict` where id ='1138273520730419201';
+                delete from `sys_dict` where id ='1138273553559236610';
+                delete from `sys_dict` where id ='1138273593388347394';
+                delete from `sys_dict` where id ='1152102370889441282';
+                delete from `sys_dict` where id ='1152102466599264257';
+
+                INSERT INTO `sys_dict` VALUES ('1138272493872525313', '1138272391086911489', '1', '国际法', '11', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273241108754434', '1138272391086911489', '1', '区域组织法', '12', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273280476491778', '1138272391086911489', '1', '国家和地区法', '13', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273310826475521', '1138272391086911489', '1', '国际标准', '21', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273344208941057', '1138272391086911489', '1', '国际组织标准', '22', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273380313509889', '1138272391086911489', '1', '区域组织标准', '23', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273415696658434', '1138272391086911489', '1', '国家和地区标准', '24', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273448030547970', '1138272391086911489', '1', '国家行业标准', '25', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273483334004738', '1138272391086911489', '1', '企业标准', '26', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273520730419201', '1138272391086911489', '1', '银监会监管指引', '31', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273553559236610', '1138272391086911489', '1', '证监会管理办法', '32', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1138273593388347394', '1138272391086911489', '1', '信息科技管理制度', '41', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1152102370889441282', '1138272391086911489', '1', '风险管理制度', '42', '', '1', NOW(), NOW());
+                INSERT INTO `sys_dict` VALUES ('1152102466599264257', '1138272391086911489', '1', '其他', '99', '', '1', NOW(), NOW());
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys_res" author="yang xin" runOnChange="true">
+        <sql>
+            <![CDATA[
+                delete from `sys_res` where id ='1';
+                delete from `sys_res` where id ='2';
+                delete from `sys_res` where id ='3';
+                delete from `sys_res` where id ='4';
+                delete from `sys_res` where id ='5';
+                delete from `sys_res` where id ='6';
+                delete from `sys_res` where id ='7';
+                delete from `sys_res` where id ='8';
+                delete from `sys_res` where id ='9';
+                delete from `sys_res` where id ='10';
+                delete from `sys_res` where id ='11';
+                delete from `sys_res` where id ='12';
+                delete from `sys_res` where id ='13';
+                delete from `sys_res` where id ='14';
+                delete from `sys_res` where id ='15';
+                delete from `sys_res` where id ='16';
+                delete from `sys_res` where id ='17';
+                delete from `sys_res` where id ='18';
+                delete from `sys_res` where id ='19';
+                delete from `sys_res` where id ='20';
+                delete from `sys_res` where id ='21';
+                delete from `sys_res` where id ='22';
+                delete from `sys_res` where id ='23';
+                delete from `sys_res` where id ='24';
+                delete from `sys_res` where id ='25';
+                delete from `sys_res` where id ='26';
+                delete from `sys_res` where id ='27';
+                delete from `sys_res` where id ='28';
+                delete from `sys_res` where id ='29';
+                delete from `sys_res` where id ='30';
+                delete from `sys_res` where id ='31';
+                delete from `sys_res` where id ='32';
+                delete from `sys_res` where id ='33';
+                delete from `sys_res` where id ='34';
+                delete from `sys_res` where id ='35';
+                delete from `sys_res` where id ='36';
+                delete from `sys_res` where id ='37';
+                delete from `sys_res` where id ='38';
+                delete from `sys_res` where id ='39';
+                delete from `sys_res` where id ='40';
+                delete from `sys_res` where id ='41';
+                delete from `sys_res` where id ='42';
+                delete from `sys_res` where id ='43';
+                delete from `sys_res` where id ='44';
+                delete from `sys_res` where id ='45';
+                delete from `sys_res` where id ='46';
+                delete from `sys_res` where id ='47';
+                delete from `sys_res` where id ='48';
+                delete from `sys_res` where id ='49';
+                delete from `sys_res` where id ='50';
+                delete from `sys_res` where id ='51';
+                delete from `sys_res` where id ='52';
+                delete from `sys_res` where id ='53';
+                delete from `sys_res` where id ='54';
+                delete from `sys_res` where id ='55';
+                delete from `sys_res` where id ='56';
+                delete from `sys_res` where id ='57';
+                delete from `sys_res` where id ='58';
+                delete from `sys_res` where id ='59';
+                delete from `sys_res` where id ='60';
+                delete from `sys_res` where id ='61';
+                delete from `sys_res` where id ='62';
+                delete from `sys_res` where id ='63';
+                delete from `sys_res` where id ='64';
+                delete from `sys_res` where id ='65';
+                delete from `sys_res` where id ='66';
+                delete from `sys_res` where id ='67';
+                delete from `sys_res` where id ='68';
+                delete from `sys_res` where id ='69';
+                delete from `sys_res` where id ='70';
+                delete from `sys_res` where id ='71';
+                delete from `sys_res` where id ='72';
+                delete from `sys_res` where id ='73';
+                delete from `sys_res` where id ='74';
+                delete from `sys_res` where id ='75';
+                delete from `sys_res` where id ='76';
+                delete from `sys_res` where id ='77';
+                delete from `sys_res` where id ='78';
+                delete from `sys_res` where id ='79';
+                delete from `sys_res` where id ='80';
+                delete from `sys_res` where id ='81';
+                delete from `sys_res` where id ='82';
+                delete from `sys_res` where id ='83';
+                delete from `sys_res` where id ='84';
+                delete from `sys_res` where id ='85';
+                delete from `sys_res` where id ='86';
+                delete from `sys_res` where id ='87';
+                delete from `sys_res` where id ='88';
+                delete from `sys_res` where id ='89';
+                delete from `sys_res` where id ='90';
+                delete from `sys_res` where id ='91';
+                delete from `sys_res` where id ='92';
+                delete from `sys_res` where id ='93';
+                delete from `sys_res` where id ='94';
+                delete from `sys_res` where id ='95';
+                delete from `sys_res` where id ='96';
+                delete from `sys_res` where id ='97';
+                delete from `sys_res` where id ='98';
+                delete from `sys_res` where id ='99';
+                delete from `sys_res` where id ='100';
+                delete from `sys_res` where id ='101';
+                delete from `sys_res` where id ='102';
+                delete from `sys_res` where id ='103';
+                delete from `sys_res` where id ='104';
+                delete from `sys_res` where id ='105';
+                delete from `sys_res` where id ='106';
+                delete from `sys_res` where id ='107';
+
+                INSERT INTO `sys_res` VALUES ('1', '0', '首页', 'home', 'home', '0', '1', 'el-icon-menu', '', '', '1', '首页', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('2', '0', '课程实验', 'course_experiment', 'course-test', '1', '1', 'el-icon-date', '', '', '1', '课程实验', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('3', '2', '课程管理', 'course_manage', 'course-manage', '2', '1', '', '', '', '1', '课程管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('4', '2', '实验管理', 'test_manage', 'test-manage', '3', '1', '', '', '', '1', '实验管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('5', '2', '分类管理', 'classify_manage', 'classify-manage', '4', '1', '', '', '', '1', '分类管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('6', '0', '考试管理', 'examination_manage', 'exam-manage', '5', '1', 'el-icon-edit-outline', '', '', '1', '考试管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('7', '6', '试题管理', 'exam_manage', 'exam-manage', '6', '1', '', '', '', '1', '试题管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('8', '6', '题库管理', 'item_bank_manage', 'itemBank-manage', '7', '1', '', '', '', '1', '题库管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('9', '6', '试卷管理', 'test_paper_manage', 'testPaper-manage', '8', '1', '', '', '', '1', '试卷管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('10', '0', '系统管理', 'system_management', 'system-manage', '9', '1', 'el-icon-setting', '', '', '1', '系统管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('11', '10', '管理员管理', 'system_manage', 'system-manager', '10', '1', '', '', '', '1', '管理员管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('12', '10', '角色管理', 'role_manage', 'system-role', '11', '1', '', '', '', '1', '角色管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('13', '10', '权限管理', 'authority_manage', 'system-authority', '12', '1', '', '', '', '1', '权限管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('14', '10', '日志管理', 'log_manage', 'system-log', '13', '1', '', '', '', '1', '日志管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('15', '10', '安全管理', 'safety_manage', 'system-safety', '14', '1', '', '', '', '1', '安全管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('16', '10', '字典管理', 'dictionaries_manage', 'system-dictionaries', '15', '1', '', '', '', '1', '字典管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('17', '10', '部门管理', 'department_manage', 'system-department', '16', '1', '', '', '', '1', '部门管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('18', '0', '用户管理', 'user_management', 'user-manage', '17', '1', 'el-icon-location', '', '', '1', '用户管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('19', '18', '用户管理', 'user_manage', 'user-manage', '18', '1', '', '', '', '1', '用户管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('20', '18', '用户学习', 'user_study', 'user-study', '19', '1', '', '', '', '1', '用户学习', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('21', '18', '用户考试', 'user_examination', 'user-exam', '20', '1', '', '', '', '1', '用户考试', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('22', '18', '试卷收藏', 'paper_collect', 'Paper-collection', '21', '1', '', '', '', '1', '试卷收藏', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('23', '18', '错题管理', 'wrong_questions_manage', 'wrong-manage', '22', '1', '', '', '', '1', '错题管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('24', '0', '知识库管理', 'knowledge_manage', 'knowledge-manage', '23', '1', 'el-icon-document', '', '', '1', '知识库管理', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('25', '24', '知识库目录', 'knowledge_info', 'knowledge-list', '24', '1', '', '', '', '1', '知识库目录', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('26', '24', '知识库内容建设', 'knowledge_content', 'knowledge-const', '25', '1', '', '', '', '1', '知识库内容建设', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('27', '3', '创建课程', 'course_experiment:course:add', '', '1', '1', '', '', '', '2', '创建课程', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('28', '3', '编辑课程', 'course_experiment:course:edit', '', '2', '1', '', '', '', '2', '编辑课程', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('29', '3', '删除课程', 'course_experiment:course:delete', '', '3', '1', '', '', '', '2', '删除课程', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('30', '3', '导入课程', 'course_experiment:course:import', '', '4', '1', '', '', '', '2', '导入课程', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('31', '3', '新增章节', 'course_experiment:course:chapter:add', '', '5', '1', '', '', '', '2', '新增章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('32', '3', '编辑章节', 'course_experiment:course:chapter:edit', '', '6', '1', '', '', '', '2', '编辑章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('33', '3', '删除章节', 'course_experiment:course:chapter:delete', '', '7', '1', '', '', '', '2', '删除章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('34', '3', '新增资源', 'course_experiment:course:chapter:resource:add', '', '8', '1', '', '', '', '2', '新增资源', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('35', '3', '编辑资源', 'course_experiment:course:chapter:resource:edit', '', '9', '1', '', '', '', '2', '编辑资源', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('36', '3', '删除资源', 'course_experiment:course:chapter:resource:delete', '', '10', '1', '', '', '', '2', '删除资源', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('37', '3', '资源排序', 'course_experiment:course:chapter:resource:sort', '', '11', '1', '', '', '', '2', '资源排序', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('38', '4', '创建实验', 'course_experiment:experiment:add', '', '1', '1', '', '', '', '2', '创建实验', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('39', '4', '编辑实验', 'course_experiment:experiment:edit', '', '2', '1', '', '', '', '2', '编辑实验', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('40', '4', '删除实验', 'course_experiment:experiment:delete', '', '3', '1', '', '', '', '2', '删除实验', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('41', '4', '导入实验', 'course_experiment:experiment:import', '', '4', '1', '', '', '', '2', '导入实验', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('42', '4', '新增章节', 'course_experiment:experiment:chapter:add', '', '5', '1', '', '', '', '2', '新增章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('43', '4', '编辑章节', 'course_experiment:experiment:chapter:edit', '', '6', '1', '', '', '', '2', '编辑章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('44', '4', '删除章节', 'course_experiment:experiment:chapter:delete', '', '7', '1', '', '', '', '2', '删除章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('45', '4', '新增资源', 'course_experiment:experiment:chapter:resource:add', '', '8', '1', '', '', '', '2', '新增资源', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('46', '4', '新增实训', 'course_experiment:experiment:chapter:resource:addTraining', '', '9', '1', '', '', '', '2', '新增实训', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('47', '4', '编辑资源', 'course_experiment:experiment:chapter:resource:edit', '', '10', '1', '', '', '', '2', '编辑资源', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('48', '4', '删除资源', 'course_experiment:experiment:chapter:resource:delete', '', '11', '1', '', '', '', '2', '删除资源', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('49', '4', '资源排序', 'course_experiment:experiment:chapter:resource:sort', '', '12', '1', '', '', '', '2', '资源排序', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('50', '5', '新增分类', 'course_experiment:classify:add', '', '1', '1', '', '', '', '2', '新增分类', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('51', '5', '编辑分类', 'course_experiment:classify:edit', '', '2', '1', '', '', '', '2', '编辑分类', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('52', '5', '删除分类', 'course_experiment:classify:delete', '', '3', '1', '', '', '', '2', '删除分类', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('53', '7', '新增试题', 'exam_manage:exam:add', '', '1', '1', '', '', '', '2', '新增试题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('54', '7', '编辑试题', 'exam_manage:exam:edit', '', '2', '1', '', '', '', '2', '编辑试题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('55', '7', '删除试题', 'exam_manage:exam:delete', '', '3', '1', '', '', '', '2', '删除试题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('56', '7', '导入试题', 'exam_manage:exam:import', '', '4', '1', '', '', '', '2', '导入试题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('57', '7', '启用试题', 'exam_manage:exam:enable', '', '5', '1', '', '', '', '2', '启动试题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('58', '7', '禁用试题', 'exam_manage:exam:disable', '', '6', '1', '', '', '', '2', '禁用试题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('59', '8', '新增题库', 'exam_manage:item:add', '', '1', '1', '', '', '', '2', '新增题库', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('60', '8', '编辑题库', 'exam_manage:item:edit', '', '2', '1', '', '', '', '2', '编辑题库', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('61', '8', '删除题库', 'exam_manage:item:delete', '', '3', '1', '', '', '', '2', '删除题库', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('62', '9', '新增试卷', 'exam_manage:paper:add', '', '1', '1', '', '', '', '2', '新增试卷', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('63', '9', '编辑试卷', 'exam_manage:paper:edit', '', '2', '1', '', '', '', '2', '编辑试卷', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('64', '9', '删除试卷', 'exam_manage:paper:delete', '', '3', '1', '', '', '', '2', '删除试卷', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('65', '9', '启用试卷', 'exam_manage:paper:enable', '', '4', '1', '', '', '', '2', '启用试卷', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('66', '9', '禁用试卷', 'exam_manage:paper:disable', '', '5', '1', '', '', '', '2', '禁用试卷', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('67', '9', '试卷组卷', 'exam_manage:paper:compose', '', '6', '1', '', '', '', '2', '试卷组卷', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('68', '11', '新增人员', 'system_manage:system:add', '', '1', '1', '', '', '', '2', '新增人员', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('69', '11', '编辑人员', 'system_manage:system:edit', '', '2', '1', '', '', '', '2', '编辑人员', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('70', '11', '删除人员', 'system_manage:system:delete', '', '3', '1', '', '', '', '2', '删除人员', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('71', '11', '修改密码', 'system_manage:system:password', '', '4', '1', '', '', '', '2', '修改密码', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('72', '11', '分配角色', 'system_manage:system:role', '', '5', '1', '', '', '', '2', '分配角色', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('73', '11', '启用人员', 'system_manage:system:enable', '', '6', '1', '', '', '', '2', '启用人员', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('74', '11', '禁用人员', 'system_manage:system:disable', '', '7', '1', '', '', '', '2', '禁用人员', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('75', '12', '新增角色', 'system_manage:role:add', '', '1', '1', '', '', '', '2', '新增角色', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('76', '12', '编辑角色', 'system_manage:role:edit', '', '2', '1', '', '', '', '2', '编辑角色', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('77', '12', '删除角色', 'system_manage:role:delete', '', '3', '1', '', '', '', '2', '删除角色', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('78', '12', '角色授权', 'system_manage:role:auth', '', '4', '1', '', '', '', '2', '角色授权', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('79', '13', '新增权限', 'system_manage:auth:add', '', '1', '1', '', '', '', '2', '新增权限', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('80', '13', '编辑权限', 'system_manage:auth:edit', '', '2', '1', '', '', '', '2', '编辑权限', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('81', '13', '删除权限', 'system_manage:auth:delete', '', '3', '1', '', '', '', '2', '删除权限', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('82', '14', '删除日志', 'system_manage:log:delete', '', '1', '1', '', '', '', '2', '删除日志', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('83', '14', '日志导出', 'system_manage:log:export', '', '2', '1', '', '', '', '2', '日志导出', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('84', '16', '新增字典', 'system_manage:dict:add', '', '1', '1', '', '', '', '2', '新增字典', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('85', '16', '编辑字典', 'system_manage:dict:edit', '', '2', '1', '', '', '', '2', '编辑字典', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('86', '16', '删除字典', 'system_manage:dict:delete', '', '3', '1', '', '', '', '2', '删除字典', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('87', '17', '新增部门', 'system_manage:dept:add', '', '1', '1', '', '', '', '2', '新增部门', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('88', '17', '编辑部门', 'system_manage:dept:edit', '', '2', '1', '', '', '', '2', '编辑部门', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('89', '17', '删除部门', 'system_manage:dept:delete', '', '3', '1', '', '', '', '2', '删除部门', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('90', '19', '新增用户', 'user_management:user:add', '', '1', '1', '', '', '', '2', '新增用户', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('91', '19', '编辑用户', 'user_management:user:edit', '', '2', '1', '', '', '', '2', '编辑用户', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('92', '19', '删除用户', 'user_management:user:delete', '', '3', '1', '', '', '', '2', '删除用户', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('93', '19', '修改密码', 'user_management:user:password', '', '4', '1', '', '', '', '2', '修改密码', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('94', '20', '删除学习', 'user_management:user_study:delete', '', '1', '1', '', '', '', '2', '删除学习', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('95', '21', '删除考试', 'user_management:user_exam:delete', '', '1', '1', '', '', '', '2', '删除考试', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('96', '22', '删除收藏', 'user_management:paper_collect:delete', '', '1', '1', '', '', '', '2', '删除收藏', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('97', '23', '删除错题', 'user_management:wrong_questions:delete', '', '1', '1', '', '', '', '2', '删除错题', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('98', '25', '新增目录', 'knowledge_manage:info:add', '', '1', '1', '', '', '', '2', '新增目录', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('99', '25', '编辑目录', 'knowledge_manage:info:edit', '', '2', '1', '', '', '', '2', '编辑目录', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('100', '25', '删除目录', 'knowledge_manage:info:delete', '', '3', '1', '', '', '', '2', '删除目录', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('101', '25', '上传文件', 'knowledge_manage:info:upload', '', '4', '1', '', '', '', '2', '上传文件', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('102', '25', '下载文件', 'knowledge_manage:info:download', '', '5', '1', '', '', '', '2', '下载文件', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('103', '26', '新增章节', 'knowledge_manage:content:add', '', '1', '1', '', '', '', '2', '新增章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('104', '26', '编辑章节', 'knowledge_manage:content:edit', '', '2', '1', '', '', '', '2', '编辑章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('105', '26', '删除章节', 'knowledge_manage:content:delete', '', '3', '1', '', '', '', '2', '删除章节', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('106', '26', '上传图片', 'knowledge_manage:content:picture', '', '4', '1', '', '', '', '2', '上传图片', '1', NOW(), NOW());
+                INSERT INTO `sys_res` VALUES ('107', '26', '导入章节', 'knowledge_manage:content:import', '', '5', '1', '', '', '', '2', '导入章节', '1', NOW(), NOW());
+
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys-role_user_role" author="yx">
+        <sql>
+            <![CDATA[
+            delete from `sys_role` where id ='1';
+            INSERT INTO `sys_role` VALUES ('1', '超级管理员', 'super_system', '1', '超级管理员', '1', '1', NOW(), NOW());
+
+            delete from `sys_user_role` where id ='1';
+            INSERT INTO `sys_user_role` VALUES ('1', '200058115285323777', '1');
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-data-sys_role_res" author="yx">
+        <sql>
+            <![CDATA[
+            delete from `sys_role_res` where id ='1139444862914576386';
+            delete from `sys_role_res` where id ='1139444862914576387';
+            delete from `sys_role_res` where id ='1139444862914576388';
+            delete from `sys_role_res` where id ='1139444862914576389';
+            delete from `sys_role_res` where id ='1139444862914576390';
+            delete from `sys_role_res` where id ='1139444862914576391';
+            delete from `sys_role_res` where id ='1139444862914576392';
+            delete from `sys_role_res` where id ='1139444862914576393';
+            delete from `sys_role_res` where id ='1139444862914576394';
+            delete from `sys_role_res` where id ='1139444862914576395';
+            delete from `sys_role_res` where id ='1139444862914576396';
+            delete from `sys_role_res` where id ='1139444862914576397';
+            delete from `sys_role_res` where id ='1139444862914576398';
+            delete from `sys_role_res` where id ='1139444862914576399';
+            delete from `sys_role_res` where id ='1139444862914576400';
+            delete from `sys_role_res` where id ='1139444862914576401';
+            delete from `sys_role_res` where id ='1139444862914576402';
+            delete from `sys_role_res` where id ='1139444862914576403';
+            delete from `sys_role_res` where id ='1139444862914576404';
+            delete from `sys_role_res` where id ='1139444862914576405';
+            delete from `sys_role_res` where id ='1139444862914576406';
+            delete from `sys_role_res` where id ='1139444862914576407';
+            delete from `sys_role_res` where id ='1139444862914576408';
+            delete from `sys_role_res` where id ='1139444862914576409';
+            delete from `sys_role_res` where id ='1139444862914576410';
+            delete from `sys_role_res` where id ='1139444862914576411';
+            delete from `sys_role_res` where id ='1139444862914576412';
+            delete from `sys_role_res` where id ='1139444862914576413';
+            delete from `sys_role_res` where id ='1139444862914576414';
+            delete from `sys_role_res` where id ='1139444862914576415';
+            delete from `sys_role_res` where id ='1139444862914576416';
+            delete from `sys_role_res` where id ='1139444862914576417';
+            delete from `sys_role_res` where id ='1139444862914576418';
+            delete from `sys_role_res` where id ='1139444862914576419';
+            delete from `sys_role_res` where id ='1139444862914576420';
+            delete from `sys_role_res` where id ='1139444862914576421';
+            delete from `sys_role_res` where id ='1139444862914576422';
+            delete from `sys_role_res` where id ='1139444862914576423';
+            delete from `sys_role_res` where id ='1139444862914576424';
+            delete from `sys_role_res` where id ='1139444862914576425';
+            delete from `sys_role_res` where id ='1139444862914576426';
+            delete from `sys_role_res` where id ='1139444862914576427';
+            delete from `sys_role_res` where id ='1139444862914576428';
+            delete from `sys_role_res` where id ='1139444862914576429';
+            delete from `sys_role_res` where id ='1139444862914576430';
+            delete from `sys_role_res` where id ='1139444862914576431';
+            delete from `sys_role_res` where id ='1139444862914576432';
+            delete from `sys_role_res` where id ='1139444862914576433';
+            delete from `sys_role_res` where id ='1139444862914576434';
+            delete from `sys_role_res` where id ='1139444862914576435';
+            delete from `sys_role_res` where id ='1139444862914576436';
+            delete from `sys_role_res` where id ='1139444862914576437';
+            delete from `sys_role_res` where id ='1139444862914576438';
+            delete from `sys_role_res` where id ='1139444862914576439';
+            delete from `sys_role_res` where id ='1139444862914576440';
+            delete from `sys_role_res` where id ='1139444862914576441';
+            delete from `sys_role_res` where id ='1139444862914576442';
+            delete from `sys_role_res` where id ='1139444862914576443';
+            delete from `sys_role_res` where id ='1139444862914576444';
+            delete from `sys_role_res` where id ='1139444862914576445';
+            delete from `sys_role_res` where id ='1139444862914576446';
+            delete from `sys_role_res` where id ='1139444862914576447';
+            delete from `sys_role_res` where id ='1139444862914576448';
+            delete from `sys_role_res` where id ='1139444862914576449';
+            delete from `sys_role_res` where id ='1139444862914576450';
+            delete from `sys_role_res` where id ='1139444862914576451';
+            delete from `sys_role_res` where id ='1139444862914576452';
+            delete from `sys_role_res` where id ='1139444862914576453';
+            delete from `sys_role_res` where id ='1139444862914576454';
+            delete from `sys_role_res` where id ='1139444862914576455';
+            delete from `sys_role_res` where id ='1139444862914576456';
+            delete from `sys_role_res` where id ='1139444862914576457';
+            delete from `sys_role_res` where id ='1139444862914576458';
+            delete from `sys_role_res` where id ='1139444862914576459';
+            delete from `sys_role_res` where id ='1139444862914576460';
+            delete from `sys_role_res` where id ='1139444862914576461';
+            delete from `sys_role_res` where id ='1139444862914576462';
+            delete from `sys_role_res` where id ='1139444862914576463';
+            delete from `sys_role_res` where id ='1139444862914576464';
+            delete from `sys_role_res` where id ='1139444862914576465';
+            delete from `sys_role_res` where id ='1139444862914576466';
+            delete from `sys_role_res` where id ='1139444862914576467';
+            delete from `sys_role_res` where id ='1139444862914576468';
+            delete from `sys_role_res` where id ='1139444862914576469';
+            delete from `sys_role_res` where id ='1139444862914576470';
+            delete from `sys_role_res` where id ='1139444862914576471';
+            delete from `sys_role_res` where id ='1139444862914576472';
+            delete from `sys_role_res` where id ='1139444862914576473';
+            delete from `sys_role_res` where id ='1139444862914576474';
+            delete from `sys_role_res` where id ='1139444862914576475';
+            delete from `sys_role_res` where id ='1139444862914576476';
+            delete from `sys_role_res` where id ='1139444862914576477';
+            delete from `sys_role_res` where id ='1139444862914576478';
+            delete from `sys_role_res` where id ='1139444862914576479';
+            delete from `sys_role_res` where id ='1139444862914576480';
+            delete from `sys_role_res` where id ='1139444862914576481';
+            delete from `sys_role_res` where id ='1139444862914576482';
+            delete from `sys_role_res` where id ='1139444862914576483';
+            delete from `sys_role_res` where id ='1139444862914576484';
+            delete from `sys_role_res` where id ='1139444862914576485';
+            delete from `sys_role_res` where id ='1139444862914576486';
+            delete from `sys_role_res` where id ='1139444862914576487';
+            delete from `sys_role_res` where id ='1139444862914576488';
+            delete from `sys_role_res` where id ='1139444862914576489';
+            delete from `sys_role_res` where id ='1139444862914576490';
+            delete from `sys_role_res` where id ='1139444862914576491';
+            delete from `sys_role_res` where id ='1139444862914576492';
+
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576386', '1', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576387', '2', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576388', '3', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576389', '27', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576390', '28', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576391', '29', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576392', '30', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576393', '31', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576394', '32', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576395', '33', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576396', '34', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576397', '35', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576398', '36', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576399', '37', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576400', '4', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576401', '38', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576402', '39', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576403', '40', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576404', '41', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576405', '42', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576406', '43', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576407', '44', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576408', '45', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576409', '46', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576410', '47', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576411', '48', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576412', '49', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576413', '5', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576414', '50', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576415', '51', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576416', '52', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576417', '6', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576418', '7', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576419', '53', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576420', '54', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576421', '55', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576422', '56', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576423', '57', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576424', '58', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576425', '8', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576426', '59', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576427', '60', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576428', '61', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576429', '9', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576430', '62', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576431', '63', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576432', '64', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576433', '65', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576434', '66', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576435', '67', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576436', '10', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576437', '11', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576438', '68', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576439', '69', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576440', '70', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576441', '71', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576442', '72', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576443', '73', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576444', '74', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576445', '12', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576446', '75', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576447', '76', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576448', '77', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576449', '78', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576450', '13', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576451', '79', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576452', '80', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576453', '81', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576454', '14', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576455', '82', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576456', '83', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576457', '15', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576458', '16', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576459', '84', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576460', '85', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576461', '86', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576462', '17', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576463', '87', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576464', '88', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576465', '89', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576466', '18', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576467', '19', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576468', '90', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576469', '91', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576470', '92', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576471', '93', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576472', '20', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576473', '94', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576474', '21', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576475', '95', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576476', '22', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576477', '96', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576478', '23', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576479', '97', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576480', '24', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576481', '25', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576482', '98', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576483', '99', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576484', '100', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576485', '101', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576486', '102', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576487', '26', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576488', '103', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576489', '104', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576490', '105', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576491', '106', '1');
+            INSERT INTO `sys_role_res` VALUES ('1139444862914576492', '107', '1');
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

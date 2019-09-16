@@ -1,0 +1,155 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.28.3.251:8848
+        namespace: public
+        register-enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      #      default-filters:
+      #        - name: Hystrix
+      #          args:
+      #            name: fallbackcmd
+      #            fallbackUri: forward:/fallback
+      routes:
+        - id: iatp-admin
+          uri: lb://iatp-admin
+          order: 7100
+          predicates:
+            - Path=/admin/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        - id: iatp-web
+          uri: lb://iatp-web
+          order: 7100
+          predicates:
+            - Path=/web/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        - id: iatp-fileserver
+          uri: lb://iatp-fileserver
+          order: 7200
+          predicates:
+            - Path=/fileserver/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fileserver
+                fallbackUri: forward:/fallback
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        - id: service-auth
+          uri: lb://auth-server
+          order: 7300
+          predicates:
+            - Path=/login/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+            - StripPrefix=1
+  redis:
+    database: 3
+    host: 172.28.3.251
+    port: 6379
+
+#  #设置访问eureka用户名密码
+#  security:
+#    user:
+#      name: zhangsan
+#      password: 123456
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:3000/eureka/
+#      #defaultZone: http://localhost:3000/eureka/
+#  instance:
+#    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+# 设置熔断时间
+hystrix:
+  propagate:
+    request-attribute:
+      enabled: true
+  command:
+    fileserver:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
+    fallbackcmd:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000
+
+ribbon:
+  eager-load:
+    enabled: true
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: false
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+
+auth:
+  permitall:
+    - pattern: /login/**
+    - pattern: /web/public/**
+    - pattern: v2/api-docs
+    - pattern: /swagger-resources/**
+    - pattern: /webjars/**
+    - pattern: /web/index/**
+    - pattern: /web/course/courseList
+    - pattern: /web/course/addPv/**
+    - pattern: /web/course/chapterList/**
+    - pattern: /web/course/details/**
+    - pattern: /web/user/register
+    - pattern: /web/user/passwordCheck
+    - pattern: /web/user/passwordTips
+#    - pattern: /web/course/** #测试
+#    - pattern: /web/exam/** #测试
+    - pattern: /fileserver/file/download/**
+    - pattern: /fileserver/file/video/**
+
+#    - pattern: /v1.0.0/messageReceiver
+#    - pattern: /v1.0.0/messageReceiver/cmd
+#    - pattern: /app/user/sms/code
+#    - pattern: /app/user/register
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: /oauth/token
+      clientId: gateway
+      clientSecret: gateway
+    resource:
+      userInfoUri: /user
+      token-info-uri: /oauth/check_token

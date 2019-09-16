@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.SysUser">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="username" property="username" />
+        <result column="acount" property="acount" />
+        <result column="nickname" property="nickname" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="sex" property="sex" />
+        <result column="avatar" property="avatar" />
+        <result column="password" property="password" />
+        <result column="mod_passwd_date" property="modPasswdDate" />
+        <result column="multipoint" property="multipoint" />
+        <result column="level" property="level" />
+        <result column="unit_id" property="unitId" />
+        <result column="del" property="del" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.vo.resp.admin.SysUserVo">
+          select
+          u.id,
+          u.username,
+          u.acount,
+          u.nickname,
+          u.email,
+          u.phone,
+          u.sex,
+          u.avatar,
+          u.password,
+          u.mod_passwd_date modPasswdDate,
+          u.multipoint,
+          u.level,
+          u.unit_id,
+          u.del,
+          u.status,
+          u.create_time createTime,
+          u.update_time updateTime,
+          d.name deptName,
+          d.id unitId
+          from
+          sys_user u
+            LEFT JOIN
+            sys_dept d
+            ON u.unit_id = d.id
+            WHERE
+            u.status != -1
+            <if test="vo.acount != null and vo.acount != ''">
+                and (
+                u.acount like "%"#{vo.acount}"%"
+                or u.username like "%" #{vo.acount} "%"
+                or u.phone like "%" #{vo.acount}"%"
+                or u.nickname like "%" #{vo.acount}"%"
+                or d.name like "%" #{vo.acount}"%"
+                )
+            </if>
+            <if test="vo.type != null">
+                and u.type = #{vo.type}
+            </if>
+            order by u.id DESC
+
+
+    </select>
+
+    <update id="batchDel">
+        update sys_user set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper>

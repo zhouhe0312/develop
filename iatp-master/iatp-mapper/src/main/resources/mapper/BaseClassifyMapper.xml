@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseClassifyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseClassify">
+        <id column="id" property="id" />
+        <result column="pid" property="pid" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="des" property="des" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.vo.resp.admin.BaseClassifyPageListVo">
+        SELECT
+        b.id,
+        b.pid,
+        IFNULL(c.name,'') AS pname,
+        b.name,
+        b.des,
+        b.type,
+        b.create_time as createTime,
+        b.status
+        FROM
+        base_classify b
+        left join base_classify c
+        on b.pid = c.id
+        WHERE
+        b.status != -1
+        <if test="vo.pid != null ">
+            AND b.pid = #{vo.pid}
+        </if>
+        <if test="vo.name != null and vo.name != '' ">
+            AND b.name like concat('%',#{vo.name},'%')
+        </if>
+        ORDER BY b.create_time
+    </select>
+
+    <update id="batchDel">
+        update base_classify set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper>

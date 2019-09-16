@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseCourseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseCourse">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="classify_id" property="classifyId" />
+        <result column="classify_pid" property="classifyPid" />
+        <result column="course_name" property="courseName" />
+        <result column="introduce" property="introduce" />
+        <result column="course_ware_pv" property="courseWarePv" />
+        <result column="course_wares_core" property="courseWaresCore" />
+        <result column="file_id" property="fileId" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <update id="batchDel">
+        update base_course set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="webIndexCourseList" resultType="cn.powertime.iatp.vo.resp.web.IndexCourseList">
+        SELECT
+        course.id,
+        course.type,
+        course.classify_id classifyId,
+        course.classify_pid classifyPid,
+        course.course_name courseName,
+        course.introduce,
+        course.course_ware_pv courseWarePv,
+        course.course_wares_core courseWaresCore,
+        course.file_id fileId,
+        course.status,
+        course.create_time createTime,
+        course.update_time updateTime,
+        IFNULL(chapter.num,0) num
+        from
+        base_course course
+        left join
+        (select course_id,count(course_id) num from base_chapter where status != -1 and pid = 0 group by course_id) chapter  on chapter.course_id = course.id
+        where
+        course.status = 1
+        and
+        course.type = #{type}
+        order by course.course_ware_pv desc
+        limit 8
+    </select>
+
+    <select id="webSelectPage" resultType="cn.powertime.iatp.vo.resp.web.IndexCourseList">
+        select * from
+        (
+        SELECT
+        course.id,
+        course.type,
+        course.classify_id classifyId,
+        course.classify_pid classifyPid,
+        course.course_name courseName,
+        course.introduce,
+        course.course_ware_pv courseWarePv,
+        course.course_wares_core courseWaresCore,
+        course.file_id fileId,
+        course.status,
+        course.create_time createTime,
+        course.update_time updateTime,
+        chapter.num
+        from
+        base_course course
+        left join
+        (select course_id,count(1) num from base_chapter where status != -1 and pid = 0 group by course_id) chapter on
+        chapter.course_id = course.id
+        ) result
+        where
+        result.status = 1
+        <if test="vo.classifyPid != null and vo.classifyPid != 0">
+            and result.classifyPid = #{vo.classifyPid}
+        </if>
+        <if test="vo.classifyId != null and vo.classifyId != 0">
+            and result.classifyId = #{vo.classifyId}
+        </if>
+        <if test="vo.type != null">
+            and result.type = #{vo.type}
+        </if>
+        <if test="vo.searcType == 1">
+            order by result.courseWarePv desc
+        </if>
+        <if test="vo.searcType == 2">
+            order by result.id desc
+        </if>
+
+    </select>
+
+    <select id="webDetails" resultType="cn.powertime.iatp.vo.resp.web.CourseDetails">
+        select course.*,chapter.chapterCount ,learning.studyCount from(
+        select
+        course.id,
+        course.type,
+        course.course_name courseName,
+        course.introduce,
+        course.file_id fileId
+        from
+        base_course course
+        where course.id = #{id}
+        ) course
+        left join
+        (select count(id) as chapterCount, course_id from base_chapter where status = 1 and pid = 0 group by course_id) as chapter on chapter.course_id = course.id
+        left join
+        (select  count(distinct(user_id)) as studyCount, course_id from base_user_learning_record where status = 1 and course_id = #{id}) as learning on learning.course_id = course.id
+
+
+    </select>
+    <select id="mySelectPage" resultType="cn.powertime.iatp.entity.BaseCourse">
+        SELECT b.* FROM base_course b WHERE b.status != -1
+        <if test="vo.courseName != null and  vo.courseName != '' ">
+            AND b.course_name like concat('%',#{vo.courseName},'%')
+        </if>
+        <if test="vo.type != null ">
+            AND b.type = #{vo.type}
+        </if>
+        ORDER BY b.id desc
+    </select>
+
+</mapper>

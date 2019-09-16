@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseKnowledgeInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseKnowledgeInfo">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="category" property="category" />
+        <result column="class" property="classes" />
+        <result column="fields" property="fields" />
+        <result column="keyword" property="keyword" />
+        <result column="summary" property="summary" />
+        <result column="version" property="version" />
+        <result column="status" property="status" />
+        <result column="release_date" property="releaseDate" />
+        <result column="discard_date" property="discardDate" />
+        <result column="issued" property="issued" />
+        <result column="level" property="level" />
+        <result column="project_id" property="projectId" />
+        <result column="filename" property="filename" />
+    </resultMap>
+
+    <select id="webIndexKnowledgeList" resultMap="BaseResultMap">
+        select * from base_knowledge_info where status in (1,3) order by id desc limit 3
+    </select>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.entity.BaseKnowledgeInfo">
+        SELECT
+        b.id,
+        b.name,
+        b.category,
+        b.class,
+        b.fields,
+        b.keyword,
+        b.summary,
+        b.version,
+        b.status,
+        b.release_date as releaseDate,
+        b.discard_date,
+        b.issued,
+        b.level,
+        b.project_id as projectId,
+        b.filename
+        FROM base_knowledge_info b
+        WHERE b.status != -1
+        <if test="vo.name != null and vo.name != '' ">
+            AND b.name like concat('%',#{vo.name},'%')
+        </if>
+        <if test="vo.category != null and vo.category !=0 ">
+            AND b.category = #{vo.category}
+        </if>
+        ORDER BY b.id
+    </select>
+
+    <update id="batchDel">
+        update base_knowledge_info set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="categoryList" resultType="cn.powertime.iatp.vo.resp.web.CategoryVo">
+        select d.id,d.name,d.value,IFNULL(category.count ,0) count from sys_dict d left join (
+        <if test="key == null">
+        SELECT category,COUNT(*) as count from base_knowledge_info where status != -1 GROUP BY category
+        </if>
+        <if test="key != null and key != '' ">
+            select g.category,count(*) as count from (
+            SELECT b.category from base_knowledge_info b where b.status != -1 and b.name like concat('%',#{key},'%') or b.summary like concat('%',#{key},'%')
+            UNION ALL
+            SELECT (select a.category from base_knowledge_info a where a.id=c.root_id) as category from base_knowledge_content c where c.name like concat('%',#{key},'%') or c.content like concat('%',#{key},'%')
+            ) g group by g.category
+        </if>
+        ) category on d.value=category.category where d.type_id=#{typeId} order by d.sort_num
+    </select>
+
+    <select id="mySelectPageWeb" resultType="cn.powertime.iatp.vo.resp.web.KnowLedgeVo">
+        select * from (
+        SELECT
+        b.id,
+        b.name as title,
+        b.summary as content,
+        b.issued,
+        b.version,
+        b.release_date as releaseDate,
+        '' msg,
+        0 as subid
+        FROM base_knowledge_info b
+        WHERE b.status != -1
+        <if test="vo.name != null and vo.name != '' ">
+            AND (b.name like concat('%',#{vo.name},'%') or b.summary like concat('%',#{vo.name},'%'))
+        </if>
+        <if test="vo.category != null and vo.category != 0 ">
+            AND b.category = #{vo.category}
+        </if>
+        <if test="vo.name != null and vo.name != ''">
+        UNION ALL
+        SELECT
+        (select a.id from base_knowledge_info a where a.id=c.root_id) as id,
+        (select a.name from base_knowledge_info a where a.id=c.root_id) as title,
+        c.name as content,
+        '' issued,
+        '' version,
+        '' releaseDate,
+        c.content as msg,
+        c.id as subid
+        FROM base_knowledge_content c
+        WHERE 1=1
+        <if test="vo.name != null and vo.name != '' ">
+            and (c.name like concat('%',#{vo.name},'%') or c.content like concat('%',#{vo.name},'%'))
+        </if>
+        <if test="vo.category != null and vo.category != 0 ">
+            and c.root_id in (select id from base_knowledge_info where category = #{vo.category})
+        </if>
+        </if>) d order by d.subid
+    </select>
+
+    <select id="selectWebById" resultType="cn.powertime.iatp.vo.req.admin.BaseKnowledgeInfoVo">
+        select b.id,
+           b.name,
+           (select name from sys_dict where type_id=1130721577013395457 and value = b.category) category,
+           (select name from sys_dict where type_id=1138272391086911489 and value = b.class) classes,
+           b.keyword,
+           b.summary,
+           b.version,
+           b.release_date as releaseDate,
+           b.discard_date,
+           b.issued,
+           b.filename
+        from base_knowledge_info b where id=#{id}
+    </select>
+
+</mapper>

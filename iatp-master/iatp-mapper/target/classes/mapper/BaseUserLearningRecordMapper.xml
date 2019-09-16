@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseUserLearningRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseUserLearningRecord">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="course_id" property="courseId" />
+        <result column="chapter_id" property="chapterId" />
+        <result column="section_id" property="sectionId"/>
+        <result column="resource_id" property="resourceId" />
+        <result column="schedule" property="schedule" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    <select id="selectPage" resultType="cn.powertime.iatp.vo.resp.admin.UserLearningRecordRespListVo">
+        select bulr.id,
+               su.acount,
+               su.username,
+               bc.type as course_type,
+               bc.course_name,
+               bch1.chapter_name,
+               bch2.chapter_name as section_name,
+               br.resource_name,
+               bulr.schedule,
+               br.resource_size,
+               bulr.type,
+               bulr.create_time
+        from base_user_learning_record bulr,
+             sys_user su,
+             base_course bc,
+             base_chapter bch1,
+             base_chapter bch2,
+             base_resource br
+        where bulr.status = 1
+          and bulr.user_id = su.id
+          and bulr.course_id = bc.id
+          and bulr.chapter_id = bch1.id
+          and bulr.section_id = bch2.id
+          and bulr.resource_id = br.id
+        <if test="vo.userName != null and vo.userName != ''">
+            AND su.acount like  "%"#{vo.userName}"%"
+        </if>
+        <if test="vo.courseId != null and vo.courseId != 0">
+            AND bulr.course_id = #{vo.courseId}
+        </if>
+          order by bulr.id desc
+    </select>
+
+    <select id="webIndexCourseList" resultType="cn.powertime.iatp.entity.BaseCourse">
+        SELECT * FROM
+            (
+            SELECT
+            course.id,
+            course.type,
+            course.classify_id classifyId,
+            course.course_name courseName,
+            course.introduce,
+            course.course_ware_pv courseWarePv,
+            course.course_wares_core courseWaresCore,
+            course.file_id fileId,
+            course.status,
+            course.create_time createTime,
+            course.update_time updateTime,
+            COUNT(record.id) count
+            FROM
+            base_user_learning_record record
+            LEFT JOIN
+            base_course course
+            ON
+            record.course_id = course.id and course.`status` = 1 and course.type =#{type}
+            WHERE
+            record.status = 1
+            GROUP BY record.course_id
+            ) result
+            ORDER BY result.count desc
+            LIMIT 8
+    </select>
+
+</mapper>

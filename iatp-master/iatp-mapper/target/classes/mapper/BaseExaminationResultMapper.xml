@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseExaminationResultMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseExaminationResult">
+        <id column="id" property="id" />
+        <result column="test_paper_id" property="testPaperId" />
+        <result column="user_id" property="userId" />
+        <result column="score" property="score" />
+        <result column="exam_time" property="examTime" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    <select id="selectPage" resultType="cn.powertime.iatp.vo.resp.admin.ExaminationResultRespVo">
+        select ber.id,
+               su.acount,
+               su.username,
+               bct.title,
+               bct.test_type,
+               bc.course_name,
+               ber.score,
+               ber.create_time
+        from base_examination_result ber,
+             sys_user su,
+             base_chapel_test bct,
+             base_course bc
+        where ber.status = 1
+          and ber.user_id = su.id
+          and ber.test_paper_id = bct.id
+          and ber.user_id = su.id
+          and (bct.course_id = bc.id || bct.course_one_id = bc.id)
+        <if test="vo.userName != null and vo.userName != ''">
+            AND su.acount = #{vo.userName}
+        </if>
+        <if test="vo.courseId != null and vo.courseId != 0">
+            AND bct.course_id = #{vo.courseId}
+        </if>
+        <if test="vo.testType != null and vo.testType != 0">
+            AND bct.test_type = #{vo.testType}
+        </if>
+        order by id desc
+    </select>
+
+</mapper>

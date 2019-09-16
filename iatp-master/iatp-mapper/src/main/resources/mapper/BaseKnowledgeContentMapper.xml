@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseKnowledgeContentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseKnowledgeContent">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="father" property="father" />
+        <result column="content" property="content" />
+        <result column="root_id" property="rootId" />
+        <result column="idx" property="idx" />
+        <result column="filename" property="filename" />
+    </resultMap>
+
+    <delete id="batchDel">
+        delete from base_knowledge_content
+        where id in
+        <foreach collection="ids"  item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

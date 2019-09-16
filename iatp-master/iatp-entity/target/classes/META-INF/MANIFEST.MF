@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: iatp-entity
+Implementation-Version: 1.0.0
+Built-By: lintao
+Implementation-Vendor-Id: cn.powertime
+Build-Jdk: 1.8.0_112
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/iatp/iatp-entity
+Created-By: Maven Integration for Eclipse
+

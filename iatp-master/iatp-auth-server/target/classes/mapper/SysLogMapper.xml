@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.authserver.mapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.authserver.domain.SysLog">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="desc_info" property="descInfo" />
+        <result column="remark" property="remark" />
+        <result column="adr" property="adr" />
+        <result column="backups" property="backups" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user_id" property="createUserId" />
+    </resultMap>
+
+</mapper>

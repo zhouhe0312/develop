@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseExaminationResultDetailsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseExaminationResultDetails">
+        <id column="id" property="id" />
+        <result column="result_id" property="resultId" />
+        <result column="test_paper_id" property="testPaperId" />
+        <result column="test_questions_id" property="testQuestionsId" />
+        <result column="user_id" property="userId" />
+        <result column="topic_answer" property="topicAnswer" />
+        <result column="is_correct" property="isCorrect" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+</mapper>

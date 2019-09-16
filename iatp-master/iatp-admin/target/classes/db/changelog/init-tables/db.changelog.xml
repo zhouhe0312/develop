@@ -1,0 +1,880 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="init-tables-dict-type" author="zyw">
+        <comment>
+            字典类型表和字典表
+        </comment>
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `sys_dict_type`;
+
+                CREATE TABLE `sys_dict_type` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `name` varchar(20) NOT NULL DEFAULT '' COMMENT '字典类型名称',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='字典类型表';
+
+                DROP TABLE IF EXISTS `sys_dict`;
+
+                CREATE TABLE `sys_dict` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `type_id` bigint(20) unsigned NOT NULL COMMENT '类型ID',
+                  `sort_num` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '排序',
+                  `name` varchar(80) DEFAULT NULL,
+                  `value` varchar(80) DEFAULT NULL,
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`),
+                  KEY `value_index` (`value`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='字典表';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-table-user-role-res" author="zyw">
+        <comment>
+            用户角色和权限表
+        </comment>
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `sys_user`;
+
+                CREATE TABLE `sys_user` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `username` varchar(100) DEFAULT NULL COMMENT '姓名',
+                  `acount` varchar(100) DEFAULT NULL COMMENT '帐号',
+                  `nickname` varchar(100) DEFAULT NULL COMMENT '昵称',
+                  `email` varchar(100) DEFAULT NULL COMMENT '邮箱',
+                  `phone` varchar(20) DEFAULT NULL COMMENT '手机',
+                  `sex` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '1:男，0:女',
+                  `avatar` varchar(200) NOT NULL DEFAULT '' COMMENT '头像',
+                  `password` varchar(150) DEFAULT NULL COMMENT '密码',
+                  `mod_passwd_date` datetime DEFAULT NULL COMMENT '密码修改日期',
+                  `multipoint` int(5) DEFAULT NULL COMMENT '多点登录',
+                  `level` int(5) DEFAULT NULL COMMENT '级别',
+                  `unit_id` int(5) DEFAULT NULL COMMENT '所属单位ID',
+                  `del` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否可删除，1：可删除，2：禁止删除',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除，2 锁定',
+                  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `index_acount` (`acount`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+
+                DROP TABLE IF EXISTS `sys_role`;
+
+                CREATE TABLE `sys_role` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `name` varchar(55) NOT NULL DEFAULT '角色名称',
+                  `code` varchar(100) NOT NULL DEFAULT '角色编码',
+                  `sort_num` int(10) unsigned NOT NULL DEFAULT '1',
+                  `des` varchar(100) NOT NULL DEFAULT '描述',
+                  `del` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否可删除，1：可删除，2：禁止删除',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
+
+
+                DROP TABLE IF EXISTS `sys_user_role`;
+
+                CREATE TABLE `sys_user_role` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `user_id` bigint(20) unsigned NOT NULL,
+                  `role_id` bigint(20) unsigned NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户角色表';
+
+
+                DROP TABLE IF EXISTS `sys_res`;
+
+                CREATE TABLE `sys_res` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `pid` bigint(20) unsigned NOT NULL DEFAULT '0',
+                  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '在vue中name表示路由名称，非vue是资源名称',
+                  `permission` varchar(100) NOT NULL DEFAULT '',
+                  `url` varchar(200) NOT NULL DEFAULT '' COMMENT 'vue中表示路由的path',
+                  `sort_num` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '排序',
+                  `attach` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'attach(隶属字段)1:管理端，2:应用端，3：移动端 ',
+                  `icon1` varchar(200) NOT NULL DEFAULT '' COMMENT 'PC菜单图片',
+                  `icon2` varchar(200) NOT NULL DEFAULT '' COMMENT 'APP菜单图片',
+                  `pids` varchar(500) NOT NULL DEFAULT '' COMMENT 'TreeTable排序',
+                  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '1 菜单 2 按钮',
+                  `des` varchar(255) NOT NULL DEFAULT '',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资源表';
+
+                DROP TABLE IF EXISTS `sys_role_res`;
+
+                CREATE TABLE `sys_role_res` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `res_id` bigint(20) unsigned NOT NULL,
+                  `role_id` bigint(20) unsigned NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色资源表';
+
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-tables-safe-log" author="zyw" runOnChange="true">
+        <comment>
+            安全策略和日志表
+        </comment>
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `sys_safe_strategy`;
+
+                CREATE TABLE `sys_safe_strategy` (
+                `id` bigint(20) unsigned NOT NULL,
+                `pwd_intensity` int(10) DEFAULT NULL COMMENT '密码强度',
+                `login_fail_time` int(10)  DEFAULT NULL COMMENT '允许登陆失败次数',
+                `pwd_valid_time` bigint(10)  DEFAULT NULL COMMENT '密码有效时间（单位：天）',
+                `web_failure_time` bigint(10)  DEFAULT NULL COMMENT '页面失效时间（单位：秒）',
+                `lock_login_time` varchar(255) NOT NULL DEFAULT '锁定用户登陆时间',
+                `log_retention_time` int(10)  DEFAULT NULL COMMENT '日志保留最短时间（单位：天）',
+                `min_pwd_length` int(10)  DEFAULT NULL COMMENT '密码最小长度',
+                `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='安全策略表';
+
+                DROP TABLE IF EXISTS `sys_log`;
+
+                CREATE TABLE `sys_log` (
+                `id` bigint(20) unsigned NOT NULL COMMENT '日志信息表主键',
+                `type` int(4) DEFAULT NULL COMMENT '日志类型（1:增，2:删，3:改，4:查）',
+                `desc_info` varchar(512) DEFAULT NULL COMMENT '日志说明（日志数据）',
+                `remark` varchar(512) DEFAULT NULL COMMENT '操作详情',
+                `adr` varchar(128) DEFAULT NULL COMMENT '操作人IP地址',
+                `backups` tinyint(4) NOT NULL DEFAULT '1' COMMENT '日志备份状态，1：未备份，2：已备份',
+                `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                `create_user_id` bigint(20) DEFAULT NULL COMMENT '创建用户ID',
+                PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日志信息表';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-table-sys_file" author="zyw">
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `sys_file`;
+                CREATE TABLE `sys_file` (
+                  `id`          bigint UNSIGNED  NOT NULL                COMMENT '文件信息表主键',
+                  `name`        char(100)        NOT NULL DEFAULT ''     COMMENT '文件名称',
+                  `orig_name`   varchar(100)     NOT NULL DEFAULT ''     COMMENT '源文件名称',
+                  `ext`         char(8)          NOT NULL DEFAULT ''     COMMENT '后缀名',
+                  `size`        int(11) UNSIGNED NOT NULL DEFAULT 0      COMMENT '文件大小',
+                  `path`        varchar(512)     NOT NULL DEFAULT ''     COMMENT '文件路径',
+                  `des`         varchar(512)     NOT NULL DEFAULT ''     COMMENT '备注',
+                  `status`      tinyint          NOT NULL    DEFAULT 1   COMMENT '1:正常，0：删除',
+                  `customer_id` bigint(32) DEFAULT NULL COMMENT '客户id',
+                  `create_time` datetime         NOT NULL    DEFAULT CURRENT_TIMESTAMP,
+                  `create_user` varchar(32) DEFAULT NULL COMMENT '创建用户',
+                  `update_time` datetime         NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                  `update_user` varchar(32) DEFAULT NULL COMMENT '修改用户',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文件信息表';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-table-sys_client_details" author="zyw">
+        <comment>
+            创建认证的客户端认证表
+        </comment>
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `sys_client_details`;
+
+                CREATE TABLE `sys_client_details` (
+                  `id` 						bigint(20) 		unsigned NOT NULL 			COMMENT '主键id',
+                  `client_id` 				varchar(200)  	DEFAULT NULL 				COMMENT 'client id`',
+                  `client_secret` 			varchar(200)  	DEFAULT NULL 				COMMENT 'secret',
+                  `resource_ids` 			varchar(200) 	DEFAULT NULL 				COMMENT 'resourceid逗号(,)分割',
+                  `scope` 					varchar(200) 	DEFAULT NULL 				COMMENT 'scope',
+                  `authorized_grant_types` 	varchar(200) 	DEFAULT NULL 				COMMENT 'authorized_grant_types逗号(,)分割',
+                  `web_server_redirect_uri` varchar(200) 	DEFAULT NULL 				COMMENT 'redirect uri',
+                  `authorities` 			varchar(200) 	DEFAULT NULL 				COMMENT '权限逗号(,)分割',
+                  `access_token_validity` 	varchar(200) 	DEFAULT NULL 				COMMENT '',
+                  `refresh_token_validity` 	varchar(200) 	DEFAULT NULL 				COMMENT '',
+                  `additional_information` 	varchar(200) 	DEFAULT NULL 				COMMENT '',
+                  `autoapprove` 			varchar(200) 	DEFAULT NULL 				COMMENT '',
+                  `create_time` timestamp NOT NULL			DEFAULT CURRENT_TIMESTAMP 	COMMENT '创建时间时间',
+                  `update_time` timestamp NOT NULL 			DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                  `status` tinyint(4) 						DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='配置OAuth2的客户端相关信息表';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-table-sys_dept" author="liqi">
+        <comment>
+            创建部门表
+        </comment>
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `sys_dept`;
+
+                CREATE TABLE `sys_dept` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `name` varchar(80) DEFAULT NULL COMMENT '部门名称',
+                  `code` varchar(80) DEFAULT NULL COMMENT '部门编码',
+                  `pid` bigint(20) NOT NULL COMMENT '父节点',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门表';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-table-iatp_core" author="liqi" runOnChange="true">
+        <comment>
+            创建审计平台核心表（课程，实验，考试。知识库）
+        </comment>
+        <sql>
+            <![CDATA[
+                /*
+                分类表
+                */
+                DROP TABLE IF EXISTS `base_classify`;
+
+                CREATE TABLE `base_classify` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `pid` bigint(20) NOT NULL DEFAULT '0' COMMENT '上级分类id',
+                  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '分类名称',
+                  `code` varchar(20) NOT NULL DEFAULT '' COMMENT '分类编码',
+                  `type` tinyint(1) NOT NULL DEFAULT 1   COMMENT '分类类型，1：课程，2：实验',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='分类表';
+
+                /*
+                课程（实验）表
+                */
+                DROP TABLE IF EXISTS `base_course`;
+
+                CREATE TABLE `base_course` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 课程，2：实验',
+                  `classify_id` bigint(20) unsigned NOT NULL COMMENT '分类ID',
+                  `course_name` varchar(200) DEFAULT NULL COMMENT '课程（实验）名称',
+                  `introduce` text DEFAULT NULL  COMMENT '课程（实验）介绍',
+                  `course_ware_pv` bigint(20) DEFAULT NULL COMMENT '浏览量',
+                  `course_wares_core` double DEFAULT NULL COMMENT '评分',
+                  `file_id` bigint(20) DEFAULT NULL COMMENT '课程（实验）封面',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='课程（实验）表';
+                /*
+                课程（实验）章节表
+                */
+                DROP TABLE IF EXISTS `base_chapter`;
+
+                CREATE TABLE `base_chapter` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `pid` bigint(20) NOT NULL DEFAULT '0' COMMENT '上级分类id',
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 课程，2：实验',
+                  `chapter_name` varchar(200) DEFAULT NULL COMMENT '章节（小节）名称',
+                  `course_id` bigint(20) unsigned NOT NULL COMMENT '课程（实验）ID',
+                  `sort_num` int(11) DEFAULT NULL COMMENT '排序',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='课程（实验）章节表';
+
+                /*
+                课程（实验）资源表
+                */
+                DROP TABLE IF EXISTS `base_resource`;
+
+                CREATE TABLE `base_resource` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 课程，2：实验',
+                  `defaults` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否默认打开 1：是，2：否',
+                  `course_id` bigint(20) unsigned NOT NULL COMMENT '课程（实验）ID',
+                  `chapter_pid` bigint(20) unsigned NOT NULL COMMENT '章节ID',
+                  `chapter_id` bigint(20) unsigned NOT NULL COMMENT '小节ID',
+                  `resource_name` varchar(200) DEFAULT NULL COMMENT '资源名称',
+                  `introduce` text DEFAULT NULL  COMMENT '资源介绍',
+                  `resource_type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '资源类型，1：视频，2：ppt，3：pdf，4:课程，5：实验，6：实训',
+                  `file_id` bigint(20) DEFAULT NULL COMMENT '资源文件',
+                  `resource_size` bigint(20) DEFAULT NULL COMMENT '资源大小 单位：秒（视频），页数（pdf/ppt）',
+                  `sort` int(11) DEFAULT NULL COMMENT '排序',
+                  `course_parent_id` bigint(20) unsigned DEFAULT NULL COMMENT '去向一级ID',
+                  `course_child_id` bigint(20) unsigned DEFAULT NULL COMMENT '去向二级ID',
+                  `username` varchar(100) DEFAULT NULL COMMENT '用户名',
+                  `password` varchar(32) DEFAULT NULL COMMENT '密码',
+                  `ip` varchar(100) DEFAULT NULL COMMENT 'IP',
+                  `port` varchar(32) DEFAULT NULL COMMENT '端口',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='课程（实验）资源表';
+
+
+                /*
+                *题库类型表
+                */
+                DROP TABLE IF EXISTS `base_topic_type`;
+
+                CREATE TABLE `base_topic_type` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `title` varchar(200) DEFAULT NULL COMMENT '题库类型名称',
+                  `des` varchar(512) NOT NULL DEFAULT '' COMMENT '描述',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='题库类型表';
+
+                /*
+                *题库表
+                */
+                DROP TABLE IF EXISTS `base_topic`;
+
+                CREATE TABLE `base_topic` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `type_id` bigint(20) unsigned NOT NULL COMMENT '题库类型ID',
+                  `topic_stem` text COMMENT '试题题干',
+                  `topic_answer` varchar(100) DEFAULT NULL COMMENT '试题答案',
+                  `option_a` varchar(100) DEFAULT NULL COMMENT 'A选项',
+                  `option_b` varchar(100) DEFAULT NULL COMMENT 'B选项',
+                  `option_c` varchar(100) DEFAULT NULL COMMENT 'C选项',
+                  `option_d` varchar(100) DEFAULT NULL COMMENT 'D选项',
+                  `topic_analysis` text COMMENT '试题解析',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='题库表';
+
+                /*
+                *试卷表
+                */
+                DROP TABLE IF EXISTS `base_chapel_test`;
+
+                CREATE TABLE `base_chapel_test` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `title` varchar(200) DEFAULT NULL COMMENT '试卷名称',
+                  `course_id` bigint(20) unsigned NOT NULL COMMENT '归属课程/实验ID',
+                  `chapter_id` bigint(20) unsigned NOT NULL COMMENT '归属章节ID',
+                  `subsection` bigint(20) unsigned NOT NULL COMMENT '小节',
+                  `paper_duration` bigint(20) NOT NULL COMMENT '考试时长',
+                  `score` int(8) NOT NULL COMMENT '总分数',
+                  `course_one_id` bigint(20) unsigned NOT NULL COMMENT '归属课程ID',
+                  `course_two_id` bigint(20) unsigned NOT NULL COMMENT '归属实验ID',
+                  `test_type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 随堂测验，2：单元测试，3 课程/实验测试，4：综合测试',
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 课程，2：实验',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='试卷表';
+
+
+                /*
+                *试卷试题表
+                */
+                DROP TABLE IF EXISTS `base_examination_paper`;
+
+                CREATE TABLE `base_examination_paper` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `test_paper_id` bigint(20) unsigned NOT NULL COMMENT '试卷ID',
+                  `score_value` int(3) DEFAULT NULL COMMENT '分值',
+                  `topic_id` bigint(20) unsigned NOT NULL COMMENT '题库ID',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='试卷试题表';
+
+                /*
+                *用户考试结果表
+                */
+                DROP TABLE IF EXISTS `base_examination_result`;
+
+                CREATE TABLE `base_examination_result` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `test_paper_id` bigint(20) unsigned NOT NULL COMMENT '试卷ID',
+                  `user_id` bigint(20) unsigned NOT NULL COMMENT '用户ID',
+                  `score` decimal(3,2) DEFAULT NULL COMMENT '得分',
+                  `exam_time` bigint(20) NOT NULL COMMENT '考试用时',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户考试结果表';
+
+                /*
+                *用户考试结果详情表
+                */
+                DROP TABLE IF EXISTS `base_examination_result_details`;
+
+                CREATE TABLE `base_examination_result_details` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `test_paper_id` bigint(20) unsigned NOT NULL COMMENT '试卷ID',
+                  `test_questions_id` bigint(20) unsigned NOT NULL COMMENT '试卷试题表ID',
+                  `user_id` bigint(20) unsigned NOT NULL COMMENT '用户ID',
+                  `topic_answer` varchar(2) DEFAULT NULL COMMENT '用户选项',
+                  `is_correct` tinyint(2) DEFAULT '1' COMMENT '是否正确，1 正确，2：错误',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户考试结果详情表';
+
+                /*
+                *用户学习记录表
+                */
+                DROP TABLE IF EXISTS `base_user_learning_record`;
+
+                CREATE TABLE `base_user_learning_record` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `user_id` bigint(20) unsigned NOT NULL COMMENT '用户ID',
+                  `course_id` bigint(20) unsigned NOT NULL COMMENT '课程（实验）ID',
+                  `chapter_id` bigint(20) unsigned NOT NULL COMMENT '章节ID',
+                  `resource_id` bigint(20) unsigned NOT NULL COMMENT '资源ID',
+                  `schedule` bigint(20) DEFAULT NULL COMMENT '学习进度 单位：秒（视频），页数（pdf/ppt）',
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '学习状态，1 正在学习，2：学习完成',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户学习记录表';
+
+                /*
+                *用户收藏表
+                */
+                DROP TABLE IF EXISTS `base_user_collect`;
+
+                CREATE TABLE `base_user_collect` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `user_id` bigint(20) unsigned NOT NULL COMMENT '用户ID',
+                  `course_id` bigint(20) unsigned NOT NULL COMMENT '课程/实验/试卷ID',
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 课程，2：实验，3：试卷',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户收藏表';
+
+
+
+                /*
+                *错题表
+                */
+                DROP TABLE IF EXISTS `base_wrong_questions`;
+
+                CREATE TABLE `base_wrong_questions` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `user_id` bigint(20) unsigned NOT NULL COMMENT '用户ID',
+                  `course_id` bigint(20) unsigned NOT NULL COMMENT '课程/实验ID',
+                  `test_paper_id` bigint(20) unsigned NOT NULL COMMENT '试卷ID',
+                  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '类型，1 课程，2：实验',
+                  `topic_id` bigint(20) unsigned NOT NULL COMMENT '题库ID',
+                  `topic_answer` varchar(2) DEFAULT NULL COMMENT '用户选项',
+                  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除',
+                  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='错题表';
+
+
+
+                /*
+                *知识表
+                */
+                DROP TABLE IF EXISTS `base_knowledge_info`;
+
+                CREATE TABLE `base_knowledge_info` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `name` varchar(128) DEFAULT NULL COMMENT '名称',
+                  `category` int(11) DEFAULT NULL COMMENT '类别',
+                  `class` int(11) DEFAULT NULL COMMENT '小类',
+                  `fields` int(11) DEFAULT NULL COMMENT '所属领域',
+                  `keyword` varchar(128) DEFAULT NULL COMMENT '关键词',
+                  `summary` varchar(4096) DEFAULT NULL COMMENT '摘要',
+                  `version` varchar(32) DEFAULT NULL COMMENT '文号',
+                  `status` int(11) DEFAULT NULL COMMENT '状态，1 现行，2 废止，3 试行，0 禁用，-1 删除',
+                  `release_date` datetime DEFAULT NULL COMMENT '发布日期',
+                  `discard_date` datetime DEFAULT NULL COMMENT '废止日期',
+                  `issued` varchar(128) DEFAULT NULL COMMENT '发布单位',
+                  `level` int(11) DEFAULT NULL COMMENT '级别',
+                  `project_id` int(11) DEFAULT NULL COMMENT '所属项目',
+                  `filename` varchar(128) DEFAULT NULL COMMENT '文件名',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识表';
+
+
+                /*
+                *知识内容表
+                */
+                DROP TABLE IF EXISTS `base_knowledge_content`;
+
+                CREATE TABLE `base_knowledge_content` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `name` varchar(128) DEFAULT NULL COMMENT '资料名称',
+                  `father` int(11) DEFAULT NULL COMMENT '父id',
+                  `content` text COMMENT '内容',
+                  `root_id` int(11) DEFAULT NULL COMMENT '资料ID',
+                  `idx` float(12,6) DEFAULT NULL COMMENT '同级序号',
+                  `filename` varchar(128) DEFAULT NULL COMMENT '图片文件名',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识内容表';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_dict-add-column-des" author="liqi">
+        <comment>
+           字典表添加字典描述
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_dict` Add column des varchar(512) NOT NULL DEFAULT '' COMMENT '描述' AFTER `value`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_log-add-column-is_success" author="liqi">
+        <comment>
+            日志信息表添加执行结果
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_log` Add column is_success tinyint(4) DEFAULT '1' COMMENT '执行结果，1：成功，2：失败' AFTER `backups`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_user-add-column-type" author="liqi">
+        <comment>
+            用户表添加用户类型
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_user` Add column `type` tinyint(3) NOT NULL DEFAULT '1' COMMENT '用户类型：1 管理端用户 2 应用端用户' AFTER `id`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_topic-add-column-score_value" author="liqi">
+        <comment>
+            题库表添加默认分值
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_topic` Add column `score_value` int(3) DEFAULT NULL COMMENT '分值'
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_user_learning_record-add-column-section_id" author="liqi">
+        <comment>
+            题库表添加默认分值
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_user_learning_record` Add column `section_id` bigint(20) not null COMMENT '节ID, chapter_id为章ID' after `chapter_id`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_classify-add-column-des" author="liqi">
+        <comment>
+            分类表添加描述
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_classify` Add column `des` varchar(512) DEFAULT NULL COMMENT '描述' AFTER `code`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_chapel_test-modify -column" author="liqi">
+        <comment>
+            试卷表修改试卷归属默认为空
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_chapel_test` modify column `course_id` bigint(20) DEFAULT NULL COMMENT '归属课程/实验ID';
+                alter table `base_chapel_test` modify column `chapter_id` bigint(20) DEFAULT NULL COMMENT '归属章节ID';
+                alter table `base_chapel_test` modify column `subsection` bigint(20) DEFAULT NULL COMMENT '小节';
+                alter table `base_chapel_test` modify column `course_one_id` bigint(20) DEFAULT NULL COMMENT '归属课程ID';
+                alter table `base_chapel_test` modify column `course_two_id` bigint(20) DEFAULT NULL COMMENT '归属实验ID';
+             ]]>
+        </sql>
+    </changeSet>
+
+<!--    <changeSet id="alter-table-base_examination_result_details-modify-column" author="liqi">-->
+<!--        <comment>-->
+
+<!--        </comment>-->
+<!--        <sql>-->
+<!--            <![CDATA[-->
+<!--                alter table `base_examination_result_details` Add column `topic_id` bigint(20) unsigned NOT NULL COMMENT '题库ID' AFTER `test_paper_id`;-->
+<!--                alter table `base_examination_result_details` drop column  `test_questions_id`;-->
+<!--             ]]>-->
+<!--        </sql>-->
+<!--    </changeSet>-->
+
+    <changeSet id="alter-table-base_examination_result-modify-column-score" author="liqi">
+        <comment>
+
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_examination_result` modify column `score` decimal(10,2) DEFAULT NULL COMMENT '得分'
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_chapter-add-column-des" author="yang xin">
+        <comment>
+            课程（实验）章节表添加描述
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_chapter` Add column `des` varchar(512) DEFAULT NULL COMMENT '描述' AFTER `course_id`
+             ]]>
+        </sql>
+    </changeSet>
+    
+    <changeSet id="alter-drop-base_chapel_test-type" author="zyw">
+        <comment>
+            删除试卷表的type字段，使用test_type取代
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_chapel_test` drop column `type`;
+                alter table `base_chapel_test` modify column `test_type` tinyint(4) NOT NULL COMMENT '1:课程随堂，2：课程单元，3：课程，4：实验随堂，5：实验单元，6：实验，7：综合';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_examination_result_details-add-column-result_id" author="liqi">
+        <comment>
+            课程（实验）章节表添加描述
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_examination_result_details` Add column `result_id` bigint(20) unsigned NOT NULL COMMENT '考试结果ID' AFTER `id`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_user-modify-column-unit_id" author="liqi">
+        <comment>
+
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_user` modify column `unit_id` bigint(20) DEFAULT NULL COMMENT '所属部门ID';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_course-modify-column-course_ware_pv-add-classify_pid" author="liqi">
+        <comment>
+
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_course` modify column `course_ware_pv` bigint(20) DEFAULT '0' COMMENT '浏览量';
+                alter table `base_course` modify column `classify_id` bigint(20) unsigned DEFAULT NULL COMMENT '分类ID';
+                alter table `base_course` Add column `classify_pid` bigint(20) unsigned DEFAULT NULL COMMENT '分类父ID' AFTER `id`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_resource-modify-column-sort" author="yang xin">
+        <comment>
+            课程（实验）资源表修改排序字段类型
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_resource` modify column `sort` decimal(10,2) COMMENT '排序';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_chapter-modify-column-course_id" author="yang xin">
+        <comment>
+            课程（实验）章节表修改课程（实验）ID可以为空
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_chapter` modify column `course_id` bigint(20) unsigned DEFAULT NULL COMMENT '课程（实验）ID';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_resource-add-column-file_extensions" author="yang xin">
+        <comment>
+            课程（实验）资源表添加文件扩展名字段
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_resource` Add column `file_extensions` varchar(10) DEFAULT NULL COMMENT '文件扩展名' AFTER `file_id`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_user-modify-column-unit_id" author="yang xin">
+        <comment>
+            用户表修改所属部门ID类型
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_user` modify column `unit_id` bigint(20) unsigned DEFAULT NULL COMMENT '所属部门';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_knowledge_content-modify-column-father" author="yang xin">
+        <comment>
+            知识内容表修改父id类型
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_knowledge_content` modify column `father` bigint(20) unsigned DEFAULT NULL COMMENT '父id';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_safe_strategy-modify-column-lock_login_time" author="yang xin">
+        <comment>
+            安全策略表修改锁定用户登陆时间字段类型
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_safe_strategy` modify column `lock_login_time` bigint(10) unsigned DEFAULT NULL COMMENT '锁定用户登陆时间（单位：秒）';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_user-index-for-acount" author="liqi">
+        <comment>
+            系统用户账号索引修改
+        </comment>
+        <sql>
+            <![CDATA[
+                drop index index_acount on sys_user ;
+                create index index_acount on sys_user (acount) ;
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-sys_user_status_comment" author="zyw" runOnChange="true">
+        <comment>
+            修改sys_user表的status字段的注释，添加3的状态值
+        </comment>
+        <sql>
+            <![CDATA[
+                ALTER TABLE sys_user MODIFY COLUMN `status` TINYINT(4) NOT NULL DEFAULT '1' COMMENT '状态，1 未删除，0 禁用，-1 删除，2 锁定，3 用户密码被重置 4 用户密码已过期';
+            ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_topic-modify-column-option_a-b-c-d" author="liqi">
+        <comment>
+            试题表abcd选项长度增加
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_topic` modify column `option_a` varchar(500) DEFAULT NULL COMMENT 'A选项';
+                alter table `base_topic` modify column `option_b` varchar(500) DEFAULT NULL COMMENT 'B选项';
+                alter table `base_topic` modify column `option_c` varchar(500) DEFAULT NULL COMMENT 'C选项';
+                alter table `base_topic` modify column `option_d` varchar(500) DEFAULT NULL COMMENT 'D选项';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_resource-add-column-service_port" author="liqi">
+        <comment>
+            课程（实验）资源表添加webconsole服务端口字段
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_resource` Add column `service_port` varchar(32) DEFAULT NULL COMMENT 'webconsole服务端口' AFTER `port`
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="alter-table-base_knowledge_content-modify-column-root_id" author="yang xin">
+        <comment>
+            知识库内容表修改root_id类型
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `base_knowledge_content` modify column `root_id` bigint(20) unsigned DEFAULT NULL COMMENT '目录表id';
+             ]]>
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-table-base_standard" author="yang xin">
+        <comment>
+            创建知识库内容标准表
+        </comment>
+        <sql>
+            <![CDATA[
+                DROP TABLE IF EXISTS `base_standard`;
+
+                CREATE TABLE `base_standard` (
+                  `id` bigint(20) unsigned NOT NULL,
+                  `control_id` bigint(20) NOT NULL COMMENT '知识库条目ID',
+                  `question` varchar(500) DEFAULT NULL COMMENT '访谈提问',
+                  `demain` varchar(500) DEFAULT NULL COMMENT '依据条款内容',
+                  `note` varchar(500) DEFAULT NULL COMMENT '收集审计证据说明',
+                  `problem` varchar(500) DEFAULT NULL COMMENT '存在问题',
+                  `anwser_roler` int(11) DEFAULT NULL COMMENT '答题岗位',
+                  `rish_level` int(11) DEFAULT NULL COMMENT '风险级别',
+                  `rish` varchar(500) DEFAULT NULL COMMENT '风险描述',
+                  `suggest` varchar(500) DEFAULT NULL COMMENT '建议',
+                  `type` int(11) DEFAULT NULL COMMENT '分类：0:管理  1:技术',
+                  `audit_unit` varchar(64) DEFAULT NULL COMMENT '主体单位',
+                  `depend` varchar(256) DEFAULT NULL COMMENT '依赖其它题的ID号，逗号分割',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识库内容标准表';
+            ]]>
+        </sql>
+    </changeSet>
+
+
+    <changeSet id="alter-table-sys_role-modify-column-des" author="liqi">
+        <comment>
+            角色表修改默认值
+        </comment>
+        <sql>
+            <![CDATA[
+                alter table `sys_role` modify column `des` varchar(100) DEFAULT NULL COMMENT '描述';
+             ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.SysLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.SysLog">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="desc_info" property="descInfo" />
+        <result column="remark" property="remark" />
+        <result column="adr" property="adr" />
+        <result column="backups" property="backups" />
+        <result column="is_success" property="isSuccess" />
+        <result column="create_time" property="createTime" />
+        <result column="create_user_id" property="createUserId" />
+    </resultMap>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.vo.resp.admin.SysLogPageListVo">
+
+        SELECT
+        log.id,
+        log.type,
+        log.desc_info descInfo,
+        log.remark,
+        log.adr,
+        log.backups,
+        log.is_success isSuccess,
+        log.create_time createTime,
+        log.create_user_id createUserId,
+        user.username,
+        user.acount
+        FROM
+        sys_log log
+        left join
+        sys_user user
+        on user.id = log.create_user_id
+        WHERE
+        1=1
+        <if test="vo.start != null and vo.start != ''">
+            and log.create_time >= #{vo.start}
+        </if>
+
+        <if test="vo.end != null and vo.end != ''">
+            and log.create_time  &lt;= #{vo.end}
+        </if>
+        <if test="vo.type != null and vo.type != 0">
+            and log.type  = #{vo.type}
+        </if>
+        order by log.create_time desc
+
+
+    </select>
+
+    <select id="export" resultType="cn.powertime.iatp.vo.resp.admin.SysLogExportVo">
+      SELECT
+        log.id,
+        (CASE log.type WHEN 1 THEN '增'  WHEN 2 THEN '删' WHEN 3 THEN '改' WHEN 4 THEN '查' WHEN 5 THEN '登录' ELSE '' END) as type,
+        log.desc_info descInfo,
+        log.remark,
+        log.adr,
+        (CASE log.is_success WHEN 1 THEN '成功'  WHEN 2 THEN '失败' ELSE '' END) as isSuccess,
+        log.create_time createTime,
+        u.acount,
+        u.username
+        FROM
+        sys_log log
+        LEFT JOIN
+        sys_user u
+        ON
+        u.id = log.create_user_id
+        WHERE
+        1=1
+        <if test="vo.start !='' and vo.start != null">
+          and  log.create_time >= #{vo.start}
+        </if>
+        <if test="vo.end !='' and vo.end != null">
+          and  log.create_time &lt;= #{vo.end}
+        </if>
+        <if test="vo.type != null and vo.type != 0">
+            and log.type  = #{vo.type}
+        </if>
+    </select>
+
+</mapper>

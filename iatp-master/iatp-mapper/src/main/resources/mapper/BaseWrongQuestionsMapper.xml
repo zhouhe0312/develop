@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseWrongQuestionsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseWrongQuestions">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="course_id" property="courseId" />
+        <result column="test_paper_id" property="testPaperId" />
+        <result column="type" property="type" />
+        <result column="topic_id" property="topicId" />
+        <result column="topic_answer" property="topicAnswer" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+    <select id="selectPage" resultType="cn.powertime.iatp.vo.resp.admin.WrongQuestionsRespListVo">
+        SELECT bwq.id,
+               su.username     AS `name`,
+               su.acount       AS userName,
+               bt.topic_stem,
+               bc.course_name,
+               bct.title,
+               bwq.topic_answer,
+               bt.topic_answer AS correctOption,
+               bwq.create_time
+        FROM `base_wrong_questions` bwq,
+             `sys_user` su,
+             `base_course` bc,
+             `base_chapel_test` bct,
+             `base_topic` bt
+
+        WHERE bwq.user_id = su.id
+          AND bwq.course_id = bc.id
+          AND bwq.test_paper_id = bct.id
+          AND bwq.topic_id = bt.id
+          AND bwq.status = 1
+          <if test="vo.userName != null and vo.userName != ''">
+              AND su.acount = #{vo.userName}
+          </if>
+          <if test="vo.courseId != null and vo.courseId != 0">
+              AND bwq.course_id = #{vo.courseId}
+          </if>
+          <if test="vo.chapelTestId != null and vo.chapelTestId != 0">
+              AND bwq.test_paper_id = #{vo.chapelTestId}
+          </if>
+          ORDER BY id DESC
+    </select>
+
+    <select id="wrongList" resultType="cn.powertime.iatp.vo.resp.web.WrongQuestionsPageListVo">
+        SELECT * FROM(
+            SELECT
+            wrong.id,
+            topic.topic_stem topicStem,
+            topic.topic_answer topicAnswer,
+            topic.option_a optionA,
+            topic.option_b optionB,
+            topic.option_c optionC,
+            topic.option_d optionD,
+            topic.topic_analysis topicAnalysis,
+            test.test_type testType,
+            paper.score_value scoreValue
+            FROM
+            base_wrong_questions wrong
+            LEFT JOIN
+            base_topic topic
+            ON wrong.topic_id = topic.id and topic.`status` =1
+            LEFT JOIN
+            base_chapel_test test
+            ON wrong.test_paper_id = test.id and test.`status` = 1
+            LEFT JOIN
+            base_examination_paper paper
+            ON wrong.test_paper_id = paper.test_paper_id and wrong.topic_id = paper.topic_id and paper.`status` =1
+            WHERE
+            wrong.user_id = #{uid}
+        ) result
+        where 1=1
+        <if test="vo.title != null and vo.title != '' ">
+            AND result.topicStem like '%${vo.title}%'
+        </if>
+        <if test="vo.type != null and vo.type != 0 ">
+            AND result.testType = #{vo.type}
+        </if>
+        order by result.id desc
+
+    </select>
+
+</mapper>

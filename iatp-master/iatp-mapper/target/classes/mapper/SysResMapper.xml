@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.SysResMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.SysRes">
+        <id column="id" property="id" />
+        <result column="pid" property="pid" />
+        <result column="name" property="name" />
+        <result column="permission" property="permission" />
+        <result column="url" property="url" />
+        <result column="sort_num" property="sortNum" />
+        <result column="attach" property="attach" />
+        <result column="icon1" property="icon1" />
+        <result column="icon2" property="icon2" />
+        <result column="pids" property="pids" />
+        <result column="type" property="type" />
+        <result column="des" property="des" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="selectZtree" resultMap="BaseResultMap">
+        SELECT id,pid,name,type from sys_res WHERE status = 1  ORDER BY  type ASC ,sort_num asc
+    </select>
+
+    <select id="listByUserId" resultMap="BaseResultMap">
+       SELECT
+       DISTINCT
+        menu.id,
+        menu.pid,
+        menu.name,
+        menu.permission,
+        menu.url,
+        menu.sort_num,
+        menu.icon1,
+        menu.icon2,
+        menu.pids,
+        menu.type,
+        menu.des,
+        menu.status,
+        menu.create_time,
+        menu.update_time
+        FROM sys_res menu ,sys_role_res r_menu, sys_user_role u_role
+        WHERE u_role.role_id=r_menu.role_id
+        AND r_menu.res_id =menu.id
+        AND menu.`status`=1
+        AND u_role.user_id =#{userId}
+    </select>
+
+    <select id="buttonsByUserId" resultMap="BaseResultMap">
+      SELECT
+      DISTINCT
+        res.id,
+        res.pid,
+        res.name,
+        res.permission,
+        res.url,
+        res.sort_num,
+        res.icon1,
+        res.icon2,
+        res.pids,
+        res.type,
+        res.des,
+        res.status,
+        res.create_time,
+        res.update_time
+        FROM sys_res res,sys_role_res r_res, sys_user_role u_role
+        WHERE u_role.role_id=r_res.role_id
+        AND r_res.res_id =res.id
+        AND res.`status`=1
+        AND res.`type`=2
+        AND u_role.user_id =#{userId}
+    </select>
+
+    <select id="mySelectPage" resultType="cn.powertime.iatp.vo.resp.admin.SysResPageVo">
+
+        select
+        a.id,
+        a.pid,
+        a.name,
+        a.permission,
+        a.url,
+        a.sort_num as sortNum,
+        a.attach,
+        a.icon1,
+        a.icon2,
+        a.pids,
+        a.type,
+        a.des,
+        a.status,
+        a.create_time as createTime,
+        a.update_time as updateTime,
+        IFNULL(b.name,'无') as pname
+
+        from
+        sys_res a
+        left join
+        sys_res b
+        on a.pid = b.id
+        where
+        a.status != -1
+        <if test="vo.name != null and vo.name != '' ">
+            AND a.name like '%${vo.name}%'
+        </if>
+        <if test="vo.pid != null ">
+            AND a.pid = #{vo.pid}
+        </if>
+
+        ORDER BY a.sort_num
+
+
+    </select>
+
+    <update id="batchDel">
+        update sys_res set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="listSysResAndChildCount" resultType="cn.powertime.iatp.vo.resp.admin.SysResAndChildCountVo">
+
+        select
+        a.id,
+        a.pid,
+        a.name,
+        a.permission,
+        a.url,
+        a.sort_num as sortNum,
+        a.attach,
+        a.icon1,
+        a.icon2,
+        a.pids,
+        a.type,
+        a.des,
+        a.status,
+        a.create_time as createTime,
+        a.update_time as updateTime,
+        COUNT(b.id) as num
+        FROM
+        sys_res a
+        LEFT JOIN
+        sys_res b
+        on
+        a.id = b.pid and b.status = 1
+        where
+        a.status = 1
+        GROUP BY a.id
+
+    </select>
+
+    <select id="tree" resultType="cn.powertime.iatp.vo.resp.admin.SysResAndChildCountVo">
+
+        select
+        a.id,
+        a.pid,
+        a.name,
+        a.permission,
+        a.url,
+        a.sort_num as sortNum,
+        a.attach,
+        a.icon1,
+        a.icon2,
+        a.pids,
+        a.type,
+        a.des,
+        a.status,
+        a.create_time as createTime,
+        a.update_time as updateTime
+        FROM
+        sys_res a
+        where
+        a.status = 1
+        and
+        a.type = 1
+        GROUP BY a.id
+
+    </select>
+
+</mapper>

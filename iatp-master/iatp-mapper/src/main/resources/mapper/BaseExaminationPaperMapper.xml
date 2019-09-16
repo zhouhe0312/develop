@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseExaminationPaperMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseExaminationPaper">
+        <id column="id" property="id" />
+        <result column="test_paper_id" property="testPaperId" />
+        <result column="score_value" property="scoreValue" />
+        <result column="topic_id" property="topicId" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="getTopics" resultType="cn.powertime.iatp.vo.resp.web.TopicVo">
+        SELECT
+        topic.id topicId,
+        topic.topic_stem topicStem,
+        topic.option_a optionA,
+        topic.option_b optionB,
+        topic.option_c optionC,
+        topic.option_d optionD,
+        paper.score_value score,
+        paper.id
+        FROM
+        base_examination_paper paper,
+        base_topic topic
+        WHERE
+        paper.test_paper_id = #{id}
+        AND
+        paper.status = 1
+        AND
+        paper.topic_id = topic.id
+        AND
+        topic.status = 1
+        order by
+        paper.id desc
+    </select>
+
+    <select id="getTopicsResult" resultType="cn.powertime.iatp.vo.resp.web.TopicVo">
+        SELECT
+        topic.id topicId,
+        topic.topic_stem topicStem,
+        topic.option_a optionA,
+        topic.option_b optionB,
+        topic.option_c optionC,
+        topic.option_d optionD,
+        topic.topic_answer topicAnswer,
+        topic.topic_analysis topicAnalysis,
+        result.topic_answer userAnswer,
+        result.is_correct isCorrect,
+        paper.score_value score
+        FROM
+         base_examination_paper paper
+         left join
+         base_topic topic
+         on paper.topic_id = topic.id
+         and
+         topic.status = 1
+         left join
+         base_examination_result_details result
+         on
+         paper.id = result.test_questions_id
+         and
+         result.user_id = #{uid}
+         and
+         result.result_id = #{resultId}
+         AND
+         result.status = 1
+        WHERE
+        paper.status = 1
+        AND
+        paper.test_paper_id = #{id}
+        order by paper.id Asc
+    </select>
+
+    <select id="getTopicsByCouseId" resultType="java.lang.Long">
+        SELECT
+            distinct paper.topic_id
+            FROM
+            base_examination_paper paper,
+            base_chapel_test test
+            WHERE
+            test.id = paper.test_paper_id
+            AND
+            test.course_id = #{courseId}
+            AND
+            test.status = 1
+            and
+            paper.status = 1
+    </select>
+
+    <update id="delByTestIds">
+        update base_examination_paper set status = -1
+        where test_paper_id in
+        <foreach collection="testIds" item="testId" index="index"
+                 open="(" close=")" separator=",">
+            #{testId}
+        </foreach>
+    </update>
+
+</mapper>

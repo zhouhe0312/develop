@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.SysSafeStrategyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.SysSafeStrategy">
+        <id column="id" property="id" />
+        <result column="pwd_intensity" property="pwdIntensity" />
+        <result column="login_fail_time" property="loginFailTime" />
+        <result column="pwd_valid_time" property="pwdValidTime" />
+        <result column="web_failure_time" property="webFailureTime" />
+        <result column="lock_login_time" property="lockLoginTime" />
+        <result column="log_retention_time" property="logRetentionTime" />
+        <result column="min_pwd_length" property="minPwdLength" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+</mapper>

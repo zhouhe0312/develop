@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseChapterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseChapter">
+        <id column="id" property="id" />
+        <result column="pid" property="pid" />
+        <result column="type" property="type" />
+        <result column="chapter_name" property="chapterName" />
+        <result column="course_id" property="courseId" />
+        <result column="sort_num" property="sortNum" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <update id="batchDel">
+        update base_chapter set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="chapterList" resultType="cn.powertime.iatp.vo.resp.web.ChapterListVo">
+        SELECT aa.id,aa.pid,aa.`name`,aa.num,aa.type,GROUP_CONCAT(aa.studyStatus) tempStatus FROM (
+        select
+            chapter.id,
+            chapter.pid,
+            chapter.type,
+            chapter.chapter_name name,
+           IFNULL(resources.num,0) num,
+            <if test="uid != 0">
+            IFNULL(record.type,0) studyStatus
+            </if>
+            <if test="uid == 0">
+               0  studyStatus
+            </if>
+        from
+            base_chapter chapter
+        <if test="uid != 0">
+        left join
+            base_user_learning_record record
+            ON chapter.course_id = record.course_id AND chapter.pid = record.chapter_id AND chapter.id = record.section_id
+            AND
+            record.status = 1
+        and
+        record.user_id = #{uid}
+        </if>
+        left join
+        (
+        select course_id, chapter_pid,chapter_id ,count(*) num from
+        base_resource resource
+        where
+        resource.status = 1
+        group by resource.course_id,resource.chapter_pid ,resource.chapter_id
+        ) resources
+        on chapter.course_id = resources.course_id AND chapter.pid = resources.chapter_pid AND chapter.id = resources.chapter_id
+        where
+            chapter.course_id = #{id}
+            and
+            chapter.status = 1
+        ) aa GROUP BY aa.id,aa.pid
+    </select>
+
+</mapper>

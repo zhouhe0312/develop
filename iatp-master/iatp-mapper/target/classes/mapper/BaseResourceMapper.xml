@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.powertime.iatp.mapper.BaseResourceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.powertime.iatp.entity.BaseResource">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="defaults" property="defaults" />
+        <result column="course_id" property="courseId" />
+        <result column="chapter_pid" property="chapterPid" />
+        <result column="chapter_id" property="chapterId" />
+        <result column="resource_name" property="resourceName" />
+        <result column="introduce" property="introduce" />
+        <result column="resource_type" property="resourceType" />
+        <result column="file_id" property="fileId" />
+        <result column="resource_size" property="resourceSize" />
+        <result column="sort" property="sort" />
+        <result column="course_parent_id" property="courseParentId" />
+        <result column="course_child_id" property="courseChildId" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="ip" property="ip" />
+        <result column="port" property="port" />
+        <result column="service_port" property="servicePort" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="getMaxSort" resultType="cn.powertime.iatp.entity.BaseResource">
+        select max(sort) as sort from base_resource
+    </select>
+
+    <update id="batchDel">
+        update base_resource set status = -1
+        where id in
+        <foreach collection="ids" item="id" index="index"
+                 open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="courseResourceList" resultType="cn.powertime.iatp.vo.resp.web.CourseResourceListVo">
+
+        SELECT * from (
+            (
+                SELECT id,chapter_name name,0 as pid,'' as fileId,1 as type,/*小节*/ 0 as resourceType,0 as sort,null resultId, '' as fileExtensions,null as defaults
+                FROM base_chapter
+                WHERE course_id = #{vo.courseId}/*课程id*/AND pid = #{vo.chapterPid}/*章节id*/AND status = 1 ORDER BY id ASC
+            )
+            UNION ALL
+            (
+                SELECT test.id,test.title as  name,0 as pid,'' as fileId,2 as type, /*单元测*/0 as resourceType,0 as sort ,result.resultId, '' as fileExtensions,null as defaults
+                FROM base_chapel_test test
+                left join
+                (select max(id) as resultId ,test_paper_id from base_examination_result where user_id = #{uid} and status = 1 group by test_paper_id) result
+                on test.id = result.test_paper_id
+                WHERE test.course_id = #{vo.courseId}/*课程id*/AND test.chapter_id =#{vo.chapterPid}/*章节id*/AND test.test_type = 2 AND test.status = 1
+            )
+            UNION ALL
+            (
+                SELECT id,resource_name as  name,chapter_id as pid,file_id as fileId,3 as type, /*课程资源*/resource_type as resourceType,sort,null resultId, file_extensions as fileExtensions,defaults
+                FROM base_resource
+                WHERE course_id = #{vo.courseId}/*课程id*/and chapter_pid =#{vo.chapterPid} AND type = 1 AND status = 1 ORDER BY sort ASC
+            )
+            UNION ALL
+            (
+                SELECT test.id,test.title as  name,test.subsection as pid,'' as fileId,3 as type, /*随堂测*/4 as resourceType,5000 AS sort,result.resultId, '' as fileExtensions,null as defaults
+                FROM base_chapel_test test
+               left join
+                (select max(id) as resultId ,test_paper_id from base_examination_result where user_id = #{uid} and status = 1 group by test_paper_id) result
+                on test.id = result.test_paper_id
+                WHERE test.course_id = #{vo.courseId}/*课程id*/AND test.chapter_id =#{vo.chapterPid}/*章节id*/ AND test.test_type = 1 AND test.status = 1
+            )
+        ) result
+
+
+    </select>
+
+    <select id="experimentResourceList" resultType="cn.powertime.iatp.vo.resp.web.ExperimentResourceRespListVo">
+
+        SELECT * from (
+            (
+                SELECT id,chapter_name name,0 as pid,'' as fileId,1 as type,/*小节*/ 0 as resourceType,0 as sort,'' as username,'' as password,'' as ip,'' as port,null as defaults,null as resultId,'' as fileExtensions,'' as servicePort
+                FROM base_chapter
+                WHERE course_id = #{vo.courseId}/*课程id*/AND pid = #{vo.chapterPid}/*章节id*/AND status = 1 ORDER BY id ASC
+            )
+            UNION ALL
+            (
+                SELECT id,resource_name as  name,chapter_id as pid,file_id as fileId,2 as type, /*课程资源*/resource_type as resourceType,sort, username,password,ip,port,defaults,null as resultId,file_extensions as fileExtensions ,service_port as servicePort
+                FROM base_resource
+                WHERE course_id = #{vo.courseId}/*课程id*/and chapter_pid =#{vo.chapterPid} /*章节id*/ AND type in (2,3) AND status = 1 ORDER BY sort ASC
+            )
+            UNION ALL
+            (
+                SELECT test.id,test.title as  name,test.subsection as pid,'' as fileId,3 as type, /*随堂测*/5 as resourceType,5000 AS sort,'' as username,'' as password,'' as ip,'' as port,null as defaults,result.resultId,'' as fileExtensions,'' as servicePort
+                FROM base_chapel_test test
+                left join
+                (select max(id) as resultId ,test_paper_id from base_examination_result where user_id = #{uid} and status = 1 group by test_paper_id) result
+                on test.id = result.test_paper_id
+                WHERE test.course_id = #{vo.courseId}/*课程id*/AND test.chapter_id =#{vo.chapterPid}/*章节id*/ AND test.test_type = 4 AND test.status = 1
+            )
+        ) result
+
+    </select>
+
+</mapper>
